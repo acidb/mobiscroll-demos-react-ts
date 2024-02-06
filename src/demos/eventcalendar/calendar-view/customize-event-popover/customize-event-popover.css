@@ -1,0 +1,39 @@
+.md-custom-event-img {
+  width: 30px;
+  height: 30px;
+}
+
+.mbsc-custom-event-name {
+  padding: 0 10px;
+}
+
+.md-custom-event-cont {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  font-size: 13px;
+}
+
+.md-custom-event-btn.mbsc-button {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  line-height: 20px;
+  padding: 0px 6px;
+}
+
+.custom-event-popover.mbsc-material .mbsc-popover-list .mbsc-event {
+  padding: 10px 14px;
+}
+
+.custom-event-popover.mbsc-ios .mbsc-popover-list {
+  width: 340px;
+}
+
+.custom-event-popover.mbsc-material .mbsc-popover-list {
+  width: 320px;
+}
+
+.custom-event-popover.mbsc-windows .mbsc-popover-list {
+  width: 340px;
+}

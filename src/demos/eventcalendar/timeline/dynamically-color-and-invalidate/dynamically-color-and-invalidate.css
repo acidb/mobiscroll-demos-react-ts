@@ -1,0 +1,26 @@
+.dynamically-color-and-invalidate-calendar {
+  border-left: 1px solid #ccc;
+}
+
+.dynamically-color-and-invalidate-task {
+  border: 2px solid #888;
+  color: #666;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 8px;
+  font-family:
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    sans-serif;
+}
+
+.dynamically-color-and-invalidate-task-type {
+  float: right;
+  margin-left: 30px;
+  text-transform: uppercase;
+}
+
+.dynamically-color-and-invalidate-calendar .mbsc-timeline-parent {
+  height: 32px;
+}

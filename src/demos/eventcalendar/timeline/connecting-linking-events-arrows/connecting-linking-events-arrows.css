@@ -1,0 +1,7 @@
+.dashed-line {
+  stroke-dasharray: 5;
+}
+
+.dashed-line.mbsc-connection-arrow {
+  stroke-dasharray: initial;
+}

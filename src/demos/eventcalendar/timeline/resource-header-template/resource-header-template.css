@@ -1,0 +1,45 @@
+.md-resource-header-template .mbsc-timeline-resource-col {
+  width: 230px;
+}
+
+.md-resource-header-template .mbsc-timeline-resource-header,
+.md-resource-header-template .mbsc-timeline-resource-title {
+  padding: 0;
+}
+
+.md-resource-header-template .mbsc-timeline-resource-title {
+  height: 100%;
+}
+
+.md-resource-header-template-cont {
+  line-height: 50px;
+  height: 100%;
+}
+
+.md-resource-header-template-name {
+  height: 100%;
+  display: inline-block;
+  padding: 0 5px;
+}
+
+.md-resource-header-template-seats {
+  border-left: 1px solid #ccc;
+  width: 90px;
+  height: 100%;
+  float: right;
+  padding: 0 5px;
+}
+
+.md-resource-header-template-title {
+  font-weight: 600;
+  line-height: 56px;
+}
+
+@supports (overflow: clip) {
+  .md-resource-header-template.mbsc-ltr .mbsc-schedule-event-inner {
+    left: 230px;
+  }
+  .md-resource-header-template.mbsc-rtl .mbsc-schedule-event-inner {
+    right: 230px;
+  }
+}

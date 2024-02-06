@@ -1,0 +1,28 @@
+.md-item-template {
+  padding: 10px 10px 10px 55px;
+  position: relative;
+  text-align: left;
+  line-height: normal;
+}
+
+.md-item-template-img {
+  position: absolute;
+  left: 0;
+  width: 45px;
+  height: 45px;
+}
+
+.md-item-template-title {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 25px;
+}
+
+.md-item-template-artist {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.mbsc-scroller-wheel-item-2d .md-item-template {
+  transform: scale(1.1);
+}

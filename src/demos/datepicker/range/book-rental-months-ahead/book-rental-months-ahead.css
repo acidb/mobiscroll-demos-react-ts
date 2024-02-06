@@ -1,0 +1,95 @@
+.mbsc-datepicker .md-book-rental-bg-off.vacation-check-in.mbsc-ltr {
+  background: linear-gradient(to left top, #ffbaba80 50%, #b2f1c080 50%) no-repeat;
+}
+
+.mbsc-datepicker .md-book-rental-bg-pre.vacation-check-in.mbsc-ltr {
+  background: linear-gradient(to left top, #ffbaba80 50%, #a3cdff80 50%) no-repeat;
+}
+
+.mbsc-datepicker .md-book-rental-bg-in.vacation-check-in.mbsc-ltr {
+  background: linear-gradient(to left top, #ffbaba80 50%, #f7f7bb80 50%) no-repeat;
+}
+
+.mbsc-datepicker .md-book-rental-bg-off.vacation-check-out.mbsc-ltr {
+  background: linear-gradient(to left top, #b2f1c080 50%, #ffbaba80 50%) no-repeat;
+}
+
+.mbsc-datepicker .md-book-rental-bg-pre.vacation-check-out.mbsc-ltr {
+  background: linear-gradient(to left top, #a3cdff80 50%, #ffbaba80 50%) no-repeat;
+}
+
+.mbsc-datepicker .md-book-rental-bg-in.vacation-check-out.mbsc-ltr {
+  background: linear-gradient(to left top, #f7f7bb80 50%, #ffbaba80 50%) no-repeat;
+}
+
+.mbsc-datepicker .md-book-rental-bg-off.vacation-check-in.mbsc-rtl {
+  background: linear-gradient(to right bottom, #ffbaba80 50%, #b2f1c080 50%) no-repeat;
+}
+
+.mbsc-datepicker .md-book-rental-bg-pre.vacation-check-in.mbsc-rtl {
+  background: linear-gradient(to right bottom, #ffbaba80 50%, #a3cdff80 50%) no-repeat;
+}
+
+.mbsc-datepicker .md-book-rental-bg-in.vacation-check-in.mbsc-rtl {
+  background: linear-gradient(to right bottom, #ffbaba80 50%, #f7f7bb80 50%) no-repeat;
+}
+
+.mbsc-datepicker .md-book-rental-bg-off.vacation-check-out.mbsc-rtl {
+  background: linear-gradient(to right bottom, #b2f1c080 50%, #ffbaba80 50%) no-repeat;
+}
+
+.mbsc-datepicker .md-book-rental-bg-pre.vacation-check-out.mbsc-rtl {
+  background: linear-gradient(to right bottom, #a3cdff80 50%, #ffbaba80 50%) no-repeat;
+}
+
+.mbsc-datepicker .md-book-rental-bg-in.vacation-check-out.mbsc-rtl {
+  background: linear-gradient(to right bottom, #f7f7bb80 50%, #ffbaba80 50%) no-repeat;
+}
+
+.mbsc-datepicker .vacation-check-out,
+.mbsc-datepicker .vacation-check-in {
+  color: initial;
+}
+
+.mbsc-datepicker .vacation-check-in.mbsc-calendar-cell.mbsc-calendar-day-empty,
+.mbsc-datepicker .vacation-check-out.mbsc-calendar-cell.mbsc-calendar-day-empty {
+  background: transparent;
+}
+
+.md-book-rental-header {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-left: auto;
+  flex: 1 1;
+  overflow: hidden;
+}
+
+.md-book-rental-zone {
+  font-size: 12px;
+  padding: 3px 6px;
+  margin: 0 5px;
+  border-radius: 16px;
+  color: #1e1e1ecc;
+}
+
+.md-book-rental .mbsc-calendar-label-text {
+  text-align: center;
+  font-weight: bold;
+}
+
+.md-book-rental-in {
+  background: #f7f7bb80;
+}
+
+.md-book-rental-pre {
+  background: #a3cdff80;
+}
+
+.md-book-rental-off {
+  background: #b2f1c080;
+}
+
+.md-book-rental-booked {
+  background: #ffbaba80;
+}

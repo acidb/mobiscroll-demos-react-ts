@@ -1,0 +1,30 @@
+.slot-name {
+  line-height: 20px;
+  font-size: 15px;
+}
+
+.slot-time {
+  opacity: 0.5;
+  line-height: 20px;
+  font-size: 13px;
+}
+
+.md-shift-template .mbsc-timeline-header-placeholder {
+  height: 74px;
+}
+
+.md-shift-template .mbsc-timeline-slots {
+  height: 48px;
+  text-align: center;
+}
+
+.md-shift-template .mbsc-schedule-event {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+}
+
+.md-shift-template .mbsc-timeline-slot-title {
+  padding: 0;
+}

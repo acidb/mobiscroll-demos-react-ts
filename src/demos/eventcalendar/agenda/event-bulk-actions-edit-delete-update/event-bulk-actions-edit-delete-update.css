@@ -1,0 +1,19 @@
+.md-bulk-operations-border {
+  border-left: 1px solid #ccc;
+}
+
+.md-selected-event-list {
+  height: 500px;
+  overflow: auto;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.md-bulk-operations,
+.md-bulk-operations .mbsc-grid,
+.md-bulk-operations .mbsc-row,
+.md-bulk-operations .mbsc-col-sm-9,
+.md-bulk-operations .mbsc-push-sm-3,
+.md-bulk-operations .mbsc-calendar {
+  height: 100%;
+}

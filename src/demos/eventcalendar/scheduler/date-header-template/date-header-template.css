@@ -1,0 +1,40 @@
+.header-template-container {
+  padding: 10px;
+}
+
+.header-template-date {
+  text-align: left;
+  line-height: 20px;
+}
+
+.header-template-day-name {
+  font-weight: bold;
+}
+
+.header-template-day {
+  font-size: 12px;
+}
+
+.header-template-task {
+  position: absolute;
+  top: 14px;
+  right: 10px;
+  font-size: 12px;
+  line-height: 22px;
+  padding: 0 10px;
+  border-radius: 12px;
+  color: #555;
+}
+
+.header-resource-template-content {
+  position: relative;
+}
+
+.header-resource-avatar {
+  max-height: 40px;
+  max-width: 40px;
+}
+
+.header-resource-name {
+  font-size: 14px;
+}

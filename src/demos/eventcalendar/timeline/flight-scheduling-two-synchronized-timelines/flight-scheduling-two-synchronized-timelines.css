@@ -1,0 +1,60 @@
+.md-drag-drop-bw-inst-cont .mbsc-eventcalendar {
+  height: 500px;
+}
+
+.md-drag-drop-bw-inst-cont .mbsc-timeline-parent {
+  height: 32px;
+}
+
+.md-drag-drop-bw-inst-cont .mbsc-timeline-resource {
+  padding-left: 5px !important;
+}
+
+.md-drag-drop-bw-inst-cont .mbsc-timeline-row-gutter {
+  height: 6px;
+}
+
+.md-drag-drop-bw-inst-second .mbsc-timeline-header,
+.md-drag-drop-bw-inst-second .mbsc-timeline-header-sticky {
+  display: none;
+}
+
+.md-aircraft-code {
+  color: #939995;
+}
+
+.md-drag-drop-bw-inst-cont {
+  min-height: 500px;
+  height: 100%;
+}
+
+.md-drag-drop-bw-inst-first {
+  border-bottom: 5px solid #ccc;
+}
+
+.md-drag-drop-bw-inst-avatar {
+  max-height: 55px;
+  max-width: 55px;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+
+.md-drag-drop-bw-inst-details {
+  margin-left: 16px;
+  font-size: 12px;
+}
+
+.md-drag-drop-bw-inst-title {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.md-drag-drop-faded {
+  opacity: 0.3;
+}
+
+.md-drag-drop-invalid.mbsc-schedule-invalid {
+  background: repeating-linear-gradient(-45deg, #f3f3f3, #f3f3f3 11px, #e5e5e5 11px, #e5e5e5 22px);
+}

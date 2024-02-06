@@ -1,0 +1,42 @@
+.md-recurring-event-editor-popup .md-recurrence-input .mbsc-textfield-wrapper {
+  display: inline-block;
+  margin: 3px;
+  z-index: 3;
+  line-height: normal;
+}
+
+.md-recurring-event-editor-popup .md-recurrence-input .mbsc-textfield {
+  width: 140px;
+  height: 32px;
+}
+
+.md-recurring-event-editor-popup .md-recurrence-input-nr .mbsc-textfield {
+  width: 90px;
+}
+
+.md-recurring-event-editor-popup .md-recurrence-input .mbsc-select-icon {
+  top: 50%;
+  height: 1.5em;
+  margin-top: -0.75em;
+}
+
+.md-recurrence-options {
+  padding: 0 1em;
+  margin: 1em 0;
+}
+
+.md-recurrence-ends {
+  padding: 0 1em;
+  margin: 1.25em 0 -1.25em 0;
+}
+
+.md-recurrence-desc {
+  font-size: 12px;
+  font-weight: normal;
+  color: #555;
+  margin: 1em 0;
+}
+
+.md-hide-elm {
+  display: none;
+}

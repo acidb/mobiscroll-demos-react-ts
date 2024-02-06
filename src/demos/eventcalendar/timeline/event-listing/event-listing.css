@@ -1,0 +1,81 @@
+.md-event-listing-cont {
+  position: relative;
+  padding-left: 50px;
+}
+
+.md-event-listing-avatar {
+  position: absolute;
+  max-height: 50px;
+  max-width: 50px;
+  top: 21px;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  left: 20px;
+}
+
+.md-event-listing-name {
+  font-size: 16px;
+}
+
+.md-event-listing-title {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.md-event-listing .mbsc-segmented {
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 1px;
+}
+
+.md-event-listing-picker {
+  flex: 1 0 auto;
+}
+
+.md-event-listing-nav {
+  width: 200px;
+}
+
+/* material header order */
+
+.mbsc-material.md-event-listing-prev {
+  order: 1;
+}
+
+.mbsc-material.md-event-listing-next {
+  order: 2;
+}
+
+.mbsc-material.md-event-listing-nav {
+  order: 3;
+}
+
+.mbsc-material .md-event-listing-picker {
+  order: 4;
+}
+
+.mbsc-material .md-event-listing-today {
+  order: 5;
+}
+
+/* windows header order */
+
+.mbsc-windows.md-event-listing-nav {
+  order: 1;
+}
+
+.mbsc-windows.md-event-listing-prev {
+  order: 2;
+}
+
+.mbsc-windows.md-event-listing-next {
+  order: 3;
+}
+
+.mbsc-windows .md-event-listing-picker {
+  order: 4;
+}
+
+.mbsc-windows .md-event-listing-today {
+  order: 5;
+}

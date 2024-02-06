@@ -1,0 +1,10 @@
+.md-bulk-operations-border {
+  border-left: 1px solid #ccc;
+}
+
+.md-selected-event-list {
+  height: 500px;
+  overflow: auto;
+  padding-top: 0;
+  padding-bottom: 0;
+}

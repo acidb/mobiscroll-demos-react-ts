@@ -1,0 +1,41 @@
+.md-timetable .mbsc-timeline-row-date-col {
+  width: 90px;
+}
+
+.md-timetable .mbsc-timeline-row-gutter {
+  height: 8px;
+}
+
+.md-timetable .mbsc-timeline-column,
+.md-timetable .mbsc-timeline-header-column {
+  width: 130px;
+}
+
+.md-timetable .mbsc-schedule-event-range {
+  display: none;
+}
+
+.md-timetable-day {
+  font-size: 14px;
+  padding: 7px;
+}
+
+.md-timetable-day-name {
+  font-weight: 600;
+  padding-bottom: 5px;
+}
+
+.md-timetable-event-title {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.md-timetable-event-prop {
+  color: #555;
+  padding-bottom: 5px;
+}
+
+.md-timetable-event-class {
+  color: #555;
+  font-style: italic;
+}

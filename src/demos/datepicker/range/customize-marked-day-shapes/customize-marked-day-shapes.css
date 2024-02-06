@@ -1,0 +1,19 @@
+.mbsc-calendar-mark.triangle-mark {
+  content: '';
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform-origin: left bottom;
+  -ms-transform-origin: left bottom;
+  transform-origin: left bottom;
+  border-radius: 0;
+  width: 8px;
+  height: 8px;
+  position: relative;
+  top: -2px;
+  right: 1px;
+}
+
+.mbsc-calendar-mark.square-mark {
+  border-radius: 0;
+}

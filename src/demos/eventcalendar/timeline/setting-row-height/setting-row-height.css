@@ -1,0 +1,35 @@
+.md-timeline-row-height .mbsc-timeline-row {
+  height: 78px;
+}
+
+.md-timeline-row-height .mbsc-timeline-parent {
+  height: 32px;
+}
+
+.md-timeline-row-height .mbsc-timeline-row-gutter {
+  height: 6px;
+}
+
+.md-timeline-row-height-cont {
+  position: relative;
+  padding-left: 50px;
+}
+
+.md-timeline-row-height-avatar {
+  position: absolute;
+  max-height: 50px;
+  max-width: 50px;
+  top: 30px;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  left: 10px;
+}
+
+.md-timeline-row-height-name {
+  font-size: 16px;
+}
+
+.md-timeline-row-height-title {
+  font-size: 13px;
+  margin-top: 5px;
+}

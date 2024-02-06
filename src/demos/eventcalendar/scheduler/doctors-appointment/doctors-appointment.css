@@ -1,0 +1,32 @@
+.docs-appointment-calendar {
+  border-right: 1px solid #ccc;
+}
+
+.docs-appointment-calendar .mbsc-readonly-event {
+  opacity: 0.6;
+}
+
+.docs-appointment-cont {
+  height: 100%;
+  overflow: auto;
+}
+
+.docs-appointment-task {
+  color: #fff;
+  background: #999;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 8px;
+  font-family:
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    sans-serif;
+}
+
+.demo-doctors-appointment.demo-wrapper,
+.demo-doctors-appointment .mbsc-grid,
+.demo-doctors-appointment .mbsc-row,
+.demo-doctors-appointment .docs-appointment-calendar {
+  height: 100%;
+}

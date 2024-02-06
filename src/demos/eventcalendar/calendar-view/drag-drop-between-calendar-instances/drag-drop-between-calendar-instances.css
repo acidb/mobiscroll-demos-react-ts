@@ -1,0 +1,12 @@
+.md-drag-drop-calendar-border {
+  border-right: 3px dashed #e4e4e4;
+}
+
+.md-drag-drop-calendar .mbsc-form-group-title {
+  font-size: 1em;
+}
+
+.md-drag-drop-calendar .mbsc-row,
+.md-drag-drop-calendar .mbsc-col-sm-6 {
+  height: 100%;
+}

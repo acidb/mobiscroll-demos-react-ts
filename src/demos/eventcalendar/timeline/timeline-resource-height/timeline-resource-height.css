@@ -1,0 +1,4 @@
+.md-timeline-height .mbsc-timeline-resource,
+.md-timeline-height .mbsc-timeline-row {
+  min-height: 120px;
+}

@@ -1,0 +1,64 @@
+.md-date-header-template .mbsc-timeline-header-week-text {
+  display: block;
+}
+
+.md-date-header {
+  text-align: center;
+  border-radius: 8px;
+  line-height: 20px;
+}
+
+.md-date-header-day {
+  padding: 3px;
+  margin: 4px;
+}
+
+.md-date-header-hour {
+  font-size: 12px;
+  padding: 0;
+  margin: 3px;
+  color: #000;
+  font-weight: 600;
+}
+
+.md-date-header-week,
+.md-date-header-month,
+.md-date-header-quarter,
+.md-date-header-year {
+  padding: 0 8px;
+  margin: 3px;
+  color: initial;
+  font-weight: 600;
+}
+
+.md-date-header-template .mbsc-timeline-footer-week {
+  text-align: center;
+}
+
+.md-date-header-day-name {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.md-date-header-day-nr {
+  font-size: 14px;
+}
+
+.md-date-header-events-one {
+  background: #e9f5e4;
+}
+
+.md-date-header-events-few {
+  background: #d0e3c6;
+}
+
+.md-date-header-events-more {
+  background: #8ca77e;
+}
+
+.md-date-footer {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 26px;
+}

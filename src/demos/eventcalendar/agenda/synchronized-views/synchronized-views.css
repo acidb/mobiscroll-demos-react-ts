@@ -1,0 +1,27 @@
+.md-sync-views {
+  display: flex;
+}
+
+.md-sync-cal {
+  width: 350px;
+}
+
+.md-sync-list {
+  flex: 1;
+  border-left: 1px solid #ccc;
+}
+
+.demo-synchronized-views,
+.md-sync-views,
+.md-sync-list {
+  height: 100%;
+}
+
+@media screen and (max-width: 700px) {
+  .md-sync-views {
+    display: block;
+  }
+  .md-sync-cal {
+    width: auto;
+  }
+}

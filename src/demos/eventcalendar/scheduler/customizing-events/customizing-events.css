@@ -1,0 +1,97 @@
+.md-custom-event-cont {
+  font-size: 12px;
+  font-weight: 600;
+  height: 100%;
+  background: #fff;
+  position: relative;
+  box-sizing: border-box;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  border-radius: 0 10px 10px 0;
+  overflow: hidden;
+}
+
+.md-custom-event-wrapper {
+  position: relative;
+  background: rgba(255, 255, 255, 0.5);
+  height: 100%;
+  min-height: 135px;
+  box-sizing: border-box;
+  border-radius: 0 10px 10px 0;
+  transition: background 0.15s ease-in-out;
+}
+
+.mbsc-schedule-event-hover .md-custom-event-cont .md-custom-event-wrapper {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.mbsc-schedule-event-active .md-custom-event-cont .md-custom-event-wrapper {
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.14),
+    0 1px 8px 0 rgba(0, 0, 0, 0.12),
+    0 1px 3px -1px rgba(0, 0, 0, 0.2);
+}
+
+.mbsc-schedule-event-hover .md-custom-event-allday-title {
+  opacity: 0.8;
+}
+
+.mbsc-schedule-event-active .md-custom-event-allday-title {
+  box-shadow:
+    0 4px 8px 0 rgba(0, 0, 0, 0.14),
+    0 1px 8px 0 rgba(0, 0, 0, 0.12),
+    0 1px 3px -1px rgba(0, 0, 0, 0.2);
+}
+
+.md-custom-event-category {
+  display: inline-block;
+  max-width: 100%;
+  color: #eee;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 2px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.md-custom-event-details {
+  padding: 0 10px;
+}
+
+.md-custom-event-title {
+  color: initial;
+}
+
+.md-custom-event-time {
+  font-size: 10px;
+  color: #666;
+  padding-top: 3px;
+}
+
+.md-custom-event-allday-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 10px;
+  opacity: 0.7;
+}
+
+.md-custom-event-btn.mbsc-button {
+  margin: 5px 0;
+  line-height: 20px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.md-cutom-event-img-cont {
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  white-space: nowrap;
+}
+
+.md-custom-event-img {
+  width: 25px;
+  height: 25px;
+  margin: 0 2px;
+}

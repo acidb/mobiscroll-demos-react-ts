@@ -1,0 +1,48 @@
+.employee-shifts-day {
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.6;
+}
+
+.employee-shifts-popup .mbsc-popup .mbsc-popup-header {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.employee-shifts-cont {
+  position: relative;
+  padding-left: 42px;
+  max-height: 40px;
+}
+
+.employee-shifts-avatar {
+  position: absolute;
+  max-height: 40px;
+  max-width: 40px;
+  top: 18px;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  left: 20px;
+}
+
+.employee-shifts-name {
+  font-size: 15px;
+}
+
+.employee-shifts-title {
+  font-size: 12px;
+}
+
+.md-employee-shifts .mbsc-timeline-resource,
+.md-employee-shifts .mbsc-timeline-resource-col {
+  width: 200px;
+  align-items: center;
+  display: flex;
+}
+
+.md-employee-shifts .mbsc-schedule-event {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+}

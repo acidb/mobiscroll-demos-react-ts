@@ -1,0 +1,29 @@
+.md-lunch-break-class.mbsc-schedule-invalid {
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  background: repeating-linear-gradient(-45deg, #f3f3f3, #f3f3f3 10px, #e5e5e5 10px, #e5e5e5 20px);
+}
+
+.md-stripes-bg {
+  background: repeating-linear-gradient(-45deg, #fcfffc, #fcfffc 10px, #eefbec 10px, #eefbec 20px);
+}
+
+.md-dots-bg {
+  background-image: radial-gradient(#a7a7a7 20%, transparent 20%);
+  background-color: #f9f9f9;
+  background-position:
+    0 0,
+    10px 10px;
+  background-size: 20px 20px;
+}
+
+.md-rect-bg {
+  opacity: 0.8;
+  background-image: repeating-linear-gradient(45deg, #ffd6d6 25%, transparent 25%, transparent 75%, #ffd6d6 75%, #ffd6d6),
+    repeating-linear-gradient(45deg, #ffd6d6 25%, #ffefef 25%, #ffefef 75%, #ffd6d6 75%, #ffd6d6);
+  background-position:
+    0 0,
+    10px 10px;
+  background-size: 20px 20px;
+}

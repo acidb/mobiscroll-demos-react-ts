@@ -1,0 +1,33 @@
+.demo-date-filtering-popup .mbsc-ios.mbsc-datepicker-inline {
+  border: none;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.demo-date-filtering-popup .mbsc-textfield-wrapper-box {
+  margin-top: 0;
+  margin-right: 0;
+}
+
+.demo-date-filtering-dates {
+  display: flex;
+  flex-direction: column;
+}
+
+.demo-date-filtering-inputs {
+  flex: 1;
+}
+
+.demo-date-filtering-desktop-buttons.mbsc-button-group-justified,
+.demo-date-filtering-desktop-buttons.mbsc-button-group-justified button {
+  margin-bottom: 0;
+}
+
+@media (max-width: 575px) {
+  .demo-date-filtering-desktop-buttons {
+    display: none;
+  }
+  .demo-date-filtering-popup .mbsc-textfield-wrapper-box {
+    margin-left: 0;
+  }
+}

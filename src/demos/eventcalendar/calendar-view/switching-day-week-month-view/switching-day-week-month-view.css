@@ -1,0 +1,47 @@
+.md-switching-view-cont {
+  height: 100%;
+}
+
+.md-switching-view-cont .mbsc-segmented {
+  margin: 0;
+}
+
+.md-switching-view-cont .mbsc-segmented.mbsc-material,
+.md-switching-view-cont .mbsc-segmented.mbsc-windows {
+  padding: 0;
+}
+
+.md-switching-view-cont .mbsc-segmented .mbsc-segmented-button {
+  padding: 0 1px;
+}
+
+.md-switching-view-cont .mbsc-segmented .mbsc-icon {
+  font-size: 20px;
+}
+
+.md-switching-view-cont .mbsc-segmented-button.mbsc-windows {
+  border: 0;
+}
+
+.cal-header-picker {
+  -webkit-flex: 1 0 auto;
+  -moz-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.cal-header-nav {
+  width: 165px;
+}
+
+.cal-header-nav .mbsc-calendar-title.mbsc-material {
+  font-size: 16px;
+}

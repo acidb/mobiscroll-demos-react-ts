@@ -1,0 +1,82 @@
+.md-shift-management-calendar .mbsc-schedule-event {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+}
+
+.md-shift-management-calendar .mbsc-timeline-slots {
+  height: 94px;
+}
+
+.md-shift-management-calendar .mbsc-timeline-header-placeholder {
+  height: 120px;
+}
+
+.md-shift-management-calendar .mbsc-timeline-resource {
+  display: flex;
+  align-items: center;
+}
+
+.md-shift-management-calendar .mbsc-timeline-slot {
+  width: 200px;
+}
+
+.md-shift-management-calendar .mbsc-timeline-parent {
+  height: 40px;
+}
+
+.md-shift-management-calendar .mbsc-checkbox {
+  padding: 18px 0 18px 45px;
+}
+
+.md-shift-management-calendar .mbsc-textfield-wrapper {
+  margin: 12px 12px 12px 28px;
+}
+
+.md-shift-management-calendar .mbsc-select.mbsc-textfield {
+  height: 32px;
+  width: 120px;
+}
+
+.md-shift-management-calendar .mbsc-icon.mbsc-select-icon {
+  width: 20px;
+  height: 20px;
+  top: 7px;
+}
+
+.md-shift-resource {
+  font-size: 18px;
+}
+
+.md-shift-resource-icon {
+  margin-right: 10px;
+}
+
+.md-shift-header {
+  margin: 3px 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.md-shift-name {
+  font-size: 15px;
+}
+
+.md-shift-time {
+  opacity: 0.5;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.md-shift-count {
+  margin-top: 6px;
+  margin-right: 12px;
+  display: inline-block;
+  width: 26px;
+  height: 20px;
+}
+
+.md-shift-icon {
+  padding-right: 3px;
+}

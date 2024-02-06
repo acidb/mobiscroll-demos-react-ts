@@ -1,0 +1,53 @@
+.md-tooltip .mbsc-popup-content {
+  padding: 0;
+}
+
+.md-tooltip {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.md-tooltip-header {
+  padding: 12px 16px;
+  color: #eee;
+}
+
+.md-tooltip-info {
+  padding: 16px 16px 60px 16px;
+  position: relative;
+  line-height: 32px;
+}
+
+.md-tooltip-time,
+.md-tooltip-status-button {
+  float: right;
+}
+
+.md-tooltip-title {
+  margin-bottom: 15px;
+}
+
+.md-tooltip-text {
+  font-weight: 300;
+}
+
+.md-tooltip-info .mbsc-button {
+  font-size: 14px;
+  margin: 0;
+}
+
+.md-tooltip-info .mbsc-button.mbsc-material {
+  font-size: 12px;
+}
+
+.md-tooltip-view-button {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+}
+
+.md-tooltip-delete-button {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+}

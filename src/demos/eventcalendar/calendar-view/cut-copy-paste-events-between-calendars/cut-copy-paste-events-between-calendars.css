@@ -1,0 +1,14 @@
+.md-copy-cut-paste .mbsc-segmented {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.md-copy-cut-paste .md-hide-calendar {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}

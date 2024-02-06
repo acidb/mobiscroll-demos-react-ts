@@ -1,0 +1,35 @@
+.md-search-events-cont {
+  width: 350px;
+}
+
+.md-search-events-cont .mbsc-textfield-wrapper.mbsc-ios {
+  margin-top: 8px;
+  margin-bottom: 9px;
+}
+
+.md-search-events-cont .mbsc-textfield-wrapper.mbsc-material {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.md-search-events-cont .mbsc-textfield-wrapper.mbsc-windows {
+  margin-top: 28px;
+  margin-bottom: 29px;
+}
+
+@media (min-width: 1135px) {
+  .md-search-events-cont .mbsc-textfield-wrapper.mbsc-ios {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+.md-search-events-calendar {
+  border-left: 1px solid #ccc;
+}
+
+.demo-searching-events-in-sidebar,
+.md-search-events-sidebar,
+.md-search-events-calendar {
+  height: 100%;
+}

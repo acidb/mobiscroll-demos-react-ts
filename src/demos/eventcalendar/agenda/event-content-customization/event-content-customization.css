@@ -1,0 +1,24 @@
+.md-custom-event-img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.md-custom-event-cont {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  font-size: 13px;
+}
+
+.md-custom-event-btn,
+.md-custom-event-btn.mbsc-button {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  line-height: 20px;
+}
+
+.md-custom-event .mbsc-material.mbsc-event-time {
+  margin-top: 5px;
+}

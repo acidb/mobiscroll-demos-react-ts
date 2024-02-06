@@ -1,0 +1,35 @@
+.md-mobile-picker-header {
+  font-size: 14px;
+}
+
+input.md-mobile-picker-input {
+  color: initial;
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0 12px 0;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  font-family: arial, verdana, sans-serif;
+  font-size: 14px;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+}
+
+.md-mobile-picker-button.mbsc-button {
+  font-size: 13px;
+  padding: 0 15px;
+  line-height: 36px;
+  float: right;
+  margin: 6px 0;
+  width: 100%;
+}
+
+.mbsc-col-no-padding {
+  padding-left: 0;
+}
+
+.md-mobile-picker-box-label.mbsc-textfield-wrapper-box,
+.md-mobile-picker-box-label .mbsc-textfield-wrapper-box,
+.md-mobile-picker-inline {
+  margin: 6px 0 12px 0;
+}

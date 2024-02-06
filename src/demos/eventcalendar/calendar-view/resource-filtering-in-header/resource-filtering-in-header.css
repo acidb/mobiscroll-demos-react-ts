@@ -1,0 +1,45 @@
+.md-header-filter-controls {
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.md-custom-header-filtering .mbsc-segmented {
+  max-width: 400px;
+  margin: 0 auto;
+  flex: 1 0 auto;
+}
+
+.md-header-filter-img {
+  width: 25px;
+}
+
+.md-header-filter-name {
+  margin-left: 10px;
+}
+
+.md-header-filter-nav {
+  width: 200px;
+}
+
+.md-header-filter-controls .mbsc-segmented-button.mbsc-selected {
+  color: #fff;
+}
+
+.md-custom-header-filtering .mbsc-segmented-item:first-child .mbsc-selected.mbsc-material,
+.md-custom-header-filtering .mbsc-segmented-item:first-child .mbsc-selected.mbsc-windows,
+.md-custom-header-filtering .mbsc-segmented-item:first-child .mbsc-segmented-selectbox-inner {
+  background: #328e39;
+}
+
+.md-custom-header-filtering .mbsc-segmented-item:nth-child(2) .mbsc-selected.mbsc-material,
+.md-custom-header-filtering .mbsc-segmented-item:nth-child(2) .mbsc-selected.mbsc-windows,
+.md-custom-header-filtering .mbsc-segmented-item:nth-child(2) .mbsc-segmented-selectbox-inner {
+  background: #00aabb;
+}
+
+.md-custom-header-filtering .mbsc-segmented-item:nth-child(3) .mbsc-selected.mbsc-material,
+.md-custom-header-filtering .mbsc-segmented-item:nth-child(3) .mbsc-selected.mbsc-windows,
+.md-custom-header-filtering .mbsc-segmented-item:nth-child(3) .mbsc-segmented-selectbox-inner {
+  background: #ea72c0;
+}

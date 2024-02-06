@@ -1,0 +1,19 @@
+.resource-template-content {
+  position: relative;
+  padding-left: 80px;
+  text-align: left;
+}
+
+.resource-avatar {
+  position: absolute;
+  max-height: 50px;
+  max-width: 50px;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  left: 40px;
+}
+
+.resource-name {
+  font-size: 20px;
+}
