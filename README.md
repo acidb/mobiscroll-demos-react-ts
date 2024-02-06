@@ -1,27 +1,27 @@
-# React + TypeScript + Vite
+# Mobiscroll React TS Demos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Clone the repository
 
-Currently, two official plugins are available:
+$ ```git clone https://github.com/acidb/mobiscroll-demos-react-ts.git```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Install the Mobiscroll CLI
 
-## Expanding the ESLint configuration
+$ ```npm install -g @mobiscroll/cli```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Start a trial
 
-- Configure the top-level `parserOptions` property like this:
+if not started or do not have license [start a trial here](https://mobiscroll.com/starttrial)
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+### Config Mobiscroll
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+run the $ ```mobiscroll config react``` command in in the root folder
+
+### Install dependencies
+
+run $ ```npm install``` command in the root folder
+  
+## Run the project
+
+$ ```npm run dev```
+
+Do you have a problem with any of the demos? Let us know either by sending an email to support@mobiscroll.com or by submitting a pull request, submitting an issue.
