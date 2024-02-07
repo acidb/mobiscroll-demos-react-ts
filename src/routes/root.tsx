@@ -12,6 +12,8 @@ export default function Root() {
           <h3>Agenda</h3>
 
           <ul>
+            <h4>Setting up the agenda</h4>
+
             <li>
               <a className="app-link" href="/agenda/daily-agenda-with-week-calendar">
                 Compact daily schedule
@@ -32,6 +34,9 @@ export default function Root() {
                 Print mode
               </a>
             </li>
+
+            <h4>Displaying events</h4>
+
             <li>
               <a className="app-link" href="/agenda/synchronized-views">
                 Synchronized views
@@ -52,6 +57,9 @@ export default function Root() {
                 Event search with popup
               </a>
             </li>
+
+            <h4>Templating</h4>
+
             <li>
               <a className="app-link" href="/agenda/event-content-customization">
                 Content customization
@@ -73,15 +81,21 @@ export default function Root() {
               </a>
             </li>
             <li>
-              <a className="app-link" href="/agenda/resource-filtering-in-header">
-                In-header filtering
-              </a>
-            </li>
-            <li>
               <a className="app-link" href="/agenda/empty-state">
                 Empty state
               </a>
             </li>
+
+            <h4>Resources</h4>
+
+            <li>
+              <a className="app-link" href="/agenda/resource-filtering-in-header">
+                In-header filtering
+              </a>
+            </li>
+
+            <h4>Event data structure</h4>
+
             <li>
               <a className="app-link" href="/agenda/event-data-structure">
                 Event properties
@@ -97,6 +111,9 @@ export default function Root() {
                 Recurrence rules
               </a>
             </li>
+
+            <h4>Loading events & data sources</h4>
+
             <li>
               <a className="app-link" href="/agenda/load-inline-data">
                 Loading inline data
@@ -112,6 +129,9 @@ export default function Root() {
                 Loading events on demand
               </a>
             </li>
+
+            <h4>Third party calendar integrations</h4>
+
             <li>
               <a className="app-link" href="/agenda/sync-events-google-calendar">
                 Sync events to google calendar
@@ -127,16 +147,25 @@ export default function Root() {
                 Load events from public google calendar
               </a>
             </li>
+
+            <h4>CRUD operations</h4>
+
             <li>
               <a className="app-link" href="/agenda/event-bulk-actions-edit-delete-update">
                 Multiple select & bulk operations
               </a>
             </li>
+
+            <h4>Customizing the look & feel</h4>
+
             <li>
               <a className="app-link" href="/agenda/themes-ios-material-windows">
                 Theming capabilities
               </a>
             </li>
+
+            <h4>Localization & tapping into the lifecycle</h4>
+
             <li>
               <a className="app-link" href="/agenda/event-hooks">
                 Lifecycle events
@@ -157,6 +186,8 @@ export default function Root() {
           <h3>Event Calendar</h3>
 
           <ul>
+            <h4>Setting up the calendar</h4>
+
             <li>
               <a className="app-link" href="/eventcalendar/mobile-month-view">
                 Mobile month view
@@ -177,6 +208,9 @@ export default function Root() {
                 Print mode
               </a>
             </li>
+
+            <h4>Displaying events</h4>
+
             <li>
               <a className="app-link" href="/eventcalendar/event-labels">
                 Events as labels
@@ -212,6 +246,9 @@ export default function Root() {
                 Event search with sidebar
               </a>
             </li>
+
+            <h4>Configuring the view</h4>
+
             <li>
               <a className="app-link" href="/eventcalendar/month-week-view">
                 Month or week view
@@ -237,6 +274,9 @@ export default function Root() {
                 Switching views
               </a>
             </li>
+
+            <h4>Templating</h4>
+
             <li>
               <a className="app-link" href="/eventcalendar/customize-label-look-and-feel">
                 Custom event labels
@@ -257,6 +297,9 @@ export default function Root() {
                 Custom event tooltip
               </a>
             </li>
+
+            <h4>Drag & drop</h4>
+
             <li>
               <a className="app-link" href="/eventcalendar/move-resize-drag-drop-to-create-events">
                 Move, resize & create
@@ -292,11 +335,17 @@ export default function Root() {
                 External d&d presets
               </a>
             </li>
+
+            <h4>Resources</h4>
+
             <li>
               <a className="app-link" href="/eventcalendar/resource-filtering-in-header">
                 In-header filtering
               </a>
             </li>
+
+            <h4>Event data structure</h4>
+
             <li>
               <a className="app-link" href="/eventcalendar/event-data-structure">
                 Event properties
@@ -312,6 +361,9 @@ export default function Root() {
                 Recurrence rules
               </a>
             </li>
+
+            <h4>Loading events & data sources</h4>
+
             <li>
               <a className="app-link" href="/eventcalendar/load-inline-data">
                 Loading inline data
@@ -327,6 +379,9 @@ export default function Root() {
                 Loading events on demand
               </a>
             </li>
+
+            <h4>Third party calendar integrations</h4>
+
             <li>
               <a className="app-link" href="/eventcalendar/sync-events-google-calendar">
                 Sync events to google calendar
@@ -342,6 +397,9 @@ export default function Root() {
                 Load events from public google calendar
               </a>
             </li>
+
+            <h4>CRUD operations</h4>
+
             <li>
               <a className="app-link" href="/eventcalendar/create-read-update-delete-CRUD">
                 Add/edit/delete events
@@ -367,11 +425,17 @@ export default function Root() {
                 Move events between calendars
               </a>
             </li>
+
+            <h4>Customizing the look & feel</h4>
+
             <li>
               <a className="app-link" href="/eventcalendar/themes-ios-material-windows">
                 Theming capabilities
               </a>
             </li>
+
+            <h4>Localization & tapping into the lifecycle</h4>
+
             <li>
               <a className="app-link" href="/eventcalendar/localization">
                 Localization
@@ -392,6 +456,8 @@ export default function Root() {
           <h3>Scheduler</h3>
 
           <ul>
+            <h4>Setting up the scheduler</h4>
+
             <li>
               <a className="app-link" href="/scheduler/mobile-day-view">
                 Mobile daily schedule
@@ -422,6 +488,9 @@ export default function Root() {
                 Print mode
               </a>
             </li>
+
+            <h4>Common use cases</h4>
+
             <li>
               <a className="app-link" href="/scheduler/work-week-hours">
                 Work calendar
@@ -429,9 +498,12 @@ export default function Root() {
             </li>
             <li>
               <a className="app-link" href="/scheduler/doctors-appointment">
-                Doctor&#39;s appointment
+                Doctor's appointment
               </a>
             </li>
+
+            <h4>Configuring the view</h4>
+
             <li>
               <a className="app-link" href="/scheduler/custom-range-view">
                 Custom range view
@@ -447,6 +519,7 @@ export default function Root() {
                 Customize view range
               </a>
             </li>
+
             <li>
               <a className="app-link" href="/scheduler/disable-all-day-events">
                 Show/hide all-day events
@@ -457,11 +530,7 @@ export default function Root() {
                 Colored backgrounds
               </a>
             </li>
-            <li>
-              <a className="app-link" href="/scheduler/colors-invalids-css-class">
-                CSS class for colors and invalids
-              </a>
-            </li>
+
             <li>
               <a className="app-link" href="/scheduler/switching-calendar-scheduler-agenda">
                 Switching views
@@ -487,11 +556,15 @@ export default function Root() {
                 Display time for multiple timezones
               </a>
             </li>
+
             <li>
               <a className="app-link" href="/scheduler/searching-events-in-sidebar">
                 Event search with sidebar
               </a>
             </li>
+
+            <h4>Templating</h4>
+
             <li>
               <a className="app-link" href="/scheduler/custom-event-tooltip">
                 Custom event tooltip
@@ -517,6 +590,9 @@ export default function Root() {
                 Customizing the header
               </a>
             </li>
+
+            <h4>Drag & drop</h4>
+
             <li>
               <a className="app-link" href="/scheduler/move-resize-drag-drop-to-create-events">
                 Move, resize & create
@@ -552,6 +628,9 @@ export default function Root() {
                 External d&d presets
               </a>
             </li>
+
+            <h4>Resources</h4>
+
             <li>
               <a className="app-link" href="/scheduler/resource-view">
                 Multiple resources
@@ -577,6 +656,9 @@ export default function Root() {
                 Resource properties
               </a>
             </li>
+
+            <h4>Event data structure</h4>
+
             <li>
               <a className="app-link" href="/scheduler/event-data-structure">
                 Event properties
@@ -592,6 +674,9 @@ export default function Root() {
                 Recurrence rules
               </a>
             </li>
+
+            <h4>Loading events & data sources</h4>
+
             <li>
               <a className="app-link" href="/scheduler/load-inline-data">
                 Loading inline data
@@ -607,6 +692,9 @@ export default function Root() {
                 Loading events on demand
               </a>
             </li>
+
+            <h4>Third party calendar integrations</h4>
+
             <li>
               <a className="app-link" href="/scheduler/sync-events-google-calendar">
                 Sync events to google calendar
@@ -622,6 +710,9 @@ export default function Root() {
                 Load events from public google calendar
               </a>
             </li>
+
+            <h4>CRUD operations</h4>
+
             <li>
               <a className="app-link" href="/scheduler/create-read-update-delete-CRUD">
                 Add/edit/delete events
@@ -642,6 +733,14 @@ export default function Root() {
                 Disable past event creation
               </a>
             </li>
+
+            <h4>Customizing the look & feel</h4>
+
+            <li>
+              <a className="app-link" href="/scheduler/colors-invalids-css-class">
+                CSS class for colors and invalids
+              </a>
+            </li>
             <li>
               <a className="app-link" href="/scheduler/resource-filtering-in-header">
                 Custom component in header
@@ -652,6 +751,9 @@ export default function Root() {
                 Theming capabilities
               </a>
             </li>
+
+            <h4>Localization & tapping into the lifecycle</h4>
+
             <li>
               <a className="app-link" href="/scheduler/gregorian-jalali-hijri">
                 Calendar systems{' '}
@@ -672,6 +774,8 @@ export default function Root() {
           <h3>Timeline</h3>
 
           <ul>
+            <h4>Setting up the timeline</h4>
+
             <li>
               <a className="app-link" href="/timeline/month-view">
                 Monthly timeline
@@ -687,6 +791,9 @@ export default function Root() {
                 Print mode
               </a>
             </li>
+
+            <h4>Common use cases</h4>
+
             <li>
               <a className="app-link" href="/timeline/employee-shifts">
                 Employee shift planning
@@ -742,6 +849,9 @@ export default function Root() {
                 Flight scheduling with two timelines
               </a>
             </li>
+
+            <h4>Configuring the view</h4>
+
             <li>
               <a className="app-link" href="/timeline/daily-weekly-monthly-yearly-timeline">
                 Configure the timeline
@@ -760,11 +870,6 @@ export default function Root() {
             <li>
               <a className="app-link" href="/timeline/custom-range-view">
                 View with custom range picker
-              </a>
-            </li>
-            <li>
-              <a className="app-link" href="/timeline/colors-invalids-css-class">
-                CSS class for colors and invalids
               </a>
             </li>
             <li>
@@ -797,6 +902,9 @@ export default function Root() {
                 Event search with sidebar
               </a>
             </li>
+
+            <h4>Templating</h4>
+
             <li>
               <a className="app-link" href="/timeline/timeline-custom-event-rendering">
                 Timeline event template
@@ -827,6 +935,9 @@ export default function Root() {
                 Controlling the row height
               </a>
             </li>
+
+            <h4>Drag & drop</h4>
+
             <li>
               <a className="app-link" href="/timeline/move-resize-drag-drop-to-create-events">
                 Move, resize & create
@@ -847,6 +958,9 @@ export default function Root() {
                 Prevent event overlap
               </a>
             </li>
+
+            <h4>Resources</h4>
+
             <li>
               <a className="app-link" href="/timeline/timeline-resource-details-side-panel-footer">
                 Resource grid
@@ -862,6 +976,9 @@ export default function Root() {
                 Resource properties
               </a>
             </li>
+
+            <h4>Event data structure</h4>
+
             <li>
               <a className="app-link" href="/timeline/event-data-structure">
                 Event properties
@@ -882,6 +999,9 @@ export default function Root() {
                 Recurrence rules
               </a>
             </li>
+
+            <h4>Loading events & data sources</h4>
+
             <li>
               <a className="app-link" href="/timeline/load-inline-data">
                 Loading inline data
@@ -907,6 +1027,9 @@ export default function Root() {
                 Working with large data sets
               </a>
             </li>
+
+            <h4>Third party calendar integrations</h4>
+
             <li>
               <a className="app-link" href="/timeline/sync-events-google-calendar">
                 Sync events to google calendar
@@ -922,6 +1045,9 @@ export default function Root() {
                 Load events from public google calendar
               </a>
             </li>
+
+            <h4>CRUD operations</h4>
+
             <li>
               <a className="app-link" href="/timeline/create-read-update-delete-CRUD">
                 Add/edit/delete events
@@ -937,11 +1063,22 @@ export default function Root() {
                 Multiple select & bulk operations
               </a>
             </li>
+
+            <h4>Customizing the look & feel</h4>
+
+            <li>
+              <a className="app-link" href="/timeline/colors-invalids-css-class">
+                CSS class for colors and invalids
+              </a>
+            </li>
             <li>
               <a className="app-link" href="/timeline/themes-ios-material-windows">
                 Theming capabilities
               </a>
             </li>
+
+            <h4>Localization & tapping into the lifecycle</h4>
+
             <li>
               <a className="app-link" href="/timeline/gregorian-jalali-hijri">
                 Calendar systems{' '}
@@ -969,6 +1106,8 @@ export default function Root() {
           <h3>Calendar</h3>
 
           <ul>
+            <h4>Using the picker</h4>
+
             <li>
               <a className="app-link" href="/calendar/mobile-desktop-usage">
                 Mobile & Desktop usage
@@ -989,6 +1128,9 @@ export default function Root() {
                 Understanding display modes
               </a>
             </li>
+
+            <h4>Common use cases</h4>
+
             <li>
               <a className="app-link" href="/calendar/appointment-booking">
                 Appointment booking
@@ -999,6 +1141,9 @@ export default function Root() {
                 Activity calendar
               </a>
             </li>
+
+            <h4>Configuring the calendar</h4>
+
             <li>
               <a className="app-link" href="/calendar/date-picker">
                 Date selection
@@ -1039,6 +1184,9 @@ export default function Root() {
                 Customizing the view
               </a>
             </li>
+
+            <h4>Configuring value selection</h4>
+
             <li>
               <a className="app-link" href="/calendar/single-select">
                 Single value selection
@@ -1079,6 +1227,9 @@ export default function Root() {
                 Timezones
               </a>
             </li>
+
+            <h4>Validation & restricting selection</h4>
+
             <li>
               <a className="app-link" href="/calendar/min-max-restrictions">
                 Min & max values
@@ -1094,6 +1245,9 @@ export default function Root() {
                 Recurring values
               </a>
             </li>
+
+            <h4>Customizing the look & feel</h4>
+
             <li>
               <a className="app-link" href="/calendar/themes-ios-material-windows">
                 Theming capabilities
@@ -1114,6 +1268,9 @@ export default function Root() {
                 Half days
               </a>
             </li>
+
+            <h4>Localization & tapping into the lifecycle</h4>
+
             <li>
               <a className="app-link" href="/calendar/event-hooks">
                 Lifecycle events
@@ -1139,6 +1296,8 @@ export default function Root() {
           <h3>Date & Time</h3>
 
           <ul>
+            <h4>Using the picker</h4>
+
             <li>
               <a className="app-link" href="/datetime/mobile-desktop-usage">
                 Mobile & Desktop usage
@@ -1159,6 +1318,9 @@ export default function Root() {
                 Understanding display modes
               </a>
             </li>
+
+            <h4>Configuring the wheels</h4>
+
             <li>
               <a className="app-link" href="/datetime/date-picker">
                 Date selection
@@ -1179,6 +1341,9 @@ export default function Root() {
                 Setting time select steps
               </a>
             </li>
+
+            <h4>Configuring value selection</h4>
+
             <li>
               <a className="app-link" href="/datetime/single-select">
                 Single value selection
@@ -1214,6 +1379,9 @@ export default function Root() {
                 Timezones
               </a>
             </li>
+
+            <h4>Validation & restricting selection</h4>
+
             <li>
               <a className="app-link" href="/datetime/min-max-restrictions">
                 Min & max values
@@ -1229,11 +1397,17 @@ export default function Root() {
                 Recurring values
               </a>
             </li>
+
+            <h4>Customizing the look & feel</h4>
+
             <li>
               <a className="app-link" href="/datetime/themes-ios-material-windows">
                 Theming capabilities
               </a>
             </li>
+
+            <h4>Localization & tapping into the lifecycle</h4>
+
             <li>
               <a className="app-link" href="/datetime/event-hooks">
                 Lifecycle events
@@ -1259,6 +1433,8 @@ export default function Root() {
           <h3>Range</h3>
 
           <ul>
+            <h4>Using the picker</h4>
+
             <li>
               <a className="app-link" href="/range/mobile-desktop-usage">
                 Mobile & Desktop usage
@@ -1284,6 +1460,9 @@ export default function Root() {
                 Understanding display modes
               </a>
             </li>
+
+            <h4>Common use cases</h4>
+
             <li>
               <a className="app-link" href="/range/date-filtering-with-predefined-ranges">
                 Date filtering with presets
@@ -1304,6 +1483,9 @@ export default function Root() {
                 New event creation
               </a>
             </li>
+
+            <h4>Configuring the view</h4>
+
             <li>
               <a className="app-link" href="/range/date-range">
                 Date range
@@ -1334,6 +1516,9 @@ export default function Root() {
                 Marked, colored & labels
               </a>
             </li>
+
+            <h4>Configuring value selection</h4>
+
             <li>
               <a className="app-link" href="/range/presets">
                 Presets
@@ -1354,6 +1539,9 @@ export default function Root() {
                 Timezones
               </a>
             </li>
+
+            <h4>Validation & restricting selection</h4>
+
             <li>
               <a className="app-link" href="/range/min-max-length">
                 Setting the allowed range length
@@ -1374,6 +1562,9 @@ export default function Root() {
                 Recurring values
               </a>
             </li>
+
+            <h4>Customizing the look & feel</h4>
+
             <li>
               <a className="app-link" href="/range/themes-ios-material-windows">
                 Theming capabilities
@@ -1389,6 +1580,9 @@ export default function Root() {
                 Half days
               </a>
             </li>
+
+            <h4>Localization & tapping into the lifecycle</h4>
+
             <li>
               <a className="app-link" href="/range/event-hooks">
                 Lifecycle events
@@ -1416,6 +1610,8 @@ export default function Root() {
           <h3>Select</h3>
 
           <ul>
+            <h4>Using the picker</h4>
+
             <li>
               <a className="app-link" href="/select/mobile-desktop-usage">
                 Mobile & Desktop usage
@@ -1436,6 +1632,9 @@ export default function Root() {
                 Populating the picker
               </a>
             </li>
+
+            <h4>Templating</h4>
+
             <li>
               <a className="app-link" href="/select/item-templating">
                 Templating
@@ -1456,6 +1655,9 @@ export default function Root() {
                 Multiline select
               </a>
             </li>
+
+            <h4>Configuring value selection</h4>
+
             <li>
               <a className="app-link" href="/select/single-select">
                 Single select
@@ -1486,16 +1688,25 @@ export default function Root() {
                 Setting values
               </a>
             </li>
+
+            <h4>Validation & restricting selection</h4>
+
             <li>
               <a className="app-link" href="/select/disabled-invalid-values">
                 Disabled values
               </a>
             </li>
+
+            <h4>Customizing the look & feel</h4>
+
             <li>
               <a className="app-link" href="/select/themes-ios-material-windows">
                 Theming capabilities
               </a>
             </li>
+
+            <h4>Localization & tapping into the lifecycle</h4>
+
             <li>
               <a className="app-link" href="/select/event-hooks">
                 Event hooks
@@ -1518,6 +1729,8 @@ export default function Root() {
           <h3>Forms</h3>
 
           <ul>
+            <h4>Building forms</h4>
+
             <li>
               <a className="app-link" href="/forms/mobile">
                 Mobile form
@@ -1538,6 +1751,9 @@ export default function Root() {
                 Inside a modal
               </a>
             </li>
+
+            <h4>Alerts & notifications</h4>
+
             <li>
               <a className="app-link" href="/forms/alert-confirm-prompt">
                 Alert, confirm & prompt
@@ -1548,6 +1764,9 @@ export default function Root() {
                 Toast & snackbar
               </a>
             </li>
+
+            <h4>Buttons</h4>
+
             <li>
               <a className="app-link" href="/forms/buttons">
                 Buttons
@@ -1568,6 +1787,9 @@ export default function Root() {
                 Colors
               </a>
             </li>
+
+            <h4>Inputs & fields</h4>
+
             <li>
               <a className="app-link" href="/forms/inputs-text-areas-date-fields">
                 Field types
@@ -1578,6 +1800,9 @@ export default function Root() {
                 Customize the input
               </a>
             </li>
+
+            <h4>Toggle & radio</h4>
+
             <li>
               <a className="app-link" href="/forms/checkbox">
                 Checkbox
@@ -1593,6 +1818,9 @@ export default function Root() {
                 Radio buttons
               </a>
             </li>
+
+            <h4>Customizing the look & feel</h4>
+
             <li>
               <a className="app-link" href="/forms/themes-ios-material-windows">
                 Theming capabilities
