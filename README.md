@@ -1,27 +1,34 @@
-# Mobiscroll React TS Demos
+Mobiscroll React TS Demos
+=========================
 
-### Clone the repository
+This repository consists of demos from the [Mobiscroll website](https://demo.mobiscroll.com/).
+It is meant to be a learning resource/helping guide to start working with Mobiscroll components (and beyond).
 
-$ `git clone https://github.com/acidb/mobiscroll-demos-react-ts.git`
 
-### Install the Mobiscroll CLI
+Required steps to run the project locally:
+-----------------------------------------
 
-$ `npm install -g @mobiscroll/cli`
+- Clone the repository
 
-### Start a trial
+      git clone https://github.com/acidb/mobiscroll-demos-react-ts.git
 
-if not started or do not have license [start a trial here](https://mobiscroll.com/starttrial)
+- Install the Mobiscroll CLI from NPM (you'll only have to do it once)
 
-### Config Mobiscroll
+      npm install -g @mobiscroll/cli
 
-run the $ `mobiscroll config react` command in in the root folder
+- if haven't started yet, or do not have a license [start a trial](https://mobiscroll.com/starttrial)
 
-### Install dependencies
+- Config Mobiscroll - open a terminal window (in the root directory) and run:
 
-run $ `npm install` command in the root folder
+      mobiscroll config react
 
-## Run the project
+- Install dependencies - open a terminal window (in the root directory) and run:
 
-$ `npm run dev`
+      npm install
 
-Do you have a problem with any of the demos? Let us know either by sending an email to support@mobiscroll.com or by submitting a pull request, submitting an issue.
+- Run the project
+
+      npm run dev
+
+
+*Have you faced any issue, or do you have any remarks regarding any of the demos? Let us know either by sending an email to support@mobiscroll.com or by submitting a pull request, submitting an issue.*
