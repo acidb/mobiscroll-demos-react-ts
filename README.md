@@ -8,25 +8,25 @@ It is meant to be a learning resource/helping guide to start working with Mobisc
 Required steps to run the project locally:
 -----------------------------------------
 
-- Clone the repository
+- If not signed up yet, or do not have a license [start a trial](https://mobiscroll.com/starttrial).
+
+- Clone the repository:
 
       git clone https://github.com/acidb/mobiscroll-demos-react-ts.git
 
-- Install the Mobiscroll CLI from NPM (you'll only have to do it once)
+- If not installed yet, install the Mobiscroll CLI from NPM:
 
       npm install -g @mobiscroll/cli
 
-- if haven't started yet, or do not have a license [start a trial](https://mobiscroll.com/starttrial)
-
-- Config Mobiscroll - open a terminal window (in the root directory) and run:
+- Config Mobiscroll - open a terminal window in the root directory and run:
 
       mobiscroll config react
 
-- Install dependencies - open a terminal window (in the root directory) and run:
+- Install dependencies - open a terminal window in the root directory and run:
 
       npm install
 
-- Run the project
+- Run the project:
 
       npm run dev
 
