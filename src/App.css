@@ -62,8 +62,19 @@ body,
 }
 
 .app-back a {
+  display: block;
   color: #fff;
   text-decoration: none;
+  border-radius: 50%;
+  transition: background-color 200ms ease-in-out;
+}
+
+.app-back a:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.app-back a:active {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .app-back .mbsc-icon {
