@@ -31,4 +31,4 @@ Required steps to run the project locally:
       npm run dev
 
 
-*Have you faced any issue, or do you have any remarks regarding any of the demos? Let us know either by sending an email to support@mobiscroll.com or by submitting a pull request, submitting an issue.*
+*Have you encountered any issues or do you have feedback regarding the demos? Feel free to contact us via our [ticketing system](https://mobiscroll.com/account/supporttickets) or website chat. Alternatively, you can also submit your questions to our [Community Forum](https://forum.mobiscroll.com/).*
