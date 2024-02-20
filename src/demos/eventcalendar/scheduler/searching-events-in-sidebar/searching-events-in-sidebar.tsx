@@ -24,7 +24,7 @@ const App: FC = () => {
   const [mySelectedEvent, setSelectedEvent] = useState<MbscCalendarEvent[]>([]);
   const [showList, setShowList] = useState<boolean>(false);
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
-  const timerRef = useRef<number>();
+  const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
   const calView = useMemo<MbscEventcalendarView>(
     () => ({

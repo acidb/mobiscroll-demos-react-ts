@@ -267,7 +267,7 @@ function App() {
   const [isToastOpen, setToastOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
 
-  const timerRef = useRef<number>();
+  const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
   const myView = useMemo<MbscEventcalendarView>(
     () => ({

@@ -44,7 +44,7 @@ const App: FC = () => {
 
   const myView = useMemo<MbscEventcalendarView>(() => ({ schedule: { type: 'week' } }), []);
 
-  const debounce = useRef<number>();
+  const debounce = useRef<ReturnType<typeof setTimeout>>();
   const startDate = useRef<Date>();
   const endDate = useRef<Date>();
 

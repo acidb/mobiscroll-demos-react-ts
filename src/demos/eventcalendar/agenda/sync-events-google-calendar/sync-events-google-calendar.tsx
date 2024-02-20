@@ -37,7 +37,7 @@ const App: FC = () => {
 
   const { current: view } = useRef<MbscEventcalendarView>({ agenda: { type: 'month' } });
   const buttonRef = useRef<Button>(null);
-  const debounce = useRef<number>();
+  const debounce = useRef<ReturnType<typeof setTimeout>>();
   const startDate = useRef<Date>();
   const endDate = useRef<Date>();
 

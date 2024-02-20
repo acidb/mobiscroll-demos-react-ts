@@ -10,9 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mobiscroll/calendar-integration": "^5.28.3",
-    "@mobiscroll/print": "^5.28.3",
-    "@mobiscroll/react": "^5.28.3",
+    "@mobiscroll/calendar-integration": "^5.29.0",
+    "@mobiscroll/print": "^5.29.0",
+    "@mobiscroll/react": "^5.29.0",
     "moment-timezone": "^0.5.43",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -474,7 +474,7 @@ function App() {
     'info' | 'warning' | 'success' | 'light' | 'dark' | 'primary' | 'secondary' | 'danger' | undefined
   >();
   const [bgColor, setBgColor] = useState<string>('');
-  const timerRef = useRef<number>();
+  const timerRef = useRef<ReturnType<typeof setTimeout>>();
   const [isToastOpen, setToastOpen] = useState<boolean>(false);
   const [toastText, setToastText] = useState<string>();
 

@@ -50,7 +50,7 @@ const App: FC = () => {
 
   const buttonRef = useRef<Button | null>(null);
 
-  const debounce = useRef<number>();
+  const debounce = useRef<ReturnType<typeof setTimeout>>();
   const startDate = useRef<Date>();
   const endDate = useRef<Date>();
 
