@@ -9,7 +9,7 @@ import { demos, demoTitleMap } from './Demos';
 import Home from './pages/Home';
 import Root from './pages/Root';
 
-const routes: RouteObject[] = [];
+const routes: RouteObject[] = [{ path: '/', element: <Home /> }];
 
 for (const main of demos) {
   for (const sub of main.items) {
@@ -28,7 +28,7 @@ function App() {
     {
       path: '/',
       element: <Root />,
-      children: [{ path: '/', element: <Home /> }, ...routes],
+      children: routes,
     },
   ]);
   return (
