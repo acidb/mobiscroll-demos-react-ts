@@ -1,6 +1,8 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { demoTitleMap } from '../Demos';
 
+(window as Window & { isMbscDemo?: boolean }).isMbscDemo = true;
+
 export default function Root() {
   const location = useLocation();
   const path = location.pathname;
