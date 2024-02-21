@@ -175,6 +175,7 @@ import Demo589 from './demos/eventcalendar/scheduler/colored-cell-background/col
 import Demo480 from './demos/eventcalendar/scheduler/switching-calendar-scheduler-agenda/switching-calendar-scheduler-agenda';
 import Demo582 from './demos/eventcalendar/scheduler/show-hide-hours-days/show-hide-hours-days';
 import Demo610 from './demos/eventcalendar/scheduler/setting-the-timezone/setting-the-timezone';
+import Demo738 from './demos/eventcalendar/scheduler/event-buffer/event-buffer';
 import Demo613 from './demos/eventcalendar/scheduler/multiple-timezone-support/multiple-timezone-support';
 import Demo699 from './demos/eventcalendar/scheduler/show-multiple-timezones/show-multiple-timezones';
 import Demo709 from './demos/eventcalendar/scheduler/searching-events-in-sidebar/searching-events-in-sidebar';
@@ -211,6 +212,7 @@ import Demo693 from './demos/eventcalendar/scheduler/disallow-past-event-creatio
 import Demo712 from './demos/eventcalendar/scheduler/colors-invalids-css-class/colors-invalids-css-class';
 import Demo511 from './demos/eventcalendar/scheduler/resource-filtering-in-header/resource-filtering-in-header';
 import Demo489 from './demos/eventcalendar/scheduler/themes-ios-material-windows/themes-ios-material-windows';
+import Demo736 from './demos/eventcalendar/scheduler/resource-background/resource-background';
 import Demo486 from './demos/eventcalendar/scheduler/gregorian-jalali-hijri/gregorian-jalali-hijri';
 import Demo487 from './demos/eventcalendar/scheduler/event-hooks/event-hooks';
 import Demo488 from './demos/eventcalendar/scheduler/localization/localization';
@@ -231,6 +233,7 @@ import Demo735 from './demos/eventcalendar/timeline/flight-scheduling-two-synchr
 import Demo605 from './demos/eventcalendar/timeline/daily-weekly-monthly-yearly-timeline/daily-weekly-monthly-yearly-timeline';
 import Demo663 from './demos/eventcalendar/timeline/multiple-days-weeks-months-quarters-years-variable-resolution/multiple-days-weeks-months-quarters-years-variable-resolution';
 import Demo734 from './demos/eventcalendar/timeline/control-number-of-concurrently-shown-events/control-number-of-concurrently-shown-events';
+import Demo739 from './demos/eventcalendar/timeline/event-buffer/event-buffer';
 import Demo697 from './demos/eventcalendar/timeline/custom-range-view/custom-range-view';
 import Demo608 from './demos/eventcalendar/timeline/timeline-resource-height/timeline-resource-height';
 import Demo620 from './demos/eventcalendar/timeline/event-listing/event-listing';
@@ -268,6 +271,7 @@ import Demo694 from './demos/eventcalendar/timeline/disallow-past-event-creation
 import Demo702 from './demos/eventcalendar/timeline/event-bulk-actions-edit-delete-update/event-bulk-actions-edit-delete-update';
 import Demo713 from './demos/eventcalendar/timeline/colors-invalids-css-class/colors-invalids-css-class';
 import Demo672 from './demos/eventcalendar/timeline/themes-ios-material-windows/themes-ios-material-windows';
+import Demo737 from './demos/eventcalendar/timeline/resource-background/resource-background';
 import Demo673 from './demos/eventcalendar/timeline/gregorian-jalali-hijri/gregorian-jalali-hijri';
 import Demo674 from './demos/eventcalendar/timeline/event-hooks/event-hooks';
 import Demo675 from './demos/eventcalendar/timeline/localization/localization';
@@ -443,7 +447,9 @@ export const demos = [
           {
             name: 'Customizing the look & feel',
             unique: 5,
-            items: [{ name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo375 }],
+            items: [
+              { name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo375 },
+            ],
           },
           {
             name: 'Localization & tapping into the lifecycle',
@@ -579,7 +585,9 @@ export const demos = [
           {
             name: 'Resources',
             unique: 17,
-            items: [{ name: 'In-header filtering', unique: 'resource-filtering-in-header', component: Demo512 }],
+            items: [
+              { name: 'In-header filtering', unique: 'resource-filtering-in-header', component: Demo512 },
+            ],
           },
           {
             name: 'Event data structure',
@@ -611,12 +619,16 @@ export const demos = [
           {
             name: 'CRUD operations',
             unique: 4,
-            items: [{ name: 'Multiple select & bulk operations', unique: 'event-bulk-actions-edit-delete-update', component: Demo703 }],
+            items: [
+              { name: 'Multiple select & bulk operations', unique: 'event-bulk-actions-edit-delete-update', component: Demo703 },
+            ],
           },
           {
             name: 'Customizing the look & feel',
             unique: 5,
-            items: [{ name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo521 }],
+            items: [
+              { name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo521 },
+            ],
           },
           {
             name: 'Localization & tapping into the lifecycle',
@@ -693,7 +705,9 @@ export const demos = [
           {
             name: 'Resources',
             unique: 17,
-            items: [{ name: 'In-header filtering', unique: 'resource-filtering-in-header', component: Demo510 }],
+            items: [
+              { name: 'In-header filtering', unique: 'resource-filtering-in-header', component: Demo510 },
+            ],
           },
           {
             name: 'Event data structure',
@@ -736,7 +750,9 @@ export const demos = [
           {
             name: 'Customizing the look & feel',
             unique: 5,
-            items: [{ name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo455 }],
+            items: [
+              { name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo455 },
+            ],
           },
           {
             name: 'Localization & tapping into the lifecycle',
@@ -785,6 +801,7 @@ export const demos = [
               { name: 'Switching views', unique: 'switching-calendar-scheduler-agenda', component: Demo480 },
               { name: 'Visible hours and days', unique: 'show-hide-hours-days', component: Demo582 },
               { name: 'Timezones', unique: 'setting-the-timezone', component: Demo610 },
+              { name: 'Event buffer', unique: 'event-buffer', component: Demo738 },
               { name: 'Switching timezones', unique: 'multiple-timezone-support', component: Demo613 },
               { name: 'Display time for multiple timezones', unique: 'show-multiple-timezones', component: Demo699 },
               { name: 'Event search with sidebar', unique: 'searching-events-in-sidebar', component: Demo709 },
@@ -869,6 +886,7 @@ export const demos = [
               { name: 'CSS class for colors and invalids', unique: 'colors-invalids-css-class', component: Demo712 },
               { name: 'Custom component in header', unique: 'resource-filtering-in-header', component: Demo511 },
               { name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo489 },
+              { name: 'Resource background and styling', unique: 'resource-background', component: Demo736 },
             ],
           },
           {
@@ -917,12 +935,9 @@ export const demos = [
             unique: 13,
             items: [
               { name: 'Configure the timeline', unique: 'daily-weekly-monthly-yearly-timeline', component: Demo605 },
-              {
-                name: 'Configure the page, size, resolution',
-                unique: 'multiple-days-weeks-months-quarters-years-variable-resolution',
-                component: Demo663,
-              },
+              { name: 'Configure the page, size, resolution', unique: 'multiple-days-weeks-months-quarters-years-variable-resolution', component: Demo663 },
               { name: 'Set event stack size', unique: 'control-number-of-concurrently-shown-events', component: Demo734 },
+              { name: 'Event buffer', unique: 'event-buffer', component: Demo739 },
               { name: 'View with custom range picker', unique: 'custom-range-view', component: Demo697 },
               { name: 'Equal row height', unique: 'timeline-resource-height', component: Demo608 },
               { name: 'Daily event summary', unique: 'event-listing', component: Demo620 },
@@ -937,11 +952,7 @@ export const demos = [
             unique: 19,
             items: [
               { name: 'Timeline event template', unique: 'timeline-custom-event-rendering', component: Demo609 },
-              {
-                name: 'Hour, day, week, month, year header and footer template',
-                unique: 'hour-day-week-month-quarter-year-header-footer-template',
-                component: Demo714,
-              },
+              { name: 'Hour, day, week, month, year header and footer template', unique: 'hour-day-week-month-quarter-year-header-footer-template', component: Demo714 },
               { name: 'Time slot template', unique: 'shift-template', component: Demo633 },
               { name: 'Resource header template', unique: 'resource-header-template', component: Demo639 },
               { name: 'Custom event tooltip', unique: 'custom-event-tooltip', component: Demo656 },
@@ -1012,6 +1023,7 @@ export const demos = [
             items: [
               { name: 'CSS class for colors and invalids', unique: 'colors-invalids-css-class', component: Demo713 },
               { name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo672 },
+              { name: 'Resource background and styling', unique: 'resource-background', component: Demo737 },
             ],
           },
           {
@@ -1084,7 +1096,9 @@ export const demos = [
           {
             name: 'Customizing the look & feel',
             unique: 5,
-            items: [{ name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo466 }],
+            items: [
+              { name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo466 },
+            ],
           },
         ],
       },
@@ -1133,12 +1147,16 @@ export const demos = [
           {
             name: 'Validation & restricting selection',
             unique: 11,
-            items: [{ name: 'Disabled values', unique: 'disabled-invalid-values', component: Demo603 }],
+            items: [
+              { name: 'Disabled values', unique: 'disabled-invalid-values', component: Demo603 },
+            ],
           },
           {
             name: 'Customizing the look & feel',
             unique: 5,
-            items: [{ name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo387 }],
+            items: [
+              { name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo387 },
+            ],
           },
           {
             name: 'Localization & tapping into the lifecycle',

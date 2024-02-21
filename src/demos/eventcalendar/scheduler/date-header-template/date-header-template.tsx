@@ -2,14 +2,13 @@ import {
   Eventcalendar,
   formatDate,
   getJson,
+  // MbscCalendarDayData,
   MbscCalendarEvent,
   MbscEventcalendarView,
   MbscResource /* localeImport */,
 } from '@mobiscroll/react';
 import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import './date-header-template.css';
-// eslint-disable-next-line import/order
-import { MbscCalendarDayData } from '@mobiscroll/react/dist/src/core/shared/calendar-view/calendar-day';
 
 const milestones = [
   {
@@ -70,7 +69,7 @@ const App: FC = () => {
     [],
   );
 
-  const renderCustomDay = useCallback((args: MbscCalendarDayData) => {
+  const renderCustomDay = useCallback((args: { date: Date }) => {
     const date = args.date;
     const task: { date: string; name: string; color: string } = milestones.find((obj) => +new Date(obj.date) === +date)!;
 

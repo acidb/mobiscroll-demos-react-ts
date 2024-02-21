@@ -129,7 +129,6 @@ const App: FC = () => {
 
   const myBeforeBuffer = useCallback((args: MbscCalendarEventData) => {
     const event = args.original!;
-    console.log('event?', event);
     const color = event.color;
 
     return (

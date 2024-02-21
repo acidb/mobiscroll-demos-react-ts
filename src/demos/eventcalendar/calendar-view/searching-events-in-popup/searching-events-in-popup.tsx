@@ -11,7 +11,7 @@ import {
   MbscDateType,
   MbscEventcalendarView,
   MbscEventClickEvent,
-  MbscPageLoadedEvent,
+  MbscPageLoadingEvent,
   Popup,
   setOptions /* localeImport */,
 } from '@mobiscroll/react';
@@ -31,7 +31,7 @@ const App: FC = () => {
   const [currentDate, setCurrentDate] = useState<MbscDateType>(new Date());
   const [searchInput, setSearchInput] = useState<HTMLElement>();
   const inputRef = useRef<Input>();
-  const timerRef = useRef<number>();
+  const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
   const calView = useMemo<MbscEventcalendarView>(
     () => ({
@@ -104,7 +104,7 @@ const App: FC = () => {
     </>
   );
 
-  const handlePageLoading = useCallback((args: MbscPageLoadedEvent) => {
+  const handlePageLoading = useCallback((args: MbscPageLoadingEvent) => {
     const start = formatDate('YYYY-MM-DD', args.viewStart!);
     const end = formatDate('YYYY-MM-DD', args.viewEnd!);
 

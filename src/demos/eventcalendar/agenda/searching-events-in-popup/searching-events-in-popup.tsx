@@ -30,7 +30,7 @@ const App: FC = () => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const [currentDate, setCurrentDate] = useState<MbscDateType>(new Date());
   const [searchInput, setSearchInput] = useState<HTMLElement>();
-  const timerRef = useRef<number>();
+  const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
   const calView = useMemo<MbscEventcalendarView>(
     () => ({
