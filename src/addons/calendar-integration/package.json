@@ -1,0 +1,21 @@
+{
+  "name": "@mobiscroll/calendar-integration",
+  "version": "5.29.0",
+  "description": "Calendar integration Module from the Mobiscroll UI Components library",
+  "homepage": "https://mobiscroll.com/",
+  "license": "SEE LICENSE IN LICENSE",
+  "author": {
+    "name": "Mobiscroll",
+    "url": "https://mobiscroll.com/"
+  },
+  "exports": {
+    ".": "./index.js"
+  },
+  "type": "module",
+  "module": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@mobiscroll/print",
+  "version": "5.29.0",
+  "description": "Print Module from the Mobiscroll UI Components library",
+  "homepage": "https://mobiscroll.com/",
+  "license": "SEE LICENSE IN LICENSE",
+  "author": {
+    "name": "Mobiscroll",
+    "url": "https://mobiscroll.com/"
+  },
+  "exports": {
+    ".": "./print.js",
+    "./dist/css/mobiscroll.min.css": "./print.css"
+  },
+  "type": "module",
+  "module": "print.js",
+  "types": "print.d.ts",
+  "files": [
+    "print.css",
+    "print.js",
+    "print.d.ts"
+  ]
+}

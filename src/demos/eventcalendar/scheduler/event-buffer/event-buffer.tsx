@@ -36,7 +36,7 @@ const App: FC = () => {
         bufferAfter: 10,
         bufferBefore: 15,
         color: '#76e083',
-        start: 'y,m,d-1,8)',
+        start: 'dyndatetime(y,m,d-1,8)',
         end: 'y,m,d-1,10)',
         title: 'Product team mtg.',
       },
@@ -67,7 +67,7 @@ const App: FC = () => {
     [],
   );
 
-  const view = useMemo<MbscEventcalendarView>(() => ({ timeline: { type: 'week' } }), []);
+  const view = useMemo<MbscEventcalendarView>(() => ({ schedule: { type: 'week' } }), []);
 
   return <Eventcalendar data={myEvents} view={view} />;
 };
