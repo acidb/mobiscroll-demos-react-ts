@@ -1,4 +1,4 @@
-import { Eventcalendar, MbscCalendarEvent, MbscEventcalendarView, setOptions /* localeImport */ } from '@mobiscroll/react';
+import { Eventcalendar, MbscCalendarEvent, MbscEventcalendarView, MbscResource, setOptions /* localeImport */ } from '@mobiscroll/react';
 import { FC, useMemo } from 'react';
 
 setOptions({
@@ -35,8 +35,8 @@ const App: FC = () => {
       {
         bufferAfter: 10,
         bufferBefore: 15,
-        start: 'y,m,d,8)',
-        end: 'y,m,d,10)',
+        start: 'dyndatetime(y,m,d,8)',
+        end: 'dyndatetime(y,m,d,10)',
         title: 'Product team mtg.',
         resource: 2,
       },
@@ -67,28 +67,31 @@ const App: FC = () => {
     [],
   );
 
-  const myResources = [
-    {
-      id: 1,
-      name: 'Resource 1',
-      color: '#e20000',
-    },
-    {
-      id: 2,
-      name: 'Resource 2',
-      color: '#76e083',
-    },
-    {
-      id: 3,
-      name: 'Resource 3',
-      color: '#4981d6',
-    },
-    {
-      id: 4,
-      name: 'Resource 4',
-      color: '#f7961e',
-    },
-  ];
+  const myResources = useMemo<MbscResource[]>(
+    () => [
+      {
+        id: 1,
+        name: 'Resource 1',
+        color: '#e20000',
+      },
+      {
+        id: 2,
+        name: 'Resource 2',
+        color: '#76e083',
+      },
+      {
+        id: 3,
+        name: 'Resource 3',
+        color: '#4981d6',
+      },
+      {
+        id: 4,
+        name: 'Resource 4',
+        color: '#f7961e',
+      },
+    ],
+    [],
+  );
 
   const view = useMemo<MbscEventcalendarView>(() => ({ timeline: { type: 'day' } }), []);
 
