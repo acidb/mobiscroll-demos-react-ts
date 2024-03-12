@@ -1,4 +1,4 @@
-This the TypeScript source of the "Mobiscroll Event Calendar > Customizing the header" demo
+This the React TypeScript source of the "Mobiscroll Event Calendar > Customizing the header" demo
 --
 
 To download and run this example locally, please follow the instructions [in the readme file of the project](https://github.com/acidb/mobiscroll-demos-react-ts?tab=readme-ov-file#mobiscroll-react-ts-demos). 
