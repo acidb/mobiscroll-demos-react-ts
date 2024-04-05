@@ -89,10 +89,10 @@ import Demo518 from './demos/eventcalendar/agenda/daily-agenda-with-week-calenda
 import Demo573 from './demos/eventcalendar/agenda/basic-usage/basic-usage';
 import Demo501 from './demos/eventcalendar/agenda/daily-weekly-monthly-annual-agenda/daily-weekly-monthly-annual-agenda';
 import Demo662 from './demos/eventcalendar/agenda/printing-the-view/printing-the-view';
-import Demo519 from './demos/eventcalendar/agenda/synchronized-views/synchronized-views';
 import Demo596 from './demos/eventcalendar/agenda/custom-event-sort/custom-event-sort';
 import Demo611 from './demos/eventcalendar/agenda/setting-the-timezone/setting-the-timezone';
 import Demo711 from './demos/eventcalendar/agenda/searching-events-in-popup/searching-events-in-popup';
+import Demo742 from './demos/eventcalendar/agenda/navigate-from-external-calendar/navigate-from-external-calendar';
 import Demo506 from './demos/eventcalendar/agenda/event-content-customization/event-content-customization';
 import Demo508 from './demos/eventcalendar/agenda/full-event-customization/full-event-customization';
 import Demo514 from './demos/eventcalendar/agenda/customizing-header/customizing-header';
@@ -129,6 +129,7 @@ import Demo630 from './demos/eventcalendar/calendar-view/quarter-year-view/quart
 import Demo679 from './demos/eventcalendar/calendar-view/show-more-all-labels/show-more-all-labels';
 import Demo588 from './demos/eventcalendar/calendar-view/colored-cell-background/colored-cell-background';
 import Demo432 from './demos/eventcalendar/calendar-view/switching-day-week-month-view/switching-day-week-month-view';
+import Demo740 from './demos/eventcalendar/calendar-view/navigate-from-external-date-picker/navigate-from-external-date-picker';
 import Demo505 from './demos/eventcalendar/calendar-view/customize-label-look-and-feel/customize-label-look-and-feel';
 import Demo504 from './demos/eventcalendar/calendar-view/customize-event-popover/customize-event-popover';
 import Demo509 from './demos/eventcalendar/calendar-view/customizing-header/customizing-header';
@@ -179,6 +180,7 @@ import Demo738 from './demos/eventcalendar/scheduler/event-buffer/event-buffer';
 import Demo613 from './demos/eventcalendar/scheduler/multiple-timezone-support/multiple-timezone-support';
 import Demo699 from './demos/eventcalendar/scheduler/show-multiple-timezones/show-multiple-timezones';
 import Demo709 from './demos/eventcalendar/scheduler/searching-events-in-sidebar/searching-events-in-sidebar';
+import Demo741 from './demos/eventcalendar/scheduler/navigate-view-from-external-calendar/navigate-view-from-external-calendar';
 import Demo655 from './demos/eventcalendar/scheduler/custom-event-tooltip/custom-event-tooltip';
 import Demo507 from './demos/eventcalendar/scheduler/customizing-events/customizing-events';
 import Demo619 from './demos/eventcalendar/scheduler/date-header-template/date-header-template';
@@ -224,8 +226,8 @@ import Demo626 from './demos/eventcalendar/timeline/work-order-scheduling/work-o
 import Demo627 from './demos/eventcalendar/timeline/timezone-meeting-planner/timezone-meeting-planner';
 import Demo634 from './demos/eventcalendar/timeline/restaurant-shift-management/restaurant-shift-management';
 import Demo628 from './demos/eventcalendar/timeline/meal-planner/meal-planner';
-import Demo717 from './demos/eventcalendar/timeline/multi-classroom-timetable/multi-classroom-timetable';
 import Demo698 from './demos/eventcalendar/timeline/dynamically-color-and-invalidate/dynamically-color-and-invalidate';
+import Demo717 from './demos/eventcalendar/timeline/multi-classroom-timetable/multi-classroom-timetable';
 import Demo716 from './demos/eventcalendar/timeline/monthly-timetable-vertical-days-horizontal-times/monthly-timetable-vertical-days-horizontal-times';
 import Demo731 from './demos/eventcalendar/timeline/compare-resources-fixed-at-top/compare-resources-fixed-at-top';
 import Demo732 from './demos/eventcalendar/timeline/assign-unassign-work-orders-fixed-top-row/assign-unassign-work-orders-fixed-top-row';
@@ -241,6 +243,7 @@ import Demo606 from './demos/eventcalendar/timeline/switching-day-week-work-week
 import Demo653 from './demos/eventcalendar/timeline/setting-the-timezone/setting-the-timezone';
 import Demo654 from './demos/eventcalendar/timeline/multiple-timezone-support/multiple-timezone-support';
 import Demo710 from './demos/eventcalendar/timeline/searching-events-in-sidebar/searching-events-in-sidebar';
+import Demo743 from './demos/eventcalendar/timeline/navigate-view-from-external-calendar/navigate-view-from-external-calendar';
 import Demo609 from './demos/eventcalendar/timeline/timeline-custom-event-rendering/timeline-custom-event-rendering';
 import Demo714 from './demos/eventcalendar/timeline/hour-day-week-month-quarter-year-header-footer-template/hour-day-week-month-quarter-year-header-footer-template';
 import Demo633 from './demos/eventcalendar/timeline/shift-template/shift-template';
@@ -565,10 +568,10 @@ export const demos = [
             name: 'Displaying events',
             unique: 1,
             items: [
-              { name: 'Synchronized views', unique: 'synchronized-views', component: Demo519 },
               { name: 'Custom event order', unique: 'custom-event-sort', component: Demo596 },
               { name: 'Timezones', unique: 'setting-the-timezone', component: Demo611 },
               { name: 'Event search with popup', unique: 'searching-events-in-popup', component: Demo711 },
+              { name: 'External navigation', unique: 'navigate-from-external-calendar', component: Demo742 },
             ],
           },
           {
@@ -677,6 +680,7 @@ export const demos = [
               { name: 'Displaying labels', unique: 'show-more-all-labels', component: Demo679 },
               { name: 'Colored backgrounds', unique: 'colored-cell-background', component: Demo588 },
               { name: 'Switching views', unique: 'switching-day-week-month-view', component: Demo432 },
+              { name: 'External navigation', unique: 'navigate-from-external-date-picker', component: Demo740 },
             ],
           },
           {
@@ -805,6 +809,7 @@ export const demos = [
               { name: 'Switching timezones', unique: 'multiple-timezone-support', component: Demo613 },
               { name: 'Display time for multiple timezones', unique: 'show-multiple-timezones', component: Demo699 },
               { name: 'Event search with sidebar', unique: 'searching-events-in-sidebar', component: Demo709 },
+              { name: 'External navigation', unique: 'navigate-view-from-external-calendar', component: Demo741 },
             ],
           },
           {
@@ -922,8 +927,8 @@ export const demos = [
               { name: 'Meeting planner across timezones', unique: 'timezone-meeting-planner', component: Demo627 },
               { name: 'Restaurant shift management', unique: 'restaurant-shift-management', component: Demo634 },
               { name: 'Weekly meal planner', unique: 'meal-planner', component: Demo628 },
-              { name: 'Multiple classroom scheduling', unique: 'multi-classroom-timetable', component: Demo717 },
               { name: 'Dynamically color & invalidate', unique: 'dynamically-color-and-invalidate', component: Demo698 },
+              { name: 'Multiple classroom scheduling', unique: 'multi-classroom-timetable', component: Demo717 },
               { name: 'Single resource timetable', unique: 'monthly-timetable-vertical-days-horizontal-times', component: Demo716 },
               { name: 'Compare resources', unique: 'compare-resources-fixed-at-top', component: Demo731 },
               { name: 'Assign/unassign work orders', unique: 'assign-unassign-work-orders-fixed-top-row', component: Demo732 },
@@ -945,6 +950,7 @@ export const demos = [
               { name: 'Timezones', unique: 'setting-the-timezone', component: Demo653 },
               { name: 'Switching timezones', unique: 'multiple-timezone-support', component: Demo654 },
               { name: 'Event search with sidebar', unique: 'searching-events-in-sidebar', component: Demo710 },
+              { name: 'External navigation', unique: 'navigate-view-from-external-calendar', component: Demo743 },
             ],
           },
           {
