@@ -1,0 +1,17 @@
+.mds-external-nav-calendar {
+  height: 100%;
+}
+
+.mds-external-nav-dp .mbsc-datepicker-inline {
+  height: auto;
+}
+
+.mds-external-nav-ec {
+  border-left: 1px solid #ccc;
+}
+
+@media screen and (max-width: 700px) {
+  .mds-external-nav-calendar {
+    display: block;
+  }
+}
