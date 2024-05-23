@@ -12,7 +12,7 @@
   "dependencies": {
     "@mobiscroll/calendar-integration": "file:src/addons/calendar-integration",
     "@mobiscroll/print": "file:src/addons/print",
-    "@mobiscroll/react": "^5.29.0",
+    "@mobiscroll/react": "^5.30.0",
     "moment-timezone": "^0.5.43",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -1,0 +1,23 @@
+.mds-variable-event-height-title {
+  white-space: normal;
+  line-height: 16px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.mds-variable-event-height-description {
+  padding: 8px 0;
+  white-space: normal;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+.mds-variable-event-height .mbsc-schedule-event-range {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.mds-variable-event-height .mbsc-schedule-event-inner {
+  padding: 1em;
+}

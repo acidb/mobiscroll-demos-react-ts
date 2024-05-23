@@ -1,0 +1,87 @@
+.mds-progress-calendar .mbsc-timeline-row-gutter {
+  height: 6px;
+}
+
+.mds-progress-calendar .mbsc-timeline-parent {
+  height: 34px;
+}
+
+.mds-popup-progress-slider {
+  margin: 0 10px;
+}
+
+.mds-popup-progress-label {
+  margin-left: 10px;
+  width: 50px;
+  text-align: right;
+}
+
+.mds-progress-event {
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  line-height: 19px;
+}
+
+.mds-progress-event-content {
+  padding: 10px 0;
+  margin-right: 50px;
+}
+
+.mds-progress-event-title {
+  position: relative;
+  color: white;
+  font-size: 14px;
+  padding: 0 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.mds-progress-bar {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.mds-progress-arrow {
+  position: absolute;
+  right: -9px;
+  bottom: 0;
+  border-style: solid;
+  border-width: 0 9px 9px 9px;
+  border-color: transparent transparent rgba(255, 255, 255, 0.5) transparent;
+  cursor: ew-resize;
+}
+
+.mds-progress-dragging {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mds-progress-dragging .mds-progress-arrow,
+.mds-progress-arrow:hover {
+  right: -12px;
+  border-width: 0 12px 12px 12px;
+  border-color: transparent transparent white transparent;
+}
+
+.mds-progress-label {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  margin-top: -8px;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.mds-progress-employee-name {
+  font-size: 14px;
+}
+
+.mds-progress-employee-title {
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 5px;
+}

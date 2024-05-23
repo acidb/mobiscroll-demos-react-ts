@@ -231,13 +231,16 @@ import Demo717 from './demos/eventcalendar/timeline/multi-classroom-timetable/mu
 import Demo716 from './demos/eventcalendar/timeline/monthly-timetable-vertical-days-horizontal-times/monthly-timetable-vertical-days-horizontal-times';
 import Demo731 from './demos/eventcalendar/timeline/compare-resources-fixed-at-top/compare-resources-fixed-at-top';
 import Demo732 from './demos/eventcalendar/timeline/assign-unassign-work-orders-fixed-top-row/assign-unassign-work-orders-fixed-top-row';
+import Demo745 from './demos/eventcalendar/timeline/check-list-tasks-within-events/check-list-tasks-within-events';
 import Demo735 from './demos/eventcalendar/timeline/flight-scheduling-two-synchronized-timelines/flight-scheduling-two-synchronized-timelines';
+import Demo746 from './demos/eventcalendar/timeline/show-task-progress-on-event/show-task-progress-on-event';
 import Demo605 from './demos/eventcalendar/timeline/daily-weekly-monthly-yearly-timeline/daily-weekly-monthly-yearly-timeline';
 import Demo663 from './demos/eventcalendar/timeline/multiple-days-weeks-months-quarters-years-variable-resolution/multiple-days-weeks-months-quarters-years-variable-resolution';
 import Demo734 from './demos/eventcalendar/timeline/control-number-of-concurrently-shown-events/control-number-of-concurrently-shown-events';
 import Demo739 from './demos/eventcalendar/timeline/event-buffer/event-buffer';
 import Demo697 from './demos/eventcalendar/timeline/custom-range-view/custom-range-view';
 import Demo608 from './demos/eventcalendar/timeline/timeline-resource-height/timeline-resource-height';
+import Demo744 from './demos/eventcalendar/timeline/variable-event-height/variable-event-height';
 import Demo620 from './demos/eventcalendar/timeline/event-listing/event-listing';
 import Demo606 from './demos/eventcalendar/timeline/switching-day-week-work-week-timeline/switching-day-week-work-week-timeline';
 import Demo653 from './demos/eventcalendar/timeline/setting-the-timezone/setting-the-timezone';
@@ -256,6 +259,7 @@ import Demo726 from './demos/eventcalendar/timeline/drag-drop-between-calendar-i
 import Demo728 from './demos/eventcalendar/timeline/prevent-double-booking-events/prevent-double-booking-events';
 import Demo607 from './demos/eventcalendar/timeline/timeline-resource-details-side-panel-footer/timeline-resource-details-side-panel-footer';
 import Demo625 from './demos/eventcalendar/timeline/resource-grouping-hierarchy/resource-grouping-hierarchy';
+// import Demo747 from './demos/eventcalendar/timeline/show-summaries-aggregates-for-resource-groups/show-summaries-aggregates-for-resource-groups';
 import Demo720 from './demos/eventcalendar/timeline/resource-data-structure/resource-data-structure';
 import Demo666 from './demos/eventcalendar/timeline/event-data-structure/event-data-structure';
 import Demo706 from './demos/eventcalendar/timeline/connecting-linking-events-arrows/connecting-linking-events-arrows';
@@ -450,9 +454,7 @@ export const demos = [
           {
             name: 'Customizing the look & feel',
             unique: 5,
-            items: [
-              { name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo375 },
-            ],
+            items: [{ name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo375 }],
           },
           {
             name: 'Localization & tapping into the lifecycle',
@@ -588,9 +590,7 @@ export const demos = [
           {
             name: 'Resources',
             unique: 17,
-            items: [
-              { name: 'In-header filtering', unique: 'resource-filtering-in-header', component: Demo512 },
-            ],
+            items: [{ name: 'In-header filtering', unique: 'resource-filtering-in-header', component: Demo512 }],
           },
           {
             name: 'Event data structure',
@@ -622,16 +622,12 @@ export const demos = [
           {
             name: 'CRUD operations',
             unique: 4,
-            items: [
-              { name: 'Multiple select & bulk operations', unique: 'event-bulk-actions-edit-delete-update', component: Demo703 },
-            ],
+            items: [{ name: 'Multiple select & bulk operations', unique: 'event-bulk-actions-edit-delete-update', component: Demo703 }],
           },
           {
             name: 'Customizing the look & feel',
             unique: 5,
-            items: [
-              { name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo521 },
-            ],
+            items: [{ name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo521 }],
           },
           {
             name: 'Localization & tapping into the lifecycle',
@@ -709,9 +705,7 @@ export const demos = [
           {
             name: 'Resources',
             unique: 17,
-            items: [
-              { name: 'In-header filtering', unique: 'resource-filtering-in-header', component: Demo510 },
-            ],
+            items: [{ name: 'In-header filtering', unique: 'resource-filtering-in-header', component: Demo510 }],
           },
           {
             name: 'Event data structure',
@@ -754,9 +748,7 @@ export const demos = [
           {
             name: 'Customizing the look & feel',
             unique: 5,
-            items: [
-              { name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo455 },
-            ],
+            items: [{ name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo455 }],
           },
           {
             name: 'Localization & tapping into the lifecycle',
@@ -932,7 +924,9 @@ export const demos = [
               { name: 'Single resource timetable', unique: 'monthly-timetable-vertical-days-horizontal-times', component: Demo716 },
               { name: 'Compare resources', unique: 'compare-resources-fixed-at-top', component: Demo731 },
               { name: 'Assign/unassign work orders', unique: 'assign-unassign-work-orders-fixed-top-row', component: Demo732 },
+              { name: 'Sub-tasks and lists', unique: 'check-list-tasks-within-events', component: Demo745 },
               { name: 'Flight scheduling with two timelines', unique: 'flight-scheduling-two-synchronized-timelines', component: Demo735 },
+              { name: 'Display task progress', unique: 'show-task-progress-on-event', component: Demo746 },
             ],
           },
           {
@@ -940,11 +934,16 @@ export const demos = [
             unique: 13,
             items: [
               { name: 'Configure the timeline', unique: 'daily-weekly-monthly-yearly-timeline', component: Demo605 },
-              { name: 'Configure the page, size, resolution', unique: 'multiple-days-weeks-months-quarters-years-variable-resolution', component: Demo663 },
+              {
+                name: 'Configure the page, size, resolution',
+                unique: 'multiple-days-weeks-months-quarters-years-variable-resolution',
+                component: Demo663,
+              },
               { name: 'Set event stack size', unique: 'control-number-of-concurrently-shown-events', component: Demo734 },
               { name: 'Event buffer', unique: 'event-buffer', component: Demo739 },
               { name: 'View with custom range picker', unique: 'custom-range-view', component: Demo697 },
               { name: 'Equal row height', unique: 'timeline-resource-height', component: Demo608 },
+              { name: 'Variable event height', unique: 'variable-event-height', component: Demo744 },
               { name: 'Daily event summary', unique: 'event-listing', component: Demo620 },
               { name: 'Day, week, work week', unique: 'switching-day-week-work-week-timeline', component: Demo606 },
               { name: 'Timezones', unique: 'setting-the-timezone', component: Demo653 },
@@ -958,7 +957,11 @@ export const demos = [
             unique: 19,
             items: [
               { name: 'Timeline event template', unique: 'timeline-custom-event-rendering', component: Demo609 },
-              { name: 'Hour, day, week, month, year header and footer template', unique: 'hour-day-week-month-quarter-year-header-footer-template', component: Demo714 },
+              {
+                name: 'Hour, day, week, month, year header and footer template',
+                unique: 'hour-day-week-month-quarter-year-header-footer-template',
+                component: Demo714,
+              },
               { name: 'Time slot template', unique: 'shift-template', component: Demo633 },
               { name: 'Resource header template', unique: 'resource-header-template', component: Demo639 },
               { name: 'Custom event tooltip', unique: 'custom-event-tooltip', component: Demo656 },
@@ -981,6 +984,7 @@ export const demos = [
             items: [
               { name: 'Resource grid', unique: 'timeline-resource-details-side-panel-footer', component: Demo607 },
               { name: 'Resource grouping & hierarchy', unique: 'resource-grouping-hierarchy', component: Demo625 },
+              // { name: 'Resource group summaries', unique: 'show-summaries-aggregates-for-resource-groups', component: Demo747 },
               { name: 'Resource properties', unique: 'resource-data-structure', component: Demo720 },
             ],
           },
@@ -1102,9 +1106,7 @@ export const demos = [
           {
             name: 'Customizing the look & feel',
             unique: 5,
-            items: [
-              { name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo466 },
-            ],
+            items: [{ name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo466 }],
           },
         ],
       },
@@ -1153,16 +1155,12 @@ export const demos = [
           {
             name: 'Validation & restricting selection',
             unique: 11,
-            items: [
-              { name: 'Disabled values', unique: 'disabled-invalid-values', component: Demo603 },
-            ],
+            items: [{ name: 'Disabled values', unique: 'disabled-invalid-values', component: Demo603 }],
           },
           {
             name: 'Customizing the look & feel',
             unique: 5,
-            items: [
-              { name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo387 },
-            ],
+            items: [{ name: 'Theming capabilities', unique: 'themes-ios-material-windows', component: Demo387 }],
           },
           {
             name: 'Localization & tapping into the lifecycle',
