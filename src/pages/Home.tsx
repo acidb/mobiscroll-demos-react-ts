@@ -7,7 +7,7 @@ export default function Home() {
     <Page>
       <div className="app-home mbsc-padding">
         {demos.map((main) => (
-          <div key={main.unique}>
+          <div className={'app-' + main.unique} key={main.unique}>
             <h2>{main.name}</h2>
             {main.items.map((sub) => (
               <div key={sub.unique}>

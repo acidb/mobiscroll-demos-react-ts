@@ -83,4 +83,103 @@ body,
 
 .app-home {
   padding-bottom: 44px;
+  background: inherit;
+}
+
+.app-home div {
+  background: inherit;
+}
+
+.app-home h2 {
+  position: sticky;
+  top: 44px;
+  z-index: 2;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  padding: 10px 0;
+  margin: 0;
+  background: inherit;
+  border-bottom: 4px solid;
+}
+
+.app-home h3 {
+  position: sticky;
+  top: 94px;
+  z-index: 1;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  padding: 10px 0;
+  margin: 0;
+  background: inherit;
+}
+
+.app-home h4 {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 20px 0 10px 0;
+  margin: 0;
+  opacity: 0.65;
+}
+
+.app-home ul {
+  margin-left: 0;
+}
+
+.app-home li {
+  list-style: none;
+}
+
+.app-home a {
+  display: block;
+  padding: 0 10px;
+  font-size: 15px;
+  line-height: 36px;
+  color: inherit;
+  opacity: 0.8;
+}
+
+.app-home a:hover {
+  background: rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+.mbsc-ios-dark .app-home a:hover,
+.mbsc-material-dark .app-home a:hover,
+.mbsc-windows-dark .app-home a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.app-datepicker h2 {
+  border-color: #3f98f6;
+}
+
+.app-datepicker h3 {
+  color: #3f98f6;
+}
+
+.app-eventcalendar h2 {
+  border-color: #9c3ff6;
+}
+
+.app-eventcalendar h3 {
+  color: #9c3ff6;
+}
+
+.app-form-components h2 {
+  border-color: #f6a33f;
+}
+
+.app-form-components h3 {
+  color: #f6a33f;
+}
+
+.app-pickers h2 {
+  border-color: #f63fa1;
+}
+
+.app-pickers h3 {
+  color: #f63fa1;
 }
