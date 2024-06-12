@@ -1,0 +1,99 @@
+.mds-aggregates .mbsc-timeline-column,
+.mds-aggregates .mbsc-timeline-header-column {
+  width: 14.5em;
+}
+
+.mds-aggregates .mbsc-timeline-row-gutter {
+  height: 6px;
+}
+
+.mds-aggregates .mbsc-timeline-resource-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.mds-aggregates .mbsc-ios .mbsc-schedule-event:after {
+  display: none;
+}
+
+.mds-aggregates .mbsc-schedule-event-inner {
+  height: auto;
+  width: 100%;
+}
+
+.mbsc-windows-dark .mds-aggregates-summary-event,
+.mbsc-ios-dark .mds-aggregates-summary-event,
+.mbsc-material-dark .mds-aggregates-summary-event {
+  color: #fff;
+}
+
+.mds-aggregates-address {
+  padding: 8px 0;
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.mds-aggregates-plate {
+  padding: 8px 0;
+  font-weight: 600;
+}
+
+.mds-aggregates-cartype {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.mds-aggregates-summary-event {
+  color: #000;
+}
+
+.mds-aggregates-summary-details {
+  white-space: normal;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+.mds-aggregates-summary-label {
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.mds-aggregates-summary-value {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.mds-aggregates-event {
+  padding: 4px;
+}
+
+.mds-aggregates-title {
+  white-space: normal;
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.mds-aggregates-name {
+  padding: 4px 0;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.mds-aggregates-value {
+  font-weight: 600;
+}
+
+.mds-aggregates-label {
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.mds-aggregates-details {
+  white-space: normal;
+  justify-content: space-between;
+  padding: 8px 0;
+}

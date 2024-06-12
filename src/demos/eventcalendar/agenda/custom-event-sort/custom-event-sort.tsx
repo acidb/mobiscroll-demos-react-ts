@@ -16,6 +16,7 @@ const myEvents: MbscCalendarEvent[] = [
     color: '#e7b300',
     allDay: true,
     accepted: false,
+    order: 1,
   },
   {
     start: new Date(now.getFullYear(), now.getMonth(), monday),
@@ -23,6 +24,7 @@ const myEvents: MbscCalendarEvent[] = [
     color: '#00ca10',
     allDay: true,
     accepted: true,
+    order: 2,
   },
   {
     start: new Date(now.getFullYear(), now.getMonth(), monday),
@@ -30,6 +32,7 @@ const myEvents: MbscCalendarEvent[] = [
     color: '#e7b300',
     allDay: true,
     accepted: false,
+    order: 1,
   },
   {
     start: new Date(now.getFullYear(), now.getMonth(), monday),
@@ -37,6 +40,7 @@ const myEvents: MbscCalendarEvent[] = [
     color: '#e7b300',
     allDay: true,
     accepted: false,
+    order: 1,
   },
   {
     start: new Date(now.getFullYear(), now.getMonth(), monday + 1),
@@ -44,6 +48,7 @@ const myEvents: MbscCalendarEvent[] = [
     color: '#00ca10',
     allDay: true,
     accepted: true,
+    order: 2,
   },
   {
     start: new Date(now.getFullYear(), now.getMonth(), monday + 1),
@@ -51,6 +56,7 @@ const myEvents: MbscCalendarEvent[] = [
     color: '#e7b300',
     allDay: true,
     accepted: false,
+    order: 1,
   },
   {
     start: new Date(now.getFullYear(), now.getMonth(), monday + 2),
@@ -58,6 +64,7 @@ const myEvents: MbscCalendarEvent[] = [
     color: '#e7b300',
     allDay: true,
     accepted: false,
+    order: 1,
   },
   {
     start: new Date(now.getFullYear(), now.getMonth(), monday + 2),
@@ -65,6 +72,7 @@ const myEvents: MbscCalendarEvent[] = [
     color: '#00ca10',
     allDay: true,
     accepted: true,
+    order: 2,
   },
   {
     start: new Date(now.getFullYear(), now.getMonth(), monday + 2),
@@ -72,6 +80,7 @@ const myEvents: MbscCalendarEvent[] = [
     color: '#00ca10',
     allDay: true,
     accepted: true,
+    order: 2,
   },
   {
     start: new Date(now.getFullYear(), now.getMonth(), monday + 2),
@@ -79,6 +88,7 @@ const myEvents: MbscCalendarEvent[] = [
     color: '#e7b300',
     allDay: true,
     accepted: false,
+    order: 1,
   },
   {
     start: new Date(now.getFullYear(), now.getMonth(), monday + 2),
@@ -86,6 +96,7 @@ const myEvents: MbscCalendarEvent[] = [
     color: '#00ca10',
     allDay: true,
     accepted: true,
+    order: 2,
   },
   {
     start: new Date(now.getFullYear(), now.getMonth(), monday + 2),
@@ -93,6 +104,7 @@ const myEvents: MbscCalendarEvent[] = [
     color: '#00ca10',
     allDay: true,
     accepted: true,
+    order: 2,
   },
   {
     start: new Date(now.getFullYear(), now.getMonth(), monday + 3),
@@ -100,6 +112,7 @@ const myEvents: MbscCalendarEvent[] = [
     color: '#00ca10',
     allDay: true,
     accepted: true,
+    order: 2,
   },
   {
     start: new Date(now.getFullYear(), now.getMonth(), monday + 4),
@@ -107,6 +120,7 @@ const myEvents: MbscCalendarEvent[] = [
     color: '#e7b300',
     allDay: true,
     accepted: false,
+    order: 1,
   },
   {
     start: new Date(now.getFullYear(), now.getMonth(), monday + 4),
@@ -114,6 +128,7 @@ const myEvents: MbscCalendarEvent[] = [
     color: '#00ca10',
     allDay: true,
     accepted: true,
+    order: 2,
   },
   {
     start: new Date(now.getFullYear(), now.getMonth(), monday + 4),
@@ -121,6 +136,7 @@ const myEvents: MbscCalendarEvent[] = [
     color: '#e7b300',
     allDay: true,
     accepted: false,
+    order: 1,
   },
 ];
 
