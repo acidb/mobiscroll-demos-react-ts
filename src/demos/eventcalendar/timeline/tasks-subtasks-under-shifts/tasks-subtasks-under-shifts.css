@@ -1,0 +1,31 @@
+.mds-task-shift {
+  height: 30px;
+}
+
+.mds-task-subtask {
+  height: 40px;
+}
+
+.mds-task-subtask .mbsc-schedule-event-range,
+.mds-task-subtask .mbsc-schedule-event-title {
+  font-size: 10px;
+  line-height: 13px;
+}
+
+.mds-task-shift .mbsc-schedule-event-range,
+.mds-task-shift .mbsc-schedule-event-title {
+  display: inline-block;
+  margin: 0 4px;
+}
+
+.mds-task-hours {
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.mds-task-blocked.mbsc-schedule-invalid {
+  text-align: center;
+  align-items: center;
+  font-weight: bold;
+  background: repeating-linear-gradient(-45deg, #f3f3f3, #f3f3f3 11px, #e5e5e5 11px, #e5e5e5 22px);
+}

@@ -145,6 +145,9 @@ function App() {
     () => ({
       timeline: {
         type: 'week',
+        eventList: true,
+        startDay: 1,
+        endDay: 5,
       },
     }),
     [],
