@@ -157,9 +157,7 @@ const App: FC = () => {
                 Edit
               </Button>
               <div className="md-cutom-event-img-cont">
-                {original.participants.map(function (p: number) {
-                  return <img key={p} className="md-custom-event-img" src={getParticipant(p).img} />;
-                })}
+                {original.participants.map((p: number) => <img key={p} className="md-custom-event-img" src={getParticipant(p).img} />)}
               </div>
             </div>
           </div>

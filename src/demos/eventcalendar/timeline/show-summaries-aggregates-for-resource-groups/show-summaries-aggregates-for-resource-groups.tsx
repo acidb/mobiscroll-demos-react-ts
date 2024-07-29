@@ -885,7 +885,7 @@ function App() {
     (dayEvents: MbscCalendarEvent[]): MbscCalendarEvent[] => {
       const aggregateEvents: { [key: string]: MbscCalendarEvent } = {};
 
-      myResources.forEach(function (resource) {
+      myResources.forEach((resource) => {
         for (let date = new Date(firstViewDay.current as Date); date < (lastViewDay.current as Date); date.setDate(date.getDate() + 1)) {
           aggregateEvents[(resource.id as string) + +date] = {
             id: (resource.id as string) + +date,

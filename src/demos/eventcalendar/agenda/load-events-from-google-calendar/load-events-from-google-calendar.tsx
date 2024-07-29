@@ -48,7 +48,7 @@ const App: FC = () => {
     });
     googleCalendarSync
       .getEvents(CALENDAR_ID, firstDay.current!, lastDay.current!)
-      .then(function (resp) {
+      .then((resp) => {
         setLoading(false);
         setEvents(resp);
       })

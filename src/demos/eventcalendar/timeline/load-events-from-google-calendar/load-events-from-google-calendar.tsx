@@ -47,9 +47,7 @@ const App: FC = () => {
 
   const calendarIds = useMemo(
     () =>
-      calendars.map(function (cal) {
-        return cal.id;
-      }),
+      calendars.map((cal) => cal.id),
     [calendars],
   );
 
@@ -61,8 +59,8 @@ const App: FC = () => {
   const loadEvents = useCallback(() => {
     googleCalendarSync
       .getEvents(calendarIds, firstDay.current!, lastDay.current!)
-      .then(function (resp) {
-        resp.forEach(function (event: MbscCalendarEvent) {
+      .then((resp) => {
+        resp.forEach((event: MbscCalendarEvent) => {
           event.resource = event.googleCalendarId;
         });
         setEvents(resp);
