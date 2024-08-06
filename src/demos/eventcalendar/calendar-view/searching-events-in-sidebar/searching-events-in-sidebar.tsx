@@ -4,7 +4,6 @@ import {
   getJson,
   Input,
   MbscCalendarEvent,
-  MbscDateType,
   MbscEventcalendarView,
   MbscEventClickEvent,
   MbscPageLoadingEvent,
@@ -22,56 +21,38 @@ setOptions({
 const App: FC = () => {
   const [calEvents, setCalEvents] = useState<MbscCalendarEvent[]>([]);
   const [listEvents, setListEvents] = useState<MbscCalendarEvent[]>([]);
-  const [mySelectedEvent, setSelectedEvent] = useState<MbscCalendarEvent[]>([]);
-  const [showList, setShowList] = useState<boolean>(false);
-  const [currentDate, setCurrentDate] = useState<MbscDateType>(new Date());
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const [selectedEvent, setSelectedEvent] = useState<MbscCalendarEvent[]>([]);
+  const [displayResults, setDisplayResults] = useState<boolean>(false);
 
-  const calView = useMemo<MbscEventcalendarView>(
-    () => ({
-      calendar: {
-        labels: true,
-      },
-    }),
-    [],
-  );
+  const calInst = useRef<Eventcalendar | null>(null);
+  const timer = useRef<ReturnType<typeof setTimeout>>();
 
-  const listView = useMemo<MbscEventcalendarView>(
-    () => ({
-      agenda: {
-        type: 'year',
-        size: 5,
-      },
-    }),
-    [],
-  );
+  const calView = useMemo<MbscEventcalendarView>(() => ({ calendar: { labels: true } }), []);
+  const listView = useMemo<MbscEventcalendarView>(() => ({ agenda: { type: 'year', size: 5 } }), []);
 
-  const handleInputCgange = useCallback((ev: ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = useCallback((ev: ChangeEvent<HTMLInputElement>) => {
     const text = ev.target.value;
 
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-    }
-
-    timerRef.current = setTimeout(() => {
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => {
       if (text.length > 0) {
         getJson(
           'https://trial.mobiscroll.com/searchevents/?text=' + text,
           (data: MbscCalendarEvent[]) => {
             setListEvents(data);
-            setShowList(true);
+            setDisplayResults(true);
           },
           'jsonp',
         );
       } else {
-        setShowList(false);
+        setDisplayResults(false);
       }
     }, 200);
   }, []);
 
   const handlePageLoading = useCallback((args: MbscPageLoadingEvent) => {
-    const start = formatDate('YYYY-MM-DD', args.viewStart!);
-    const end = formatDate('YYYY-MM-DD', args.viewEnd!);
+    const start = formatDate('YYYY-MM-DD', args.viewStart);
+    const end = formatDate('YYYY-MM-DD', args.viewEnd);
 
     setTimeout(() => {
       getJson(
@@ -85,28 +66,34 @@ const App: FC = () => {
   }, []);
 
   const handleEventClick = useCallback((args: MbscEventClickEvent) => {
-    setCurrentDate(args.event.start!);
     setSelectedEvent([args.event]);
+    calInst.current?.navigateToEvent(args.event);
   }, []);
 
   return (
-    <Page>
-      <div className="md-search-events-sidebar mbsc-flex">
-        <div className="md-search-events-cont mbsc-flex-col mbsc-flex-none">
-          <Input startIcon="material-search" onChange={handleInputCgange} inputStyle="outline" placeholder="Search events" />
-          {showList && <Eventcalendar view={listView} data={listEvents} showControls={false} onEventClick={handleEventClick} />}
+    <Page className="mds-full-height">
+      <div className="mds-full-height mbsc-flex">
+        <div className="mds-search-sidebar mbsc-flex-col mbsc-flex-none">
+          <Input
+            autoComplete="off"
+            startIcon="material-search"
+            onChange={handleInputChange}
+            inputStyle="outline"
+            placeholder="Search events"
+          />
+          {displayResults && <Eventcalendar data={listEvents} showControls={false} view={listView} onEventClick={handleEventClick} />}
         </div>
-        <div className="md-search-events-calendar mbsc-flex-1-1">
+        <div className="mds-search-calendar mbsc-flex-1-1">
           <Eventcalendar
             clickToCreate={false}
+            data={calEvents}
             dragToCreate={false}
             dragToMove={false}
             dragToResize={false}
+            ref={calInst}
+            selectedEvents={selectedEvent}
             selectMultipleEvents={true}
             view={calView}
-            data={calEvents}
-            selectedEvents={mySelectedEvent}
-            selectedDate={currentDate}
             onPageLoading={handlePageLoading}
           />
         </div>

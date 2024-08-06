@@ -16,13 +16,12 @@ import {
   MbscEventDeletedEvent,
   MbscPopupButton,
   MbscResource,
-  MbscSelectedDateChangeEvent,
   Popup,
   setOptions,
   Snackbar,
   Textarea /* localeImport */,
 } from '@mobiscroll/react';
-import { ChangeEvent, FC, useCallback, useMemo, useState } from 'react';
+import { ChangeEvent, FC, useCallback, useMemo, useRef, useState } from 'react';
 import './work-order-scheduling.css';
 
 setOptions({
@@ -285,9 +284,10 @@ const App: FC = () => {
   const [popupEventBill, setBill] = useState<number>(0);
   const [popupEventNotes, setNotes] = useState<string>('');
   const [popupEventDate, setDate] = useState<MbscDateType[]>([]);
-  const [mySelectedDate, setSelectedDate] = useState<MbscDateType>(new Date());
   const [checkedResources, setCheckedResources] = useState<string[]>([]);
   const [isSnackbarOpen, setSnackbarOpen] = useState<boolean>(false);
+
+  const calInst = useRef<Eventcalendar | null>(null);
 
   const snackbarButton = useMemo(
     () => ({
@@ -339,7 +339,7 @@ const App: FC = () => {
       // here you can add the event to your storage as well
       // ...
     }
-    setSelectedDate(popupEventDate[0]);
+    calInst.current?.navigateToEvent(newEvent);
     // close the popup
     setPopupOpen(false);
   }, [isEdit, myEvents, popupEventDate, popupEventNotes, popupEventTitle, popupEventLocation, popupEventBill, tempEvent, checkedResources]);
@@ -388,10 +388,6 @@ const App: FC = () => {
     deleteEvent(tempEvent!);
     setPopupOpen(false);
   }, [deleteEvent, tempEvent]);
-
-  const handleSelectedDateChange = useCallback((event: MbscSelectedDateChangeEvent) => {
-    setSelectedDate(event.date);
-  }, []);
 
   const handleEventClick = useCallback(
     (args: MbscEventClickEvent) => {
@@ -510,14 +506,13 @@ const App: FC = () => {
         className="md-work-order-scheduling"
         view={viewSettings}
         data={myEvents}
+        ref={calInst}
         resources={myResources}
         clickToCreate="double"
         dragToCreate={true}
         dragToMove={true}
         dragToResize={true}
         dragTimeStep={30}
-        selectedDate={mySelectedDate}
-        onSelectedDateChange={handleSelectedDateChange}
         onEventClick={handleEventClick}
         onEventCreated={handleEventCreated}
         onEventDeleted={handleEventDeleted}

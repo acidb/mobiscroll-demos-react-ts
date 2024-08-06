@@ -1,5 +1,14 @@
-import { Button, Eventcalendar, MbscCalendarEvent, MbscEventcalendarView, setOptions, Toast /* localeImport */ } from '@mobiscroll/react';
-import { FC, useCallback, useMemo, useState } from 'react';
+import {
+  Button,
+  Eventcalendar,
+  MbscCalendarEvent,
+  MbscEventcalendarView,
+  Page,
+  setOptions,
+  Toast /* localeImport */,
+} from '@mobiscroll/react';
+import { FC, useCallback, useMemo, useRef, useState } from 'react';
+import './event-data-structure.css';
 
 const now = new Date();
 
@@ -9,6 +18,7 @@ setOptions({
 });
 
 const App: FC = () => {
+  const [isToastOpen, setToastOpen] = useState<boolean>(false);
   const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([
     {
       start: new Date(now.getFullYear(), now.getMonth(), now.getDate(), 13),
@@ -19,21 +29,14 @@ const App: FC = () => {
       bufferAfter: 30,
     },
   ]);
-  const [mySelectedDate, setSelectedDate] = useState<Date>();
-  const [isToastOpen, setToastOpen] = useState<boolean>(false);
 
-  const handleCloseToast = useCallback(() => {
+  const calInst = useRef<Eventcalendar>(null);
+
+  const myView = useMemo<MbscEventcalendarView>(() => ({ schedule: { type: 'day' } }), []);
+
+  const handleToastClose = useCallback(() => {
     setToastOpen(false);
   }, []);
-
-  const myView = useMemo<MbscEventcalendarView>(
-    () => ({
-      schedule: {
-        type: 'day',
-      },
-    }),
-    [],
-  );
 
   const addEvent = useCallback(() => {
     const newEvent = {
@@ -50,19 +53,26 @@ const App: FC = () => {
       location: 'Office',
     };
 
-    setSelectedDate(new Date(2018, 11, 21));
-    setEvents([...myEvents, newEvent]);
+    setEvents((myEvents) => [...myEvents, newEvent]);
     setToastOpen(true);
-  }, [myEvents]);
+
+    calInst.current?.navigateToEvent(newEvent);
+  }, []);
 
   return (
-    <div>
-      <Eventcalendar data={myEvents} view={myView} selectedDate={mySelectedDate} />
-      <div className="mbsc-button-group-block">
-        <Button onClick={addEvent}>Add event to calendar</Button>
+    <Page className="mds-full-height">
+      <div className="mds-full-height mbsc-flex-col">
+        <div className="mbsc-flex-none">
+          <Button onClick={addEvent} startIcon="plus">
+            Add event to calendar
+          </Button>
+        </div>
+        <div className="mds-overflow-hidden mbsc-flex-1-1">
+          <Eventcalendar data={myEvents} ref={calInst} view={myView} />
+        </div>
       </div>
-      <Toast message="Event added" isOpen={isToastOpen} onClose={handleCloseToast} />
-    </div>
+      <Toast message="Event added" isOpen={isToastOpen} onClose={handleToastClose} />
+    </Page>
   );
 };
 export default App;

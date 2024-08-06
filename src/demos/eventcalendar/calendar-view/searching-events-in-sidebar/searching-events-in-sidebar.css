@@ -1,35 +1,34 @@
-.md-search-events-cont {
+.mds-full-height {
+  height: 100%;
+}
+
+.mds-search-calendar {
+  border-left: 1px solid #ccc;
+  overflow: hidden;
+}
+
+.mds-search-sidebar {
   width: 350px;
 }
 
-.md-search-events-cont .mbsc-textfield-wrapper.mbsc-ios {
-  margin-top: 8px;
-  margin-bottom: 9px;
+.mds-search-sidebar .mbsc-textfield-wrapper.mbsc-ios {
+  margin-top: 27px;
+  margin-bottom: 26px;
 }
 
-.md-search-events-cont .mbsc-textfield-wrapper.mbsc-material {
-  margin-top: 15px;
-  margin-bottom: 15px;
+.mds-search-sidebar .mbsc-textfield-wrapper.mbsc-material {
+  margin-top: 26px;
+  margin-bottom: 26px;
 }
 
-.md-search-events-cont .mbsc-textfield-wrapper.mbsc-windows {
-  margin-top: 28px;
-  margin-bottom: 29px;
+.mds-search-sidebar .mbsc-textfield-wrapper.mbsc-windows {
+  margin-top: 35px;
+  margin-bottom: 35px;
 }
 
 @media (min-width: 1135px) {
-  .md-search-events-cont .mbsc-textfield-wrapper.mbsc-ios {
-    margin-top: 20px;
-    margin-bottom: 20px;
+  .mds-search-sidebar .mbsc-textfield-wrapper.mbsc-windows {
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
-}
-
-.md-search-events-calendar {
-  border-left: 1px solid #ccc;
-}
-
-.demo-searching-events-in-sidebar,
-.md-search-events-sidebar,
-.md-search-events-calendar {
-  height: 100%;
 }

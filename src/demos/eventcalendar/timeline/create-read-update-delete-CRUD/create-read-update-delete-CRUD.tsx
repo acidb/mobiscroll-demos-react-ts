@@ -14,7 +14,6 @@ import {
   MbscEventDeletedEvent,
   MbscPopupButton,
   MbscResource,
-  MbscSelectedDateChangeEvent,
   Popup,
   SegmentedGroup,
   SegmentedItem,
@@ -137,13 +136,15 @@ const App: FC = () => {
   const [popupTravelTime, setTravelTime] = useState<number>(0);
   const [popupEventDate, setDate] = useState<MbscDateType[]>([]);
   const [popupEventStatus, setStatus] = useState<string>('busy');
-  const [mySelectedDate, setSelectedDate] = useState<MbscDateType>(new Date());
   const [colorPickerOpen, setColorPickerOpen] = useState<boolean>(false);
   const [colorAnchor, setColorAnchor] = useState<HTMLElement>();
   const [selectedColor, setSelectedColor] = useState<string | undefined>('');
   const [tempColor, setTempColor] = useState<string>('');
   const [isSnackbarOpen, setSnackbarOpen] = useState<boolean>(false);
-  const colorPicker = useRef<Popup | null>(null);
+
+  const calInst = useRef<Eventcalendar>(null);
+  const colorPicker = useRef<Popup>(null);
+
   const colorButtons = useMemo<(string | MbscPopupButton)[]>(
     () => [
       'cancel',
@@ -188,7 +189,7 @@ const App: FC = () => {
       // here you can add the event to your storage as well
       // ...
     }
-    setSelectedDate(popupEventDate[0]);
+    calInst.current?.navigateToEvent(newEvent);
     // close the popup
     setOpen(false);
   }, [
@@ -223,8 +224,6 @@ const App: FC = () => {
     setStatus(event.status || 'busy');
   }, []);
 
-  // handle popup form changes
-
   const titleChange = useCallback((ev: ChangeEvent<HTMLInputElement>) => {
     setTitle(ev.target.value);
   }, []);
@@ -253,12 +252,6 @@ const App: FC = () => {
     deleteEvent(tempEvent!);
     setOpen(false);
   }, [deleteEvent, tempEvent]);
-
-  // scheduler options
-
-  const handleSelectedDateChange = useCallback((event: MbscSelectedDateChangeEvent) => {
-    setSelectedDate(event.date);
-  }, []);
 
   const handleEventClick = useCallback(
     (args: MbscEventClickEvent) => {
@@ -301,7 +294,6 @@ const App: FC = () => {
     // ...
   }, []);
 
-  // datepicker options
   const controls = useMemo<MbscDatepickerControl[]>(() => (popupEventAllDay ? ['date'] : ['datetime']), [popupEventAllDay]);
   const headerText = useMemo<string>(() => (isEdit ? 'Edit event' : 'New Event'), [isEdit]);
   const respSetting = useMemo(
@@ -391,15 +383,14 @@ const App: FC = () => {
   return (
     <div>
       <Eventcalendar
-        view={viewSettings}
-        data={myEvents}
-        resources={myResources}
-        clickToCreate="double"
+        clickToCreate={true}
         dragToCreate={true}
         dragToMove={true}
         dragToResize={true}
-        selectedDate={mySelectedDate}
-        onSelectedDateChange={handleSelectedDateChange}
+        data={myEvents}
+        view={viewSettings}
+        ref={calInst}
+        resources={myResources}
         onEventClick={handleEventClick}
         onEventCreated={handleEventCreated}
         onEventDeleted={handleEventDeleted}

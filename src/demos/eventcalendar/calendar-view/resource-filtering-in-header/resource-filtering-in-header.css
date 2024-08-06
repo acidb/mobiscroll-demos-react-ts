@@ -1,45 +1,54 @@
-.md-header-filter-controls {
-  flex: 1 0 auto;
-  display: flex;
-  justify-content: center;
+.mds-header-filter-nav {
+  width: 180px;
 }
 
-.md-custom-header-filtering .mbsc-segmented {
-  max-width: 400px;
-  margin: 0 auto;
-  flex: 1 0 auto;
-}
-
-.md-header-filter-img {
+.mds-header-filter-img {
   width: 25px;
 }
 
-.md-header-filter-name {
+.mds-header-filter-name {
   margin-left: 10px;
 }
 
-.md-header-filter-nav {
-  width: 200px;
+.mds-header-filter .mbsc-segmented {
+  max-width: 400px;
+  margin: 0 auto;
 }
 
-.md-header-filter-controls .mbsc-segmented-button.mbsc-selected {
+.mds-header-filter .mbsc-segmented-button.mbsc-selected {
   color: #fff;
 }
 
-.md-custom-header-filtering .mbsc-segmented-item:first-child .mbsc-selected.mbsc-material,
-.md-custom-header-filtering .mbsc-segmented-item:first-child .mbsc-selected.mbsc-windows,
-.md-custom-header-filtering .mbsc-segmented-item:first-child .mbsc-segmented-selectbox-inner {
+.mds-header-filter-1 .mbsc-button.mbsc-selected.mbsc-material,
+.mds-header-filter-1 .mbsc-button.mbsc-selected.mbsc-windows,
+.mds-header-filter-1 .mbsc-segmented-selectbox-inner {
   background: #328e39;
 }
 
-.md-custom-header-filtering .mbsc-segmented-item:nth-child(2) .mbsc-selected.mbsc-material,
-.md-custom-header-filtering .mbsc-segmented-item:nth-child(2) .mbsc-selected.mbsc-windows,
-.md-custom-header-filtering .mbsc-segmented-item:nth-child(2) .mbsc-segmented-selectbox-inner {
+.mds-header-filter-2 .mbsc-button.mbsc-selected.mbsc-material,
+.mds-header-filter-2 .mbsc-button.mbsc-selected.mbsc-windows,
+.mds-header-filter-2 .mbsc-segmented-selectbox-inner {
   background: #00aabb;
 }
 
-.md-custom-header-filtering .mbsc-segmented-item:nth-child(3) .mbsc-selected.mbsc-material,
-.md-custom-header-filtering .mbsc-segmented-item:nth-child(3) .mbsc-selected.mbsc-windows,
-.md-custom-header-filtering .mbsc-segmented-item:nth-child(3) .mbsc-segmented-selectbox-inner {
+.mds-header-filter-3 .mbsc-button.mbsc-selected.mbsc-material,
+.mds-header-filter-3 .mbsc-button.mbsc-selected.mbsc-windows,
+.mds-header-filter-3 .mbsc-segmented-selectbox-inner {
   background: #ea72c0;
+}
+
+.mbsc-material .mds-header-filter-prev {
+  order: 1;
+}
+
+.mbsc-material .mds-header-filter-next {
+  order: 2;
+}
+
+.mbsc-material .mds-header-filter {
+  order: 3;
+}
+
+.mbsc-material .mds-header-filter-today {
+  order: 4;
 }

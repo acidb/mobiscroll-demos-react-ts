@@ -4,12 +4,10 @@ import {
   getJson,
   Input,
   MbscCalendarEvent,
-  MbscDateType,
   MbscEventcalendarView,
   MbscEventClickEvent,
   MbscPageLoadingEvent,
   MbscResource,
-  MbscSelectedDateChangeEvent,
   Page,
   setOptions /* localeImport */,
 } from '@mobiscroll/react';
@@ -24,13 +22,13 @@ setOptions({
 const App: FC = () => {
   const [calEvents, setCalEvents] = useState<MbscCalendarEvent[]>([]);
   const [listEvents, setListEvents] = useState<MbscCalendarEvent[]>([]);
-  const [selectedDate, setSelectedDate] = useState<MbscDateType>(new Date());
   const [selectedEvent, setSelectedEvent] = useState<MbscCalendarEvent[]>([]);
   const [displayResults, setDisplayResults] = useState<boolean>(false);
 
+  const calInst = useRef<Eventcalendar | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout>>();
 
-  const calView = useMemo<MbscEventcalendarView>(() => ({ timeline: { type: 'week' } }), []);
+  const calView = useMemo<MbscEventcalendarView>(() => ({ timeline: { type: 'month', eventList: true } }), []);
   const listView = useMemo<MbscEventcalendarView>(() => ({ agenda: { type: 'year', size: 5 } }), []);
 
   const myResources: MbscResource[] = useMemo(
@@ -80,21 +78,25 @@ const App: FC = () => {
     });
   }, []);
 
-  const handleSelectedDateChange = useCallback((args: MbscSelectedDateChangeEvent) => {
-    setSelectedDate(args.date);
-  }, []);
-
   const handleEventClick = useCallback((args: MbscEventClickEvent) => {
-    setSelectedDate(args.event.start!);
     setSelectedEvent([args.event]);
+    calInst.current?.navigateToEvent(args.event);
   }, []);
 
   return (
     <Page className="mds-full-height">
       <div className="mds-full-height mbsc-flex">
         <div className="mds-search-sidebar mbsc-flex-col mbsc-flex-none">
-          <Input startIcon="material-search" onChange={handleInputChange} inputStyle="outline" placeholder="Search events" />
-          {displayResults && <Eventcalendar data={listEvents} showControls={false} view={listView} onEventClick={handleEventClick} />}
+          <Input
+            autoComplete="off"
+            startIcon="material-search"
+            onChange={handleInputChange}
+            inputStyle="outline"
+            placeholder="Search events"
+          />
+          {displayResults && (
+            <Eventcalendar data={listEvents} resources={myResources} showControls={false} view={listView} onEventClick={handleEventClick} />
+          )}
         </div>
         <div className="mds-search-calendar mbsc-flex-1-1">
           <Eventcalendar
@@ -103,13 +105,12 @@ const App: FC = () => {
             dragToCreate={false}
             dragToMove={false}
             dragToResize={false}
+            ref={calInst}
             resources={myResources}
-            selectedDate={selectedDate}
             selectedEvents={selectedEvent}
             selectMultipleEvents={true}
             view={calView}
             onPageLoading={handlePageLoading}
-            onSelectedDateChange={handleSelectedDateChange}
           />
         </div>
       </div>

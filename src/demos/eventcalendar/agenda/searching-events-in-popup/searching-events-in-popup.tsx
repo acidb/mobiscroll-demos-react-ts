@@ -8,7 +8,6 @@ import {
   getJson,
   Input,
   MbscCalendarEvent,
-  MbscDateType,
   MbscEventcalendarView,
   MbscEventClickEvent,
   MbscPageLoadingEvent,
@@ -25,83 +24,42 @@ setOptions({
 
 const App: FC = () => {
   const [calEvents, setCalEvents] = useState<MbscCalendarEvent[]>([]);
+  const [isPopupOpen, setPopupOpen] = useState<boolean>(false);
   const [listEvents, setListEvents] = useState<MbscCalendarEvent[]>([]);
-  const [mySelectedEvent, setSelectedEvent] = useState<MbscCalendarEvent[]>([]);
-  const [isOpen, setOpen] = useState<boolean>(false);
-  const [currentDate, setCurrentDate] = useState<MbscDateType>(new Date());
   const [searchInput, setSearchInput] = useState<HTMLElement>();
-  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const [selectedEvent, setSelectedEvent] = useState<MbscCalendarEvent[]>([]);
 
-  const calView = useMemo<MbscEventcalendarView>(
-    () => ({
-      agenda: {
-        type: 'month',
-      },
-    }),
-    [],
-  );
+  const calInst = useRef<Eventcalendar | null>(null);
+  const timer = useRef<ReturnType<typeof setTimeout>>();
 
-  const listView = useMemo<MbscEventcalendarView>(
-    () => ({
-      agenda: {
-        type: 'year',
-        size: 5,
-      },
-    }),
-    [],
-  );
-
-  const searchInputRef = useCallback((input: Input) => {
-    setSearchInput(input && input.nativeElement);
-  }, []);
+  const calView = useMemo<MbscEventcalendarView>(() => ({ agenda: { type: 'month' } }), []);
+  const listView = useMemo<MbscEventcalendarView>(() => ({ agenda: { type: 'year', size: 5 } }), []);
 
   const handleInputChange = useCallback((ev: ChangeEvent<HTMLInputElement>) => {
-    const text = ev.target.value;
+    const searchText = ev.target.value;
 
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-    }
-
-    timerRef.current = setTimeout(() => {
-      if (text.length > 0) {
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => {
+      if (searchText.length > 0) {
         getJson(
-          'https://trial.mobiscroll.com/searchevents/?text=' + text,
+          'https://trial.mobiscroll.com/searchevents/?text=' + searchText,
           (data: MbscCalendarEvent[]) => {
             setListEvents(data);
-            setOpen(true);
+            setPopupOpen(true);
           },
           'jsonp',
         );
       } else {
-        setOpen(false);
+        setPopupOpen(false);
       }
     }, 200);
   }, []);
 
-  const onFocus = useCallback((ev: ChangeEvent<HTMLInputElement>) => {
+  const handleInputFocus = useCallback((ev: ChangeEvent<HTMLInputElement>) => {
     if (ev.target.value.length > 0) {
-      setOpen(true);
+      setPopupOpen(true);
     }
   }, []);
-
-  const myHeader = () => (
-    <>
-      <CalendarNav />
-      <div className="md-seach-header-bar mbsc-flex-1-0">
-        <Input
-          startIcon="material-search"
-          ref={searchInputRef}
-          onChange={handleInputChange}
-          onFocus={onFocus}
-          inputStyle="box"
-          placeholder="Search events"
-        />
-      </div>
-      <CalendarPrev />
-      <CalendarToday />
-      <CalendarNext />
-    </>
-  );
 
   const handlePageLoading = useCallback((args: MbscPageLoadingEvent) => {
     const start = formatDate('YYYY-MM-DD', args.viewStart!);
@@ -118,45 +76,78 @@ const App: FC = () => {
     });
   }, []);
 
-  const popupClose = useCallback(() => {
-    setOpen(false);
+  const handlePopupClose = useCallback(() => {
+    setPopupOpen(false);
   }, []);
 
-  const eventClick = useCallback((args: MbscEventClickEvent) => {
-    setCurrentDate(args.event.start!);
+  const handleEventClick = useCallback((args: MbscEventClickEvent) => {
     setSelectedEvent([args.event]);
-    setOpen(false);
+    setPopupOpen(false);
+    calInst.current?.navigateToEvent(args.event);
   }, []);
+
+  const searchInputRef = useCallback((input: Input) => {
+    setSearchInput(input && input.nativeElement);
+  }, []);
+
+  const customHeader = useCallback(
+    () => (
+      <>
+        <CalendarNav />
+        <div className="mds-search-bar mbsc-flex-1-0">
+          <Input
+            autoComplete="off"
+            inputStyle="box"
+            placeholder="Search events"
+            startIcon="material-search"
+            ref={searchInputRef}
+            onChange={handleInputChange}
+            onFocus={handleInputFocus}
+          />
+        </div>
+        <CalendarPrev />
+        <CalendarToday />
+        <CalendarNext />
+      </>
+    ),
+    [handleInputChange, handleInputFocus, searchInputRef],
+  );
 
   return (
     <>
       <Eventcalendar
-        className="md-search-events"
+        data={calEvents}
+        ref={calInst}
+        renderHeader={customHeader}
+        selectedEvents={selectedEvent}
         selectMultipleEvents={true}
         view={calView}
-        data={calEvents}
-        selectedDate={currentDate}
-        selectedEvents={mySelectedEvent}
-        renderHeader={myHeader}
         onPageLoading={handlePageLoading}
       />
       <Popup
-        className="md-search-popup"
-        display="anchored"
-        showArrow={false}
-        showOverlay={false}
-        scrollLock={false}
+        anchor={searchInput}
         contentPadding={false}
+        display="anchored"
+        focusElm={searchInput}
         focusOnOpen={false}
         focusOnClose={false}
-        anchor={searchInput}
-        focusElm={searchInput}
-        isOpen={isOpen}
-        onClose={popupClose}
+        isOpen={isPopupOpen}
+        scrollLock={false}
+        showArrow={false}
+        showOverlay={false}
+        width={400}
+        onClose={handlePopupClose}
       >
-        <Eventcalendar className="mbsc-popover-list" view={listView} data={listEvents} showControls={false} onEventClick={eventClick} />
+        <Eventcalendar
+          className="mds-search-results"
+          data={listEvents}
+          showControls={false}
+          view={listView}
+          onEventClick={handleEventClick}
+        />
       </Popup>
     </>
   );
 };
+
 export default App;

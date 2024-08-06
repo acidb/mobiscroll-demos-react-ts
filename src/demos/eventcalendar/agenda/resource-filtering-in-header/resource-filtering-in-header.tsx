@@ -8,8 +8,8 @@ import {
   MbscCalendarEvent,
   MbscEventcalendarView,
   MbscResource,
+  Segmented,
   SegmentedGroup,
-  SegmentedItem,
   setOptions,
   Toast /* localeImport */,
 } from '@mobiscroll/react';
@@ -22,20 +22,14 @@ setOptions({
 });
 
 const App: FC = () => {
-  const [selected, setSelected] = useState<{ [key: number | string]: boolean }>({ 1: true });
-  const [events, setEvents] = useState<MbscCalendarEvent[]>([]);
   const [filteredEvents, setFilteredEvents] = useState<MbscCalendarEvent[]>([]);
+  const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([]);
+  const [selectedResources, setSelectedResources] = useState<{ [key: number | string]: boolean }>({ 1: true });
   const [isToastOpen, setToastOpen] = useState<boolean>(false);
-  const [toastText, setToastText] = useState<string>();
+  const [toastMessage, setToastMessage] = useState<string>();
 
-  const myView = useMemo<MbscEventcalendarView>(
-    () => ({
-      agenda: {
-        type: 'month',
-      },
-    }),
-    [],
-  );
+  const myView = useMemo<MbscEventcalendarView>(() => ({ agenda: { type: 'month' } }), []);
+
   const myResources = useMemo<MbscResource[]>(
     () => [
       {
@@ -43,101 +37,87 @@ const App: FC = () => {
         name: 'Barry',
         color: '#328e39',
         img: 'https://img.mobiscroll.com/demos/m1.png',
-        checked: true,
       },
       {
         id: 2,
         name: 'Hortense',
         color: '#00aabb',
         img: 'https://img.mobiscroll.com/demos/f1.png',
-        checked: false,
       },
       {
         id: 3,
         name: 'Carl',
         color: '#ea72c0',
         img: 'https://img.mobiscroll.com/demos/m2.png',
-        checked: false,
       },
     ],
     [],
   );
 
-  const handleCloseToast = useCallback(() => {
+  const handleToastClose = useCallback(() => {
     setToastOpen(false);
   }, []);
 
-  const filterEvents = useCallback((events: MbscCalendarEvent, selected: { [key: number | string]: boolean }) => {
-    const evs = [];
-    for (let i = 0; i < events.length; ++i) {
-      const item = events[i];
-      if (selected[item.resource]) {
-        evs.push(item);
-      }
-    }
-    setFilteredEvents(evs);
-  }, []);
+  const handleChange = useCallback(
+    (ev: ChangeEvent<HTMLInputElement>) => {
+      const value = +ev.target.value;
+      const checked = ev.target.checked;
+      const resource = myResources.find((r) => r.id === value);
+
+      selectedResources[value] = checked;
+
+      setSelectedResources(selectedResources);
+      setFilteredEvents(myEvents.filter((e) => selectedResources[e.resource as number]));
+      setToastMessage((checked ? 'Showing ' : 'Hiding ') + (resource ? resource.name : '') + ' events');
+      setToastOpen(true);
+    },
+    [myEvents, myResources, selectedResources],
+  );
+
+  const customHeader = useCallback(
+    () => (
+      <>
+        <CalendarNav className="mds-header-filter-nav" />
+        <div className="mds-header-filter mbsc-flex-1-0">
+          <SegmentedGroup select="multiple">
+            {myResources.map((res) => (
+              <Segmented
+                key={res.id}
+                value={res.id}
+                checked={selectedResources[res.id]}
+                className={'mds-header-filter-' + res.id}
+                onChange={handleChange}
+              >
+                <img className="mds-header-filter-img" src={res.img} alt={res.name} />
+                <span className="mds-header-filter-name">{res.name}</span>
+              </Segmented>
+            ))}
+          </SegmentedGroup>
+        </div>
+        <CalendarPrev className="mds-header-filter-prev" />
+        <CalendarToday className="mds-header-filter-today" />
+        <CalendarNext className="mds-header-filter-next" />
+      </>
+    ),
+    [handleChange, myResources, selectedResources],
+  );
 
   useEffect(() => {
     getJson(
       'https://trial.mobiscroll.com/filter-resource-events/',
       (events: MbscCalendarEvent[]) => {
         setEvents(events);
-        filterEvents(events, selected);
+        setFilteredEvents(events.filter((e) => e.resource === 1));
       },
       'jsonp',
     );
-  }, [filterEvents, selected]);
-
-  const filter = (ev: ChangeEvent<HTMLInputElement>) => {
-    const value = ev.target.value;
-    const checked = ev.target.checked;
-
-    selected[value] = checked;
-
-    setSelected(selected);
-
-    filterEvents(events, selected);
-
-    setToastText((checked ? 'Showing ' : 'Hiding ') + document.querySelector('.md-header-filter-name-' + value)!.textContent + ' events');
-    setToastOpen(true);
-  };
-
-  const customWithNavButtons = () => (
-    <>
-      <CalendarNav className="md-header-filter-nav" />
-      <div className="md-header-filter-controls">
-        <SegmentedGroup select="multiple">
-          {myResources.map((res: MbscResource) => (
-            <SegmentedItem key={res.id} value={res.id} checked={selected[res.id]} onChange={filter}>
-              <img className="md-header-filter-img" src={res.img} alt={res.name} />
-              <span className={'md-header-filter-name md-header-filter-name-' + res.id}>{res.name}</span>
-            </SegmentedItem>
-          ))}
-        </SegmentedGroup>
-      </div>
-      <CalendarPrev className="md-header-filter-prev" />
-      <CalendarToday />
-      <CalendarNext className="md-header-filter-next" />
-    </>
-  );
+  }, []);
 
   return (
-    <div>
-      <Eventcalendar
-        renderHeader={customWithNavButtons}
-        view={myView}
-        resources={myResources}
-        data={filteredEvents}
-        cssClass="md-custom-header-filtering"
-      />
-      <Toast
-        // theme
-        message={toastText}
-        isOpen={isToastOpen}
-        onClose={handleCloseToast}
-      />
-    </div>
+    <>
+      <Eventcalendar data={filteredEvents} renderHeader={customHeader} resources={myResources} view={myView} />
+      <Toast message={toastMessage} isOpen={isToastOpen} onClose={handleToastClose} />
+    </>
   );
 };
 
