@@ -255,7 +255,7 @@ const App: FC = () => {
 
   const handleEventClick = useCallback(
     (args: MbscEventClickEvent) => {
-      const resource: MbscResource = myResources.find((r) => r.id === args.event.resource)!;
+      const resource = args.resourceObj!;
       setEdit(true);
       setTempEvent({ ...args.event });
       setSelectedColor(args.event.color || resource.color);
@@ -269,7 +269,7 @@ const App: FC = () => {
 
   const handleEventCreated = useCallback(
     (args: MbscEventCreatedEvent) => {
-      const resource: MbscResource = myResources.find((r) => r.id === args.event.resource)!;
+      const resource = args.resourceObj!;
       setEdit(false);
       setTempEvent(args.event);
       setSelectedColor(resource.color);

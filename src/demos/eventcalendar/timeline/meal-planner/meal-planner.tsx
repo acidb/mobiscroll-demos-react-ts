@@ -175,7 +175,7 @@ const App: FC = () => {
   const handleEventCreated = useCallback(
     (args: MbscEventCreateEvent) => {
       const event = args.event;
-      const resource = types.find((obj) => obj.id === event.resource)!;
+      const resource = args.resourceObj!;
       setHeader(
         '<div>' +
           resource.name +

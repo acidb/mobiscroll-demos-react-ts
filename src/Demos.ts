@@ -88,6 +88,7 @@ import Demo576 from './demos/datepicker/range/rtl-right-to-left/rtl-right-to-lef
 import Demo518 from './demos/eventcalendar/agenda/daily-agenda-with-week-calendar/daily-agenda-with-week-calendar';
 import Demo573 from './demos/eventcalendar/agenda/basic-usage/basic-usage';
 import Demo501 from './demos/eventcalendar/agenda/daily-weekly-monthly-annual-agenda/daily-weekly-monthly-annual-agenda';
+import Demo753 from './demos/eventcalendar/agenda/show-empty-days/show-empty-days';
 import Demo662 from './demos/eventcalendar/agenda/printing-the-view/printing-the-view';
 import Demo596 from './demos/eventcalendar/agenda/custom-event-sort/custom-event-sort';
 import Demo611 from './demos/eventcalendar/agenda/setting-the-timezone/setting-the-timezone';
@@ -95,7 +96,7 @@ import Demo711 from './demos/eventcalendar/agenda/searching-events-in-popup/sear
 import Demo742 from './demos/eventcalendar/agenda/navigate-from-external-calendar/navigate-from-external-calendar';
 import Demo506 from './demos/eventcalendar/agenda/event-content-customization/event-content-customization';
 import Demo508 from './demos/eventcalendar/agenda/full-event-customization/full-event-customization';
-import Demo514 from './demos/eventcalendar/agenda/customizing-header/customizing-header';
+import Demo514 from './demos/eventcalendar/agenda/customizing-calendar-header/customizing-calendar-header';
 import Demo657 from './demos/eventcalendar/agenda/custom-event-tooltip/custom-event-tooltip';
 import Demo730 from './demos/eventcalendar/agenda/empty-state/empty-state';
 import Demo512 from './demos/eventcalendar/agenda/resource-filtering-in-header/resource-filtering-in-header';
@@ -117,6 +118,7 @@ import Demo349 from './demos/eventcalendar/calendar-view/mobile-month-view/mobil
 import Demo346 from './demos/eventcalendar/calendar-view/desktop-month-view/desktop-month-view';
 import Demo442 from './demos/eventcalendar/calendar-view/responsive-month-view/responsive-month-view';
 import Demo661 from './demos/eventcalendar/calendar-view/printing-the-view/printing-the-view';
+import Demo752 from './demos/eventcalendar/calendar-view/property-booking-calendar/property-booking-calendar';
 import Demo447 from './demos/eventcalendar/calendar-view/event-labels/event-labels';
 import Demo443 from './demos/eventcalendar/calendar-view/event-popover/event-popover';
 import Demo595 from './demos/eventcalendar/calendar-view/custom-event-sort/custom-event-sort';
@@ -569,6 +571,7 @@ export const demos = [
               { name: 'Compact daily schedule', unique: 'daily-agenda-with-week-calendar', component: Demo518 },
               { name: 'How to initialize', unique: 'basic-usage', component: Demo573 },
               { name: 'Customize the range', unique: 'daily-weekly-monthly-annual-agenda', component: Demo501 },
+              { name: 'Show empty days', unique: 'show-empty-days', component: Demo753 },
               { name: 'Print mode', unique: 'printing-the-view', component: Demo662 },
             ],
           },
@@ -588,7 +591,7 @@ export const demos = [
             items: [
               { name: 'Content customization', unique: 'event-content-customization', component: Demo506 },
               { name: 'Full event customization', unique: 'full-event-customization', component: Demo508 },
-              { name: 'Customizing the header', unique: 'customizing-header', component: Demo514 },
+              { name: 'Customizing the calendar header', unique: 'customizing-calendar-header', component: Demo514 },
               { name: 'Custom event tooltip', unique: 'custom-event-tooltip', component: Demo657 },
               { name: 'Empty state', unique: 'empty-state', component: Demo730 },
             ],
@@ -664,6 +667,13 @@ export const demos = [
               { name: 'Desktop month view', unique: 'desktop-month-view', component: Demo346 },
               { name: 'Responsive', unique: 'responsive-month-view', component: Demo442 },
               { name: 'Print mode', unique: 'printing-the-view', component: Demo661 },
+            ],
+          },
+          {
+            name: 'Common use cases',
+            unique: 20,
+            items: [
+              { name: 'Reservation calendar', unique: 'property-booking-calendar', component: Demo752 },
             ],
           },
           {

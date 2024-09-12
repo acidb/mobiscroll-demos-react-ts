@@ -481,7 +481,7 @@ function App() {
 
   const openTooltip = useCallback((args: MbscEventClickEvent) => {
     const event: MbscCalendarEvent = args.event;
-    const doctor = doctors.find((dr) => dr.id === event.resource)!;
+    const doctor = args.resourceObj!;
     const time = formatDate('hh:mm A', new Date(event.start! as string)) + ' - ' + formatDate('hh:mm A', new Date(event.end! as string));
 
     if (timer.current) {

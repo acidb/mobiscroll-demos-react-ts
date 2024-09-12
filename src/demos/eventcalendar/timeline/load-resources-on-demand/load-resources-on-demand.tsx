@@ -157,28 +157,9 @@ const App: FC = () => {
     },
   ]);
 
-  const getResourceById: (resources: MbscResource[], resourceId: string) => MbscResource | undefined = useCallback(
-    (resources: MbscResource[], resourceId: string) => {
-      for (let i = 0; i < resources.length; i++) {
-        const resource: MbscResource = resources[i];
-        if (resource.id === resourceId) {
-          return resource;
-        } else {
-          if (resource.children) {
-            const child: MbscResource | undefined = getResourceById(resource.children, resourceId);
-            if (child) {
-              return child;
-            }
-          }
-        }
-      }
-    },
-    [],
-  );
-
   const loadChildResources = useCallback(
     (args: MbscResourceExpandEvent) => {
-      const resource = getResourceById(myResources, args.resource as string);
+      const resource = args.resourceObj!;
 
       if (!resource!.loaded) {
         getJson(
@@ -197,7 +178,7 @@ const App: FC = () => {
         );
       }
     },
-    [getResourceById, myEvents, myResources],
+    [myEvents, myResources],
   );
 
   const handleCloseToast = useCallback(() => {

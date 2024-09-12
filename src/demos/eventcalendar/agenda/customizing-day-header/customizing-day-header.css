@@ -1,0 +1,11 @@
+.mds-custom-day-header .mbsc-event-day.mbsc-windows {
+  padding: 8px 24px;
+}
+
+.mds-custom-day-header-btn.mbsc-button {
+  height: 24px;
+  line-height: 24px;
+  font-size: 12px;
+  border-radius: 12px;
+  margin: 0;
+}
