@@ -1,0 +1,18 @@
+.mds-tooltip-event-title-cont {
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.mds-tooltip-start-cont,
+.mds-tooltip-end-cont {
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 14px;
+  padding: 5px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.mds-tooltip-label {
+  font-weight: 600;
+}
