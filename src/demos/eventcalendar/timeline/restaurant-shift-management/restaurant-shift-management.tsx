@@ -1925,7 +1925,7 @@ function App() {
       for (let j = 0; j < myResources[i].children!.length; ++j) {
         const employee = myResources[i].children![j];
         if (employee.id === event.resource) {
-          return employee.name!.substr(0, employee.name!.indexOf(' '));
+          return employee.name!.substring(0, employee.name!.indexOf(' '));
         }
       }
     }

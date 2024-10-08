@@ -13,7 +13,6 @@ import {
   MbscEventCreatedEvent,
   MbscEventDeletedEvent,
   MbscPopupButton,
-  MbscResource,
   Popup,
   SegmentedGroup,
   SegmentedItem,

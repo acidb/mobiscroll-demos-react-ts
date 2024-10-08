@@ -8,6 +8,7 @@ module.exports = {
   rules: {
     'arrow-body-style': ['warn', 'as-needed'],
     'import/order': ['warn', { alphabetize: { order: 'asc', caseInsensitive: true } }],
+    'no-var': 'warn',
     'prefer-arrow-callback': 'warn',
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     'sort-imports': ['warn', { ignoreCase: true, ignoreDeclarationSort: true }],
