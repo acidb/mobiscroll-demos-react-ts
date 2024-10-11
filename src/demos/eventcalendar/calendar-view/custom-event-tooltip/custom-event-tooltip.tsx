@@ -301,7 +301,7 @@ function App() {
     setAppointmentTime(time);
     setAppointmentReason(event.reason);
     setTooltipColor(event.color!);
-    setTooltipAnchor(args.domEvent.target.closest('.mbsc-calendar-label'));
+    setTooltipAnchor(args.domEvent.target);
     setTooltipOpen(true);
   }, []);
 
