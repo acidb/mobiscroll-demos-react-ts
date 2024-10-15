@@ -9,26 +9,9 @@ setOptions({
 const App: FC = () => {
   const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([]);
 
-  const dayView = useMemo<MbscEventcalendarView>(
-    () => ({
-      agenda: { type: 'day' },
-    }),
-    [],
-  );
-
-  const weekView = useMemo<MbscEventcalendarView>(
-    () => ({
-      agenda: { type: 'week' },
-    }),
-    [],
-  );
-
-  const monthView = useMemo<MbscEventcalendarView>(
-    () => ({
-      agenda: { type: 'month' },
-    }),
-    [],
-  );
+  const dayView = useMemo<MbscEventcalendarView>(() => ({ agenda: { type: 'day' } }), []);
+  const weekView = useMemo<MbscEventcalendarView>(() => ({ agenda: { type: 'week' } }), []);
+  const monthView = useMemo<MbscEventcalendarView>(() => ({ agenda: { type: 'month' } }), []);
 
   useEffect(() => {
     getJson(
@@ -46,19 +29,19 @@ const App: FC = () => {
         <div className="mbsc-row">
           <div className="mbsc-col-sm-12 mbsc-col-md-4">
             <div className="mbsc-form-group">
-              <div className="mbsc-form-group-title">Daily schedule</div>
+              <div className="mbsc-form-group-title">Daily agenda</div>
               <Eventcalendar view={dayView} data={myEvents} />
             </div>
           </div>
           <div className="mbsc-col-sm-12 mbsc-col-md-4">
             <div className="mbsc-form-group">
-              <div className="mbsc-form-group-title">Weekly schedule</div>
+              <div className="mbsc-form-group-title">Weekly agenda</div>
               <Eventcalendar view={weekView} data={myEvents} />
             </div>
           </div>
           <div className="mbsc-col-sm-12 mbsc-col-md-4">
             <div className="mbsc-form-group">
-              <div className="mbsc-form-group-title">Monthly schedule</div>
+              <div className="mbsc-form-group-title">Monthly agenda</div>
               <Eventcalendar view={monthView} data={myEvents} />
             </div>
           </div>

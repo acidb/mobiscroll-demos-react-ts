@@ -32,24 +32,9 @@ const App: FC = () => {
 
   const myResources = useMemo<MbscResource[]>(
     () => [
-      {
-        id: 1,
-        name: 'Barry',
-        color: '#328e39',
-        img: 'https://img.mobiscroll.com/demos/m1.png',
-      },
-      {
-        id: 2,
-        name: 'Hortense',
-        color: '#00aabb',
-        img: 'https://img.mobiscroll.com/demos/f1.png',
-      },
-      {
-        id: 3,
-        name: 'Carl',
-        color: '#ea72c0',
-        img: 'https://img.mobiscroll.com/demos/m2.png',
-      },
+      { id: 1, name: 'Barry', color: '#328e39', img: 'https://img.mobiscroll.com/demos/m1.png' },
+      { id: 2, name: 'Hortense', color: '#00aabb', img: 'https://img.mobiscroll.com/demos/f1.png' },
+      { id: 3, name: 'Carl', color: '#ea72c0', img: 'https://img.mobiscroll.com/demos/m2.png' },
     ],
     [],
   );

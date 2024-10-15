@@ -8,12 +8,12 @@ import {
   MbscCalendarEvent,
   MbscEventcalendarView,
   MbscPageLoadingEvent,
+  Segmented,
   SegmentedGroup,
-  SegmentedItem,
   setOptions,
   Toast /* localeImport */,
 } from '@mobiscroll/react';
-import { ChangeEvent, FC, SetStateAction, useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FC, useCallback, useEffect, useRef, useState } from 'react';
 import './load-events-from-google-calendar.css';
 
 setOptions({
@@ -24,20 +24,20 @@ setOptions({
 const CALENDAR_ID = 'theacidmedia.net_8l6v679q5j2f7q8lpmcjr4mm3k@group.calendar.google.com';
 
 const App: FC = () => {
-  const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([]);
+  const [currentView, setCurrentView] = useState<string>('agenda');
   const [isLoading, setLoading] = useState<boolean>(false);
   const [isToastOpen, setToastOpen] = useState<boolean>(false);
-  const [toastMessage, setToastMessage] = useState<string>('');
-  const [view, setView] = useState<string>('agenda');
+  const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([]);
   const [myView, setMyView] = useState<MbscEventcalendarView>({
     calendar: { type: 'week' },
     agenda: { type: 'week' },
   });
+  const [toastMessage, setToastMessage] = useState<string>('');
 
   const firstDay = useRef<Date>();
   const lastDay = useRef<Date>();
 
-  const onError = useCallback((resp: { error: SetStateAction<string>; result: { error: { message: SetStateAction<string> } } }) => {
+  const handleError = useCallback((resp: { error: string; result: { error: { message: string } } }) => {
     setToastMessage(resp.error ? resp.error : resp.result.error.message);
     setToastOpen(true);
   }, []);
@@ -48,75 +48,44 @@ const App: FC = () => {
     });
     googleCalendarSync
       .getEvents(CALENDAR_ID, firstDay.current!, lastDay.current!)
-      .then((resp) => {
+      .then((resp: MbscCalendarEvent[]) => {
         setLoading(false);
         setEvents(resp);
       })
-      .catch(onError);
-  }, [firstDay, lastDay, onError]);
+      .catch(handleError);
+  }, [firstDay, lastDay, handleError]);
 
   const changeView = (event: ChangeEvent<HTMLInputElement>) => {
-    let calView: MbscEventcalendarView;
+    let view: MbscEventcalendarView;
 
     switch (event.target.value) {
       case 'month':
-        calView = {
-          calendar: { labels: true },
+        view = {
+          calendar: { type: 'month' },
         };
         break;
       case 'week':
-        calView = {
+        view = {
           schedule: { type: 'week' },
         };
         break;
       case 'day':
-        calView = {
+        view = {
           schedule: { type: 'day' },
         };
         break;
       case 'agenda':
       default:
-        calView = {
+        view = {
           calendar: { type: 'week' },
           agenda: { type: 'week' },
         };
         break;
     }
 
-    setView(event.target.value);
-    setMyView(calView);
+    setCurrentView(event.target.value);
+    setMyView(view);
   };
-
-  const customWithNavButtons = () => (
-    <>
-      <CalendarNav className="google-cal-header-nav" />
-      <div className="md-spinner">
-        <div className="md-spinner-blade"></div>
-        <div className="md-spinner-blade"></div>
-        <div className="md-spinner-blade"></div>
-        <div className="md-spinner-blade"></div>
-        <div className="md-spinner-blade"></div>
-        <div className="md-spinner-blade"></div>
-        <div className="md-spinner-blade"></div>
-        <div className="md-spinner-blade"></div>
-        <div className="md-spinner-blade"></div>
-        <div className="md-spinner-blade"></div>
-        <div className="md-spinner-blade"></div>
-        <div className="md-spinner-blade"></div>
-      </div>
-      <div className="google-cal-header-picker">
-        <SegmentedGroup value={view} onChange={changeView}>
-          <SegmentedItem value="month">Month</SegmentedItem>
-          <SegmentedItem value="week">Week</SegmentedItem>
-          <SegmentedItem value="day">Day</SegmentedItem>
-          <SegmentedItem value="agenda">Agenda</SegmentedItem>
-        </SegmentedGroup>
-      </div>
-      <CalendarPrev className="google-cal-header-prev" />
-      <CalendarToday className="google-cal-header-today" />
-      <CalendarNext className="google-cal-header-next" />
-    </>
-  );
 
   const handlePageLoading = useCallback(
     (event: MbscPageLoadingEvent) => {
@@ -125,7 +94,7 @@ const App: FC = () => {
 
       // Calculate dates
       // (pre-load events for previous and next pages as well)
-      if (view === 'month') {
+      if (currentView === 'month') {
         firstDay.current = start;
         lastDay.current = end;
       } else {
@@ -135,12 +104,30 @@ const App: FC = () => {
 
       loadEvents();
     },
-    [loadEvents, view],
+    [loadEvents, currentView],
   );
 
   const handleCloseToast = useCallback(() => {
     setToastOpen(false);
   }, []);
+
+  const customHeader = () => (
+    <>
+      <CalendarNav className="mds-google-cal-nav" />
+      <div className={'mds-loader' + (isLoading ? ' mds-loader-visible' : '')}></div>
+      <div className="mds-google-cal-switch mbsc-flex-1-0">
+        <SegmentedGroup value={currentView} onChange={changeView}>
+          <Segmented value="month">Month</Segmented>
+          <Segmented value="week">Week</Segmented>
+          <Segmented value="day">Day</Segmented>
+          <Segmented value="agenda">Agenda</Segmented>
+        </SegmentedGroup>
+      </div>
+      <CalendarPrev className="mds-google-cal-prev" />
+      <CalendarToday className="mds-google-cal-today" />
+      <CalendarNext className="mds-google-cal-next" />
+    </>
+  );
 
   useEffect(() => {
     googleCalendarSync.init({
@@ -151,14 +138,7 @@ const App: FC = () => {
 
   return (
     <>
-      <Eventcalendar
-        className={'md-google-calendar ' + (isLoading ? 'md-loading-events' : '')}
-        exclusiveEndDates={true}
-        view={myView}
-        data={myEvents}
-        onPageLoading={handlePageLoading}
-        renderHeader={customWithNavButtons}
-      />
+      <Eventcalendar data={myEvents} exclusiveEndDates={true} renderHeader={customHeader} view={myView} onPageLoading={handlePageLoading} />
       <Toast isOpen={isToastOpen} message={toastMessage} onClose={handleCloseToast} />
     </>
   );

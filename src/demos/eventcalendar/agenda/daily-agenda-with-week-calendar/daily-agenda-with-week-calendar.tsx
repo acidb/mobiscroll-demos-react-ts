@@ -17,16 +17,7 @@ setOptions({
 const App: FC = () => {
   const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([]);
   const [isToastOpen, setToastOpen] = useState<boolean>(false);
-  const [toastText, setToastText] = useState<string>();
-
-  const handleCloseToast = useCallback(() => {
-    setToastOpen(false);
-  }, []);
-
-  const handleEventClick = useCallback((args: MbscEventClickEvent) => {
-    setToastText(args.event.title);
-    setToastOpen(true);
-  }, []);
+  const [toastMessage, setToastMessage] = useState<string>();
 
   const myView = useMemo<MbscEventcalendarView>(
     () => ({
@@ -35,6 +26,15 @@ const App: FC = () => {
     }),
     [],
   );
+
+  const handleCloseToast = useCallback(() => {
+    setToastOpen(false);
+  }, []);
+
+  const handleEventClick = useCallback((args: MbscEventClickEvent) => {
+    setToastMessage(args.event.title);
+    setToastOpen(true);
+  }, []);
 
   useEffect(() => {
     getJson(
@@ -47,10 +47,10 @@ const App: FC = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <Eventcalendar data={myEvents} view={myView} onEventClick={handleEventClick} />
-      <Toast message={toastText} isOpen={isToastOpen} onClose={handleCloseToast} />
-    </div>
+      <Toast message={toastMessage} isOpen={isToastOpen} onClose={handleCloseToast} />
+    </>
   );
 };
 export default App;

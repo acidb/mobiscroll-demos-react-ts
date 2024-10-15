@@ -37,13 +37,13 @@ const App: FC = () => {
   }, []);
 
   const addEvent = useCallback(() => {
-    const newEvent = {
-      // base properties
+    const newEvent: MbscCalendarEvent = {
+      // Base properties
       title: 'Product planning',
       color: '#56ca70',
       start: new Date(2018, 11, 21, 13),
       end: new Date(2018, 11, 21, 14),
-      // add any property you'd like
+      // Add any property you'd like
       busy: true,
       description: 'Weekly meeting with team',
       location: 'Office',

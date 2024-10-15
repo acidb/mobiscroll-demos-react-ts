@@ -23,48 +23,52 @@ setOptions({
 });
 
 const App: FC = () => {
-  const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([]);
-  const [myCalendars, setCalendars] = useState<Array<{ summary: string; id: number }>>([]);
-  const [calendarIds, setCalendarIds] = useState<string[]>([]);
   const [calendarData, setCalendarData] = useState<{ [key: string]: { checked: boolean } }>({});
+  const [calendarIds, setCalendarIds] = useState<string[]>([]);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [isLoading, setLoading] = useState<boolean>(false);
-  const [isOpen, setOpen] = useState<boolean>(false);
-  const [myAnchor, setAnchor] = useState<HTMLElement>();
-  const [mySelectedDate, setSelectedDate] = useState(new Date());
+  const [isPopupOpen, setPopupOpen] = useState<boolean>(false);
   const [isToastOpen, setToastOpen] = useState<boolean>(false);
+  const [myAnchor, setAnchor] = useState<HTMLElement>();
+  const [myCalendars, setCalendars] = useState<Array<{ summary: string; id: string }>>([]);
+  const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([]);
+  const [mySelectedDate, setSelectedDate] = useState(new Date());
   const [toastMessage, setToastMessage] = useState<string>('');
 
   const { current: view } = useRef<MbscEventcalendarView>({ agenda: { type: 'month' } });
   const buttonRef = useRef<Button>(null);
-  const debounce = useRef<ReturnType<typeof setTimeout>>();
   const startDate = useRef<Date>();
   const endDate = useRef<Date>();
+  const timer = useRef<ReturnType<typeof setTimeout>>();
 
   const handleError = useCallback((resp: { error?: string; result: { error: { message: string } } }) => {
     setToastMessage(resp.error ? resp.error : resp.result.error.message);
     setToastOpen(true);
   }, []);
 
-  const handleCloseToast = useCallback(() => {
+  const handleToastClose = useCallback(() => {
     setToastOpen(false);
   }, []);
 
-  const popupClose = useCallback(() => {
-    setOpen(false);
+  const handlePopupClose = useCallback(() => {
+    setPopupOpen(false);
+  }, []);
+
+  const handleSelectedDateChange = useCallback((event: MbscSelectedDateChangeEvent) => {
+    setSelectedDate(new Date(event.date as string));
   }, []);
 
   const handlePageLoading = useCallback(
     (args: MbscPageLoadingEvent) => {
-      clearTimeout(debounce.current);
+      clearTimeout(timer.current);
       startDate.current = args.viewStart;
       endDate.current = args.viewEnd;
-      debounce.current = setTimeout(() => {
+      timer.current = setTimeout(() => {
         if (googleCalendarSync.isSignedIn()) {
           setLoading(true);
           googleCalendarSync
             .getEvents(calendarIds, startDate.current!, endDate.current!)
-            .then((resp) => {
+            .then((resp: MbscCalendarEvent[]) => {
               setEvents(resp);
               setLoading(false);
             })
@@ -74,27 +78,6 @@ const App: FC = () => {
     },
     [calendarIds, handleError],
   );
-
-  const openPopup = useCallback(() => {
-    setAnchor(buttonRef.current!.nativeElement);
-    setOpen(true);
-  }, []);
-
-  const navigate = useCallback(() => {
-    setSelectedDate(new Date());
-  }, []);
-
-  const handleSelectedDateChange = useCallback((event: MbscSelectedDateChangeEvent) => {
-    setSelectedDate(new Date(event.date as string));
-  }, []);
-
-  const signIn = useCallback(() => {
-    googleCalendarSync.signIn().catch(handleError);
-  }, [handleError]);
-
-  const signOut = useCallback(() => {
-    googleCalendarSync.signOut().catch(handleError);
-  }, [handleError]);
 
   const toggleCalendar = useCallback(
     (ev: ChangeEvent<HTMLInputElement>) => {
@@ -108,7 +91,7 @@ const App: FC = () => {
         setCalendarIds((calIds) => [...calIds, calendarId]);
         googleCalendarSync
           .getEvents([calendarId], startDate.current!, endDate.current!)
-          .then((events) => {
+          .then((events: MbscCalendarEvent[]) => {
             setLoading(false);
             setEvents((oldEvents) => [...oldEvents, ...events]);
           })
@@ -121,18 +104,35 @@ const App: FC = () => {
     [calendarData, handleError],
   );
 
-  const renderMyHeader = useCallback(
+  const openPopup = useCallback(() => {
+    setAnchor(buttonRef.current!.nativeElement);
+    setPopupOpen(true);
+  }, []);
+
+  const navigate = useCallback(() => {
+    setSelectedDate(new Date());
+  }, []);
+
+  const signIn = useCallback(() => {
+    googleCalendarSync.signIn().catch(handleError);
+  }, [handleError]);
+
+  const signOut = useCallback(() => {
+    googleCalendarSync.signOut().catch(handleError);
+  }, [handleError]);
+
+  const customHeader = useCallback(
     () => (
       <>
         <CalendarNav />
-        <div className="md-loader"></div>
+        <div className={'mds-loader' + (isLoading ? ' mds-loader-visible' : '')}></div>
         <div className="mbsc-flex mbsc-flex-1-0 mbsc-justify-content-end">
           {isLoggedIn ? (
             <Button ref={buttonRef} onClick={openPopup}>
               My Calendars
             </Button>
           ) : (
-            <Button onClick={signIn}>Sync my google calendars</Button>
+            <Button onClick={signIn}>Sync my Google calendars</Button>
           )}
           <Button onClick={navigate}>Today</Button>
         </div>
@@ -140,7 +140,7 @@ const App: FC = () => {
         <CalendarNext />
       </>
     ),
-    [isLoggedIn, navigate, openPopup, signIn],
+    [isLoading, isLoggedIn, navigate, openPopup, signIn],
   );
 
   useEffect(() => {
@@ -148,24 +148,24 @@ const App: FC = () => {
       setIsLoggedIn(true);
       googleCalendarSync
         .getCalendars()
-        .then((calendars) => {
+        .then((calendars: { summary: string; id: string; primary: boolean }[]) => {
           const newCalendarIds: string[] = [];
-          const calData: { [key: string]: { checked: boolean } } = {};
+          const newCalendarData: { [key: string]: { checked: boolean } } = {};
 
-          calendars.sort((c: { primary: boolean }) => (c.primary ? -1 : 1));
+          calendars.sort((c) => (c.primary ? -1 : 1));
 
           for (const c of calendars) {
             newCalendarIds.push(c.id);
-            calData[c.id] = { checked: true };
+            newCalendarData[c.id] = { checked: true };
           }
 
           setCalendarIds(newCalendarIds);
-          setCalendarData(calData);
+          setCalendarData(newCalendarData);
           setCalendars(calendars);
           setLoading(true);
           return googleCalendarSync.getEvents(newCalendarIds, startDate.current!, endDate.current!);
         })
-        .then((events) => {
+        .then((events: MbscCalendarEvent[]) => {
           setEvents(events);
           setLoading(false);
         })
@@ -178,7 +178,7 @@ const App: FC = () => {
       setCalendarIds([]);
       setCalendarData({});
       setEvents([]);
-      setOpen(false);
+      setPopupOpen(false);
     };
 
     // Init Google client
@@ -193,25 +193,24 @@ const App: FC = () => {
   return (
     <>
       <Eventcalendar
-        cssClass={isLoading ? 'md-loading-events' : ''}
-        view={view}
         data={myEvents}
         exclusiveEndDates={true}
+        renderHeader={customHeader}
         selectedDate={mySelectedDate}
-        renderHeader={renderMyHeader}
+        view={view}
         onPageLoading={handlePageLoading}
         onSelectedDateChange={handleSelectedDateChange}
       ></Eventcalendar>
       <Popup
-        isOpen={isOpen}
         anchor={myAnchor}
-        onClose={popupClose}
-        width={400}
-        touchUi={false}
-        showOverlay={false}
-        scrollLock={false}
         contentPadding={false}
         display="anchored"
+        isOpen={isPopupOpen}
+        scrollLock={false}
+        showOverlay={false}
+        touchUi={false}
+        width={400}
+        onClose={handlePopupClose}
       >
         <div className="mbsc-form-group-inset">
           <div className="mbsc-form-group-title">My Calendars</div>
@@ -225,7 +224,7 @@ const App: FC = () => {
           </Button>
         </div>
       </Popup>
-      <Toast isOpen={isToastOpen} message={toastMessage} onClose={handleCloseToast} />
+      <Toast isOpen={isToastOpen} message={toastMessage} onClose={handleToastClose} />
     </>
   );
 };

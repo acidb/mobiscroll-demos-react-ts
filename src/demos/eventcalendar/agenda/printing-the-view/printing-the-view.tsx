@@ -9,6 +9,7 @@ import {
   setOptions /* localeImport */,
 } from '@mobiscroll/react';
 import { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import './printing-the-view.css';
 
 const MY_MODULES = [print];
 
@@ -18,15 +19,10 @@ setOptions({
 });
 
 const App: FC = () => {
-  const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([]);
   const [inst, setInst] = useState<Eventcalendar | null>(null);
+  const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([]);
 
-  const myView = useMemo<MbscEventcalendarView>(
-    () => ({
-      agenda: { type: 'month' },
-    }),
-    [],
-  );
+  const myView = useMemo<MbscEventcalendarView>(() => ({ agenda: { type: 'month' } }), []);
 
   const printView = useCallback(() => {
     inst!.print();
@@ -43,9 +39,17 @@ const App: FC = () => {
   }, []);
 
   return (
-    <Page>
-      <Button onClick={printView}>Print agenda</Button>
-      <Eventcalendar data={myEvents} view={myView} ref={setInst} modules={MY_MODULES} />
+    <Page className="mds-full-height">
+      <div className="mds-full-height mbsc-flex-col">
+        <div className="mbsc-flex-none">
+          <Button onClick={printView} startIcon="print">
+            Print agenda
+          </Button>
+        </div>
+        <div className="mds-overflow-hidden mbsc-flex-1-1">
+          <Eventcalendar data={myEvents} modules={MY_MODULES} ref={setInst} view={myView} />
+        </div>
+      </div>
     </Page>
   );
 };

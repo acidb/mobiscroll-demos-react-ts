@@ -21,12 +21,8 @@ const App: FC = () => {
 
   const myView = useMemo<MbscEventcalendarView>(
     () => ({
-      calendar: {
-        type: 'week',
-      },
-      agenda: {
-        type: 'day',
-      },
+      calendar: { type: 'week' },
+      agenda: { type: 'day' },
     }),
     [],
   );
@@ -54,13 +50,13 @@ const App: FC = () => {
           <div className="mbsc-col-sm-12 mbsc-col-md-4">
             <div className="mbsc-form-group">
               <div className="mbsc-form-group-title">Jalali calendar</div>
-              <Eventcalendar data={myEvents} view={myView} calendarSystem={jalaliCalendar} locale={localeFa} />
+              <Eventcalendar data={myEvents} calendarSystem={jalaliCalendar} locale={localeFa} view={myView} />
             </div>
           </div>
           <div className="mbsc-col-sm-12 mbsc-col-md-4">
             <div className="mbsc-form-group">
               <div className="mbsc-form-group-title">Hijri calendar</div>
-              <Eventcalendar data={myEvents} view={myView} calendarSystem={hijriCalendar} locale={localeAr} />
+              <Eventcalendar data={myEvents} calendarSystem={hijriCalendar} locale={localeAr} view={myView} />
             </div>
           </div>
         </div>

@@ -10,12 +10,7 @@ setOptions({
 const App: FC = () => {
   const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([]);
 
-  const myView = useMemo<MbscEventcalendarView>(
-    () => ({
-      agenda: { type: 'month' },
-    }),
-    [],
-  );
+  const myView = useMemo<MbscEventcalendarView>(() => ({ agenda: { type: 'month' } }), []);
 
   useEffect(() => {
     getJson(
@@ -27,6 +22,7 @@ const App: FC = () => {
     );
   }, []);
 
-  return <Eventcalendar height={600} data={myEvents} view={myView} />;
+  return <Eventcalendar data={myEvents} view={myView} />;
 };
+
 export default App;

@@ -1,24 +1,20 @@
-.md-custom-event-img {
+.mds-agenda-event-content {
+  padding: 8px 0;
+  font-size: 13px;
+}
+
+.mds-agenda-event-avatar {
   width: 30px;
   height: 30px;
   margin-right: 10px;
 }
 
-.md-custom-event-cont {
-  display: flex;
-  align-items: center;
-  padding-top: 10px;
-  font-size: 13px;
-}
-
-.md-custom-event-btn,
-.md-custom-event-btn.mbsc-button {
-  position: absolute;
-  right: 10px;
-  bottom: 8px;
+.mds-agenda-event-btn.mbsc-button {
   line-height: 20px;
 }
 
-.md-custom-event .mbsc-material.mbsc-event-time {
-  margin-top: 5px;
+.mds-agenda-event-btn.mbsc-ios {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
 }

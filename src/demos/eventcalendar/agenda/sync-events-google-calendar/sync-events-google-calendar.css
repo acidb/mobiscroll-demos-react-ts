@@ -1,4 +1,4 @@
-.md-loader {
+.mds-loader {
   width: 32px;
   height: 32px;
   border: 4px solid #8c8c8c;
@@ -6,15 +6,15 @@
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
-  animation: rotation 1s linear infinite;
+  animation: mds-loader-rotation 1s linear infinite;
   visibility: hidden;
 }
 
-.md-loading-events .md-loader {
+.mds-loader-visible {
   visibility: visible;
 }
 
-@keyframes rotation {
+@keyframes mds-loader-rotation {
   0% {
     transform: rotate(0deg);
   }

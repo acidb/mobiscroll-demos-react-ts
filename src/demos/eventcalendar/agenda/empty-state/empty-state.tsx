@@ -1,5 +1,6 @@
 import { Button, Eventcalendar, MbscCalendarEvent, MbscEventcalendarView, setOptions, Toast /* localeImport */ } from '@mobiscroll/react';
 import { FC, useCallback, useMemo, useState } from 'react';
+import './empty-state.css';
 
 setOptions({
   // localeJs,
@@ -35,7 +36,7 @@ const App: FC = () => {
     [],
   );
 
-  const calView = useMemo<MbscEventcalendarView>(
+  const myView = useMemo<MbscEventcalendarView>(
     () => ({
       calendar: { type: 'week' },
       agenda: { type: 'week' },
@@ -43,35 +44,35 @@ const App: FC = () => {
     [],
   );
 
-  const displayToast = useCallback(() => {
+  const handleButtonClick = useCallback(() => {
     setToastOpen(true);
   }, []);
 
-  const handleCloseToast = useCallback(() => {
+  const handleToastClose = useCallback(() => {
     setToastOpen(false);
   }, []);
 
   const customAgendaEmpty = useCallback(
     () => (
       <div className="mbsc-align-center mbsc-padding">
-        <img src="https://img.mobiscroll.com/demos/smart-empty-tin-can.png" alt="Empty can" style={{ width: 150, margin: '50px 0' }} />
+        <img className="mds-empty-img" src="https://img.mobiscroll.com/demos/smart-empty-tin-can.png" alt="Empty can" />
         <div className="mbsc-margin mbsc-medium mbsc-italic mbsc-txt-muted">Looks like this can is empty</div>
-        <Button color="primary" variant="outline" onClick={displayToast}>
+        <Button color="primary" variant="outline" onClick={handleButtonClick}>
           Add something to it
         </Button>
-        <div className="mbsc-txt-xs" style={{ paddingTop: 150 }}>
+        <div className="mds-empty-txt mbsc-txt-xs">
           Illustration by &nbsp;<a href="https://icons8.com/illustrations/author/zD2oqC8lLBBA">Icons 8</a>
           &nbsp;from&nbsp;<a href="https://icons8.com/illustrations">Ouch!</a>
         </div>
       </div>
     ),
-    [displayToast],
+    [handleButtonClick],
   );
 
   return (
     <>
-      <Eventcalendar renderAgendaEmpty={customAgendaEmpty} view={calView} data={myEvents} />
-      <Toast message="Add button clicked" isOpen={isToastOpen} onClose={handleCloseToast} />
+      <Eventcalendar renderAgendaEmpty={customAgendaEmpty} data={myEvents} view={myView} />
+      <Toast message="Add button clicked" isOpen={isToastOpen} onClose={handleToastClose} />
     </>
   );
 };

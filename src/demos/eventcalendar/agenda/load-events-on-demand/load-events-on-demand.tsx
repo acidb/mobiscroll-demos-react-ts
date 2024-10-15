@@ -19,14 +19,9 @@ const App: FC = () => {
   const [events, setEvents] = useState<MbscCalendarEvent[]>([]);
   const [isToastOpen, setToastOpen] = useState<boolean>(false);
 
-  const view = useMemo<MbscEventcalendarView>(
-    () => ({
-      agenda: { type: 'month' },
-    }),
-    [],
-  );
+  const view = useMemo<MbscEventcalendarView>(() => ({ agenda: { type: 'month' } }), []);
 
-  const handleCloseToast = useCallback(() => {
+  const handleToastClose = useCallback(() => {
     setToastOpen(false);
   }, []);
 
@@ -36,20 +31,8 @@ const App: FC = () => {
 
     getJson(
       'https://trial.mobiscroll.com/monthlyevents/?year=' + year + '&month=' + month + '&vers=5',
-      (data: MbscCalendarEvent[]) => {
-        const newEvents = [];
-
-        for (const value of data) {
-          newEvents.push({
-            start: value.start,
-            end: value.end || '',
-            allDay: value.allDay,
-            title: value.title,
-            color: value.color,
-          });
-        }
-
-        setEvents(newEvents);
+      (events: MbscCalendarEvent[]) => {
+        setEvents(events);
         setToastOpen(true);
       },
       'jsonp',
@@ -57,10 +40,11 @@ const App: FC = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <Eventcalendar data={events} view={view} onPageLoading={handlePageLoading} />
-      <Toast message="New events loaded" isOpen={isToastOpen} onClose={handleCloseToast} />
-    </div>
+      <Toast message="New events loaded" isOpen={isToastOpen} onClose={handleToastClose} />
+    </>
   );
 };
+
 export default App;

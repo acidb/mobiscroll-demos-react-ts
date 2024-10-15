@@ -6,7 +6,8 @@ import {
   MbscCalendarDayData,
   MbscCalendarEvent,
   MbscEventcalendarView,
-  setOptions /* localeImport */,
+  setOptions,
+  Toast /* localeImport */,
 } from '@mobiscroll/react';
 import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import './customizing-day-header.css';
@@ -18,6 +19,7 @@ setOptions({
 
 const App: FC = () => {
   const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([]);
+  const [isToastOpen, setToastOpen] = useState(false);
 
   const myView = useMemo<MbscEventcalendarView>(
     () => ({
@@ -37,9 +39,14 @@ const App: FC = () => {
       };
 
       setEvents([...myEvents, newEvent]);
+      setToastOpen(true);
     },
     [myEvents],
   );
+
+  const handleToastClose = useCallback(() => {
+    setToastOpen(false);
+  }, []);
 
   const renderCustomDay = useCallback(
     (day: MbscCalendarDayData) => (
@@ -65,6 +72,11 @@ const App: FC = () => {
     );
   }, []);
 
-  return <Eventcalendar className="mds-custom-day-header" view={myView} data={myEvents} renderDay={renderCustomDay} />;
+  return (
+    <>
+      <Eventcalendar className="mds-custom-day-header" view={myView} data={myEvents} renderDay={renderCustomDay} />;
+      <Toast message="Event added" isOpen={isToastOpen} onClose={handleToastClose} />
+    </>
+  );
 };
 export default App;

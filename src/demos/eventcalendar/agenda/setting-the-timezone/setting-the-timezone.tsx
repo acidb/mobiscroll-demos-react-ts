@@ -13,44 +13,44 @@ const App: FC = () => {
   const myEvents = useMemo<MbscCalendarEvent[]>(
     () => [
       {
-        start: '2021-06-08T07:00:00Z',
-        end: '2021-06-08T09:00:00Z',
+        start: 'dyndatetime(y, m, d, 7)',
+        end: 'dyndatetime(y, m, d, 9)',
         title: 'Stakeholder mtg.',
         color: '#d64646',
       },
       {
-        start: '2021-06-11T18:00:00Z',
-        end: '2021-06-11T19:30:00Z',
+        start: 'dyndatetime(y, m, d+3, 18)',
+        end: 'dyndatetime(y, m, d+3, 19, 30)',
         title: 'Wrapup mtg.',
         color: '#ecbc72',
       },
       {
-        start: '2021-06-08T14:00:00Z',
-        end: '2021-06-08T18:00:00Z',
+        start: 'dyndatetime(y, m, d, 14)',
+        end: 'dyndatetime(y, m, d, 18)',
         title: 'Business of Software Conference',
         color: '#ff6d42',
       },
       {
-        start: '2021-06-09T20:00:00Z',
-        end: '2021-06-09T21:50:00Z',
+        start: 'dyndatetime(y, m, d+1, 20)',
+        end: 'dyndatetime(y, m, d+1, 21, 50)',
         title: 'Product Team mtg.',
         color: '#913aa7',
       },
       {
-        start: '2021-06-07T13:00:00Z',
-        end: '2021-06-07T15:00:00Z',
+        start: 'dyndatetime(y, m, d-1, 13)',
+        end: 'dyndatetime(y, m, d-1, 15)',
         title: 'Decision Making mtg.',
         color: '#46c3d6',
       },
       {
-        start: '2021-06-09T13:00:00Z',
-        end: '2021-06-09T14:00:00Z',
+        start: 'dyndatetime(y, m, d+1, 13)',
+        end: 'dyndatetime(y, m, d+1, 14)',
         title: 'Quick mtg. with Martin',
         color: '#50b166',
       },
       {
-        start: '2021-06-11T12:00:00Z',
-        end: '2021-06-11T16:00:00Z',
+        start: 'dyndatetime(y, m, d+3, 12)',
+        end: 'dyndatetime(y, m, d+3, 16)',
         color: '#5bb7c5',
         title: 'Team-Building',
       },
@@ -58,13 +58,8 @@ const App: FC = () => {
     [],
   );
 
-  const myView = useMemo<MbscEventcalendarView>(
-    () => ({
-      agenda: { type: 'week' },
-    }),
-    [],
-  );
+  const myView = useMemo<MbscEventcalendarView>(() => ({ agenda: { type: 'week' } }), []);
 
-  return <Eventcalendar dataTimezone="utc" displayTimezone="local" timezonePlugin={momentTimezone} data={myEvents} view={myView} />;
+  return <Eventcalendar data={myEvents} dataTimezone="utc" displayTimezone="local" timezonePlugin={momentTimezone} view={myView} />;
 };
 export default App;

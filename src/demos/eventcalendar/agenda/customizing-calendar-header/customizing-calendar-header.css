@@ -1,35 +1,26 @@
-.md-custom-header-controls {
-  display: flex;
-  flex: 1 0 auto;
-  justify-content: center;
-  align-items: center;
-}
-
-.md-custom-header-nav,
-.md-custom-header-view {
+.mds-custom-header-nav {
   width: 180px;
 }
 
-.md-custom-header-button.mbsc-button {
+.mds-custom-header-button.mbsc-button {
   font-size: 20px;
   height: auto;
   padding: 0;
   margin: 0;
 }
 
-.md-custom-header .mbsc-segmented {
+.mds-custom-header-switch .mbsc-segmented {
   width: 110px;
-  float: right;
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.md-custom-header .mbsc-material.mbsc-segmented,
-.md-custom-header .mbsc-windows.mbsc-segmented {
+.mds-custom-header-switch .mbsc-segmented.mbsc-material,
+.mds-custom-header-switch .mbsc-segmented.mbsc-windows {
   padding: 0;
 }
 
-.md-custom-header .mbsc-segmented .mbsc-segmented-button {
+.mds-custom-header-switch .mbsc-segmented-button.mbsc-button {
   font-size: 20px;
   height: 32px;
   padding: 0;
