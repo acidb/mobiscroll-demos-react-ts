@@ -104,7 +104,7 @@ const myResources: MbscResource[] = [
 ];
 const myTasks: MbscCalendarEvent[] = [
   {
-    id: 1,
+    taskId: 1,
     title: 'Task 1',
     start: '08:00',
     end: '12:00',
@@ -112,7 +112,7 @@ const myTasks: MbscCalendarEvent[] = [
     color: '#0e9ea5',
   },
   {
-    id: 2,
+    taskId: 2,
     title: 'Task 2',
     start: '08:00',
     end: '12:00',
@@ -120,7 +120,7 @@ const myTasks: MbscCalendarEvent[] = [
     color: '#0e9ea5',
   },
   {
-    id: 3,
+    taskId: 3,
     title: 'Task 3',
     start: '08:00',
     end: '12:00',
@@ -128,7 +128,7 @@ const myTasks: MbscCalendarEvent[] = [
     color: '#0e9ea5',
   },
   {
-    id: 4,
+    taskId: 4,
     title: 'Task 4',
     start: '08:00',
     end: '12:00',
@@ -136,7 +136,7 @@ const myTasks: MbscCalendarEvent[] = [
     color: '#c3b726',
   },
   {
-    id: 5,
+    taskId: 5,
     title: 'Task 5',
     start: '08:00',
     end: '12:00',
@@ -144,7 +144,7 @@ const myTasks: MbscCalendarEvent[] = [
     color: '#c3b726',
   },
   {
-    id: 6,
+    taskId: 6,
     title: 'Task 6',
     start: '08:00',
     end: '12:00',
@@ -245,7 +245,7 @@ const App: FC = () => {
           <div className="mbsc-col-sm-3">
             <div className="mbsc-form-group-title">Available tasks</div>
             {myTasks.map((task) => (
-              <Task key={task.id} data={task} />
+              <Task key={task.taskId} data={task} />
             ))}
           </div>
           <div className="mbsc-col-sm-9 dynamically-color-and-invalidate-calendar">

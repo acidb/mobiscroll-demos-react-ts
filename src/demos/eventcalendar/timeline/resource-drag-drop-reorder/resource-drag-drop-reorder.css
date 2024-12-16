@@ -1,0 +1,43 @@
+.mds-resource-drag-drop-reorder .mbsc-timeline-resource-col {
+  width: 240px;
+}
+
+.mds-header-filter {
+  justify-content: end;
+  align-items: center;
+}
+
+.mds-header-filter-separator {
+  display: flex;
+  align-self: center;
+  height: 25px;
+  width: 1px;
+  margin: 0 8px 0 12px;
+  background: #c0c0c0;
+}
+
+.mds-reorder-switch.mds-enable {
+  color: #767676;
+}
+
+.mbsc-material .mds-reorder-switch {
+  margin-right: 10px;
+}
+
+.mbsc-windows-dark .mds-reorder-switch,
+.mbsc-material-dark .mds-reorder-switch {
+  color: #fff;
+}
+
+.mbsc-ios-dark .mds-header-filter-separator {
+  background: #767676;
+}
+
+.mbsc-material-dark .mds-header-filter-separator,
+.mbsc-windows-dark .mds-header-filter-separator {
+  background: #fff;
+}
+
+.mds-reorder-cancel.mbsc-button {
+  margin-right: 12px;
+}

@@ -223,7 +223,7 @@ const App: FC = () => {
   const onEventDelete = useCallback((args: MbscEventDeleteEvent) => {
     if (outlookCalendarSync.isSignedIn()) {
       setConfirmEvent(args.event);
-      setUpdateConfirmOpen(true);
+      setDeleteConfirmOpen(true);
     }
     return false;
   }, []);
@@ -231,7 +231,7 @@ const App: FC = () => {
   const handleUpdateConfirmClose = useCallback(
     (result: boolean) => {
       if (result) {
-        const calendarId = confirmEvent!.googleCalendarId;
+        const calendarId = confirmEvent!.outlookCalendarId;
         outlookCalendarSync
           .updateEvent(calendarId, confirmEvent!)
           .then(() => {
@@ -253,7 +253,7 @@ const App: FC = () => {
   const handleDeleteConfirmClose = useCallback(
     (result: boolean) => {
       if (result) {
-        const calendarId = confirmEvent!.googleCalendarId;
+        const calendarId = confirmEvent!.outlookCalendarId;
         outlookCalendarSync
           .deleteEvent(calendarId, confirmEvent!)
           .then(() => {

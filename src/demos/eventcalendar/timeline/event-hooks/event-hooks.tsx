@@ -46,6 +46,7 @@ const App: FC = () => {
     () => ({
       timeline: {
         type: 'day',
+        resourceReorder: true,
       },
     }),
     [],
@@ -194,6 +195,9 @@ const App: FC = () => {
         }}
         onPageLoading={() => {
           // Use it to load data on demand
+        }}
+        onResourceOrderUpdate={() => {
+          // Logic for resource update
         }}
         onSelectedDateChange={() => {
           // Use it to keep track of the selected date externally

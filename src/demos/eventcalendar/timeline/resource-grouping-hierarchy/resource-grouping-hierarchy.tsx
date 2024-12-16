@@ -128,16 +128,17 @@ const App: FC = () => {
         eventCreation: false,
         children: [
           {
+            id: 'res6',
+            name: 'Resource 6',
+            color: '#843100',
+          },
+          {
             id: 'gro3',
             name: 'Group 3',
             color: '#af0000',
+            collapsed: true,
             eventCreation: false,
             children: [
-              {
-                id: 'res6',
-                name: 'Resource 6',
-                color: '#843100',
-              },
               {
                 id: 'res7',
                 name: 'Resource 7',
@@ -148,29 +149,50 @@ const App: FC = () => {
                 name: 'Resource 8',
                 color: '#7056ff',
               },
+              {
+                id: 'gro4',
+                name: 'Group 4',
+                collapsed: true,
+                eventCreation: false,
+                children: [
+                  {
+                    id: 'res9',
+                    name: 'Resource 9',
+                    color: '#4caf00',
+                  },
+                  {
+                    id: 'gro5',
+                    name: 'Group 5',
+                    collapsed: true,
+                    eventCreation: false,
+                    children: [
+                      {
+                        id: 'res10',
+                        name: 'Resource 10',
+                        color: '#e20000',
+                      },
+                      {
+                        id: 'res11',
+                        name: 'Resource 11',
+                        color: '#d6d145',
+                      },
+                    ],
+                  },
+                ],
+              },
             ],
           },
-          {
-            id: 'res9',
-            name: 'Resource 9',
-            color: '#4caf00',
-          },
-          {
-            id: 'res10',
-            name: 'Resource 10',
-            color: '#e20000',
-          },
         ],
-      },
-      {
-        id: 'res11',
-        name: 'Resource 11',
-        color: '#d6d145',
       },
       {
         id: 'res12',
         name: 'Resource 12',
         color: '#e25dd2',
+      },
+      {
+        id: 'res13',
+        name: 'Resource 13',
+        color: '#7056ff',
       },
     ],
     [],

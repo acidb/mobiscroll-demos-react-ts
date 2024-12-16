@@ -45,15 +45,6 @@
   width: 205px;
 }
 
-@supports (overflow: clip) {
-  .md-switching-timeline-view-cont.mbsc-ltr .mbsc-schedule-event-inner {
-    left: 205px;
-  }
-  .md-switching-timeline-view-cont.mbsc-rtl .mbsc-schedule-event-inner {
-    right: 205px;
-  }
-}
-
 /* material header order */
 
 .mbsc-material.md-work-week-prev {

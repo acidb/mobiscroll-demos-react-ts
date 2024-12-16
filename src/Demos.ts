@@ -242,6 +242,7 @@ import Demo750 from './demos/eventcalendar/timeline/tasks-subtasks-under-shifts/
 import Demo751 from './demos/eventcalendar/timeline/resource-filtering-search/resource-filtering-search';
 import Demo605 from './demos/eventcalendar/timeline/daily-weekly-monthly-yearly-timeline/daily-weekly-monthly-yearly-timeline';
 import Demo663 from './demos/eventcalendar/timeline/multiple-days-weeks-months-quarters-years-variable-resolution/multiple-days-weeks-months-quarters-years-variable-resolution';
+import Demo764 from './demos/eventcalendar/timeline/calendar-zoom/calendar-zoom';
 import Demo734 from './demos/eventcalendar/timeline/control-number-of-concurrently-shown-events/control-number-of-concurrently-shown-events';
 import Demo739 from './demos/eventcalendar/timeline/event-buffer/event-buffer';
 import Demo697 from './demos/eventcalendar/timeline/custom-range-view/custom-range-view';
@@ -267,6 +268,8 @@ import Demo728 from './demos/eventcalendar/timeline/prevent-double-booking-event
 import Demo607 from './demos/eventcalendar/timeline/timeline-resource-details-side-panel-footer/timeline-resource-details-side-panel-footer';
 import Demo625 from './demos/eventcalendar/timeline/resource-grouping-hierarchy/resource-grouping-hierarchy';
 import Demo747 from './demos/eventcalendar/timeline/show-summaries-aggregates-for-resource-groups/show-summaries-aggregates-for-resource-groups';
+import Demo765 from './demos/eventcalendar/timeline/resource-drag-drop-reorder/resource-drag-drop-reorder';
+import Demo768 from './demos/eventcalendar/timeline/dynamic-calculation-resource-sort/dynamic-calculation-resource-sort';
 import Demo720 from './demos/eventcalendar/timeline/resource-data-structure/resource-data-structure';
 import Demo666 from './demos/eventcalendar/timeline/event-data-structure/event-data-structure';
 import Demo706 from './demos/eventcalendar/timeline/connecting-linking-events-arrows/connecting-linking-events-arrows';
@@ -275,7 +278,9 @@ import Demo668 from './demos/eventcalendar/timeline/recurring-events/recurring-e
 import Demo677 from './demos/eventcalendar/timeline/load-inline-data/load-inline-data';
 import Demo669 from './demos/eventcalendar/timeline/load-events-from-remote-api/load-events-from-remote-api';
 import Demo670 from './demos/eventcalendar/timeline/load-events-on-demand/load-events-on-demand';
+import Demo766 from './demos/eventcalendar/timeline/load-events-on-scroll/load-events-on-scroll';
 import Demo718 from './demos/eventcalendar/timeline/load-resources-on-demand/load-resources-on-demand';
+import Demo767 from './demos/eventcalendar/timeline/load-resources-on-scroll/load-resources-on-scroll';
 import Demo704 from './demos/eventcalendar/timeline/loading-big-data-sets/loading-big-data-sets';
 import Demo684 from './demos/eventcalendar/timeline/sync-events-google-calendar/sync-events-google-calendar';
 import Demo688 from './demos/eventcalendar/timeline/sync-events-outlook-calendar/sync-events-outlook-calendar';
@@ -975,6 +980,7 @@ export const demos = [
             items: [
               { name: 'Configure the timeline', unique: 'daily-weekly-monthly-yearly-timeline', component: Demo605 },
               { name: 'Configure the page, size, resolution', unique: 'multiple-days-weeks-months-quarters-years-variable-resolution', component: Demo663 },
+              { name: 'Dynamically zoom in/out', unique: 'calendar-zoom', component: Demo764 },
               { name: 'Set event stack size', unique: 'control-number-of-concurrently-shown-events', component: Demo734 },
               { name: 'Event buffer', unique: 'event-buffer', component: Demo739 },
               { name: 'View with custom range picker', unique: 'custom-range-view', component: Demo697 },
@@ -1018,6 +1024,8 @@ export const demos = [
               { name: 'Resource grid', unique: 'timeline-resource-details-side-panel-footer', component: Demo607 },
               { name: 'Resource grouping & hierarchy', unique: 'resource-grouping-hierarchy', component: Demo625 },
               { name: 'Resource group summaries', unique: 'show-summaries-aggregates-for-resource-groups', component: Demo747 },
+              { name: 'Resource reorder with d&d', unique: 'resource-drag-drop-reorder', component: Demo765 },
+              { name: 'Dynamic resource sort', unique: 'dynamic-calculation-resource-sort', component: Demo768 },
               { name: 'Resource properties', unique: 'resource-data-structure', component: Demo720 },
             ],
           },
@@ -1038,7 +1046,9 @@ export const demos = [
               { name: 'Loading inline data', unique: 'load-inline-data', component: Demo677 },
               { name: 'Events from remote API ', unique: 'load-events-from-remote-api', component: Demo669 },
               { name: 'Loading events on demand', unique: 'load-events-on-demand', component: Demo670 },
+              { name: 'Loading events on scroll', unique: 'load-events-on-scroll', component: Demo766 },
               { name: 'Loading resources on demand', unique: 'load-resources-on-demand', component: Demo718 },
+              { name: 'Loading resources on scroll', unique: 'load-resources-on-scroll', component: Demo767 },
               { name: 'Working with large data sets', unique: 'loading-big-data-sets', component: Demo704 },
             ],
           },

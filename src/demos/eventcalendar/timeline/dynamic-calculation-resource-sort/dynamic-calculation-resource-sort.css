@@ -1,0 +1,159 @@
+/* resource highlight */
+
+.mds-resource-highlight {
+  background-color: rgba(128, 128, 128, 0.4);
+  transition: background-color 0.5s ease;
+}
+
+/* progress bar */
+
+.mds-popup-sort-snackbar .mbsc-toast-background::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: width 3s linear;
+}
+
+.mds-popup-sort-snackbar .mbsc-snackbar-message::after {
+  content: 'Sorting in 1 .';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: changeMessage 3s steps(3) forwards;
+}
+
+.mds-popup-sort-snackbar .mbsc-snackbar-message {
+  position: relative;
+}
+
+@keyframes countdown {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes changeMessage {
+  0% {
+    content: 'Sorting in 3 ...';
+  }
+  43% {
+    content: 'Sorting in 2 ..';
+  }
+  76% {
+    content: 'Sorting in 1 .';
+  }
+}
+
+.mds-popup-sort-snackbar .mbsc-toast-background.start-progress::before {
+  animation: countdown 3s linear forwards;
+}
+
+.mds-popup-sort-snackbar .mbsc-snackbar-cont {
+  border-radius: 4px;
+}
+
+/* metric bar */
+
+.mds-metric-bar-container {
+  position: relative;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  height: 10px;
+  width: 150px;
+  overflow: hidden;
+}
+
+.mds-metric-bar-animation {
+  height: 100%;
+  animation: fillBar 1s ease-in-out forwards;
+}
+.mds-metric-bar-no-animation {
+  height: 100%;
+  animation: fillBar 0s ease-in-out forwards;
+}
+
+.mds-metric-bar-overlay {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background-color: #f0f0f0;
+}
+
+@keyframes fillBar {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.mds-resource-green-bar {
+  background-color: #4caf50;
+}
+
+.mds-resource-yellow-bar {
+  background-color: #ffeb3b;
+}
+
+.mds-resource-red-bar {
+  background-color: #f44336;
+}
+
+/* Overrides */
+
+.mds-timeline-popup-sort .mbsc-timeline-events {
+  top: 20px;
+}
+
+.mds-timeline-popup-sort .mbsc-timeline-resource-header,
+.mds-timeline-popup-sort .mbsc-timeline-resource-title,
+.mds-timeline-popup-sort .mbsc-timeline-resource-footer,
+.mds-timeline-popup-sort .mbsc-timeline-sidebar-header,
+.mds-timeline-popup-sort .mbsc-timeline-sidebar-resource-title,
+.mds-timeline-popup-sort .mbsc-timeline-sidebar-footer {
+  padding: 0;
+}
+
+.mds-timeline-popup-sort .mbsc-timeline-row {
+  min-height: 110px;
+}
+
+.mds-timeline-popup-sort .mbsc-timeline-resource-col {
+  width: 170px;
+}
+
+.mds-timeline-popup-sort .mbsc-timeline-resource-title {
+  height: 100%;
+}
+
+/* Resource grid */
+
+.mds-popup-sort-resource-cell {
+  display: inline-block;
+  height: 100%;
+  padding: 5px 5px;
+  box-sizing: border-box;
+  vertical-align: top;
+  line-height: 20px;
+}
+
+.mds-popup-sort-resource-cell-name {
+  padding: 2px 5px;
+  width: 170px;
+}
+
+.mds-resource-attribute {
+  font-size: 12px;
+  font-weight: 400;
+}

@@ -182,7 +182,7 @@ const App: FC = () => {
   const handleEventDelete = useCallback((args: MbscEventDeleteEvent) => {
     if (googleCalendarSync.isSignedIn()) {
       setConfirmEvent(args.event);
-      setUpdateConfirmOpen(true);
+      setDeleteConfirmOpen(true);
     }
     return false;
   }, []);

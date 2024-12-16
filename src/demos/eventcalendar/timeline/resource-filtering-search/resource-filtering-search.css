@@ -8,16 +8,6 @@
   width: 350px;
 }
 
-@supports (overflow: clip) {
-  .mds-resource-filtering-calendar.mbsc-ltr .mbsc-schedule-event-inner {
-    left: 350px;
-  }
-
-  .mds-resource-filtering-calendar.mbsc-rtl .mbsc-schedule-event-inner {
-    right: 350px;
-  }
-}
-
 .mds-resource-filtering-calendar .mbsc-timeline-resource-title {
   height: 100%;
   box-sizing: border-box;
