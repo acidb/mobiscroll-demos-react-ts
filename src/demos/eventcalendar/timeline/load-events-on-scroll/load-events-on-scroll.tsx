@@ -6,7 +6,8 @@ import {
   MbscEventcalendarView,
   MbscResource,
   MbscVirtualLoadEvent,
-  setOptions /* localeImport */,
+  setOptions,
+  Toast /* localeImport */,
 } from '@mobiscroll/react';
 import { FC, useCallback, useMemo, useState } from 'react';
 
@@ -17,6 +18,10 @@ setOptions({
 
 const App: FC = () => {
   const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([]);
+  const [isToastOpen, setToastOpen] = useState(false);
+  const handleToastClose = useCallback(() => {
+    setToastOpen(false);
+  }, []);
 
   const myView = useMemo<MbscEventcalendarView>(
     () => ({
@@ -64,14 +69,20 @@ const App: FC = () => {
     const end = formatDate('YYYY-MM-DD', args.viewEnd);
 
     getJson(
-      'https://trialdev.mobiscroll.com/load-data-scroll/?start=' + start + '&end=' + end,
+      'https://trial.mobiscroll.com/load-data-scroll/?start=' + start + '&end=' + end,
       (data) => {
         setEvents(data.events);
+        setToastOpen(true);
       },
       'jsonp',
     );
   }, []);
 
-  return <Eventcalendar view={myView} resources={myResources} data={myEvents} onVirtualLoading={handleVirtualLoading} />;
+  return (
+    <>
+      <Eventcalendar view={myView} data={myEvents} resources={myResources} onVirtualLoading={handleVirtualLoading} />
+      <Toast message="Loading Resources..." duration={1000} isOpen={isToastOpen} onClose={handleToastClose} />
+    </>
+  );
 };
 export default App;

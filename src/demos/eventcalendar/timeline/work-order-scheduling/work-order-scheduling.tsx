@@ -15,7 +15,9 @@ import {
   MbscEventCreatedEvent,
   MbscEventDeletedEvent,
   MbscPopupButton,
+  MbscPopupOptions,
   MbscResource,
+  MbscResponsiveOptions,
   Popup,
   setOptions,
   Snackbar,
@@ -262,7 +264,7 @@ const viewSettings: MbscEventcalendarView = {
   },
 };
 
-const responsivePopup = {
+const responsivePopup: MbscResponsiveOptions<MbscPopupOptions> = {
   medium: {
     display: 'anchored',
     width: 520,

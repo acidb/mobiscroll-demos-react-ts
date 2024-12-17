@@ -1,4 +1,16 @@
-import { Button, Input, Page, Popup, Segmented, SegmentedGroup, setOptions, Switch, Textarea /* localeImport */ } from '@mobiscroll/react';
+import {
+  Button,
+  Input,
+  MbscPopupOptions,
+  MbscResponsiveOptions,
+  Page,
+  Popup,
+  Segmented,
+  SegmentedGroup,
+  setOptions,
+  Switch,
+  Textarea /* localeImport */,
+} from '@mobiscroll/react';
 import { ChangeEvent, FC, useCallback, useState } from 'react';
 
 setOptions({
@@ -8,7 +20,7 @@ setOptions({
 
 const popupButtons = ['set', 'cancel'];
 
-const responsivePopup = {
+const responsivePopup: MbscResponsiveOptions<MbscPopupOptions> = {
   medium: {
     display: 'anchored',
     width: 400,

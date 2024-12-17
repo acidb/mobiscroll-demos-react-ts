@@ -1,4 +1,4 @@
-import { Datepicker, Page, setOptions /* localeImport */ } from '@mobiscroll/react';
+import { Datepicker, MbscDatepickerOptions, MbscResponsiveOptions, Page, setOptions /* localeImport */ } from '@mobiscroll/react';
 import { FC, useMemo } from 'react';
 
 setOptions({
@@ -7,7 +7,7 @@ setOptions({
 });
 
 const App: FC = () => {
-  const myResponsive = useMemo(
+  const myResponsive: MbscResponsiveOptions<MbscDatepickerOptions> = useMemo(
     () => ({
       xsmall: {
         display: 'bottom',

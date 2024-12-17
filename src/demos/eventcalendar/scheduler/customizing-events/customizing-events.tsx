@@ -4,6 +4,8 @@ import {
   getJson,
   MbscCalendarEvent,
   MbscCalendarEventData /* localeImport */,
+  MbscEventcalendarOptions,
+  MbscResponsiveOptions,
   setOptions,
   Toast /* localeImport */,
 } from '@mobiscroll/react';
@@ -19,7 +21,7 @@ const App: FC = () => {
   const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([]);
   const [isToastOpen, setToastOpen] = useState<boolean>(false);
 
-  const resp = useMemo(
+  const resp: MbscResponsiveOptions<MbscEventcalendarOptions> = useMemo(
     () => ({
       xsmall: {
         view: {
@@ -157,7 +159,9 @@ const App: FC = () => {
                 Edit
               </Button>
               <div className="md-cutom-event-img-cont">
-                {original.participants.map((p: number) => <img key={p} className="md-custom-event-img" src={getParticipant(p).img} />)}
+                {original.participants.map((p: number) => (
+                  <img key={p} className="md-custom-event-img" src={getParticipant(p).img} />
+                ))}
               </div>
             </div>
           </div>

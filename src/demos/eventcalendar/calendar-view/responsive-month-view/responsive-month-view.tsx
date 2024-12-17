@@ -1,4 +1,11 @@
-import { Eventcalendar, getJson, MbscCalendarEvent, setOptions /* localeImport */ } from '@mobiscroll/react';
+import {
+  Eventcalendar,
+  getJson,
+  MbscCalendarEvent,
+  MbscEventcalendarOptions,
+  MbscResponsiveOptions,
+  setOptions /* localeImport */,
+} from '@mobiscroll/react';
 import { FC, useEffect, useMemo, useState } from 'react';
 
 setOptions({
@@ -9,7 +16,7 @@ setOptions({
 const App: FC = () => {
   const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([]);
 
-  const myResponsive = useMemo(
+  const myResponsive: MbscResponsiveOptions<MbscEventcalendarOptions> = useMemo(
     () => ({
       xsmall: {
         view: {

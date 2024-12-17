@@ -7,6 +7,7 @@ import {
   MbscCalendarEvent,
   MbscDatepickerChangeEvent,
   MbscDatepickerControl,
+  MbscDatepickerOptions,
   MbscDateType,
   MbscEventcalendarView,
   MbscEventClickEvent,
@@ -15,9 +16,12 @@ import {
   MbscEventDeletedEvent,
   MbscEventUpdateEvent,
   MbscPopupButton,
+  MbscPopupOptions,
   MbscRecurrenceRule,
+  MbscResponsiveOptions,
   MbscSelectChangeEvent,
   MbscSelectedDateChangeEvent,
+  MbscSelectOptions,
   Popup,
   Radio,
   RadioGroup,
@@ -87,7 +91,7 @@ const myView: MbscEventcalendarView = {
   calendar: { labels: true },
 };
 
-const responsivePopup = {
+const responsivePopup: MbscResponsiveOptions<MbscPopupOptions> = {
   medium: {
     display: 'anchored',
     width: 510,
@@ -96,7 +100,7 @@ const responsivePopup = {
   },
 };
 
-const responsiveSelect = {
+const responsiveSelect: MbscResponsiveOptions<MbscSelectOptions> = {
   xsmall: {
     touchUi: true,
   },
@@ -759,7 +763,7 @@ const App: FC = () => {
 
   // datepicker options
   const controls = useMemo<MbscDatepickerControl[]>(() => (popupEventAllDay ? ['calendar'] : ['calendar', 'time']), [popupEventAllDay]);
-  const respSetting = useMemo(
+  const respSetting: MbscResponsiveOptions<MbscDatepickerOptions> = useMemo(
     () =>
       popupEventAllDay
         ? {

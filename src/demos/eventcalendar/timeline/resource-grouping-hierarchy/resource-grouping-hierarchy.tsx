@@ -82,6 +82,42 @@ const App: FC = () => {
         title: 'Event 12',
         resource: 'res7',
       },
+      {
+        start: 'dyndatetime(y,m,21)',
+        end: 'dyndatetime(y,m,26)',
+        title: 'Event 13',
+        resource: 'res2',
+      },
+      {
+        start: 'dyndatetime(y,m,1)',
+        end: 'dyndatetime(y,m,3)',
+        title: 'Event 14',
+        resource: 'res14',
+      },
+      {
+        start: 'dyndatetime(y,m,10)',
+        end: 'dyndatetime(y,m,14)',
+        title: 'Event 15',
+        resource: 'res15',
+      },
+      {
+        start: 'dyndatetime(y,m,4)',
+        end: 'dyndatetime(y,m,7)',
+        title: 'Event 16',
+        resource: 'res16',
+      },
+      {
+        start: 'dyndatetime(y,m,18)',
+        end: 'dyndatetime(y,m,20)',
+        title: 'Event 17',
+        resource: 'res17',
+      },
+      {
+        start: 'dyndatetime(y,m,26)',
+        end: 'dyndatetime(y,m,29)',
+        title: 'Event 18',
+        resource: 'res18',
+      },
     ],
     [],
   );
@@ -92,11 +128,13 @@ const App: FC = () => {
         id: 'res1',
         name: 'Resource 1',
         color: '#1dab2f',
+        fixed: true,
       },
       {
         id: 'res2',
         name: 'Resource 2',
         color: '#76e083',
+        fixed: true,
       },
       {
         id: 'res3',
@@ -193,6 +231,36 @@ const App: FC = () => {
         id: 'res13',
         name: 'Resource 13',
         color: '#7056ff',
+      },
+      {
+        id: 'res14',
+        name: 'Resource 14',
+        color: '#56aaff',
+      },
+      {
+        id: 'res15',
+        name: 'Resource 15',
+        color: '#56ff89',
+      },
+      {
+        id: 'res16',
+        name: 'Resource 16',
+        color: '#ff6e56',
+      },
+      {
+        id: 'res17',
+        name: 'Resource 17',
+        color: '#ffd756',
+      },
+      {
+        id: 'res18',
+        name: 'Resource 18',
+        color: '#8b56ff',
+      },
+      {
+        id: 'res19',
+        name: 'Resource 19',
+        color: '#56d9ff',
       },
     ],
     [],

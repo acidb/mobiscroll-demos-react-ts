@@ -5,6 +5,8 @@ import {
   Input,
   MbscDatepickerChangeEvent,
   MbscDateType,
+  MbscPopupOptions,
+  MbscResponsiveOptions,
   MbscSelectChangeEvent,
   options,
   Page,
@@ -75,7 +77,7 @@ const App: FC = () => {
   const [inputValue, setInputValue] = useState<string>('');
   const [disabledInput, setDisabledInput] = useState<boolean>(false);
 
-  const respPopup = {
+  const respPopup: MbscResponsiveOptions<MbscPopupOptions> = {
     xsmall: {
       display: 'bottom',
       touchUi: true,
@@ -96,7 +98,7 @@ const App: FC = () => {
       breakpoint: 559,
       buttons: [],
       display: 'anchored',
-      anchor: document.querySelector('.date-filter-input'),
+      anchor: document.querySelector('.date-filter-input') as HTMLInputElement,
       anchorAlign: 'start',
       touchUi: false,
       scrollLock: false,

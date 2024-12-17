@@ -13,7 +13,9 @@ import {
   MbscEventDeletedEvent,
   MbscEventUpdatedEvent,
   MbscPopupButton,
+  MbscPopupOptions,
   MbscResource,
+  MbscResponsiveOptions,
   MbscSlot,
   Popup,
   setOptions,
@@ -401,7 +403,7 @@ function App() {
     [isEdit, saveEvent, shift],
   );
 
-  const popupResponsive = useMemo(
+  const popupResponsive: MbscResponsiveOptions<MbscPopupOptions> = useMemo(
     () => ({
       medium: {
         display: 'center',

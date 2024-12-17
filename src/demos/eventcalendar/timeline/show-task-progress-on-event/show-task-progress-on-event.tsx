@@ -8,7 +8,9 @@ import {
   MbscDateType,
   MbscEventcalendarView,
   MbscPopupButton,
+  MbscPopupOptions,
   MbscResource,
+  MbscResponsiveOptions,
   Popup,
   setOptions,
   /* localeImport */
@@ -222,7 +224,7 @@ function App() {
     [isEdit, saveEvent],
   );
 
-  const popupResponsive = useMemo(
+  const popupResponsive: MbscResponsiveOptions<MbscPopupOptions> = useMemo(
     () => ({
       medium: {
         display: 'anchored',

@@ -11,7 +11,9 @@ import {
   MbscEventCreateEvent,
   MbscEventDeletedEvent,
   MbscPopupButton,
+  MbscPopupOptions,
   MbscResource,
+  MbscResponsiveOptions,
   Popup,
   Segmented,
   SegmentedGroup,
@@ -72,7 +74,7 @@ const viewSettings: MbscEventcalendarView = {
   },
 };
 
-const responsivePopup = {
+const responsivePopup: MbscResponsiveOptions<MbscPopupOptions> = {
   medium: {
     display: 'center',
     width: 400,

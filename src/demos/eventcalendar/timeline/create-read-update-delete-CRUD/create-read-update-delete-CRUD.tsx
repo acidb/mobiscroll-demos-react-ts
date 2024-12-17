@@ -7,12 +7,15 @@ import {
   MbscCalendarEvent,
   MbscDatepickerChangeEvent,
   MbscDatepickerControl,
+  MbscDatepickerOptions,
   MbscDateType,
   MbscEventcalendarView,
   MbscEventClickEvent,
   MbscEventCreatedEvent,
   MbscEventDeletedEvent,
   MbscPopupButton,
+  MbscPopupOptions,
+  MbscResponsiveOptions,
   Popup,
   SegmentedGroup,
   SegmentedItem,
@@ -104,7 +107,7 @@ const myResources = [
 const viewSettings: MbscEventcalendarView = {
   timeline: { type: 'day' },
 };
-const responsivePopup = {
+const responsivePopup: MbscResponsiveOptions<MbscPopupOptions> = {
   medium: {
     display: 'anchored',
     width: 400,
@@ -112,7 +115,7 @@ const responsivePopup = {
     touchUi: false,
   },
 };
-const colorPopup = {
+const colorPopup: MbscResponsiveOptions<MbscPopupOptions> = {
   medium: {
     display: 'anchored',
     touchUi: false,
@@ -295,7 +298,7 @@ const App: FC = () => {
 
   const controls = useMemo<MbscDatepickerControl[]>(() => (popupEventAllDay ? ['date'] : ['datetime']), [popupEventAllDay]);
   const headerText = useMemo<string>(() => (isEdit ? 'Edit event' : 'New Event'), [isEdit]);
-  const respSetting = useMemo(
+  const respSetting: MbscResponsiveOptions<MbscDatepickerOptions> = useMemo(
     () =>
       popupEventAllDay
         ? {

@@ -38,7 +38,7 @@ interface MyResource extends MbscResource {
 }
 
 function App() {
-  const myEvents: MbscCalendarEvent[] = [
+  const [myEvents, setMyEvents] = useState<MbscCalendarEvent[]>([
     {
       start: 'dyndatetime(y,m,d-1)',
       end: 'dyndatetime(y,m,d+3)',
@@ -247,7 +247,7 @@ function App() {
       payload: 17,
       overlap: false,
     },
-  ];
+  ]);
 
   const myResources = useMemo<MyResource[]>(
     () => [
@@ -271,7 +271,7 @@ function App() {
 
   const calRef = useRef<Eventcalendar | null>(null);
   const [myAnchor, setAnchor] = useState<HTMLElement>();
-  const buttonRef = useRef<Button | null>();
+  const buttonRef = useRef<Button>(null);
   const event = useRef<MbscCalendarEvent>();
   const initialSort = useRef<boolean>(true);
   const initialSortColumn = useRef<string>('');
@@ -282,8 +282,7 @@ function App() {
   const loadedEvents = useRef<MbscCalendarEvent[]>([]);
   const metricBarAnimation = useRef<boolean>(true);
   const resource = useRef<MyResource>();
-  const selectedMetric: string = 'standby';
-  const selectedMetricDesc: string = 'Standby Time';
+  const selectedMetric = useRef('standby');
   const [sortColumn, setSortColumn] = useState<string>('standby');
   const [sortDirection, setSortDirection] = useState<string>('asc');
   const [sortedResources, setResources] = useState<MyResource[]>(myResources);
@@ -298,7 +297,7 @@ function App() {
     myResources.forEach((resource) => {
       const resourceEvents = loadedEvents.current.filter((event) => event.resource === resource.id);
 
-      if (selectedMetric === 'standby') {
+      if (sortColumn === 'standby') {
         resource.standby = 168;
         resourceEvents.forEach((event) => {
           const eventStart = new Date(event.start as Date);
@@ -307,10 +306,12 @@ function App() {
           const effectiveEnd = weekEnd.current && eventEnd > weekEnd.current ? weekEnd.current : eventEnd;
 
           if (effectiveStart < effectiveEnd) {
-            resource.standby -= (effectiveEnd.getTime() - effectiveStart.getTime()) / (1000 * 60 * 60);
+            resource.standby! -= (effectiveEnd.getTime() - effectiveStart.getTime()) / (1000 * 60 * 60);
           }
         });
-      } else if (selectedMetric === 'deadhead') {
+      }
+
+      if (sortColumn === 'deadhead') {
         resource.deadhead = resourceEvents.reduce((total, event) => {
           const eventStart = new Date(event.start as Date);
           const eventEnd = new Date(event.end as Date);
@@ -322,7 +323,9 @@ function App() {
           }
           return total;
         }, 0);
-      } else if (selectedMetric === 'payload') {
+      }
+
+      if (sortColumn === 'payload') {
         const weekEvents = resourceEvents.filter(
           (event) => new Date(event.end as Date) > weekStart.current! && new Date(event.start as Date) < weekEnd.current!,
         );
@@ -334,7 +337,7 @@ function App() {
           numberOfTours > 0 && resource.capacity ? Math.round((totalPayload / numberOfTours / resource.capacity) * 100) : 0;
       }
     });
-  }, [myResources, selectedMetric, calRef, weekStart, weekEnd]);
+  }, [myResources, sortColumn]);
 
   const sortResources = useCallback(() => {
     initialSort.current = false;
@@ -354,16 +357,17 @@ function App() {
     }, 100);
   }, [myResources, sortColumn, sortDirection]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const delayedToastSort = useCallback((resourceId: any, event: MbscCalendarEvent) => {
-    resource.current = myResources.find((resource) => resource.id === resourceId);
-    event.current = event;
-    setSnackbarOpen(true);
-    // Add progress animation after rendering the snackbar
-    setTimeout(() => {
-      document.querySelector('.mbsc-toast-background')?.classList.add('start-progress');
-    });
-  });
+  const delayedToastSort = useCallback(
+    (resourceId: number, event: MbscCalendarEvent) => {
+      resource.current = myResources.find((resource) => resource.id === resourceId);
+      event.current = event;
+      setSnackbarOpen(true);
+      setTimeout(() => {
+        document.querySelector('.mbsc-toast-background')?.classList.add('start-progress');
+      });
+    },
+    [myResources],
+  );
 
   const handlePopupOpen = useCallback(() => {
     setAnchor(buttonRef.current!.nativeElement);
@@ -372,6 +376,8 @@ function App() {
 
   const handlePopupClose = useCallback(() => {
     setPopupOpen(false);
+    setSortColumn(initialSortColumn.current);
+    setSortDirection(initialSortDirection.current);
   }, []);
 
   const handleToastClose = useCallback(() => {
@@ -380,48 +386,43 @@ function App() {
 
   const handleSnackbarClose = useCallback(() => {
     setSnackbarOpen(false);
+
     resource.current!.cssClass = 'mds-resource-highlight';
     sortResources();
     setTimeout(() => {
       resource.current!.cssClass = '';
-      setResources(myResources.slice());
+      setResources((prevResources) => prevResources.slice());
     }, 1000);
     calRef.current!.navigateToEvent(event);
-  }, [myResources, sortResources]);
+  }, [sortResources]);
 
-  const handlePageLoading = useCallback(
-    (args: MbscPageLoadingEvent) => {
-      weekStart.current = args.firstDay;
-      weekEnd.current = args.lastDay;
-      refreshData();
-    },
-    [refreshData],
-  );
+  const handlePageLoading = useCallback((args: MbscPageLoadingEvent) => {
+    weekStart.current = args.firstDay;
+    weekEnd.current = args.lastDay;
+  }, []);
 
   const handlePageLoaded = useCallback(() => {
     refreshData();
-    // setTimeout(() => {
-    //   if (initialSort) {
-    //     sortResources();
-    //   }
-    // }, 100);
-  }, [refreshData]);
+    if (initialSort.current) {
+      sortResources();
+    }
+  }, [refreshData, sortResources]);
 
   const handleEventCreated = useCallback(
     (args: MbscEventCreatedEvent) => {
       args.event.payload = Math.floor(Math.random() * (17 - 5 + 1)) + 5;
       args.event.overlap = false;
+      setMyEvents([...myEvents, args.event]);
       refreshData();
-      // snackbar trigger rerender, event dissapear
-      delayedToastSort(args.event.resource, args.event);
+      delayedToastSort(args.event.resource as number, args.event);
     },
-    [delayedToastSort, refreshData],
+    [delayedToastSort, myEvents, refreshData],
   );
 
   const handleEventDelete = useCallback(
     (args: MbscEventDeleteEvent) => {
       refreshData();
-      delayedToastSort(args.event.resource, args.event);
+      delayedToastSort(args.event.resource as number, args.event);
     },
     [delayedToastSort, refreshData],
   );
@@ -430,24 +431,26 @@ function App() {
     (args: MbscEventUpdateEvent) => {
       if (args.oldEvent) {
         if (
-          new Date(args.oldEvent.start as string).getTime() !== new Date(args.event.start as string).getTime() &&
-          new Date(args.oldEvent.end as string).getTime() !== new Date(args.event.end as string).getTime()
+          new Date(args.oldEvent.start as Date).getTime() !== new Date(args.event.start as Date).getTime() &&
+          new Date(args.oldEvent.end as Date).getTime() !== new Date(args.event.end as Date).getTime()
         ) {
           return;
         }
+        refreshData();
+        delayedToastSort(args.event.resource as number, args.event);
       }
-      refreshData();
-      delayedToastSort(args.event.resource, args.event);
     },
+
     [delayedToastSort, refreshData],
   );
 
-  const handleSortDirectionChange = useCallback((ev) => {
+  const handleSortDirectionChange = useCallback((ev: React.ChangeEvent<HTMLSelectElement>) => {
     setSortDirection(ev.target.value);
   }, []);
 
-  const handleSortColumnChange = useCallback((ev) => {
+  const handleSortColumnChange = useCallback((ev: React.ChangeEvent<HTMLSelectElement>) => {
     setSortColumn(ev.target.value);
+    selectedMetric.current = ev.target.value;
   }, []);
 
   const myCustomHeader = useCallback(
@@ -468,18 +471,21 @@ function App() {
     () => (
       <>
         <div className="mds-popup-sort-resource-cell mds-popup-sort-resource-cell-name">Trucks</div>
-        <div className="mds-popup-sort-resource-cell mds-popup-sort-resource-cell-custom">{selectedMetricDesc}</div>
       </>
     ),
-    [selectedMetricDesc],
+    [],
   );
 
   const myCustomResource = useCallback(
     (resource: MyResource) => {
-      const metricValue = resource[selectedMetric];
+      const metricValue = resource[selectedMetric.current];
 
       const barValue =
-        selectedMetric === 'payload' ? metricValue : ['standby', 'deadhead'].includes(selectedMetric) ? (metricValue / 168) * 100 : 100;
+        selectedMetric.current === 'payload'
+          ? metricValue
+          : ['standby', 'deadhead'].includes(selectedMetric.current)
+            ? (metricValue / 168) * 100
+            : 100;
 
       const animationClass = metricBarAnimation.current ? 'mds-metric-bar-animation' : 'mds-metric-bar-no-animation';
 
@@ -496,8 +502,8 @@ function App() {
           <div className="mds-resource-attribute">Model: {resource.model || 'N/A'}</div>
           <div className="mds-resource-attribute">Capacity: {resource.capacity}T</div>
           <div className="mds-resource-attribute">
-            {selectedMetricDesc}: {metricValue}
-            {selectedMetric === 'payload' ? '%' : ['standby', 'deadhead'].includes(selectedMetric) ? 'h' : ''}
+            {selectedMetric.current}: {metricValue}
+            {selectedMetric.current === 'payload' ? '%' : ['standby', 'deadhead'].includes(selectedMetric.current) ? 'h' : ''}
           </div>
           <div className="mds-metric-bar-container" style={{ marginTop: '5px' }}>
             <div className={`${barColorClass}`} style={{ width: `${barValue}%` }}></div>
@@ -506,7 +512,7 @@ function App() {
         </div>
       );
     },
-    [selectedMetric, selectedMetricDesc, metricBarAnimation],
+    [selectedMetric, metricBarAnimation],
   );
 
   const myScheduleEvent = useCallback(
@@ -552,9 +558,7 @@ function App() {
             text: 'Apply',
             keyCode: 'enter',
             handler: function () {
-              if (initialSortColumn.current != sortColumn) {
-                refreshData();
-              }
+              refreshData();
               sortResources();
               initialSortColumn.current = sortColumn;
               initialSortDirection.current = sortDirection;
@@ -610,11 +614,11 @@ function App() {
         button={{
           text: 'Sort now',
           action: function () {
-            sortResources();
+            setSnackbarOpen(false);
           },
         }}
         cssClass="mds-popup-sort-snackbar"
-        display={'bottom'}
+        display={'center'}
         duration={3000}
         isOpen={isSnackbarOpen}
         onClose={handleSnackbarClose}

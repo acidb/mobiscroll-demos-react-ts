@@ -1,4 +1,4 @@
-import { Select, setOptions /* localeImport */ } from '@mobiscroll/react';
+import { MbscResponsiveOptions, MbscSelectOptions, Select, setOptions /* localeImport */ } from '@mobiscroll/react';
 import { FC, useMemo } from 'react';
 
 setOptions({
@@ -46,7 +46,7 @@ const myData = [
 ];
 
 const App: FC = () => {
-  const myResponsive = useMemo(
+  const myResponsive: MbscResponsiveOptions<MbscSelectOptions> = useMemo(
     () => ({
       xsmall: {
         display: 'bottom',
