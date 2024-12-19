@@ -57,6 +57,12 @@
   border-right: 1px solid #333;
 }
 
+.mds-sidebar-cell {
+  padding: 0 5px;
+  line-height: 50px;
+  text-align: center;
+}
+
 /* Sort arrows */
 
 .mds-resource-sort-header {
@@ -117,4 +123,5 @@
   font-size: 18px;
   padding: 0 5px;
   color: #8c0000;
+  text-align: center;
 }
