@@ -1,18 +1,8 @@
-import {
-  Dropdown,
-  Eventcalendar,
-  getJson,
-  locale,
-  MbscCalendarEvent,
-  MbscEventcalendarView,
-  Page,
-  setOptions /* localeImport */,
-} from '@mobiscroll/react';
+import { Dropdown, Eventcalendar, getJson, locale, MbscCalendarEvent, MbscEventcalendarView, Page, setOptions } from '@mobiscroll/react';
 import { ChangeEvent, FC, useCallback, useEffect, useMemo, useState } from 'react';
 import './localization.css';
 
 setOptions({
-  // localeJs,
   // themeJs
 });
 
@@ -48,7 +38,7 @@ const App: FC = () => {
       { name: 'Polski', value: 'pl' },
       { name: 'Português Brasileiro', value: 'pt-BR' },
       { name: 'Português Europeu', value: 'pt-PT' },
-      { name: 'Roman', value: 'ro' },
+      { name: 'Română', value: 'ro' },
       { name: 'Russian UA', value: 'ru-UA' },
       { name: 'Russian', value: 'ru' },
       { name: 'Slovencina', value: 'sk' },
@@ -87,7 +77,7 @@ const App: FC = () => {
 
   return (
     <Page className="mds-full-height">
-      <div className="mds-agenda-locale-cont mds-full-height mbsc-flex-col">
+      <div className="mds-locale-cont mds-full-height mbsc-flex-col">
         <div className="mbsc-grid">
           <div className="mbsc-row">
             <div className="mbsc-col-sm-8">

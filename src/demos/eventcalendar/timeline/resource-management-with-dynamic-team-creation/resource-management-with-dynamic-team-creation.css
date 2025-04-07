@@ -1,0 +1,97 @@
+.mds-ext-res-drop-calendar {
+  border-left: 1px solid #ccc;
+}
+
+.mds-ext-res-drop-calendar .mbsc-timeline-row {
+  height: 50px;
+}
+
+.mds-ext-res-drop-calendar .mbsc-timeline-row-gutter {
+  height: 8px;
+}
+
+.mds-ext-res-drop-calendar .mbsc-timeline-resource-col {
+  width: 250px;
+}
+
+.mds-ext-res-drop-calendar .mbsc-timeline-parent {
+  height: 32px;
+}
+
+.mds-ext-res-drop-calendar .mbsc-timeline-resource {
+  align-items: center;
+  align-content: center;
+}
+
+.mds-ext-res-drop-calendar .mds-ext-res-add {
+  margin: 0;
+}
+
+.mds-ext-res-header {
+  font-weight: 600;
+  font-size: 0.875em;
+  line-height: 38px;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.mds-ext-res-name-ph {
+  font-style: italic;
+  opacity: 0.4;
+}
+
+.mds-ext-res-drop-cont .mds-ext-res-header {
+  padding: 12px 16px;
+  line-height: 1.5em;
+}
+
+.mds-ext-res-list {
+  overflow: auto;
+}
+
+.mds-ext-res-item {
+  background: rgba(128, 128, 128, 0.6);
+  padding: 10px;
+  margin: 16px;
+  border-radius: 8px;
+}
+
+.mds-ext-res-item:first-child {
+  margin-top: 0;
+}
+
+.mds-ext-res-cont {
+  padding: 0 7px;
+}
+
+.mds-ext-res-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.mds-ext-res-title {
+  padding-top: 2px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.mds-ext-res-avatar {
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 18px;
+  text-align: center;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.mds-ext-res-drop,
+.mds-ext-res-drop .mbsc-grid,
+.mds-ext-res-drop .mbsc-row,
+.mds-ext-res-drop-cont,
+.mds-ext-res-drop-calendar {
+  height: 100%;
+}

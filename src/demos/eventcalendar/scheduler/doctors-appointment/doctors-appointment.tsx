@@ -43,7 +43,7 @@ const Appointment: FC<{ data: MbscCalendarEvent }> = (props) => {
         <div ref={setDragElm} className="docs-appointment-task" style={{ background: event.color }}>
           <div>{event.title}</div>
           <div>{eventLength + ' hour' + (eventLength > 1 ? 's' : '')}</div>
-          <Draggable dragData={event} element={draggable} />
+          <Draggable dragData={event} element={draggable} theme="auto" />
         </div>
       )}
     </div>

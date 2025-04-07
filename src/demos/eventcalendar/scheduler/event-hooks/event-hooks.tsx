@@ -4,6 +4,7 @@ import {
   getJson,
   MbscCalendarEvent,
   MbscEventcalendarView,
+  MbscResource,
   setOptions /* localeImport */,
 } from '@mobiscroll/react';
 import { FC, useEffect, useMemo, useState } from 'react';
@@ -18,6 +19,27 @@ const App: FC = () => {
   const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([]);
   const [draggable1, setDraggable1] = useState<HTMLDivElement | null>(null);
   const [draggable2, setDraggable2] = useState<HTMLDivElement | null>(null);
+
+  const myResources: MbscResource[] = useMemo(
+    () => [
+      {
+        id: 1,
+        name: 'Ryan',
+        color: '#f7c4b4',
+      },
+      {
+        id: 2,
+        name: 'Kate',
+        color: '#c6f1c9',
+      },
+      {
+        id: 3,
+        name: 'John',
+        color: '#e8d0ef',
+      },
+    ],
+    [],
+  );
 
   const invalid = useMemo(
     () => [
@@ -61,7 +83,7 @@ const App: FC = () => {
 
   useEffect(() => {
     getJson(
-      'https://trial.mobiscroll.com/events/?vers=5',
+      'https://trial.mobiscroll.com/resource-events/',
       (events: MbscCalendarEvent[]) => {
         setEvents(events);
       },
@@ -74,12 +96,12 @@ const App: FC = () => {
       <div ref={setDraggable1} className="event-hooks-draggable" style={{ background: '#ffdab8' }}>
         <div className="draggable-title">External drag 1</div>
         <div className="draggable-text">Drag me to calendar</div>
-        <Draggable dragData={dragData1} element={draggable1} />
+        <Draggable dragData={dragData1} element={draggable1} theme="auto" />
       </div>
       <div ref={setDraggable2} className="event-hooks-draggable" style={{ background: '#ddfcf7' }}>
         <div className="draggable-title">External drag 2</div>
         <div className="draggable-text">Drag me to calendar</div>
-        <Draggable dragData={dragData2} element={draggable2} />
+        <Draggable dragData={dragData2} element={draggable2} theme="auto" />
       </div>
       <Eventcalendar
         // theme
@@ -88,6 +110,7 @@ const App: FC = () => {
         dragToCreate={true}
         dragToMove={true}
         dragToResize={true}
+        resources={myResources}
         view={myView}
         invalid={invalid}
         onCellClick={() => {
@@ -167,6 +190,15 @@ const App: FC = () => {
         }}
         onPageLoading={() => {
           // Use it to load data on demand
+        }}
+        onResourceClick={() => {
+          // Logic for resource click
+        }}
+        onResourceDoubleClick={() => {
+          // Logic for resource double click
+        }}
+        onResourceRightClick={() => {
+          // Logic for resource right click
         }}
         onSelectedDateChange={() => {
           // Use it to keep track of the selected date externally

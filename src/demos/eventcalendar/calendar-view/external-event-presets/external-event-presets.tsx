@@ -86,7 +86,7 @@ function Task(props: { data: MbscCalendarEvent }) {
     <div ref={setDragElm} style={{ background: props.data.color }} className="external-event-task">
       <div>{props.data.title}</div>
       <div>{props.data.length}</div>
-      <Draggable dragData={props.data} element={draggable} />
+      <Draggable dragData={props.data} element={draggable} theme="auto" />
     </div>
   );
 }

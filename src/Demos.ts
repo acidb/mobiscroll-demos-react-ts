@@ -168,9 +168,11 @@ import Demo476 from './demos/eventcalendar/scheduler/desktop-day-view/desktop-da
 import Demo478 from './demos/eventcalendar/scheduler/mobile-week-view/mobile-week-view';
 import Demo477 from './demos/eventcalendar/scheduler/desktop-week-view/desktop-week-view';
 import Demo479 from './demos/eventcalendar/scheduler/responsive-day-week-schedule/responsive-day-week-schedule';
+import Demo770 from './demos/eventcalendar/scheduler/customize-scheduler-column-width/customize-scheduler-column-width';
 import Demo659 from './demos/eventcalendar/scheduler/printing-the-view/printing-the-view';
 import Demo581 from './demos/eventcalendar/scheduler/work-week-hours/work-week-hours';
 import Demo721 from './demos/eventcalendar/scheduler/doctors-appointment/doctors-appointment';
+import Demo769 from './demos/eventcalendar/scheduler/doctors-availability-calendar-planner/doctors-availability-calendar-planner';
 import Demo696 from './demos/eventcalendar/scheduler/custom-range-view/custom-range-view';
 import Demo733 from './demos/eventcalendar/scheduler/control-number-of-concurrently-shown-events/control-number-of-concurrently-shown-events';
 import Demo664 from './demos/eventcalendar/scheduler/display-multiple-days-weeks/display-multiple-days-weeks';
@@ -201,6 +203,7 @@ import Demo591 from './demos/eventcalendar/scheduler/resource-view/resource-view
 import Demo592 from './demos/eventcalendar/scheduler/group-by-resource-by-day/group-by-resource-by-day';
 import Demo593 from './demos/eventcalendar/scheduler/shared-events-across-resources/shared-events-across-resources';
 import Demo594 from './demos/eventcalendar/scheduler/dynamic-add-remove-resources-filter/dynamic-add-remove-resources-filter';
+import Demo771 from './demos/eventcalendar/scheduler/dynamic-content-based-resource-width/dynamic-content-based-resource-width';
 import Demo719 from './demos/eventcalendar/scheduler/resource-data-structure/resource-data-structure';
 import Demo481 from './demos/eventcalendar/scheduler/event-data-structure/event-data-structure';
 import Demo503 from './demos/eventcalendar/scheduler/date-object-ISO-8601-moment/date-object-ISO-8601-moment';
@@ -240,6 +243,7 @@ import Demo735 from './demos/eventcalendar/timeline/flight-scheduling-two-synchr
 import Demo746 from './demos/eventcalendar/timeline/show-task-progress-on-event/show-task-progress-on-event';
 import Demo750 from './demos/eventcalendar/timeline/tasks-subtasks-under-shifts/tasks-subtasks-under-shifts';
 import Demo751 from './demos/eventcalendar/timeline/resource-filtering-search/resource-filtering-search';
+import Demo772 from './demos/eventcalendar/timeline/resource-management-with-dynamic-team-creation/resource-management-with-dynamic-team-creation';
 import Demo605 from './demos/eventcalendar/timeline/daily-weekly-monthly-yearly-timeline/daily-weekly-monthly-yearly-timeline';
 import Demo663 from './demos/eventcalendar/timeline/multiple-days-weeks-months-quarters-years-variable-resolution/multiple-days-weeks-months-quarters-years-variable-resolution';
 import Demo764 from './demos/eventcalendar/timeline/calendar-zoom/calendar-zoom';
@@ -816,6 +820,7 @@ export const demos = [
               { name: 'Mobile weekly schedule', unique: 'mobile-week-view', component: Demo478 },
               { name: 'Desktop weekly schedule', unique: 'desktop-week-view', component: Demo477 },
               { name: 'Responsive behavior', unique: 'responsive-day-week-schedule', component: Demo479 },
+              { name: 'Control the column width', unique: 'customize-scheduler-column-width', component: Demo770 },
               { name: 'Print mode', unique: 'printing-the-view', component: Demo659 },
             ],
           },
@@ -825,6 +830,7 @@ export const demos = [
             items: [
               { name: 'Work calendar', unique: 'work-week-hours', component: Demo581 },
               { name: 'Doctor’s appointment', unique: 'doctors-appointment', component: Demo721 },
+              { name: 'Availability planner & appointment manager', unique: 'doctors-availability-calendar-planner', component: Demo769 },
             ],
           },
           {
@@ -879,6 +885,7 @@ export const demos = [
               { name: 'Resource grouping', unique: 'group-by-resource-by-day', component: Demo592 },
               { name: 'Shared events', unique: 'shared-events-across-resources', component: Demo593 },
               { name: 'Show/hide resources', unique: 'dynamic-add-remove-resources-filter', component: Demo594 },
+              { name: 'Variable resource width', unique: 'dynamic-content-based-resource-width', component: Demo771 },
               { name: 'Resource properties', unique: 'resource-data-structure', component: Demo719 },
             ],
           },
@@ -972,6 +979,7 @@ export const demos = [
               { name: 'Display task progress', unique: 'show-task-progress-on-event', component: Demo746 },
               { name: 'Managing tasks within shifts', unique: 'tasks-subtasks-under-shifts', component: Demo750 },
               { name: 'Resource filtering', unique: 'resource-filtering-search', component: Demo751 },
+              { name: 'Set up custom teams', unique: 'resource-management-with-dynamic-team-creation', component: Demo772 },
             ],
           },
           {

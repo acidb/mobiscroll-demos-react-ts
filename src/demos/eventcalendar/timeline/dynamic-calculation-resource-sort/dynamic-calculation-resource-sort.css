@@ -1,46 +1,113 @@
-/* resource highlight */
+/* Overrides */
 
-.mds-resource-highlight {
-  background-color: rgba(128, 128, 128, 0.4);
-  transition: background-color 0.5s ease;
+.mds-popup-sort .mbsc-timeline-resource-header,
+.mds-popup-sort .mbsc-timeline-resource-title {
+  padding: 0;
 }
 
-/* progress bar */
+.mds-popup-sort .mbsc-timeline-resource-col {
+  width: 170px;
+}
 
-.mds-popup-sort-snackbar .mbsc-toast-background::before {
+.mds-popup-sort .mbsc-timeline-row {
+  height: 110px;
+}
+
+.mds-popup-sort .mbsc-timeline-events {
+  top: 20px;
+}
+
+/* Resource grid */
+
+.mds-popup-sort-resource-header {
+  padding: 0 5px;
+  line-height: 25px;
+}
+
+.mds-popup-sort-resource-cell {
+  padding: 5px;
+  line-height: 20px;
+}
+
+.mds-popup-sort-resource-attr {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* Event template */
+
+.mds-popup-sort-event-attr {
+  font-size: 11px;
+}
+
+/* Metric bar */
+
+.mds-popup-sort-bar-track {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  height: 10px;
+  width: 150px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.mds-popup-sort-bar {
+  height: 100%;
+}
+
+.mds-popup-sort-bar-green {
+  background-color: #4caf50;
+}
+
+.mds-popup-sort-bar-yellow {
+  background-color: #ffeb3b;
+}
+
+.mds-popup-sort-bar-red {
+  background-color: #f44336;
+}
+
+.mds-popup-sort-bar-animation {
+  animation: mds-popup-sort-fill-bar 1s ease-in-out forwards;
+}
+
+/* Snackbar countdown */
+
+.mds-popup-sort-snackbar .mbsc-snackbar-cont {
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mds-popup-sort-snackbar .mbsc-snackbar-cont::before {
   content: '';
   position: absolute;
   left: 0;
   height: 100%;
-  width: 0;
-  border-radius: 4px;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  transition: width 3s linear;
+  animation: mds-popup-sort-fill-bar 3s linear forwards;
 }
 
 .mds-popup-sort-snackbar .mbsc-snackbar-message::after {
   content: 'Sorting in 1 .';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: changeMessage 3s steps(3) forwards;
-}
-
-.mds-popup-sort-snackbar .mbsc-snackbar-message {
   position: relative;
+  z-index: 1;
+  animation: mds-popup-sort-message 3s steps(3) forwards;
 }
 
-@keyframes countdown {
-  0% {
-    width: 0%;
+/* Animations */
+
+@keyframes mds-popup-sort-fill-bar {
+  from {
+    transform: translateX(-100%);
   }
-  100% {
-    width: 100%;
+  to {
+    transform: translateX(0);
   }
 }
 
-@keyframes changeMessage {
+@keyframes mds-popup-sort-message {
   0% {
     content: 'Sorting in 3 ...';
   }
@@ -50,110 +117,4 @@
   76% {
     content: 'Sorting in 1 .';
   }
-}
-
-.mds-popup-sort-snackbar .mbsc-toast-background.start-progress::before {
-  animation: countdown 3s linear forwards;
-}
-
-.mds-popup-sort-snackbar .mbsc-snackbar-cont {
-  border-radius: 4px;
-}
-
-/* metric bar */
-
-.mds-metric-bar-container {
-  position: relative;
-  background-color: #f0f0f0;
-  border-radius: 5px;
-  height: 10px;
-  width: 150px;
-  overflow: hidden;
-}
-
-.mds-metric-bar-animation {
-  height: 100%;
-  animation: fillBar 1s ease-in-out forwards;
-}
-.mds-metric-bar-no-animation {
-  height: 100%;
-  animation: fillBar 0s ease-in-out forwards;
-}
-
-.mds-metric-bar-overlay {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  background-color: #f0f0f0;
-}
-
-@keyframes fillBar {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-.mds-resource-green-bar {
-  background-color: #4caf50;
-}
-
-.mds-resource-yellow-bar {
-  background-color: #ffeb3b;
-}
-
-.mds-resource-red-bar {
-  background-color: #f44336;
-}
-
-/* Overrides */
-
-.mds-timeline-popup-sort .mbsc-timeline-events {
-  top: 20px;
-}
-
-.mds-timeline-popup-sort .mbsc-timeline-resource-header,
-.mds-timeline-popup-sort .mbsc-timeline-resource-title,
-.mds-timeline-popup-sort .mbsc-timeline-resource-footer,
-.mds-timeline-popup-sort .mbsc-timeline-sidebar-header,
-.mds-timeline-popup-sort .mbsc-timeline-sidebar-resource-title,
-.mds-timeline-popup-sort .mbsc-timeline-sidebar-footer {
-  padding: 0;
-}
-
-.mds-timeline-popup-sort .mbsc-timeline-row {
-  min-height: 110px;
-}
-
-.mds-timeline-popup-sort .mbsc-timeline-resource-col {
-  width: 170px;
-}
-
-.mds-timeline-popup-sort .mbsc-timeline-resource-title {
-  height: 100%;
-}
-
-/* Resource grid */
-
-.mds-popup-sort-resource-cell {
-  display: inline-block;
-  height: 100%;
-  padding: 5px 5px;
-  box-sizing: border-box;
-  vertical-align: top;
-  line-height: 20px;
-}
-
-.mds-popup-sort-resource-cell-name {
-  padding: 2px 5px;
-  width: 170px;
-}
-
-.mds-resource-attribute {
-  font-size: 12px;
-  font-weight: 400;
 }

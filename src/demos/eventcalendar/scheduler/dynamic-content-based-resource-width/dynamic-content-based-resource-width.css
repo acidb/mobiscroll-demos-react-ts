@@ -1,0 +1,27 @@
+.mds-variable-res-col-small {
+  width: 70px;
+}
+
+.mds-variable-res-col-medium {
+  width: 100px;
+}
+
+.mds-variable-res-col-large {
+  width: 130px;
+}
+
+.mds-variable-res-col-name {
+  height: 40px;
+  font-size: 14px;
+}
+
+.mds-variable-res-col-icons {
+  padding-top: 8px;
+}
+
+.mds-variable-res-col-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 8px;
+  fill: currentColor;
+}

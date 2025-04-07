@@ -103,12 +103,12 @@ const App: FC = () => {
       <div ref={setDraggable1} className="event-hooks-draggable" style={{ background: '#ffdab8' }}>
         <div className="draggable-title">External drag 1</div>
         <div className="draggable-text">Drag me to calendar</div>
-        <Draggable dragData={dragData1} element={draggable1} />
+        <Draggable dragData={dragData1} element={draggable1} theme="auto" />
       </div>
       <div ref={setDraggable2} className="event-hooks-draggable" style={{ background: '#ddfcf7' }}>
         <div className="draggable-title">External drag 2</div>
         <div className="draggable-text">Drag me to calendar</div>
-        <Draggable dragData={dragData2} element={draggable2} />
+        <Draggable dragData={dragData2} element={draggable2} theme="auto" />
       </div>
       <Eventcalendar
         data={myEvents}
@@ -151,12 +151,6 @@ const App: FC = () => {
         onEventDoubleClick={() => {
           // Logic for event double click
         }}
-        onEventDragStart={() => {
-          // Logic for event drag start
-        }}
-        onEventDragEnd={() => {
-          // Logic for event drag end
-        }}
         onEventDragEnter={() => {
           // Logic for event drag enter
         }}
@@ -184,9 +178,6 @@ const App: FC = () => {
         onInit={() => {
           // Logic running on component init
         }}
-        onLabelClick={() => {
-          // Logic for label click
-        }}
         onPageChange={() => {
           // Your custom event handler goes here
         }}
@@ -196,8 +187,23 @@ const App: FC = () => {
         onPageLoading={() => {
           // Use it to load data on demand
         }}
+        onResourceClick={() => {
+          // Logic for resource click
+        }}
+        onResourceDoubleClick={() => {
+          // Logic for resource double click
+        }}
+        onResourceDragEnd={() => {
+          /* Logic for resource drag end */
+        }}
+        onResourceDragStart={() => {
+          /* Logic for resource drag start */
+        }}
         onResourceOrderUpdate={() => {
           // Logic for resource update
+        }}
+        onResourceRightClick={() => {
+          // Logic for resource right click
         }}
         onSelectedDateChange={() => {
           // Use it to keep track of the selected date externally

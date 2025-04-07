@@ -1,0 +1,58 @@
+.mds-healthcare .mbsc-schedule-time-col,
+.mds-healthcare .mbsc-schedule-time-wrapper {
+  width: 80px;
+}
+
+.mds-healthcare .mbsc-schedule-resource-title {
+  padding: 0;
+}
+
+.mds-healthcare-res-col {
+  width: 210px;
+  border: 0 !important;
+}
+
+/* Availability column */
+
+.mds-healthcare-res-col-bar {
+  width: 14px;
+}
+
+.mds-healthcare-res-col-bar .mbsc-schedule-event {
+  margin-left: 5px;
+}
+
+.mds-healthcare-res-col-bar .mbsc-schedule-event-range {
+  display: none;
+}
+
+.mds-healthcare-res-col-bar .mbsc-schedule-event-bar {
+  width: 4px;
+  border-radius: 3px;
+}
+
+/* Resource header */
+
+.mds-healthcare-res-cont {
+  padding: 10px;
+  font-weight: 500;
+  text-align: start;
+}
+
+.mds-healthcare-res-name {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.mds-healthcare-res-desc {
+  font-size: 12px;
+  line-height: 14px;
+  margin-top: 4px;
+}
+
+.mds-healthcare-res-avatar {
+  height: 40px;
+  width: 40px;
+  margin: 10px 0;
+}

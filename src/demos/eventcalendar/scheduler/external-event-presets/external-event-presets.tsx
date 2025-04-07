@@ -85,7 +85,7 @@ function Task(props: { data: { title: string; color: string; start: string; end:
     <div ref={setDragElm} style={{ background: props.data.color }} className="external-event-task">
       <div>{props.data.title}</div>
       <div>{props.data.length}</div>
-      <Draggable dragData={props.data} element={draggable} />
+      <Draggable dragData={props.data} element={draggable} theme="auto" />
     </div>
   );
 }
