@@ -52,7 +52,7 @@ function App() {
       inputStyle="outline"
       placeholder="Please Select..."
       display="bottom"
-      locale={localeEs} // sets the language of the component
+      locale={localeEs} // Sets the language of the component
     />
   );
 }

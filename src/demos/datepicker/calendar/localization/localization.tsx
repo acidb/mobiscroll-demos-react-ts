@@ -9,7 +9,7 @@ const App: FC = () => (
   <Datepicker
     controls={['calendar']}
     display="inline"
-    locale={localeEs} // sets the language of the component
+    locale={localeEs} // Sets the language of the component
   />
 );
 export default App;

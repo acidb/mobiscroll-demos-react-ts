@@ -78,12 +78,12 @@ const App: FC = () => {
       <div ref={setDragElm1} className="event-hooks-draggable" style={{ background: '#ffdab8' }}>
         <div className="draggable-title">External drag 1</div>
         <div className="draggable-text">Drag me to calendar</div>
-        <Draggable dragData={dragData1} element={draggable1} theme="auto" />
+        <Draggable dragData={dragData1} element={draggable1} />
       </div>
       <div ref={setDragElm2} className="event-hooks-draggable" style={{ background: '#ddfcf7' }}>
         <div className="draggable-title">External drag 2</div>
         <div className="draggable-text">Drag me to calendar</div>
-        <Draggable dragData={dragData2} element={draggable2} theme="auto" />
+        <Draggable dragData={dragData2} element={draggable2} />
       </div>
       <Eventcalendar
         data={myEvents}

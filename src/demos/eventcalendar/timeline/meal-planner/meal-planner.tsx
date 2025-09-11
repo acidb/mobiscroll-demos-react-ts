@@ -108,18 +108,18 @@ const App: FC = () => {
     };
 
     if (isEdit) {
-      // update the event in the list
+      // Update the event in the list
       const index = myMeals.findIndex((x) => x.id === tempMeal!.id);
       const newEventList = [...myMeals];
 
       newEventList.splice(index, 1, newEvent);
       setMyMeals(newEventList);
     } else {
-      // add the new event to the list
+      // Add the new event to the list
       setMyMeals([...myMeals, newEvent]);
     }
 
-    // close the popup
+    // Close the popup
     setOpen(false);
   }, [isEdit, myMeals, calories, notes, name, tempMeal]);
 
@@ -138,7 +138,7 @@ const App: FC = () => {
     setNotes(event.notes);
   }, []);
 
-  // handle popup form changes
+  // Handle popup form changes
 
   const nameChange = useCallback((ev: ChangeEvent<HTMLInputElement>) => {
     setName(ev.target.value);
@@ -157,7 +157,7 @@ const App: FC = () => {
     setOpen(false);
   }, [deleteEvent, tempMeal]);
 
-  // scheduler options
+  // Scheduler options
   const handleEventClick = useCallback(
     (args: MbscEventClickEvent) => {
       const event = args.event;
@@ -167,7 +167,7 @@ const App: FC = () => {
       setType(+event.resource!);
       setEdit(true);
       setTempMeal({ ...event });
-      // fill popup form with event data
+      // Fill popup form with event data
       loadPopupForm(event);
       setOpen(true);
     },
@@ -188,9 +188,9 @@ const App: FC = () => {
       setType(+event.resource!);
       setEdit(false);
       setTempMeal(event);
-      // fill popup form with event data
+      // Fill popup form with event data
       loadPopupForm(event);
-      // open the popup
+      // Open the popup
       setOpen(true);
     },
     [loadPopupForm],
@@ -212,7 +212,7 @@ const App: FC = () => {
     [deleteEvent],
   );
 
-  // popup options
+  // Popup options
   const popupButtons = useMemo<(string | MbscPopupButton)[]>(() => {
     if (isEdit) {
       return [
@@ -243,7 +243,7 @@ const App: FC = () => {
 
   const onPopupClose = useCallback(() => {
     if (!isEdit) {
-      // refresh the list, if add popup was canceled, to remove the temporary event
+      // Refresh the list, if add popup was canceled, to remove the temporary event
       setMyMeals([...myMeals]);
     }
     setOpen(false);

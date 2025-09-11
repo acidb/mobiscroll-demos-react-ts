@@ -85,7 +85,7 @@ function Task(props: { data: { title: string; color: string; start: string; end:
     <div ref={setDragElm} style={{ background: props.data.color }} className="external-event-task">
       <div>{props.data.title}</div>
       <div>{props.data.length}</div>
-      <Draggable dragData={props.data} element={draggable} theme="auto" />
+      <Draggable dragData={props.data} element={draggable} />
     </div>
   );
 }
@@ -217,12 +217,7 @@ const App: FC = () => {
           </div>
         </Popup>
       </div>
-      <Toast
-        // theme
-        message={toastText}
-        isOpen={isToastOpen}
-        onClose={handleCloseToast}
-      />
+      <Toast message={toastText} isOpen={isToastOpen} onClose={handleCloseToast} />
     </div>
   );
 };

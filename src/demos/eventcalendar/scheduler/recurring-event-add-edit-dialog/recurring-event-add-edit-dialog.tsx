@@ -221,7 +221,7 @@ const dateInputProps = {
   inputStyle: 'outline',
 };
 
-// returns the weeknumber of the passed date
+// Returns the weeknumber of the passed date
 function getWeekDayNum(date: Date): number {
   const year = date.getFullYear();
   const month = date.getMonth();
@@ -254,7 +254,7 @@ const App: FC = () => {
   const [popupEventDate, setDate] = useState<MbscDateType[]>([]);
   const [mySelectedDate, setSelectedDate] = useState<MbscDateType>();
 
-  // recurring editor data
+  // Recurring editor data
   const [repeatData, setRepeatData] = useState([
     {
       value: 'norepeat',
@@ -315,7 +315,7 @@ const App: FC = () => {
   const [recurringEditMode, setRecurringEditMode] = useState<'all' | 'current' | 'following'>('current');
   const [editFromPopup, setEditFromPopup] = useState<boolean>(false);
 
-  // set custom values to default
+  // Set custom values to default
   const resetCustomValues = useCallback(() => {
     setRepeatType('daily');
     setRepeatNr(1);
@@ -334,7 +334,7 @@ const App: FC = () => {
     const d = new Date(tempEvent!.start as string);
     let nextYear = 0;
 
-    // navigate the calendar to the correct view
+    // Navigate the calendar to the correct view
     if (rec && rec.repeat === 'yearly') {
       if (d.getMonth() + 1 > +rec.month! && d.getDay() > +rec.day!) {
         nextYear = 1;
@@ -521,24 +521,24 @@ const App: FC = () => {
     };
 
     if (isEdit) {
-      // update the event in the list
+      // Update the event in the list
       const index = myEvents.findIndex((x) => x.id === tempEvent!.id);
       const newEventList = [...myEvents];
 
       newEventList.splice(index, 1, newEv);
       setMyEvents(newEventList);
-      // here you can update the event in your storage as well
+      // Here you can update the event in your storage as well
       // ...
     } else {
-      // add the new event to the list
+      // Add the new event to the list
       setMyEvents([...myEvents, newEv]);
-      // here you can add the event to your storage as well
+      // Here you can add the event to your storage as well
       // ...
     }
 
-    // navigate the calendar
+    // Navigate the calendar
     navigateTo();
-    // close the popup
+    // Close the popup
     setOpen(false);
   }, [tempEvent, popupEventTitle, popupEventDescription, popupEventDate, popupEventAllDay, getCustomRule, isEdit, navigateTo, myEvents]);
 
@@ -597,7 +597,7 @@ const App: FC = () => {
       const newData = repeatData.slice(0);
       const weekNr = getWeekDayNum(d);
 
-      // update select texts by selected date
+      // Update select texts by selected date
       for (let i = 0; i < newData.length; ++i) {
         const item = newData[i];
         switch (item.value) {
@@ -628,7 +628,7 @@ const App: FC = () => {
         setRepeatType(rec.repeat);
         setWeekDays(rec.repeat === 'weekly' ? rec.weekDays!.split(',') : ['SU']);
         if (rec.interval) {
-          // set custom text
+          // Set custom text
           let customText = '';
           const nr = rec.interval;
 
@@ -668,9 +668,9 @@ const App: FC = () => {
             setCondition('never');
           }
 
-          // add custom value
+          // Add custom value
           setRepeatData([...repeatData, { value: 'custom-value', text: customText }]);
-          // set custom value
+          // Set custom value
           setSelectedRepeat('custom-value');
         } else if (rec.weekDays === 'MO,TU,WE,TH,FR') {
           setSelectedRepeat('weekday');
@@ -684,7 +684,7 @@ const App: FC = () => {
     [repeatData, resetCustomValues],
   );
 
-  // handle popup form changes
+  // Handle popup form changes
 
   const titleChange = useCallback((ev: ChangeEvent<HTMLInputElement>) => {
     setTitle(ev.target.value);
@@ -718,7 +718,7 @@ const App: FC = () => {
     }
   }, [deleteEvent, tempEvent]);
 
-  // populate data for months
+  // Populate data for months
   const populateMonthDays = useCallback(
     (month: number, type: string) => {
       const day30 = [2, 4, 6, 9, 11];
@@ -793,7 +793,7 @@ const App: FC = () => {
     [weekDays],
   );
 
-  // scheduler options
+  // Scheduler options
 
   const handleSelectedDateChange = useCallback((event: MbscSelectedDateChangeEvent) => {
     setSelectedDate(event.date);
@@ -806,7 +806,7 @@ const App: FC = () => {
       setEdit(true);
       setTempEvent({ ...args.event });
 
-      // recurring event
+      // Recurring event
       if (event.recurring) {
         setOriginalRecurringEvent(event.original);
         setEventOccurrence({ ...event });
@@ -854,10 +854,10 @@ const App: FC = () => {
       setEdit(false);
       resetCustomValues();
       setTempEvent(args.event);
-      // fill popup form with event data
+      // Fill popup form with event data
       loadPopupForm(args.event);
       setAnchor(args.target);
-      // open the popup
+      // Open the popup
       setOpen(true);
     },
     [loadPopupForm, resetCustomValues],
@@ -871,11 +871,11 @@ const App: FC = () => {
   );
 
   const handleEventUpdated = useCallback(() => {
-    // here you can update the event in your storage as well, after drag & drop or resize
+    // Here you can update the event in your storage as well, after drag & drop or resize
     // ...
   }, []);
 
-  // datepicker options
+  // Datepicker options
   const controls = useMemo<MbscDatepickerControl[]>(() => (popupEventAllDay ? ['calendar'] : ['calendar', 'time']), [popupEventAllDay]);
   const respSetting: MbscResponsiveOptions<MbscDatepickerOptions> = useMemo(
     () =>
@@ -901,7 +901,7 @@ const App: FC = () => {
     [popupEventAllDay],
   );
 
-  // popup options
+  // Popup options
   const headerText = useMemo(() => (isEdit ? 'Edit event' : 'New Event'), [isEdit]);
   const popupButtons = useMemo<(string | MbscPopupButton)[]>(() => {
     if (isEdit) {
@@ -941,7 +941,7 @@ const App: FC = () => {
   const onPopupClose = useCallback(() => {
     setRepeatData(repeatData.filter((item) => item.value !== 'custom-value'));
     if (!isEdit) {
-      // refresh the list, if add popup was canceled, to remove the temporary event
+      // Refresh the list, if add popup was canceled, to remove the temporary event
       setMyEvents([...myEvents]);
     }
     setEditFromPopup(false);
@@ -979,12 +979,12 @@ const App: FC = () => {
               recurringEditMode,
             );
 
-            // update event
+            // Update event
             let newEventList = [...myEvents];
             const index = newEventList.findIndex((x) => x.id === events.updatedEvent.id);
             newEventList[index] = events.updatedEvent;
 
-            // add new event
+            // Add new event
             if (events.newEvent) {
               newEventList = [...newEventList, events.newEvent];
             }

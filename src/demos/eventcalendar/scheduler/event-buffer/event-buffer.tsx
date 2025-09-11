@@ -2,8 +2,8 @@ import { Eventcalendar, MbscCalendarEvent, MbscEventcalendarView, setOptions /* 
 import { FC, useMemo } from 'react';
 
 setOptions({
-  // theme,
-  // locale
+  // localeJs,
+  // themeJs
 });
 
 const App: FC = () => {

@@ -160,22 +160,22 @@ const App: FC = () => {
       color: selectedColor,
     };
     if (isEdit) {
-      // update the event in the list
+      // Update the event in the list
       const index = myEvents.findIndex((x) => x.id === tempEvent!.id);
       const newEventList = [...myEvents];
 
       newEventList.splice(index, 1, newEvent);
       setMyEvents(newEventList);
-      // here you can update the event in your storage as well
+      // Here you can update the event in your storage as well
       // ...
     } else {
-      // add the new event to the list
+      // Add the new event to the list
       setMyEvents([...myEvents, newEvent]);
-      // here you can add the event to your storage as well
+      // Here you can add the event to your storage as well
       // ...
     }
     calInst.current?.navigateToEvent(newEvent);
-    // close the popup
+    // Close the popup
     setOpen(false);
   }, [
     isEdit,
@@ -244,7 +244,7 @@ const App: FC = () => {
     (args: MbscEventClickEvent) => {
       setEdit(true);
       setTempEvent({ ...args.event });
-      // fill popup form with event data
+      // Fill popup form with event data
       loadPopupForm(args.event);
       setAnchor(args.domEvent.target);
       setOpen(true);
@@ -256,10 +256,10 @@ const App: FC = () => {
     (args: MbscEventCreatedEvent) => {
       setEdit(false);
       setTempEvent(args.event);
-      // fill popup form with event data
+      // Fill popup form with event data
       loadPopupForm(args.event);
       setAnchor(args.target);
-      // open the popup
+      // Open the popup
       setOpen(true);
     },
     [loadPopupForm],
@@ -273,7 +273,7 @@ const App: FC = () => {
   );
 
   const onEventUpdated = useCallback(() => {
-    // here you can update the event in your storage as well, after drag & drop or resize
+    // Here you can update the event in your storage as well, after drag & drop or resize
     // ...
   }, []);
 
@@ -339,7 +339,7 @@ const App: FC = () => {
 
   const onClose = useCallback(() => {
     if (!isEdit) {
-      // refresh the list, if add popup was canceled, to remove the temporary event
+      // Refresh the list, if add popup was canceled, to remove the temporary event
       setMyEvents([...myEvents]);
     }
     setOpen(false);
@@ -352,7 +352,7 @@ const App: FC = () => {
   const openColorPicker = useCallback(
     (ev: MouseEvent<HTMLDivElement>) => {
       selectColor(selectedColor || '');
-      setColorAnchor(ev.currentTarget); //currentTarget
+      setColorAnchor(ev.currentTarget); //CurrentTarget
       setColorPickerOpen(true);
     },
     [selectColor, selectedColor],

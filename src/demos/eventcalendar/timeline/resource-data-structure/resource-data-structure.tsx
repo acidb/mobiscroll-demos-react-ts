@@ -11,62 +11,62 @@ const App: FC = () => {
   const myResources: MbscResource[] = useMemo(
     () => [
       {
-        // base properties
+        // Base properties
         id: 'team',
         name: 'Team 1',
         eventCreation: false,
         children: [
           {
-            // base properties
+            // Base properties
             id: 1,
             name: 'Ryan',
             color: '#e20000',
-            // add any property you'd like
+            // Add any property you'd like
             title: 'UX Designer',
             job: 'Apollo Project',
           },
           {
-            // base properties
+            // Base properties
             id: 2,
             name: 'Kate',
             color: '#60e81a',
-            // add any property you'd like
+            // Add any property you'd like
             title: 'Product Developer',
             job: 'Yorick Project',
           },
           {
-            // base properties
+            // Base properties
             id: 3,
             name: 'John',
             color: '#3ba7ff',
-            // add any property you'd like
+            // Add any property you'd like
             title: 'Data Analyst',
             job: 'Titus Project',
           },
           {
-            // base properties
+            // Base properties
             id: 4,
             name: 'Mark',
             color: '#e25dd2',
-            // add any property you'd like
+            // Add any property you'd like
             title: 'Network Administrator',
             job: 'Yorick Project',
           },
           {
-            // base properties
+            // Base properties
             id: 5,
             name: 'Sharon',
             color: '#f1e920',
-            // add any property you'd like
+            // Add any property you'd like
             title: 'Data Quality Manager',
             job: 'Apollo Project',
           },
           {
-            // base properties
+            // Base properties
             id: 6,
             name: 'Emma',
             color: '#1ac38d',
-            // add any property you'd like
+            // Add any property you'd like
             title: 'Product Tactics Agent',
             job: 'Titus Project',
           },

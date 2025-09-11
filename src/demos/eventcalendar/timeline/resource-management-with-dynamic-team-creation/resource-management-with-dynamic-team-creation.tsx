@@ -41,7 +41,7 @@ function Installer(props: { data: MbscResource }) {
           <div className="mds-ext-res-name">{resource.name}</div>
           <div className="mds-ext-res-title">{resource.title}</div>
         </div>
-        <Draggable dragData={resource} element={draggable} type="resource" theme="auto" />
+        <Draggable dragData={resource} element={draggable} type="resource" />
       </div>
     </div>
   );

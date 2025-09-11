@@ -119,14 +119,14 @@ const App: FC = () => {
     const event = args.event;
     const resources = Array.isArray(event.resource) ? (event.resource as Array<number>) : [event.resource as number];
 
-    // store temporary event
+    // Store temporary event
     setTempEvent(event);
 
-    // fill popup with the current event data
+    // Fill popup with the current event data
     setTitle(event.title!);
     setParticipants(resources);
 
-    // set anchor for the popup
+    // Set anchor for the popup
     if (args as MbscEventCreatedEvent) {
       setAnchor((args as MbscEventCreatedEvent).target);
     } else if (args as MbscEventClickEvent) {
@@ -174,7 +174,7 @@ const App: FC = () => {
             setEvents([...myEvents]);
           }
 
-          // update event with the new properties on OK button click
+          // Update event with the new properties on OK button click
           setIsNewEvent(false);
 
           setOpen(false);

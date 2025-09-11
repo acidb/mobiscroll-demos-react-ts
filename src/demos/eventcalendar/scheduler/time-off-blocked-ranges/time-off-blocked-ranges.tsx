@@ -92,12 +92,7 @@ function App() {
         onEventCreateFailed={handleEventCreateFailed}
         onEventUpdateFailed={handleEventUpdateFailed}
       />
-      <Toast
-        // theme
-        message={toastText}
-        isOpen={isToastOpen}
-        onClose={handleCloseToast}
-      />
+      <Toast message={toastText} isOpen={isToastOpen} onClose={handleCloseToast} />
     </div>
   );
 }

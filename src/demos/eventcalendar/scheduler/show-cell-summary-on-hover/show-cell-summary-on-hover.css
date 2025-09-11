@@ -1,0 +1,28 @@
+.mds-cell-summary-on-hover .mbsc-schedule-events.mbsc-ltr {
+  right: 20px;
+}
+.mds-cell-summary-on-hover .mbsc-schedule-events.mbsc-rtl {
+  left: 20px;
+}
+.mds-cell-summary-on-hover .mbsc-schedule-item:hover {
+  box-shadow:
+    0px 1px 6px 3px rgba(0, 0, 0, 0.2),
+    0px 1px 6px 3px rgba(255, 255, 255, 0.2);
+}
+.mds-cell-summary-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.mds-cell-summary-item {
+  flex: 1;
+}
+.mds-cell-summary-content {
+  font-weight: 500;
+  opacity: 0.8;
+  margin-top: 5px;
+}
+.mds-cell-summary-color {
+  background: repeating-linear-gradient(-45deg, #cce9d3, #cce9d3 10px, #c5dfc1 10px, #c5dfc1 20px);
+  opacity: 0.5;
+}

@@ -65,9 +65,9 @@ function App() {
       onDestroy={() => {
         // Your custom event handler goes here
       }}
-      // onFilter={() => {
-      //   // Your custom event handler goes here
-      // }}
+      onFilter={() => {
+        // Your custom event handler goes here
+      }}
       onInit={() => {
         // Logic running on component init
       }}

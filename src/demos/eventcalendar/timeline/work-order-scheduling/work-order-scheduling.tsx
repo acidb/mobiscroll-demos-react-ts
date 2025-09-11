@@ -327,22 +327,22 @@ const App: FC = () => {
       resource: checkedResources,
     };
     if (isEdit) {
-      // update the event in the list
+      // Update the event in the list
       const index = myEvents.findIndex((x) => x.id === tempEvent!.id);
       const newEventList = [...myEvents];
 
       newEventList.splice(index, 1, newEvent);
       setMyEvents(newEventList);
-      // here you can update the event in your storage as well
+      // Here you can update the event in your storage as well
       // ...
     } else {
-      // add the new event to the list
+      // Add the new event to the list
       setMyEvents([...myEvents, newEvent]);
-      // here you can add the event to your storage as well
+      // Here you can add the event to your storage as well
       // ...
     }
     calInst.current?.navigateToEvent(newEvent);
-    // close the popup
+    // Close the popup
     setPopupOpen(false);
   }, [isEdit, myEvents, popupEventDate, popupEventNotes, popupEventTitle, popupEventLocation, popupEventBill, tempEvent, checkedResources]);
 
@@ -364,7 +364,7 @@ const App: FC = () => {
     setCheckedResources([event.resource as string]);
   }, []);
 
-  // handle popup form changes
+  // Handle popup form changes
 
   const titleChange = useCallback((ev: ChangeEvent<HTMLInputElement>) => {
     setTitle(ev.target.value);
@@ -395,7 +395,7 @@ const App: FC = () => {
     (args: MbscEventClickEvent) => {
       setEdit(true);
       setTempEvent({ ...args.event });
-      // fill popup form with event data
+      // Fill popup form with event data
       loadPopupForm(args.event);
       setAnchor(args.domEvent.target);
       setPopupOpen(true);
@@ -407,10 +407,10 @@ const App: FC = () => {
     (args: MbscEventCreatedEvent) => {
       setEdit(false);
       setTempEvent(args.event);
-      // fill popup form with event data
+      // Fill popup form with event data
       loadPopupForm(args.event);
       setAnchor(args.target);
-      // open the popup
+      // Open the popup
       setPopupOpen(true);
     },
     [loadPopupForm],
@@ -455,7 +455,7 @@ const App: FC = () => {
 
   const handlePopupClose = useCallback(() => {
     if (!isEdit) {
-      // refresh the list, if add popup was canceled, to remove the temporary event
+      // Refresh the list, if add popup was canceled, to remove the temporary event
       setMyEvents([...myEvents]);
     }
     setPopupOpen(false);

@@ -98,7 +98,7 @@ const App: FC = () => {
       setEvents([]);
     };
 
-    // init outlook client
+    // Init outlook client
     outlookCalendarSync.init({
       clientId: '<YOUR_OUTLOOK_CLIENT_ID>',
       redirectUri: '<YOUR_OUTLOOK_REDIRECT_URI>',

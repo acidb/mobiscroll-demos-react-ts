@@ -46,14 +46,14 @@ const App: FC = () => {
 
   const addEvent = useCallback(() => {
     const newEvent = {
-      // base properties
+      // Base properties
       title: 'Product planning',
       start: 'dyndatetime(y,m,d,15)',
       end: 'dyndatetime(y,m,d,17)',
       resource: 4,
       bufferBefore: 20,
       bufferAfter: 30,
-      // add any property you'd like
+      // Add any property you'd like
       busy: true,
       description: 'Weekly meeting with team',
       location: 'Office',

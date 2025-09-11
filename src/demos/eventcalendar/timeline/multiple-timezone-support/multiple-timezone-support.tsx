@@ -3,16 +3,18 @@ import {
   CalendarNext,
   CalendarPrev,
   CalendarToday,
+  dayjsTimezone,
   Eventcalendar,
   MbscCalendarEvent,
   MbscEventcalendarView,
   MbscResource,
   MbscSelectChangeEvent,
-  momentTimezone,
   Select,
   setOptions /* localeImport */,
 } from '@mobiscroll/react';
-import moment from 'moment-timezone';
+import dayjs from 'dayjs';
+import timezone from 'dayjs/plugin/timezone';
+import utc from 'dayjs/plugin/utc';
 import { useCallback, useMemo, useState } from 'react';
 import './multiple-timezone-support.css';
 
@@ -21,8 +23,9 @@ setOptions({
   // themeJs
 });
 
-// setup Mobiscroll Timezone plugin with Moment
-momentTimezone.moment = moment;
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjsTimezone.dayjs = dayjs;
 
 function App() {
   const [timezone, setTimezone] = useState<string>('utc');
@@ -177,7 +180,7 @@ function App() {
     <Eventcalendar
       dataTimezone="utc"
       displayTimezone={timezone}
-      timezonePlugin={momentTimezone}
+      timezonePlugin={dayjsTimezone}
       data={myEvents}
       view={myView}
       resources={myResources}

@@ -37,7 +37,7 @@ function Task(props: { data: MbscCalendarEvent }) {
         <div ref={setDragElm} className="external-drop-task" style={{ background: event.color }}>
           <div>{event.title}</div>
           <div>{eventLength + ' hour' + (eventLength > 1 ? 's' : '')}</div>
-          <Draggable dragData={event} element={draggable} theme="auto" />
+          <Draggable dragData={event} element={draggable} />
         </div>
       )}
     </div>
@@ -86,10 +86,6 @@ const App: FC = () => {
     }),
     [],
   );
-
-  // const setDropElm = useCallback((elm: any) => {
-  //   setDropCont(elm);
-  // }, []);
 
   const handleEventCreate = useCallback(
     (args: MbscEventCreateEvent) => {

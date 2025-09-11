@@ -1,0 +1,102 @@
+.mds-timeline-cell-content .mbsc-timeline-events {
+  top: 25px;
+}
+
+.mds-timeline-cell-content .mbsc-timeline-row-gutter {
+  height: 55px;
+}
+
+.mds-timeline-cell-content .mbsc-timeline-column {
+  width: 110px;
+}
+
+.mds-timeline-cell-content-badge {
+  position: relative;
+  top: 6px;
+  left: 4px;
+  display: inline-block;
+  padding: 1px 4px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 12px;
+  max-width: 80px;
+  color: black;
+  background: #f9f9f9;
+  overflow: hidden;
+  z-index: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.mds-timeline-cell-content-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transform: skewX(-15deg);
+  z-index: -1;
+}
+
+.mds-timeline-cell-content-badge-light::before {
+  width: 25%;
+  background: #ff9c9c;
+}
+
+.mds-timeline-cell-content-badge-medium::before {
+  width: 50%;
+  background: #ffcf9f;
+}
+
+.mds-timeline-cell-content-badge-semi::before {
+  width: 75%;
+  background: #fff4a3;
+}
+
+.mds-timeline-cell-content-badge-full::before {
+  width: 100%;
+  background: #a3e4a1;
+}
+
+.mds-timeline-cell-content-add {
+  opacity: 0;
+  position: absolute;
+  inset: 6px 4px auto auto;
+  width: 17px;
+  height: 17px;
+  line-height: 13px;
+  padding: 0;
+  padding-bottom: 4px;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+  background: linear-gradient(135deg, rgb(73, 73, 73), rgb(22, 21, 21));
+  transition: transform 0.2s ease;
+}
+
+.mbsc-timeline-column:hover .mds-timeline-cell-content-add {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mds-timeline-cell-content-add:hover {
+  outline: 3px solid rgba(140, 140, 140, 0.5);
+}
+
+.mds-timeline-cell-icons {
+  position: absolute;
+  inset: auto auto 4px auto;
+}
+
+.mds-timeline-cell-icon {
+  text-align: center;
+  padding: 2px 4px;
+  margin: 0 3px;
+  line-height: 17px !important;
+  color: #000;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  font-size: 13px;
+}

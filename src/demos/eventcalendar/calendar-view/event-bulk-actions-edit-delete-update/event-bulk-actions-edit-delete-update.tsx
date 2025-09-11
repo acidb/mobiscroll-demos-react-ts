@@ -71,7 +71,7 @@ const App: FC = () => {
         exc = [...exc, event.start as string];
         origEvent!.recurringException = exc;
 
-        // update the event in the list
+        // Update the event in the list
         const index = eventsToUpdate.findIndex((x) => x.id === origEvent.id);
         eventsToUpdate.splice(index, 1, origEvent);
       } else {
@@ -104,7 +104,7 @@ const App: FC = () => {
             exc = [...exc, event.start as string];
             origEvent.recurringException = exc;
 
-            // update the event in the list
+            // Update the event in the list
             const index = eventsToUpdate.findIndex((x) => x.id === origEvent.id);
             eventsToUpdate.splice(index, 1, origEvent);
           } else {

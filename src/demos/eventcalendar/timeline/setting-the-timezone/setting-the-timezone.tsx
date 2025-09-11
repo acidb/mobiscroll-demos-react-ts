@@ -1,20 +1,24 @@
 import {
+  dayjsTimezone,
   Eventcalendar,
   MbscCalendarEvent,
   MbscEventcalendarView,
   MbscResource,
-  momentTimezone,
   setOptions /* localeImport */,
 } from '@mobiscroll/react';
-import moment from 'moment-timezone';
+import dayjs from 'dayjs';
+import timezone from 'dayjs/plugin/timezone';
+import utc from 'dayjs/plugin/utc';
 import { FC, useMemo } from 'react';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjsTimezone.dayjs = dayjs;
 
 setOptions({
   // localeJs,
   // themeJs
 });
-
-momentTimezone.moment = moment;
 
 const App: FC = () => {
   const myEvents = useMemo<MbscCalendarEvent[]>(
@@ -107,7 +111,7 @@ const App: FC = () => {
     <Eventcalendar
       dataTimezone="utc"
       displayTimezone="local"
-      timezonePlugin={momentTimezone}
+      timezonePlugin={dayjsTimezone}
       data={myEvents}
       view={myView}
       resources={myResources}

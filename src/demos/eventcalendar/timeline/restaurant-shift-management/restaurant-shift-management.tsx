@@ -1946,7 +1946,7 @@ function App() {
 
       for (let i = 0; i < shifts.length; ++i) {
         const shift = shifts[i];
-        // get slot id from resource id
+        // Get slot id from resource id
         const resourceNr = +shift.resource!.toString().charAt(0);
         if (shift.slot === slotId && date === formatMyDate(new Date(shift.start as string))) {
           shiftList[resourceNr - 1] = (shiftList[resourceNr - 1] || 0) + 1;

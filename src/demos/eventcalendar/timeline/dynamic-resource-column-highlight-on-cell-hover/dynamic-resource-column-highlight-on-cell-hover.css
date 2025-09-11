@@ -1,0 +1,43 @@
+.mds-highlight-hover .mbsc-timeline-sidebar-col {
+  width: 170px;
+}
+
+.mds-highlight-hover .mbsc-timeline-sidebar-resource-title {
+  font-weight: 500;
+}
+
+.mds-highlight-hover .mds-highlight-row-hover,
+.mds-highlight-hover .mds-highlight-col-hover {
+  background: rgba(220, 220, 220, 0.25);
+}
+
+.mds-highlight-col-hover {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.mds-highlight-day-content {
+  font-size: 14px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  position: relative;
+}
+
+.mds-highlight-tooltip {
+  padding: 5px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.mds-highlight-tooltip-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.mds-highlight-tooltip-date {
+  color: #888;
+}

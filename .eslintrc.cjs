@@ -7,6 +7,7 @@ module.exports = {
   plugins: ['import', 'react-refresh'],
   rules: {
     'arrow-body-style': ['warn', 'as-needed'],
+    'capitalized-comments': ['warn', 'always', { ignorePattern: 'drag,?$|themeJs,?$|localeJs,?$|localeImport' }],
     'import/order': ['warn', { alphabetize: { order: 'asc', caseInsensitive: true } }],
     'no-var': 'warn',
     'one-var': ['warn', 'never'],

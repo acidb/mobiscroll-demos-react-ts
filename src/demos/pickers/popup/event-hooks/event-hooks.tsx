@@ -2,8 +2,8 @@ import { Button, Page, Popup, setOptions /* localeImport */ } from '@mobiscroll/
 import { useCallback, useRef, useState } from 'react';
 
 setOptions({
-  // locale,
-  // theme
+  // localeJs,
+  // themeJs
 });
 
 function App() {

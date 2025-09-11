@@ -4,5 +4,6 @@ import dyndateplugin from './dyndateplugin';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: { chunkSizeWarningLimit: 2048 },
   plugins: [react(), dyndateplugin()],
 });

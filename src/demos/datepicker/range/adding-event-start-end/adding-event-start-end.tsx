@@ -12,7 +12,7 @@ import {
 import { ChangeEvent, FC, useCallback, useMemo, useState } from 'react';
 
 setOptions({
-  // langJs,
+  // localeJs,
   // themeJs
 });
 

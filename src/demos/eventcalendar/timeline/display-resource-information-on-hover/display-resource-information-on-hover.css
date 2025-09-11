@@ -1,0 +1,42 @@
+.mds-resource-info-avatar {
+  width: 40px;
+  height: 40px;
+}
+.mds-resource-info-details {
+  margin: 0 8px;
+}
+.mds-resource-info-title {
+  line-height: 24px;
+}
+.mds-resource-info-profession {
+  font-size: 12px;
+  opacity: 0.5;
+  line-height: 18px;
+}
+.mds-resource-info-hover.mbsc-timeline-resource {
+  text-decoration: underline;
+}
+.mds-resource-info-header {
+  height: 35px;
+}
+.mds-resource-info-name {
+  font-size: 18px;
+  padding: 16px 10px;
+}
+.mds-resource-info-pay.mbsc-button {
+  font-size: 12px;
+  width: 40px;
+  height: 22px;
+  margin: 0;
+}
+.mds-resource-info-cont {
+  font-size: 14px;
+  line-height: 22px;
+  padding-top: 23px;
+}
+.mbsc-ltr .mds-resource-info-detail {
+  float: right;
+}
+.mbsc-rtl .mds-resource-info-detail {
+  float: left;
+}

@@ -2,8 +2,8 @@ import { Button, Page, Popup, setOptions, Toast /* localeImport */ } from '@mobi
 import { useState } from 'react';
 
 setOptions({
-  // locale,
-  // theme
+  // localeJs,
+  // themeJs
 });
 
 function App() {

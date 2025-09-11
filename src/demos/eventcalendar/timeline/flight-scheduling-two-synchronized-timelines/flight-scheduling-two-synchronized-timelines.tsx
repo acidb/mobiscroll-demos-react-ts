@@ -586,7 +586,6 @@ const App: FC = () => {
         externalDrag={true}
         onPageLoading={handlePageLoading}
         onPageLoaded={handleFirstScroll}
-        // onEventDelete={onEventDelete}
         onDestroy={detachFirstScroll}
       />
       <Eventcalendar

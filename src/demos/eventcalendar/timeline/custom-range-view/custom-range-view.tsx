@@ -75,13 +75,13 @@ const App: FC = () => {
   const startDate = useRef<Date>();
   const endDate = useRef<Date>();
 
-  // returns the number of days between two dates
+  // Returns the number of days between two dates
   const getNrDays = useCallback(
     (start: Date, end: Date) => Math.round(Math.abs((end.setHours(0) - start.setHours(0)) / (24 * 60 * 60 * 1000))) + 1,
     [],
   );
 
-  // returns the formatted date
+  // Returns the formatted date
   const getFormattedRange = useCallback(
     (start: Date, end: Date) =>
       formatDate('MMM D, YYYY', new Date(start)) +
@@ -100,9 +100,9 @@ const App: FC = () => {
 
   const onClose = useCallback(() => {
     if (startDate.current && endDate.current) {
-      // navigate the calendar
+      // Navigate the calendar
       setCurrentDate(startDate.current);
-      // set calendar view
+      // Set calendar view
       setRefDate(startDate.current);
       setCalView({
         timeline: {
@@ -123,11 +123,11 @@ const App: FC = () => {
       startDate.current = sDate;
       endDate.current = eDate;
       setTimeout(() => {
-        // set button text
+        // Set button text
         setButtonText(getFormattedRange(sDate, eDate));
-        // set range value
+        // Set range value
         setRangeVal([sDate, eDate]);
-        // navigate the calendar
+        // Navigate the calendar
         setCurrentDate(sDate);
       });
     },

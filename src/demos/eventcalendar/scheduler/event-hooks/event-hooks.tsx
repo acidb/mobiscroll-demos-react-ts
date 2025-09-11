@@ -11,8 +11,8 @@ import { FC, useEffect, useMemo, useState } from 'react';
 import './event-hooks.css';
 
 setOptions({
-  // theme
-  // locale
+  // localeJs,
+  // themeJs
 });
 
 const App: FC = () => {
@@ -96,16 +96,14 @@ const App: FC = () => {
       <div ref={setDraggable1} className="event-hooks-draggable" style={{ background: '#ffdab8' }}>
         <div className="draggable-title">External drag 1</div>
         <div className="draggable-text">Drag me to calendar</div>
-        <Draggable dragData={dragData1} element={draggable1} theme="auto" />
+        <Draggable dragData={dragData1} element={draggable1} />
       </div>
       <div ref={setDraggable2} className="event-hooks-draggable" style={{ background: '#ddfcf7' }}>
         <div className="draggable-title">External drag 2</div>
         <div className="draggable-text">Drag me to calendar</div>
-        <Draggable dragData={dragData2} element={draggable2} theme="auto" />
+        <Draggable dragData={dragData2} element={draggable2} />
       </div>
       <Eventcalendar
-        // theme
-        // locale
         data={myEvents}
         dragToCreate={true}
         dragToMove={true}
@@ -114,13 +112,19 @@ const App: FC = () => {
         view={myView}
         invalid={invalid}
         onCellClick={() => {
-          /* Logic for cell click */
+          // Logic for cell click
         }}
         onCellDoubleClick={() => {
-          /* Logic for cell double click */
+          // Logic for cell double click
         }}
         onCellRightClick={() => {
-          /* Logic for cell right click */
+          // Logic for cell right click
+        }}
+        onCellHoverIn={() => {
+          // Logic for cell hover in
+        }}
+        onCellHoverOut={() => {
+          // Logic for cell hover out
         }}
         onDestroy={() => {
           // Your custom event handler goes here
@@ -199,6 +203,12 @@ const App: FC = () => {
         }}
         onResourceRightClick={() => {
           // Logic for resource right click
+        }}
+        onResourceHoverIn={() => {
+          // Logic for resource hover in
+        }}
+        onResourceHoverOut={() => {
+          // Logic for resource hover out
         }}
         onSelectedDateChange={() => {
           // Use it to keep track of the selected date externally

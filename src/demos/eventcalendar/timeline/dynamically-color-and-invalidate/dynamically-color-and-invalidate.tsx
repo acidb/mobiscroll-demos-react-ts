@@ -166,7 +166,7 @@ function Task(props: { data: MbscCalendarEvent }) {
         {props.data.title}
         <span className="dynamically-color-and-invalidate-task-type">{props.data.category}</span>
       </div>
-      <Draggable dragData={props.data} element={draggable} theme="auto" />
+      <Draggable dragData={props.data} element={draggable} />
     </div>
   );
 }
