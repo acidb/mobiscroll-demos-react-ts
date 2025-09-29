@@ -7,7 +7,7 @@ import {
   dayjsTimezone,
   Eventcalendar,
   formatDate,
-  MbscCalendarColor,
+  MbscCalendarCellData,
   MbscCalendarEvent,
   MbscCalendarEventData,
   MbscEventcalendarView,
@@ -45,7 +45,7 @@ const defaultEvents: MbscCalendarEvent[] = [
 ];
 
 const App: FC = () => {
-  const [myEvents, setMyEvents] = useState<MbscCalendarEvent[]>([defaultEvents]);
+  const [myEvents, setMyEvents] = useState<MbscCalendarEvent[]>(defaultEvents);
   const [isToastOpen, setToastOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string>('');
   const [isConfirmOpen, setConfirmOpen] = useState<boolean>(false);
@@ -134,45 +134,45 @@ const App: FC = () => {
     }
   }, []);
 
-  const getProps = useCallback((h: number) => {
-    if (h < 6) {
-      return { color: '#ffbaba4d', invalid: true };
-    } else if (h < 8) {
-      return { color: '#a5ceff4d' };
-    } else if (h < 18) {
-      return { color: '#f7f7bb4d' };
-    } else if (h < 22) {
-      return { color: '#a5ceff4d' };
-    } else return { color: '#ffbaba4d', invalid: true };
-  }, []);
+  const getHourProps = useCallback(
+    (h: number, timezone: string) => {
+      const offset = getUtcOffset(timezone);
+      const hour = h + offset;
+      const isAM = hour % 24 < 12;
+      const title = ((hour % 12) + 12) % 12 || 12;
+      const hForProps = title + ((title === 12 && !isAM) || (title !== 12 && isAM) ? 0 : 12);
+      let color = '#f7f7bb4d';
+      let invalid = false;
 
-  const details = useMemo(() => {
-    const colors: MbscCalendarColor[] = [];
+      if (hForProps < 6 || hForProps >= 22) {
+        color = '#ffbaba4d';
+        invalid = true;
+      } else if (hForProps < 8 || (hForProps >= 18 && hForProps < 22)) {
+        color = '#a5ceff4d';
+      }
+
+      return {
+        hour: hour,
+        isAM: isAM,
+        title: title,
+        color: color,
+        invalid: invalid,
+      };
+    },
+    [getUtcOffset],
+  );
+
+  const getInvalids = useMemo(() => {
     const invalid = [];
 
     for (let j = 0; j < myResources.length; ++j) {
       const resource = myResources[j];
 
       for (let i = 0; i < 24; ++i) {
-        const hour = i + getUtcOffset(resource.timezone);
-        const isAM = i < 12 ? hour >= 0 && hour < 12 : !(hour >= 12 && hour < 24);
-        const startTime = (i < 10 ? '0' : '') + i + ':00';
-        const endTime = (i < 9 ? '0' : '') + (i + 1) + ':00';
-        const title = hour % 12 === 0 ? 12 : hour < 0 ? 12 + hour : hour <= 12 ? hour : hour % 12;
-        const props = getProps(title + ((title === 12 && !isAM) || (title !== 12 && isAM) ? 0 : 12));
+        if (getHourProps(i, resource.timezone).invalid) {
+          const startTime = (i < 10 ? '0' : '') + i + ':00:00';
+          const endTime = (i < 9 ? '0' : '') + (i + 1) + ':00:00';
 
-        colors.push({
-          start: startTime,
-          end: endTime,
-          title: title + (isAM ? ' AM' : ' PM'),
-          background: props.color,
-          recurring: {
-            repeat: 'daily',
-          },
-          resource: resource.id,
-        });
-
-        if (props.invalid) {
           invalid.push({
             start: startTime,
             end: endTime,
@@ -184,8 +184,8 @@ const App: FC = () => {
         }
       }
     }
-    return { colors, invalid };
-  }, [getProps, getUtcOffset, myResources]);
+    return invalid;
+  }, [getHourProps, myResources]);
 
   const myScheduleEvent = useCallback((data: MbscCalendarEventData) => {
     const start = (data.startDate as MyDate).clone();
@@ -195,10 +195,10 @@ const App: FC = () => {
     end.setTimezone(data.currentResource!.timezone);
 
     return (
-      <div className="md-meeting-planner-cont" style={{ background: data.color }}>
-        <div className="md-meeting-planner-wrapper">
-          <div className="md-meeting-planner-title">{data.title}</div>
-          <div className="md-meeting-planner-time">
+      <div className="mds-meeting-planner-cont" style={{ background: data.color }}>
+        <div className="mds-meeting-planner-wrapper">
+          <div className="mds-meeting-planner-title">{data.title}</div>
+          <div className="mds-meeting-planner-time">
             {formatDate('hh:mm A', start)} - {formatDate('hh:mm A', end)}
           </div>
         </div>
@@ -209,10 +209,10 @@ const App: FC = () => {
   const myHeader = () => (
     <>
       <CalendarNav />
-      <div className="md-meeting-planner-header">
-        <div className="md-meeting-planner-zone md-meeting-planner-work">working hours</div>
-        <div className="md-meeting-planner-zone md-meeting-planner-flex">flex hours</div>
-        <div className="md-meeting-planner-zone md-meeting-planner-off">time off</div>
+      <div className="mds-meeting-planner-header">
+        <div className="mds-meeting-planner-zone mds-meeting-planner-work">working hours</div>
+        <div className="mds-meeting-planner-zone mds-meeting-planner-flex">flex hours</div>
+        <div className="mds-meeting-planner-zone mds-meeting-planner-off">time off</div>
         <CalendarPrev />
         <CalendarToday />
         <CalendarNext />
@@ -221,14 +221,27 @@ const App: FC = () => {
   );
 
   const myResource = (resource: MbscResource) => (
-    <div className="md-meeting-participant-cont">
-      <div className="md-meeting-participant-name">{resource.name}</div>
+    <div className="mds-meeting-participant-cont">
+      <div className="mds-meeting-participant-name">{resource.name}</div>
       <div>
         {resource.organizer && <span>Organizer </span>}
-        <span className="md-meeting-participant-offset">{resource.utcOffset}</span>
+        <span className="mds-meeting-participant-offset">{resource.utcOffset}</span>
       </div>
-      <img className="md-meeting-participant-avatar" src={resource.img} alt="avatar" />
+      <img className="mds-meeting-participant-avatar" src={resource.img} alt="avatar" />
     </div>
+  );
+
+  const myCell = useCallback(
+    (args: MbscCalendarCellData) => {
+      const hProps = getHourProps(args.date.getHours(), args.resource.timezone);
+      return (
+        <div className="mds-meeting-planner-time-slot mbsc-flex mbsc-justify-content-center" style={{ background: hProps.color }}>
+          {hProps.title}
+          {hProps.isAM ? ' AM' : ' PM'}
+        </div>
+      );
+    },
+    [getHourProps],
   );
 
   const myDefaultEvent = useCallback(
@@ -324,16 +337,15 @@ const App: FC = () => {
         dragToMove={true}
         dragToResize={true}
         dragTimeStep={60}
-        height={400}
         view={myView}
         data={myEvents}
         resources={myResources}
-        colors={details.colors}
-        invalid={details.invalid}
+        invalid={getInvalids}
         extendDefaultEvent={myDefaultEvent}
         renderScheduleEvent={myScheduleEvent}
         renderHeader={myHeader}
         renderResource={myResource}
+        renderCell={myCell}
         onEventCreated={handleEventCreated}
         onEventUpdated={handleEventUpdated}
         onEventDeleted={handleEventDeleted}

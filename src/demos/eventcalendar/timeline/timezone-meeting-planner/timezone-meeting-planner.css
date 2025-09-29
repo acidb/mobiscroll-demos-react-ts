@@ -1,15 +1,4 @@
-.md-timezone-meeting-planner .mbsc-schedule-color-text {
-  padding: 16px 0;
-  text-align: center;
-}
-
-.md-timezone-meeting-planner.mbsc-ios-dark .mbsc-timeline-color,
-.md-timezone-meeting-planner.mbsc-material-dark .mbsc-timeline-color,
-.md-timezone-meeting-planner.mbsc-windows-dark .mbsc-timeline-color {
-  color: #fff !important;
-}
-
-.md-meeting-planner-cont {
+.mds-meeting-planner-cont {
   font-size: 12px;
   font-weight: 600;
   height: 100%;
@@ -21,7 +10,7 @@
   overflow: hidden;
 }
 
-.md-meeting-planner-wrapper {
+.mds-meeting-planner-wrapper {
   background: rgba(255, 255, 255, 0.5);
   height: 100%;
   box-sizing: border-box;
@@ -29,33 +18,33 @@
   transition: background 0.15s ease-in-out;
 }
 
-.mbsc-schedule-event-hover .md-meeting-planner-wrapper {
+.mbsc-schedule-event-hover .mds-meeting-planner-wrapper {
   background: rgba(255, 255, 255, 0.3);
 }
 
-.md-meeting-planner-title {
+.mds-meeting-planner-title {
   padding-top: 3px;
   color: initial;
 }
 
-.md-meeting-planner-time {
+.mds-meeting-planner-time {
   color: #666;
 }
 
-.md-meeting-planner-title,
-.md-meeting-planner-time {
+.mds-meeting-planner-title,
+.mds-meeting-planner-time {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.md-meeting-planner-header {
+.mds-meeting-planner-header {
   display: flex;
   align-items: center;
   margin-left: auto;
 }
 
-.md-meeting-planner-zone {
+.mds-meeting-planner-zone {
   font-size: 12px;
   padding: 3px 6px;
   margin: 0 5px;
@@ -63,26 +52,26 @@
   color: #888;
 }
 
-.md-meeting-planner-work {
+.mds-meeting-planner-work {
   background: #f7f7bb4d;
 }
 
-.md-meeting-planner-flex {
+.mds-meeting-planner-flex {
   background: #a5ceff4d;
 }
 
-.md-meeting-planner-off {
+.mds-meeting-planner-off {
   background: #ffbaba4d;
 }
 
-.md-meeting-participant-cont {
+.mds-meeting-participant-cont {
   position: relative;
   padding-left: 50px;
   max-height: 40px;
   line-height: 20px;
 }
 
-.md-meeting-participant-avatar {
+.mds-meeting-participant-avatar {
   position: absolute;
   max-height: 40px;
   max-width: 40px;
@@ -92,11 +81,19 @@
   left: 20px;
 }
 
-.md-meeting-participant-name {
+.mds-meeting-participant-name {
   font-size: 16px;
 }
 
-.md-meeting-participant-offset {
+.mds-meeting-participant-offset {
   font-size: 12px;
   opacity: 0.6;
+}
+
+.mds-meeting-planner-time-slot {
+  font-size: 12px;
+  opacity: 0.7;
+  line-height: 50px;
+  height: 100%;
+  pointer-events: none;
 }

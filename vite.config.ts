@@ -6,4 +6,7 @@ import dyndateplugin from './dyndateplugin';
 export default defineConfig({
   build: { chunkSizeWarningLimit: 2048 },
   plugins: [react(), dyndateplugin()],
+  define: {
+    global: 'window',
+  },
 });

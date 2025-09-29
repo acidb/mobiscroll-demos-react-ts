@@ -1,0 +1,10 @@
+.mds-role-based-timeline .mbsc-schedule-event:not(.mbsc-readonly-event) .mbsc-schedule-event-background {
+  border: 2px solid currentColor;
+}
+
+.mds-role-based-timeline .mbsc-schedule-event .mbsc-schedule-event-background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+}
