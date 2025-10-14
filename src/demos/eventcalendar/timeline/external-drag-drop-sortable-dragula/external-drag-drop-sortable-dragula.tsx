@@ -1,17 +1,21 @@
 import {
   Draggable,
   dragulaDraggable,
+  Dropcontainer,
   Eventcalendar,
   MbscCalendarEvent,
   MbscEventcalendarView,
   MbscEventCreatedEvent,
+  MbscEventDeletedEvent,
+  MbscExternalDropEvent,
+  MbscItemDragEvent,
   MbscResource,
   MbscResourceCreatedEvent,
   setOptions,
   sortableJsDraggable,
   Toast /* localeImport */,
 } from '@mobiscroll/react';
-import dragula from 'dragula';
+import dragula, { Drake } from 'dragula';
 import { FC, useEffect, useMemo, useState } from 'react';
 import './external-drag-drop-sortable-dragula.css';
 import { useCallback } from 'react';
@@ -74,6 +78,7 @@ const Resource = (props: { data: MbscResource; isDraggable?: boolean }) => {
 };
 
 const App: FC = () => {
+  const [dropCont, setDropCont] = useState<HTMLDivElement | null>();
   const [sortableTaskCont, setSortableTaskCont] = useState<HTMLDivElement | null>();
   const [dragulaTaskCont, setDragulaTaskCont] = useState<HTMLDivElement | null>();
   const [sortableResourceCont, setSortableResourceCont] = useState<HTMLDivElement | null>();
@@ -115,28 +120,28 @@ const App: FC = () => {
   const [mySortableTasks, setSortableTasks] = useState<MbscCalendarEvent[]>([
     {
       id: 'sortable-1',
-      title: 'Task 1',
+      title: 'Task 5',
       color: '#d1891f',
       start: 'dyndatetime(y,m,d,8)',
       end: 'dyndatetime(y,m,d,9,30)',
     },
     {
       id: 'sortable-2',
-      title: 'Task 2',
+      title: 'Task 6',
       color: '#d1891f',
       start: 'dyndatetime(y,m,d,12)',
       end: 'dyndatetime(y,m,d,15)',
     },
     {
       id: 'sortable-3',
-      title: 'Task 3',
+      title: 'Task 7',
       color: '#d1891f',
       start: 'dyndatetime(y,m,d,8,30)',
       end: 'dyndatetime(y,m,d,11)',
     },
     {
       id: 'sortable-4',
-      title: 'Task 4',
+      title: 'Task 8',
       color: '#d1891f',
       start: 'dyndatetime(y,m,d,16)',
       end: 'dyndatetime(y,m,d,21)',
@@ -146,28 +151,28 @@ const App: FC = () => {
   const [myDragulaTasks, setDragulaTasks] = useState<MbscCalendarEvent[]>([
     {
       id: 'dragula-1',
-      title: 'Task 5',
+      title: 'Task 9',
       color: '#1ca11a',
       start: 'dyndatetime(y,m,d,8)',
       end: 'dyndatetime(y,m,d,9,30)',
     },
     {
       id: 'dragula-2',
-      title: 'Task 6',
+      title: 'Task 10',
       color: '#1ca11a',
       start: 'dyndatetime(y,m,d,12)',
       end: 'dyndatetime(y,m,d,15)',
     },
     {
       id: 'dragula-3',
-      title: 'Task 7',
+      title: 'Task 11',
       color: '#1ca11a',
       start: 'dyndatetime(y,m,d,8,30)',
       end: 'dyndatetime(y,m,d,11)',
     },
     {
       id: 'dragula-4',
-      title: 'Task 8',
+      title: 'Task 12',
       color: '#1ca11a',
       start: 'dyndatetime(y,m,d,16)',
       end: 'dyndatetime(y,m,d,20,30)',
@@ -259,6 +264,11 @@ const App: FC = () => {
     }
   }, []);
 
+  const handleEventDeleted = useCallback((args: MbscEventDeletedEvent) => {
+    setToastMessage(args.event.title + ' unscheduled');
+    setToastOpen(true);
+  }, []);
+
   const handleResourceCreated = useCallback((args: MbscResourceCreatedEvent) => {
     if (args.type === 'onResourceCreated') {
       setDraggableResources((resources) => resources.filter((item) => item.id !== args.resource.id));
@@ -269,24 +279,41 @@ const App: FC = () => {
     }
   }, []);
 
+  const handleItemDrop = useCallback((args: MbscItemDragEvent) => {
+    if (args.data) {
+      setDraggableTasks((tasks) => [...tasks, args.data]);
+    }
+  }, []);
+
   const handleToastClose = useCallback(() => {
     setToastOpen(false);
   }, []);
 
   useEffect(() => {
+    let sortableTaskInstance: Sortable;
     if (sortableTaskCont) {
-      const sortableTaskInstance = new Sortable(sortableTaskCont, {
+      sortableTaskInstance = new Sortable(sortableTaskCont, {
         animation: 150,
         forceFallback: true,
       });
 
       sortableJsDraggable.init(sortableTaskInstance, {
         cloneSelector: '.sortable-drag',
+        externalDrop: true,
+        onExternalDrop: (a: MbscExternalDropEvent) => {
+          const dragData = a.dragData;
+          setSortableTasks((prev) => {
+            const newTasks = [...prev];
+            newTasks.splice(a.position, 0, dragData);
+            return newTasks;
+          });
+        },
       });
     }
 
+    let sortableResourceInstance: Sortable;
     if (sortableResourceCont) {
-      const sortableResourceInstance = new Sortable(sortableResourceCont, {
+      sortableResourceInstance = new Sortable(sortableResourceCont, {
         animation: 150,
         forceFallback: true,
       });
@@ -297,17 +324,44 @@ const App: FC = () => {
       });
     }
 
+    let drake1: Drake;
     if (dragulaTaskCont) {
-      const drake1 = dragula([dragulaTaskCont]);
-      dragulaDraggable.init(drake1);
+      drake1 = dragula([dragulaTaskCont]);
+      dragulaDraggable.init(drake1, {
+        externalDrop: true,
+        onExternalDrop: (a: MbscExternalDropEvent) => {
+          const dragData = a.dragData;
+          setDragulaTasks((prev) => {
+            const newTasks = [...prev];
+            newTasks.splice(a.position, 0, dragData);
+            return newTasks;
+          });
+        },
+      });
     }
 
+    let drake2: Drake;
     if (dragulaResourceCont) {
-      const drake2 = dragula([dragulaResourceCont]);
+      drake2 = dragula([dragulaResourceCont]);
       dragulaDraggable.init(drake2, {
         type: 'resource',
       });
     }
+
+    return () => {
+      if (sortableTaskInstance) {
+        sortableTaskInstance.destroy();
+      }
+      if (sortableResourceInstance) {
+        sortableResourceInstance.destroy();
+      }
+      if (drake1) {
+        drake1.destroy();
+      }
+      if (drake2) {
+        drake2.destroy();
+      }
+    };
   }, [dragulaTaskCont, dragulaResourceCont, sortableTaskCont, sortableResourceCont]);
 
   return (
@@ -317,11 +371,13 @@ const App: FC = () => {
           <div className="mbsc-txt-muted mds-third-party-title">Mobiscroll draggable</div>
           <div className="mbsc-flex">
             <div className="mbsc-col-sm-6 mbsc-flex-col">
-              <div className="mds-drag-drop-sort-container mbsc-flex-col mbsc-flex-1-0">
+              <div className="mds-drag-drop-sort-container mbsc-flex-col mbsc-flex-1-0" ref={setDropCont}>
                 <div className="mbsc-txt-muted mds-third-party-list-title">Event list</div>
-                {myDraggableTasks.map((task) => (
-                  <Task key={task.id} data={task} isDraggable />
-                ))}
+                <Dropcontainer onItemDrop={handleItemDrop} element={dropCont}>
+                  {myDraggableTasks.map((task) => (
+                    <Task key={task.id} data={task} isDraggable />
+                  ))}
+                </Dropcontainer>
               </div>
             </div>
             <div className="mbsc-col-sm-6 mbsc-flex-col">
@@ -383,12 +439,16 @@ const App: FC = () => {
         <div className="mbsc-col-sm-9 mds-drag-drop-sort-calendar mds-full-height">
           <Eventcalendar
             // drag
+            view={myView}
             externalDrop={true}
             externalResourceDrop={true}
+            dragToMove={true}
+            dragToCreate={true}
+            externalDrag={true}
             onEventCreated={handleEventCreated}
             onResourceCreated={handleResourceCreated}
+            onEventDeleted={handleEventDeleted}
             resources={myResources}
-            view={myView}
           />
         </div>
       </div>

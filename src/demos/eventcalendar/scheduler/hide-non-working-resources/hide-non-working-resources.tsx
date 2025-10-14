@@ -1,5 +1,5 @@
 import { Eventcalendar, MbscCalendarEvent, MbscEventcalendarView, MbscResource, setOptions /* localeImport */ } from '@mobiscroll/react';
-import { FC, useMemo } from 'react';
+import { FC, useCallback, useMemo } from 'react';
 import './hide-non-working-resources.css';
 
 setOptions({
@@ -10,90 +10,90 @@ setOptions({
 const App: FC = () => {
   const myEvents = useMemo<MbscCalendarEvent[]>(
     () => [
-      // Dr. Alice Johnson
-      { start: 'dyndatetime(y,m,d-7,10)', end: 'dyndatetime(y,m,d-7,12)', title: 'Consultation - John Doe', resource: 1 },
-      { start: 'dyndatetime(y,m,d-6,9)', end: 'dyndatetime(y,m,d-6,10,30)', title: 'Checkup - Michael Brown', resource: 1 },
-      { start: 'dyndatetime(y,m,d-6,15)', end: 'dyndatetime(y,m,d-6,17)', title: 'Consultation - Laura Wilson', resource: 1 },
-      { start: 'dyndatetime(y,m,d-5,11)', end: 'dyndatetime(y,m,d-5,12,30)', title: 'Follow-up - Sarah Miller', resource: 1 },
-      { start: 'dyndatetime(y,m,d-4,10)', end: 'dyndatetime(y,m,d-4,11)', title: 'Vaccination - Chris Davis', resource: 1 },
-      { start: 'dyndatetime(y,m,d-3,13)', end: 'dyndatetime(y,m,d-3,15)', title: 'Consultation - Emily Taylor', resource: 1 },
-      { start: 'dyndatetime(y,m,d-2,9,30)', end: 'dyndatetime(y,m,d-2,11)', title: 'Checkup - Matthew Harris', resource: 1 },
-      { start: 'dyndatetime(y,m,d-1,14)', end: 'dyndatetime(y,m,d-1,15,30)', title: 'Follow-up - Anna Thomas', resource: 1 },
-      { start: 'dyndatetime(y,m,d,15)', end: 'dyndatetime(y,m,d,16,30)', title: 'Follow-up - Jane Smith', resource: 1 },
-      { start: 'dyndatetime(y,m,d,17)', end: 'dyndatetime(y,m,d,19)', title: 'Consultation - Olivia White', resource: 1 },
-      { start: 'dyndatetime(y,m,d+1,9)', end: 'dyndatetime(y,m,d+1,10,30)', title: 'Consultation - Sophia Martinez', resource: 1 },
-      { start: 'dyndatetime(y,m,d+2,13)', end: 'dyndatetime(y,m,d+2,14,30)', title: 'Checkup - Liam Clark', resource: 1 },
-      { start: 'dyndatetime(y,m,d+3,15)', end: 'dyndatetime(y,m,d+3,17)', title: 'Consultation - Chloe Johnson', resource: 1 },
-      { start: 'dyndatetime(y,m,d+4,10)', end: 'dyndatetime(y,m,d+4,11,30)', title: 'Follow-up - William Walker', resource: 1 },
-      { start: 'dyndatetime(y,m,d+5,14)', end: 'dyndatetime(y,m,d+5,15)', title: 'Vaccination - Ava King', resource: 1 },
+      // Dr. Alice Johnson – Neurology
+      { start: 'dyndatetime(y,m,d-3,14)', end: 'dyndatetime(y,m,d-3,15)', title: 'Migraine Consultation', resource: 1 },
+      { start: 'dyndatetime(y,m,d-3,16)', end: 'dyndatetime(y,m,d-3,17)', title: 'Epilepsy Follow-up', resource: 1 },
+      { start: 'dyndatetime(y,m,d-2,11)', end: 'dyndatetime(y,m,d-2,12)', title: 'Stroke Recovery Check', resource: 1 },
+      { start: 'dyndatetime(y,m,d-1,10)', end: 'dyndatetime(y,m,d-1,11)', title: 'Multiple Sclerosis Review', resource: 1 },
+      { start: 'dyndatetime(y,m,d-1,14)', end: 'dyndatetime(y,m,d-1,16)', title: 'Parkinson’s Management', resource: 1 },
+      { start: 'dyndatetime(y,m,d,9)', end: 'dyndatetime(y,m,d,11)', title: 'Cognitive Decline Exam', resource: 1 },
+      { start: 'dyndatetime(y,m,d,11,30)', end: 'dyndatetime(y,m,d,13)', title: 'Seizure Evaluation', resource: 1 },
+      { start: 'dyndatetime(y,m,d,15)', end: 'dyndatetime(y,m,d,17)', title: 'Headache Treatment', resource: 1 },
+      { start: 'dyndatetime(y,m,d+1,15)', end: 'dyndatetime(y,m,d+1,16)', title: 'Dementia Consultation', resource: 1 },
+      { start: 'dyndatetime(y,m,d+1,17)', end: 'dyndatetime(y,m,d+1,19)', title: 'Sleep Disorder Exam', resource: 1 },
+      { start: 'dyndatetime(y,m,d+2,11)', end: 'dyndatetime(y,m,d+2,12)', title: 'Balance Disorder Check', resource: 1 },
+      { start: 'dyndatetime(y,m,d+2,13)', end: 'dyndatetime(y,m,d+2,16)', title: 'Nerve Pain Therapy', resource: 1 },
+      { start: 'dyndatetime(y,m,d+3,9)', end: 'dyndatetime(y,m,d+3,10)', title: 'Follow-up Consultation', resource: 1 },
+      { start: 'dyndatetime(y,m,d+3,13)', end: 'dyndatetime(y,m,d+3,14)', title: 'Brain MRI Review', resource: 1 },
+      { start: 'dyndatetime(y,m,d+4,15)', end: 'dyndatetime(y,m,d+4,17)', title: 'Neuropathy Assessment', resource: 1 },
 
-      // Dr. Brian Smith
-      { start: 'dyndatetime(y,m,d-7,9)', end: 'dyndatetime(y,m,d-7,11)', title: 'Consultation - Daniel Moore', resource: 2 },
-      { start: 'dyndatetime(y,m,d-7,15)', end: 'dyndatetime(y,m,d-7,16,30)', title: 'Follow-up - Sophia Clark', resource: 2 },
-      { start: 'dyndatetime(y,m,d-6,10)', end: 'dyndatetime(y,m,d-6,11,30)', title: 'Checkup - James Hall', resource: 2 },
-      { start: 'dyndatetime(y,m,d-5,9)', end: 'dyndatetime(y,m,d-5,10,30)', title: 'Follow-up - Ethan Young', resource: 2 },
-      { start: 'dyndatetime(y,m,d-4,13)', end: 'dyndatetime(y,m,d-4,14)', title: 'Vaccination - Lily King', resource: 2 },
-      { start: 'dyndatetime(y,m,d-3,11)', end: 'dyndatetime(y,m,d-3,13)', title: 'Consultation - Noah Scott', resource: 2 },
-      { start: 'dyndatetime(y,m,d-2,15)', end: 'dyndatetime(y,m,d-2,16,30)', title: 'Follow-up - Grace Green', resource: 2 },
-      { start: 'dyndatetime(y,m,d-1,10)', end: 'dyndatetime(y,m,d-1,11,30)', title: 'Checkup - Lucas Adams', resource: 2 },
-      { start: 'dyndatetime(y,m,d,9)', end: 'dyndatetime(y,m,d,11)', title: 'Consultation - Chloe Baker', resource: 2 },
-      { start: 'dyndatetime(y,m,d,12,30)', end: 'dyndatetime(y,m,d,14,30)', title: 'Consultation - Mia Allen', resource: 2 },
-      { start: 'dyndatetime(y,m,d+1,8)', end: 'dyndatetime(y,m,d+1,9,30)', title: 'Follow-up - Nathan Perry', resource: 2 },
-      { start: 'dyndatetime(y,m,d+2,11)', end: 'dyndatetime(y,m,d+2,13)', title: 'Consultation - Scarlett Evans', resource: 2 },
-      { start: 'dyndatetime(y,m,d+3,16)', end: 'dyndatetime(y,m,d+3,17,30)', title: 'Checkup - Jacob Ramirez', resource: 2 },
-      { start: 'dyndatetime(y,m,d+4,13)', end: 'dyndatetime(y,m,d+4,14)', title: 'Vaccination - Madison Flores', resource: 2 },
-      { start: 'dyndatetime(y,m,d+5,15)', end: 'dyndatetime(y,m,d+5,17)', title: 'Consultation - Logan Sanders', resource: 2 },
+      // Dr. Brian Smith – Pediatrics
+      { start: 'dyndatetime(y,m,d-4,9)', end: 'dyndatetime(y,m,d-4,10)', title: 'Well-Child Checkup', resource: 2 },
+      { start: 'dyndatetime(y,m,d-4,12)', end: 'dyndatetime(y,m,d-4,13)', title: 'Vaccination Visit', resource: 2 },
+      { start: 'dyndatetime(y,m,d-3,11)', end: 'dyndatetime(y,m,d-3,12)', title: 'Asthma Follow-up', resource: 2 },
+      { start: 'dyndatetime(y,m,d-2,12)', end: 'dyndatetime(y,m,d-2,13)', title: 'Ear Infection Exam', resource: 2 },
+      { start: 'dyndatetime(y,m,d-2,15)', end: 'dyndatetime(y,m,d-2,16)', title: 'Growth & Nutrition Review', resource: 2 },
+      { start: 'dyndatetime(y,m,d-1,9)', end: 'dyndatetime(y,m,d-1,10)', title: 'School Physical', resource: 2 },
+      { start: 'dyndatetime(y,m,d-1,13)', end: 'dyndatetime(y,m,d-1,14)', title: 'Cough & Cold Symptoms', resource: 2 },
+      { start: 'dyndatetime(y,m,d,11)', end: 'dyndatetime(y,m,d,12)', title: 'Developmental Check', resource: 2 },
+      { start: 'dyndatetime(y,m,d,13)', end: 'dyndatetime(y,m,d,14)', title: 'Fever Consultation', resource: 2 },
+      { start: 'dyndatetime(y,m,d+1,11)', end: 'dyndatetime(y,m,d+1,12)', title: 'Allergy Testing', resource: 2 },
+      { start: 'dyndatetime(y,m,d+1,9)', end: 'dyndatetime(y,m,d+1,10)', title: 'Adolescent Counseling', resource: 2 },
+      { start: 'dyndatetime(y,m,d+2,12)', end: 'dyndatetime(y,m,d+2,14)', title: 'Behavioral Concerns', resource: 2 },
+      { start: 'dyndatetime(y,m,d+2,10)', end: 'dyndatetime(y,m,d+2,11)', title: 'Routine Checkup', resource: 2 },
+      { start: 'dyndatetime(y,m,d+3,15)', end: 'dyndatetime(y,m,d+3,17)', title: 'Nutrition Counseling', resource: 2 },
+      { start: 'dyndatetime(y,m,d+3,18)', end: 'dyndatetime(y,m,d+3,20)', title: 'Sports Physical', resource: 2 },
 
-      // Dr. Catherine Lee
-      { start: 'dyndatetime(y,m,d-7,11)', end: 'dyndatetime(y,m,d-7,13)', title: 'Consultation - Jack Nelson', resource: 3 },
-      { start: 'dyndatetime(y,m,d-7,16)', end: 'dyndatetime(y,m,d-7,17,30)', title: 'Follow-up - Ella Carter', resource: 3 },
-      { start: 'dyndatetime(y,m,d-6,12)', end: 'dyndatetime(y,m,d-6,14)', title: 'Consultation - Zoe Rivera', resource: 3 },
-      { start: 'dyndatetime(y,m,d-5,10)', end: 'dyndatetime(y,m,d-5,11,30)', title: 'Follow-up - Mason Cooper', resource: 3 },
-      { start: 'dyndatetime(y,m,d-4,14)', end: 'dyndatetime(y,m,d-4,15)', title: 'Vaccination - Harper Reed', resource: 3 },
-      { start: 'dyndatetime(y,m,d-3,13)', end: 'dyndatetime(y,m,d-3,15)', title: 'Consultation - William Torres', resource: 3 },
-      { start: 'dyndatetime(y,m,d-2,10)', end: 'dyndatetime(y,m,d-2,11,30)', title: 'Checkup - Amelia Ramirez', resource: 3 },
-      { start: 'dyndatetime(y,m,d-1,15)', end: 'dyndatetime(y,m,d-1,16,30)', title: 'Follow-up - Benjamin Cox', resource: 3 },
-      { start: 'dyndatetime(y,m,d,9)', end: 'dyndatetime(y,m,d,11)', title: 'Consultation - Charlotte Ward', resource: 3 },
-      { start: 'dyndatetime(y,m,d+1,16)', end: 'dyndatetime(y,m,d+1,17,30)', title: 'Checkup - Henry Perez', resource: 3 },
-      { start: 'dyndatetime(y,m,d+1,18)', end: 'dyndatetime(y,m,d+1,20)', title: 'Consultation - Samuel Long', resource: 3 },
-      { start: 'dyndatetime(y,m,d+2,14)', end: 'dyndatetime(y,m,d+2,15,30)', title: 'Checkup - Victoria Gray', resource: 3 },
-      { start: 'dyndatetime(y,m,d+3,9)', end: 'dyndatetime(y,m,d+3,10,30)', title: 'Follow-up - Isaac Hughes', resource: 3 },
-      { start: 'dyndatetime(y,m,d+4,16)', end: 'dyndatetime(y,m,d+4,18)', title: 'Consultation - Penelope Foster', resource: 3 },
-      { start: 'dyndatetime(y,m,d+5,13)', end: 'dyndatetime(y,m,d+5,14)', title: 'Vaccination - David Simmons', resource: 3 },
+      // Dr. Catherine Lee – Dermatology
+      { start: 'dyndatetime(y,m,d-6,10)', end: 'dyndatetime(y,m,d-6,11)', title: 'Acne Treatment', resource: 3 },
+      { start: 'dyndatetime(y,m,d-5,15)', end: 'dyndatetime(y,m,d-5,16)', title: 'Eczema Follow-up', resource: 3 },
+      { start: 'dyndatetime(y,m,d-4,18)', end: 'dyndatetime(y,m,d-4,19)', title: 'Psoriasis Checkup', resource: 3 },
+      { start: 'dyndatetime(y,m,d-3,9)', end: 'dyndatetime(y,m,d-3,10)', title: 'Skin Cancer Screening', resource: 3 },
+      { start: 'dyndatetime(y,m,d-3,13)', end: 'dyndatetime(y,m,d-3,14)', title: 'Rosacea Consultation', resource: 3 },
+      { start: 'dyndatetime(y,m,d-2,10)', end: 'dyndatetime(y,m,d-2,11,30)', title: 'Mole Removal', resource: 3 },
+      { start: 'dyndatetime(y,m,d-1,11)', end: 'dyndatetime(y,m,d-1,12)', title: 'Wart Removal', resource: 3 },
+      { start: 'dyndatetime(y,m,d,15,30)', end: 'dyndatetime(y,m,d,16,30)', title: 'Hair Loss Evaluation', resource: 3 },
+      { start: 'dyndatetime(y,m,d,18)', end: 'dyndatetime(y,m,d,20)', title: 'Scar Treatment', resource: 3 },
+      { start: 'dyndatetime(y,m,d+1,14)', end: 'dyndatetime(y,m,d+1,15)', title: 'Skin Allergy Test', resource: 3 },
+      { start: 'dyndatetime(y,m,d+1,16)', end: 'dyndatetime(y,m,d+1,17)', title: 'Rash Examination', resource: 3 },
+      { start: 'dyndatetime(y,m,d+3,14)', end: 'dyndatetime(y,m,d+3,15)', title: 'Cosmetic Consultation', resource: 3 },
+      { start: 'dyndatetime(y,m,d+3,16)', end: 'dyndatetime(y,m,d+3,17)', title: 'Pigmentation Check', resource: 3 },
+      { start: 'dyndatetime(y,m,d+4,9)', end: 'dyndatetime(y,m,d+4,10)', title: 'Routine Skin Exam', resource: 3 },
+      { start: 'dyndatetime(y,m,d+4,12)', end: 'dyndatetime(y,m,d+4,15)', title: 'Laser Therapy', resource: 3 },
 
-      // Dr. Daniel Kim
-      { start: 'dyndatetime(y,m,d-7,13)', end: 'dyndatetime(y,m,d-7,15)', title: 'Consultation - Elijah Brooks', resource: 4 },
-      { start: 'dyndatetime(y,m,d-7,9)', end: 'dyndatetime(y,m,d-7,11)', title: 'Checkup - Abigail Bell', resource: 4 },
-      { start: 'dyndatetime(y,m,d-6,11)', end: 'dyndatetime(y,m,d-6,12,30)', title: 'Follow-up - Logan Murphy', resource: 4 },
-      { start: 'dyndatetime(y,m,d-6,14)', end: 'dyndatetime(y,m,d-6,16)', title: 'Consultation - Aria Cook', resource: 4 },
-      { start: 'dyndatetime(y,m,d-5,16)', end: 'dyndatetime(y,m,d-5,17,30)', title: 'Follow-up - Jackson Rogers', resource: 4 },
-      { start: 'dyndatetime(y,m,d-4,9)', end: 'dyndatetime(y,m,d-4,10)', title: 'Vaccination - Scarlett Morgan', resource: 4 },
-      { start: 'dyndatetime(y,m,d-3,18)', end: 'dyndatetime(y,m,d-3,20)', title: 'Consultation - Aiden Peterson', resource: 4 },
-      { start: 'dyndatetime(y,m,d-2,13)', end: 'dyndatetime(y,m,d-2,14,30)', title: 'Follow-up - Evelyn Bailey', resource: 4 },
-      { start: 'dyndatetime(y,m,d-1,10)', end: 'dyndatetime(y,m,d-1,11,30)', title: 'Checkup - Carter Rivera', resource: 4 },
-      { start: 'dyndatetime(y,m,d,11)', end: 'dyndatetime(y,m,d,13)', title: 'Consultation - Layla Howard', resource: 4 },
-      { start: 'dyndatetime(y,m,d+1,9)', end: 'dyndatetime(y,m,d+1,11)', title: 'Consultation - Julian Bennett', resource: 4 },
-      { start: 'dyndatetime(y,m,d+2,15)', end: 'dyndatetime(y,m,d+2,16,30)', title: 'Follow-up - Nora James', resource: 4 },
-      { start: 'dyndatetime(y,m,d+3,13)', end: 'dyndatetime(y,m,d+3,14,30)', title: 'Checkup - Elias Mitchell', resource: 4 },
-      { start: 'dyndatetime(y,m,d+4,8)', end: 'dyndatetime(y,m,d+4,10)', title: 'Consultation - Aurora Ross', resource: 4 },
-      { start: 'dyndatetime(y,m,d+5,14)', end: 'dyndatetime(y,m,d+5,15)', title: 'Vaccination - Miles Edwards', resource: 4 },
+      // Dr. Daniel Kim – Cardiology
+      { start: 'dyndatetime(y,m,d-4,9)', end: 'dyndatetime(y,m,d-4,11)', title: 'Heart Disease Screening', resource: 4 },
+      { start: 'dyndatetime(y,m,d-3,16)', end: 'dyndatetime(y,m,d-3,17)', title: 'Blood Pressure Check', resource: 4 },
+      { start: 'dyndatetime(y,m,d-3,18)', end: 'dyndatetime(y,m,d-3,19)', title: 'Arrhythmia Consultation', resource: 4 },
+      { start: 'dyndatetime(y,m,d-2,14)', end: 'dyndatetime(y,m,d-2,17)', title: 'Cardiac Rehab Session', resource: 4 },
+      { start: 'dyndatetime(y,m,d-1,10)', end: 'dyndatetime(y,m,d-1,11)', title: 'Cholesterol Review', resource: 4 },
+      { start: 'dyndatetime(y,m,d-1,12)', end: 'dyndatetime(y,m,d-1,14)', title: 'Heart Failure Management', resource: 4 },
+      { start: 'dyndatetime(y,m,d,15)', end: 'dyndatetime(y,m,d,16)', title: 'Palpitation Assessment', resource: 4 },
+      { start: 'dyndatetime(y,m,d,17)', end: 'dyndatetime(y,m,d,18)', title: 'Post-Stent Checkup', resource: 4 },
+      { start: 'dyndatetime(y,m,d+1,11)', end: 'dyndatetime(y,m,d+1,12)', title: 'Cardiac Risk Counseling', resource: 4 },
+      { start: 'dyndatetime(y,m,d+1,13)', end: 'dyndatetime(y,m,d+1,15)', title: 'ECG Review', resource: 4 },
+      { start: 'dyndatetime(y,m,d+2,14)', end: 'dyndatetime(y,m,d+2,15)', title: 'Heart Surgery Follow-up', resource: 4 },
+      { start: 'dyndatetime(y,m,d+3,8,30)', end: 'dyndatetime(y,m,d+3,10)', title: 'Angina Consultation', resource: 4 },
+      { start: 'dyndatetime(y,m,d+3,12)', end: 'dyndatetime(y,m,d+3,13)', title: 'Cholesterol Counseling', resource: 4 },
+      { start: 'dyndatetime(y,m,d+4,15)', end: 'dyndatetime(y,m,d+4,16)', title: 'Cardio Exercise Planning', resource: 4 },
+      { start: 'dyndatetime(y,m,d+5,9)', end: 'dyndatetime(y,m,d+5,10)', title: 'Routine Heart Check', resource: 4 },
 
-      // Dr. Eva Martinez
-      { start: 'dyndatetime(y,m,d-7,14)', end: 'dyndatetime(y,m,d-7,16)', title: 'Consultation - Wyatt Barnes', resource: 5 },
-      { start: 'dyndatetime(y,m,d-8,13)', end: 'dyndatetime(y,m,d-8,14,30)', title: 'Checkup - Lily Sanders', resource: 5 },
-      { start: 'dyndatetime(y,m,d-6,9)', end: 'dyndatetime(y,m,d-6,11)', title: 'Consultation - James Foster', resource: 5 },
-      { start: 'dyndatetime(y,m,d-6,15)', end: 'dyndatetime(y,m,d-6,16,30)', title: 'Follow-up - Natalie Gonzales', resource: 5 },
-      { start: 'dyndatetime(y,m,d-5,11)', end: 'dyndatetime(y,m,d-5,12,30)', title: 'Follow-up - David Bryant', resource: 5 },
-      { start: 'dyndatetime(y,m,d-4,13)', end: 'dyndatetime(y,m,d-4,15)', title: 'Consultation - Zoey Alexander', resource: 5 },
-      { start: 'dyndatetime(y,m,d-3,10)', end: 'dyndatetime(y,m,d-3,11)', title: 'Vaccination - Oliver Russell', resource: 5 },
-      { start: 'dyndatetime(y,m,d-2,14)', end: 'dyndatetime(y,m,d-2,16)', title: 'Consultation - Grace Griffin', resource: 5 },
-      { start: 'dyndatetime(y,m,d-1,9,30)', end: 'dyndatetime(y,m,d-1,11)', title: 'Follow-up - Lucas Diaz', resource: 5 },
-      { start: 'dyndatetime(y,m,d,16)', end: 'dyndatetime(y,m,d,17,30)', title: 'Checkup - Mila Hayes', resource: 5 },
-      { start: 'dyndatetime(y,m,d+1,11)', end: 'dyndatetime(y,m,d+1,13)', title: 'Consultation - Stella Rivera', resource: 5 },
-      { start: 'dyndatetime(y,m,d+2,9)', end: 'dyndatetime(y,m,d+2,11)', title: 'Consultation - Adrian Hughes', resource: 5 },
-      { start: 'dyndatetime(y,m,d+3,14,30)', end: 'dyndatetime(y,m,d+3,16)', title: 'Follow-up - Bella Coleman', resource: 5 },
-      { start: 'dyndatetime(y,m,d+4,15)', end: 'dyndatetime(y,m,d+4,16,30)', title: 'Checkup - Wyatt James', resource: 5 },
-      { start: 'dyndatetime(y,m,d+5,10)', end: 'dyndatetime(y,m,d+5,11)', title: 'Vaccination - Emily Ward', resource: 5 },
+      // Dr. Eva Martinez – Orthopedics
+      { start: 'dyndatetime(y,m,d-5,9)', end: 'dyndatetime(y,m,d-5,11)', title: 'Knee Pain Evaluation', resource: 5 },
+      { start: 'dyndatetime(y,m,d-3,11)', end: 'dyndatetime(y,m,d-3,12)', title: 'Fracture Checkup', resource: 5 },
+      { start: 'dyndatetime(y,m,d-3,13)', end: 'dyndatetime(y,m,d-3,14)', title: 'Hip Replacement Follow-up', resource: 5 },
+      { start: 'dyndatetime(y,m,d-2,10)', end: 'dyndatetime(y,m,d-2,12)', title: 'Back Pain Management', resource: 5 },
+      { start: 'dyndatetime(y,m,d-2,13)', end: 'dyndatetime(y,m,d-2,15)', title: 'Sports Injury Consultation', resource: 5 },
+      { start: 'dyndatetime(y,m,d-1,14)', end: 'dyndatetime(y,m,d-1,15)', title: 'Shoulder Injury Exam', resource: 5 },
+      { start: 'dyndatetime(y,m,d-1,16)', end: 'dyndatetime(y,m,d-1,18)', title: 'Arthritis Treatment', resource: 5 },
+      { start: 'dyndatetime(y,m,d,11)', end: 'dyndatetime(y,m,d,12,30)', title: 'Joint Pain Assessment', resource: 5 },
+      { start: 'dyndatetime(y,m,d,13)', end: 'dyndatetime(y,m,d,14)', title: 'Spinal Checkup', resource: 5 },
+      { start: 'dyndatetime(y,m,d+2,8)', end: 'dyndatetime(y,m,d+2,10)', title: 'Physical Therapy Session', resource: 5 },
+      { start: 'dyndatetime(y,m,d+2,11)', end: 'dyndatetime(y,m,d+2,12,30)', title: 'Post-Surgery Review', resource: 5 },
+      { start: 'dyndatetime(y,m,d+3,11)', end: 'dyndatetime(y,m,d+3,12)', title: 'Hip Pain Consultation', resource: 5 },
+      { start: 'dyndatetime(y,m,d+3,13)', end: 'dyndatetime(y,m,d+3,14)', title: 'Hand Injury Check', resource: 5 },
+      { start: 'dyndatetime(y,m,d+4,13)', end: 'dyndatetime(y,m,d+4,14)', title: 'Orthopedic Follow-up', resource: 5 },
+      { start: 'dyndatetime(y,m,d+4,15)', end: 'dyndatetime(y,m,d+4,18)', title: 'Sports Rehab Therapy', resource: 5 },
     ],
     [],
   );
@@ -104,36 +104,92 @@ const App: FC = () => {
         id: 1,
         name: 'Dr. Alice Johnson',
         specialty: 'Neurology',
-        color: '#ffc5b3ff',
+        bgColor: '#d392e780',
+        textColor: '#1b012280',
         img: 'https://img.mobiscroll.com/demos/f1.png',
       },
       {
         id: 2,
         name: 'Dr. Brian Smith',
         specialty: 'Pediatrics',
-        color: '#a2cff1ff',
+        bgColor: '#69a9ff80',
+        textColor: '#01285c80',
         img: 'https://img.mobiscroll.com/demos/m1.png',
       },
       {
         id: 3,
         name: 'Dr. Catherine Lee',
         specialty: 'Dermatology',
-        color: '#aaeeaeff',
+        bgColor: '#71c17680',
+        textColor: '#02250580',
         img: 'https://img.mobiscroll.com/demos/f2.png',
       },
       {
         id: 4,
         name: 'Dr. Daniel Kim',
         specialty: 'Cardiology',
-        color: '#e8bdf5ff',
+        bgColor: '#bf4d4d80',
+        textColor: '#15010180',
         img: 'https://img.mobiscroll.com/demos/m2.png',
       },
       {
         id: 5,
         name: 'Dr. Eva Martinez',
         specialty: 'Orthopedics',
-        color: '#f9fab9ff',
+        bgColor: '#f0eb8980',
+        textColor: '#1c1b0180',
         img: 'https://img.mobiscroll.com/demos/f1.png',
+      },
+    ],
+    [],
+  );
+
+  const myColors = useMemo<MbscCalendarEvent[]>(
+    () => [
+      {
+        resource: 1,
+        start: '08:00',
+        end: '20:00',
+        recurring: {
+          repeat: 'daily',
+        },
+        background: '#fadaff4d',
+      },
+      {
+        resource: 2,
+        start: '08:00',
+        end: '20:00',
+        recurring: {
+          repeat: 'daily',
+        },
+        background: '#bfdeff4d',
+      },
+      {
+        resource: 3,
+        start: '08:00',
+        end: '20:00',
+        recurring: {
+          repeat: 'daily',
+        },
+        background: '#e1ffd64d',
+      },
+      {
+        resource: 4,
+        start: '08:00',
+        end: '20:00',
+        recurring: {
+          repeat: 'daily',
+        },
+        background: '#fac4c44d',
+      },
+      {
+        resource: 5,
+        start: '08:00',
+        end: '20:00',
+        recurring: {
+          repeat: 'daily',
+        },
+        background: '#ffffd04d',
       },
     ],
     [],
@@ -142,7 +198,7 @@ const App: FC = () => {
   const myInvalids = useMemo<MbscCalendarEvent[]>(
     () => [
       {
-        recurring: { repeat: 'weekly', weekDays: 'FR' },
+        recurring: { repeat: 'weekly', weekDays: 'MO,WE,FR' },
         resource: 1,
       },
       {
@@ -158,7 +214,7 @@ const App: FC = () => {
         resource: 4,
       },
       {
-        recurring: { repeat: 'weekly', weekDays: 'WE' },
+        recurring: { repeat: 'weekly', weekDays: 'MO,WE' },
         resource: 5,
       },
       {
@@ -214,12 +270,30 @@ const App: FC = () => {
     }),
     [],
   );
+
+  const myResourceHeader = useCallback(
+    (resource: MbscResource) => (
+      <div className="mbsc-flex mds-hide-non-working-resources-bg" style={{ backgroundColor: resource.bgColor }}>
+        <img className="mds-hide-non-working-resources-img mbsc-flex-none" alt={resource.name} src={resource.img} />
+        <div className="mds-hide-non-working-resources-cont mbsc-flex-1-1">
+          <div className="mds-hide-non-working-resources-name">{resource.name}</div>
+          <div className="mds-hide-non-working-resources-spec" style={{ color: resource.textColor }}>
+            {resource.specialty}
+          </div>
+        </div>
+      </div>
+    ),
+    [],
+  );
+
   return (
     <Eventcalendar
       view={myView}
       data={myEvents}
       resources={myResources}
+      colors={myColors}
       invalid={myInvalids}
+      renderResource={myResourceHeader}
       groupBy="date"
       cssClass="mds-hide-non-working-resources"
     />

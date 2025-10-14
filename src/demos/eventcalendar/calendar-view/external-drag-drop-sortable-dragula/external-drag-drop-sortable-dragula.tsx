@@ -8,12 +8,13 @@ import {
   MbscEventcalendarView,
   MbscEventCreatedEvent,
   MbscEventDeletedEvent,
+  MbscExternalDropEvent,
   MbscItemDragEvent,
   setOptions,
   sortableJsDraggable,
   Toast /* localeImport */,
 } from '@mobiscroll/react';
-import dragula from 'dragula';
+import dragula, { Drake } from 'dragula';
 import { FC, useEffect, useMemo, useState } from 'react';
 import './external-drag-drop-sortable-dragula.css';
 import { useCallback } from 'react';
@@ -181,21 +182,51 @@ const App: FC = () => {
   }, []);
 
   useEffect(() => {
+    let sortableInstance: Sortable;
     if (sortableCont) {
-      const sortableInstance = new Sortable(sortableCont, {
+      sortableInstance = new Sortable(sortableCont, {
         animation: 150,
         forceFallback: true,
       });
 
       sortableJsDraggable.init(sortableInstance, {
         cloneSelector: '.sortable-drag',
+        externalDrop: true,
+        onExternalDrop: (a: MbscExternalDropEvent) => {
+          const dragData = a.dragData;
+          setSortableTasks((prev) => {
+            const newTasks = [...prev];
+            newTasks.splice(a.position, 0, dragData);
+            return newTasks;
+          });
+        },
       });
     }
 
+    let drake: Drake;
     if (dragulaCont) {
-      const drake = dragula([dragulaCont]);
-      dragulaDraggable.init(drake);
+      drake = dragula([dragulaCont]);
+      dragulaDraggable.init(drake, {
+        externalDrop: true,
+        onExternalDrop: (a: MbscExternalDropEvent) => {
+          const dragData = a.dragData;
+          setDragulaTasks((prev) => {
+            const newTasks = [...prev];
+            newTasks.splice(a.position, 0, dragData);
+            return newTasks;
+          });
+        },
+      });
     }
+
+    return () => {
+      if (sortableInstance) {
+        sortableInstance.destroy();
+      }
+      if (drake) {
+        drake.destroy();
+      }
+    };
   }, [dragulaCont, sortableCont]);
 
   useEffect(() => {

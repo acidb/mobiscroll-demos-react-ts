@@ -1,3 +1,35 @@
+/* Column width */
+
 .mds-hide-non-working-resources .mbsc-schedule-col-width {
-  width: 140px;
+  width: 200px;
+}
+
+/* Resource header */
+
+.mds-hide-non-working-resources-bg {
+  margin: -10px;
+  padding: 10px;
+}
+
+.mds-hide-non-working-resources-img {
+  height: 40px;
+  width: 40px;
+  margin: 10px 0;
+}
+
+.mds-hide-non-working-resources-cont {
+  padding: 10px;
+  font-weight: bold;
+  text-align: start;
+}
+
+.mds-hide-non-working-resources-name {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.mds-hide-non-working-resources-spec {
+  font-size: 14px;
+  line-height: 14px;
+  margin-top: 4px;
 }
