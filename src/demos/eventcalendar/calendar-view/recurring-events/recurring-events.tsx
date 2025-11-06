@@ -55,12 +55,7 @@ const App: FC = () => {
     [],
   );
 
-  const myView = useMemo<MbscEventcalendarView>(
-    () => ({
-      calendar: { labels: true },
-    }),
-    [],
-  );
+  const myView = useMemo<MbscEventcalendarView>(() => ({ calendar: { labels: true } }), []);
 
   return (
     <Eventcalendar
@@ -70,4 +65,5 @@ const App: FC = () => {
     />
   );
 };
+
 export default App;

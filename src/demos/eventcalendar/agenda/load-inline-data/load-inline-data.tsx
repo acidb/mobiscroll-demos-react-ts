@@ -1,6 +1,5 @@
 import { Eventcalendar, MbscCalendarEvent, MbscEventcalendarView, setOptions /* localeImport */ } from '@mobiscroll/react';
 import { FC, useMemo } from 'react';
-import './load-inline-data.css';
 
 setOptions({
   // localeJs,

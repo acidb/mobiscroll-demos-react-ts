@@ -8,7 +8,7 @@ import {
   MbscCalendarEvent,
   MbscEventcalendarView,
   Page,
-  setOptions,
+  setOptions /* localeImport */,
 } from '@mobiscroll/react';
 import { FC, useEffect, useMemo, useState } from 'react';
 
@@ -43,19 +43,35 @@ const App: FC = () => {
           <div className="mbsc-col-sm-12 mbsc-col-md-4">
             <div className="mbsc-form-group">
               <div className="mbsc-form-group-title">Gregorian calendar</div>
-              <Eventcalendar data={myEvents} view={myView} />
+              <Eventcalendar
+                // drag
+                data={myEvents}
+                view={myView}
+              />
             </div>
           </div>
           <div className="mbsc-col-sm-12 mbsc-col-md-4">
             <div className="mbsc-form-group">
               <div className="mbsc-form-group-title">Jalali calendar</div>
-              <Eventcalendar data={myEvents} calendarSystem={jalaliCalendar} locale={localeFa} view={myView} />
+              <Eventcalendar
+                // drag
+                data={myEvents}
+                calendarSystem={jalaliCalendar}
+                locale={localeFa}
+                view={myView}
+              />
             </div>
           </div>
           <div className="mbsc-col-sm-12 mbsc-col-md-4">
             <div className="mbsc-form-group">
               <div className="mbsc-form-group-title">Hijri calendar</div>
-              <Eventcalendar data={myEvents} calendarSystem={hijriCalendar} locale={localeAr} view={myView} />
+              <Eventcalendar
+                // drag
+                data={myEvents}
+                calendarSystem={hijriCalendar}
+                locale={localeAr}
+                view={myView}
+              />
             </div>
           </div>
         </div>

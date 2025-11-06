@@ -15,6 +15,7 @@ setOptions({
 
 const App: FC = () => {
   const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([]);
+
   const myResources = useMemo<MbscResource[]>(
     () => [
       {
@@ -51,12 +52,7 @@ const App: FC = () => {
     [],
   );
 
-  const myView = useMemo<MbscEventcalendarView>(
-    () => ({
-      timeline: { type: 'day' },
-    }),
-    [],
-  );
+  const myView = useMemo<MbscEventcalendarView>(() => ({ timeline: { type: 'day' } }), []);
 
   useEffect(() => {
     getJson(
@@ -68,6 +64,7 @@ const App: FC = () => {
     );
   }, []);
 
-  return <Eventcalendar data={myEvents} view={myView} resources={myResources} />;
+  return <Eventcalendar data={myEvents} resources={myResources} view={myView} />;
 };
+
 export default App;

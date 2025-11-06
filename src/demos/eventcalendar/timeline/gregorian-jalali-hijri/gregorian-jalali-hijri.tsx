@@ -77,15 +77,34 @@ const App: FC = () => {
     <Page>
       <div className="mbsc-form-group">
         <div className="mbsc-form-group-title">Gregorian calendar</div>
-        <Eventcalendar data={myEvents} view={myView} resources={myResources} />
+        <Eventcalendar
+          // drag
+          data={myEvents}
+          view={myView}
+          resources={myResources}
+        />
       </div>
       <div className="mbsc-form-group">
         <div className="mbsc-form-group-title">Jalali calendar</div>
-        <Eventcalendar data={myEvents} view={myView} resources={myResources} calendarSystem={jalaliCalendar} locale={localeFa} />
+        <Eventcalendar
+          // drag
+          data={myEvents}
+          view={myView}
+          resources={myResources}
+          calendarSystem={jalaliCalendar}
+          locale={localeFa}
+        />
       </div>
       <div className="mbsc-form-group">
         <div className="mbsc-form-group-title">Hijri calendar</div>
-        <Eventcalendar data={myEvents} view={myView} resources={myResources} calendarSystem={hijriCalendar} locale={localeAr} />
+        <Eventcalendar
+          // drag
+          data={myEvents}
+          view={myView}
+          resources={myResources}
+          calendarSystem={hijriCalendar}
+          locale={localeAr}
+        />
       </div>
     </Page>
   );

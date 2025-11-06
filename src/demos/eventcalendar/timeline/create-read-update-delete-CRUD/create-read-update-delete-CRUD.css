@@ -1,15 +1,10 @@
-.event-color-c {
-  display: flex;
+.mds-crud-event-color-cont {
   margin: 16px;
   align-items: center;
   cursor: pointer;
 }
 
-.event-color-label {
-  flex: 1 0 auto;
-}
-
-.event-color {
+.mds-crud-selected-event-color {
   width: 30px;
   height: 30px;
   border-radius: 15px;
@@ -18,18 +13,12 @@
   background: #5ac8fa;
 }
 
-.crud-color-row {
-  display: flex;
+.mds-crud-color-row {
   justify-content: center;
   margin: 5px;
 }
 
-.crud-color-c {
-  padding: 3px;
-  margin: 2px;
-}
-
-.crud-color {
+.mds-crud-color {
   position: relative;
   min-width: 46px;
   min-height: 46px;
@@ -39,13 +28,7 @@
   background: #5ac8fa;
 }
 
-.crud-color-c.selected,
-.crud-color-c:hover {
-  box-shadow: inset 0 0 0 3px #007bff;
-  border-radius: 48px;
-}
-
-.crud-color:before {
+.mds-crud-color:before {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -57,6 +40,17 @@
   display: none;
 }
 
-.crud-color-c.selected .crud-color:before {
+.mds-crud-color-value {
+  padding: 3px;
+  margin: 2px;
+}
+
+.mds-crud-color-value.mds-crud-color-value-selected,
+.mds-crud-color-value:hover {
+  box-shadow: inset 0 0 0 3px #007bff;
+  border-radius: 48px;
+}
+
+.mds-crud-color-value.mds-crud-color-value-selected .mds-crud-color:before {
   display: block;
 }
