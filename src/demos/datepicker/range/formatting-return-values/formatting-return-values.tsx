@@ -1,13 +1,14 @@
 import { Datepicker, MbscDatepickerChangeEvent, MbscDateType, Page, setOptions /* localeImport */ } from '@mobiscroll/react';
 import { useCallback, useState } from 'react';
+import { dyndatetime } from '../../../../dyndatetime';
 
 setOptions({
   // localeJs,
   // themeJs
 });
 
-const currentWeek = ['dyndatetime(y,m,d)', 'dyndatetime(y,m,d+6)'];
-const currentTime = ['dyndatetime(y,m,d,h)', 'dyndatetime(y,m,d,h+2)'];
+const currentWeek = [dyndatetime('y,m,d'), dyndatetime('y,m,d+6')];
+const currentTime = [dyndatetime('y,m,d,h'), dyndatetime('y,m,d,h+2')];
 
 function App() {
   const [rangeValue, setRangeValue] = useState<MbscDateType[]>(currentWeek);

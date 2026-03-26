@@ -1,5 +1,6 @@
 import { Eventcalendar, MbscCalendarEvent, MbscEventcalendarView, MbscResource, setOptions /* localeImport */ } from '@mobiscroll/react';
 import { FC, useMemo } from 'react';
+import { dyndatetime } from '../../../../dyndatetime';
 import './resource-background.css';
 
 setOptions({
@@ -10,7 +11,7 @@ setOptions({
 const App: FC = () => {
   const myView = useMemo<MbscEventcalendarView>(
     () => ({
-      schedule: {
+      scheduler: {
         type: 'day',
       },
     }),
@@ -66,56 +67,56 @@ const App: FC = () => {
   const myEvents = useMemo<MbscCalendarEvent[]>(
     () => [
       {
-        start: 'dyndatetime(y,m,d,8)',
-        end: 'dyndatetime(y,m,d, 10)',
+        start: dyndatetime('y,m,d,8'),
+        end: dyndatetime('y,m,d, 10'),
         title: 'Event 1',
         resource: 1,
       },
       {
-        start: 'dyndatetime(y,m,d,9)',
-        end: 'dyndatetime(y,m,d,15)',
+        start: dyndatetime('y,m,d,9'),
+        end: dyndatetime('y,m,d,15'),
         title: 'Event 2',
         resource: 3,
       },
       {
-        start: 'dyndatetime(y,m,d,14)',
-        end: 'dyndatetime(y,m,d,21)',
+        start: dyndatetime('y,m,d,14'),
+        end: dyndatetime('y,m,d,21'),
         title: 'Event 3',
         resource: 4,
       },
       {
-        start: 'dyndatetime(y,m,d,7)',
-        end: 'dyndatetime(y,m,d,12)',
+        start: dyndatetime('y,m,d,7'),
+        end: dyndatetime('y,m,d,12'),
         title: 'Event 4',
         resource: 5,
       },
       {
-        start: 'dyndatetime(y,m,d,11)',
-        end: 'dyndatetime(y,m,d,20)',
+        start: dyndatetime('y,m,d,11'),
+        end: dyndatetime('y,m,d,20'),
         title: 'Event 6',
         resource: 6,
       },
       {
-        start: 'dyndatetime(y,m,d,4)',
-        end: 'dyndatetime(y,m,d,10)',
+        start: dyndatetime('y,m,d,4'),
+        end: dyndatetime('y,m,d,10'),
         title: 'Event 7',
         resource: 2,
       },
       {
-        start: 'dyndatetime(y,m,d,15)',
-        end: 'dyndatetime(y,m,d,18)',
+        start: dyndatetime('y,m,d,15'),
+        end: dyndatetime('y,m,d,18'),
         title: 'Event 8',
         resource: 7,
       },
       {
-        start: 'dyndatetime(y,m,d,12)',
-        end: 'dyndatetime(y,m,d,14)',
+        start: dyndatetime('y,m,d,12'),
+        end: dyndatetime('y,m,d,14'),
         title: 'Event 9',
         resource: 4,
       },
       {
-        start: 'dyndatetime(y,m,d,10)',
-        end: 'dyndatetime(y,m,d,12)',
+        start: dyndatetime('y,m,d,10'),
+        end: dyndatetime('y,m,d,12'),
         title: 'Event 10',
         resource: 2,
       },

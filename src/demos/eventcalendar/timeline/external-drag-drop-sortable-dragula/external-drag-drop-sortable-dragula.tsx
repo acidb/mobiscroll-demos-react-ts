@@ -1,4 +1,4 @@
-import {
+﻿import {
   Draggable,
   dragulaDraggable,
   Dropcontainer,
@@ -16,10 +16,10 @@ import {
   Toast /* localeImport */,
 } from '@mobiscroll/react';
 import dragula, { Drake } from 'dragula';
-import { FC, useEffect, useMemo, useState } from 'react';
-import './external-drag-drop-sortable-dragula.css';
-import { useCallback } from 'react';
+import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import Sortable from 'sortablejs';
+import { dyndatetime } from '../../../../dyndatetime';
+import './external-drag-drop-sortable-dragula.css';
 import 'dragula/dist/dragula.css';
 
 setOptions({
@@ -91,29 +91,29 @@ const App: FC = () => {
       id: 'draggable-1',
       title: 'Task 1',
       color: '#cf4343',
-      start: 'dyndatetime(y,m,d,8)',
-      end: 'dyndatetime(y,m,d,9,30)',
+      start: dyndatetime('y,m,d,8'),
+      end: dyndatetime('y,m,d,9,30'),
     },
     {
       id: 'draggable-2',
       title: 'Task 2',
       color: '#cf4343',
-      start: 'dyndatetime(y,m,d,8)',
-      end: 'dyndatetime(y,m,d,10)',
+      start: dyndatetime('y,m,d,8'),
+      end: dyndatetime('y,m,d,10'),
     },
     {
       id: 'draggable-3',
       title: 'Task 3',
       color: '#cf4343',
-      start: 'dyndatetime(y,m,d,10)',
-      end: 'dyndatetime(y,m,d,14)',
+      start: dyndatetime('y,m,d,10'),
+      end: dyndatetime('y,m,d,14'),
     },
     {
       id: 'draggable-4',
       title: 'Task 4',
       color: '#cf4343',
-      start: 'dyndatetime(y,m,d,12)',
-      end: 'dyndatetime(y,m,d,18)',
+      start: dyndatetime('y,m,d,12'),
+      end: dyndatetime('y,m,d,18'),
     },
   ]);
 
@@ -122,29 +122,29 @@ const App: FC = () => {
       id: 'sortable-1',
       title: 'Task 5',
       color: '#d1891f',
-      start: 'dyndatetime(y,m,d,8)',
-      end: 'dyndatetime(y,m,d,9,30)',
+      start: dyndatetime('y,m,d,8'),
+      end: dyndatetime('y,m,d,9,30'),
     },
     {
       id: 'sortable-2',
       title: 'Task 6',
       color: '#d1891f',
-      start: 'dyndatetime(y,m,d,12)',
-      end: 'dyndatetime(y,m,d,15)',
+      start: dyndatetime('y,m,d,12'),
+      end: dyndatetime('y,m,d,15'),
     },
     {
       id: 'sortable-3',
       title: 'Task 7',
       color: '#d1891f',
-      start: 'dyndatetime(y,m,d,8,30)',
-      end: 'dyndatetime(y,m,d,11)',
+      start: dyndatetime('y,m,d,8,30'),
+      end: dyndatetime('y,m,d,11'),
     },
     {
       id: 'sortable-4',
       title: 'Task 8',
       color: '#d1891f',
-      start: 'dyndatetime(y,m,d,16)',
-      end: 'dyndatetime(y,m,d,21)',
+      start: dyndatetime('y,m,d,16'),
+      end: dyndatetime('y,m,d,21'),
     },
   ]);
 
@@ -153,29 +153,29 @@ const App: FC = () => {
       id: 'dragula-1',
       title: 'Task 9',
       color: '#1ca11a',
-      start: 'dyndatetime(y,m,d,8)',
-      end: 'dyndatetime(y,m,d,9,30)',
+      start: dyndatetime('y,m,d,8'),
+      end: dyndatetime('y,m,d,9,30'),
     },
     {
       id: 'dragula-2',
       title: 'Task 10',
       color: '#1ca11a',
-      start: 'dyndatetime(y,m,d,12)',
-      end: 'dyndatetime(y,m,d,15)',
+      start: dyndatetime('y,m,d,12'),
+      end: dyndatetime('y,m,d,15'),
     },
     {
       id: 'dragula-3',
       title: 'Task 11',
       color: '#1ca11a',
-      start: 'dyndatetime(y,m,d,8,30)',
-      end: 'dyndatetime(y,m,d,11)',
+      start: dyndatetime('y,m,d,8,30'),
+      end: dyndatetime('y,m,d,11'),
     },
     {
       id: 'dragula-4',
       title: 'Task 12',
       color: '#1ca11a',
-      start: 'dyndatetime(y,m,d,16)',
-      end: 'dyndatetime(y,m,d,20,30)',
+      start: dyndatetime('y,m,d,16'),
+      end: dyndatetime('y,m,d,20,30'),
     },
   ]);
 

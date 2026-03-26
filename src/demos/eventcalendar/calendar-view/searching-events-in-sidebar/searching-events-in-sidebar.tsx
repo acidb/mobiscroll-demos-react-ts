@@ -25,7 +25,7 @@ const App: FC = () => {
   const [displayResults, setDisplayResults] = useState<boolean>(false);
 
   const calInst = useRef<Eventcalendar | null>(null);
-  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const calView = useMemo<MbscEventcalendarView>(() => ({ calendar: { labels: true } }), []);
   const listView = useMemo<MbscEventcalendarView>(() => ({ agenda: { type: 'year', size: 5 } }), []);

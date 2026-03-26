@@ -1,0 +1,275 @@
+/* Calendar base styles */
+.mds-event-grouping-calendar .mbsc-timeline-row {
+  height: 140px;
+}
+.mds-event-grouping-calendar .mbsc-timeline-resource-col {
+  width: 240px;
+}
+.mds-event-grouping-calendar .mbsc-ios.mbsc-textfield-wrapper-box {
+  margin: 10px 20px;
+}
+.mds-event-grouping-calendar .mbsc-timeline-resource-title {
+  text-transform: capitalize;
+}
+/* Resource rendering - Employees */
+.mds-event-grouping-avatar {
+  width: 40px;
+  height: 40px;
+}
+.mds-event-grouping-cont {
+  padding: 0 7px;
+}
+.mds-event-grouping-name {
+  font-size: 14px;
+  line-height: 24px;
+}
+.mds-event-grouping-title {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+/* Resource rendering - Types */
+.mds-event-grouping-type-resource {
+  align-items: center;
+  padding: 8px 0;
+}
+.mds-event-grouping-type-badge {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+.mds-event-grouping-type-name {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+/* Grouped event - collapsed state */
+.mds-event-grouping-task-client {
+  background-color: #f8f9fa;
+  border-left: 4px solid;
+  border-radius: 0 8px 8px 0;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.08);
+  flex-direction: column;
+  overflow: hidden;
+}
+/* Grouped event header content */
+.mds-event-grouping-content {
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+}
+/* Client group title */
+.mds-event-grouping-title-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 20px;
+  flex: 1;
+  min-width: 0;
+  margin-right: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Right side container (meta + icon) */
+.mds-event-grouping-right {
+  align-items: center;
+  width: 130px;
+}
+/* Meta information (dates + counts) */
+.mds-event-grouping-meta {
+  flex-direction: column;
+  align-items: flex-end;
+  flex: 1;
+  margin-right: 12px;
+}
+.mds-event-grouping-date-range {
+  color: #797979;
+  font-size: 11px;
+  line-height: 14px;
+  white-space: nowrap;
+  margin-bottom: 2px;
+}
+.mds-event-grouping-count {
+  font-size: 11px;
+  line-height: 14px;
+  white-space: nowrap;
+}
+/* Expand/collapse icon */
+.mds-event-grouping-icon {
+  font-size: 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease; /* Reduced from 0.3s to 0.2s */
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(0deg);
+}
+/* Icon rotation when expanded */
+.mds-event-grouping-task.expanded .mds-event-grouping-icon {
+  transform: rotate(180deg);
+}
+/* Grid wrapper for smooth animation */
+.mds-event-grouping-events {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.2s ease; /* Reduced from 0.25s to 0.2s */
+}
+.mds-event-grouping-events-inner {
+  overflow: hidden;
+  padding: 0 14px;
+  transition: padding 0.2s ease; /* Reduced from 0.25s to 0.2s */
+}
+.mds-event-grouping-task.expanded .mds-event-grouping-events {
+  grid-template-rows: 1fr;
+}
+.mds-event-grouping-task.expanded .mds-event-grouping-events-inner {
+  padding: 0 14px 10px 14px;
+}
+/* Individual event in expanded list */
+.mds-event-grouping-original-event {
+  background: #fff;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  padding: 8px 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+.mds-event-grouping-original-event:last-child {
+  margin-bottom: 0;
+}
+/* Event content layout */
+.mds-event-grouping-event-content {
+  justify-content: space-between;
+  align-items: center;
+}
+/* Event title */
+.mds-event-grouping-event-title {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 13px;
+  line-height: 18px;
+  flex: 1;
+  min-width: 0;
+  margin-right: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Right side (date + detail) */
+.mds-event-grouping-event-right {
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 80px;
+}
+.mds-event-grouping-event-date {
+  font-size: 11px;
+  color: #94a3b8;
+  white-space: nowrap;
+  line-height: 14px;
+  text-align: right;
+  margin-bottom: 2px;
+}
+/* Detail container (avatar/dot + text) */
+.mds-event-grouping-event-detail {
+  align-items: center;
+  justify-content: flex-end;
+}
+.mds-event-grouping-event-info {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  white-space: nowrap;
+  line-height: 14px;
+  text-align: right;
+  text-transform: capitalize;
+}
+/* Avatar for assignee in type view */
+.mds-event-grouping-event-avatar {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+/* Colored dot for type in assignee view */
+.mds-event-grouping-type-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+/* Simple event styling (no grouping) */
+.mds-event-simple {
+  padding: 10px 12px;
+  border-radius: 6px;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    0 1px 2px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  color: #2c2c2c;
+}
+/* Event title */
+.mds-event-simple-title {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 600;
+  margin-right: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Right side container */
+.mds-event-simple-right {
+  flex-direction: column;
+  position: relative;
+}
+/* Date range */
+.mds-event-simple-date {
+  font-size: 11px;
+  line-height: 14px;
+  opacity: 0.85;
+  white-space: nowrap;
+  text-align: right;
+  margin-bottom: 2px;
+}
+/* Subtitle wrapper (avatar/dot + text) */
+.mds-event-simple-subtitle-wrapper {
+  align-items: center;
+  justify-content: flex-end;
+}
+/* Avatar for assignee in type view */
+.mds-event-simple-avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 6px;
+  position: absolute;
+  left: 0;
+}
+/* Colored dot for type in assignee view */
+.mds-event-simple-type-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin: 0 6px;
+}
+/* Subtitle text (type or assignee name) */
+.mds-event-simple-subtitle {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+/* Header controls */
+.mds-event-grouping-header-controls {
+  align-items: center;
+}
+/* Select input */
+.mds-event-grouping-select.mbsc-textfield {
+  width: 210px;
+}

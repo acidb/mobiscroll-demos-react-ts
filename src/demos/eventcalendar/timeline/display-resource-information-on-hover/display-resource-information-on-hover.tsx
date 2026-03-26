@@ -13,6 +13,7 @@ import {
   Toast /* localeImport */,
 } from '@mobiscroll/react';
 import { FC, useCallback, useMemo, useRef, useState } from 'react';
+import { dyndatetime } from '../../../../dyndatetime';
 import './display-resource-information-on-hover.css';
 
 setOptions({
@@ -31,12 +32,12 @@ const App: FC = () => {
   const [isToastOpen, setToastOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
 
-  const hoveredResourceElmRef = useRef<HTMLElement>();
+  const hoveredResourceElmRef = useRef<HTMLElement>(null);
   const mySelectedDate = useRef(new Date());
   const calInst = useRef<Eventcalendar>(null);
   const popupInst = useRef<Popup>(null);
-  const openTimer = useRef<ReturnType<typeof setTimeout>>();
-  const closeTimer = useRef<ReturnType<typeof setTimeout>>();
+  const openTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const closeTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const myResources = useMemo<MbscResource[]>(
     () => [
@@ -111,146 +112,146 @@ const App: FC = () => {
   const myEvents = useMemo<MbscCalendarEvent[]>(
     () => [
       {
-        start: 'dyndatetime(y,m,d-1,12)',
-        end: 'dyndatetime(y,m,d-1,15)',
+        start: dyndatetime('y,m,d-1,12'),
+        end: dyndatetime('y,m,d-1,15'),
         title: 'Repoint Brick Facade',
         resource: 'res1',
       },
       {
-        start: 'dyndatetime(y,m,d-1,9)',
-        end: 'dyndatetime(y,m,d-1,12)',
+        start: dyndatetime('y,m,d-1,9'),
+        end: dyndatetime('y,m,d-1,12'),
         title: 'Install Custom Wood Trim',
         resource: 'res3',
       },
       {
-        start: 'dyndatetime(y,m,d-1,14)',
-        end: 'dyndatetime(y,m,d-1,18)',
+        start: dyndatetime('y,m,d-1,14'),
+        end: dyndatetime('y,m,d-1,18'),
         title: 'Repair Steel Stair Treads',
         resource: 'res4',
       },
       {
-        start: 'dyndatetime(y,m,d-1,10)',
-        end: 'dyndatetime(y,m,d-1,13)',
+        start: dyndatetime('y,m,d-1,10'),
+        end: dyndatetime('y,m,d-1,13'),
         title: 'Pour and Finish Driveway Slab',
         resource: 'res6',
       },
       {
-        start: 'dyndatetime(y,m,d-1,11)',
-        end: 'dyndatetime(y,m,d-1,16)',
+        start: dyndatetime('y,m,d-1,11'),
+        end: dyndatetime('y,m,d-1,16'),
         title: 'Paint Interior Drywall',
         resource: 'res8',
       },
       {
-        start: 'dyndatetime(y,m,d,8)',
-        end: 'dyndatetime(y,m,d,11)',
+        start: dyndatetime('y,m,d,8'),
+        end: dyndatetime('y,m,d,11'),
         title: 'Block Wall Construction',
         resource: 'res1',
       },
       {
-        start: 'dyndatetime(y,m,d,14)',
-        end: 'dyndatetime(y,m,d,16)',
+        start: dyndatetime('y,m,d,14'),
+        end: dyndatetime('y,m,d,16'),
         title: 'Task 2',
         resource: 'Paver Installation',
       },
       {
-        start: 'dyndatetime(y,m,d,12)',
-        end: 'dyndatetime(y,m,d,17)',
+        start: dyndatetime('y,m,d,12'),
+        end: dyndatetime('y,m,d,17'),
         title: 'Install ceiling fan',
         resource: 'res2',
       },
       {
-        start: 'dyndatetime(y,m,d,10)',
-        end: 'dyndatetime(y,m,d,14)',
+        start: dyndatetime('y,m,d,10'),
+        end: dyndatetime('y,m,d,14'),
         title: 'Roof Beam Replacement',
         resource: 'res3',
       },
       {
-        start: 'dyndatetime(y,m,d,7)',
-        end: 'dyndatetime(y,m,d,12)',
+        start: dyndatetime('y,m,d,7'),
+        end: dyndatetime('y,m,d,12'),
         title: 'Custom Metalworks Creation',
         resource: 'res4',
       },
       {
-        start: 'dyndatetime(y,m,d,14)',
-        end: 'dyndatetime(y,m,d,17)',
+        start: dyndatetime('y,m,d,14'),
+        end: dyndatetime('y,m,d,17'),
         title: 'Pipe Welding',
         resource: 'res4',
       },
       {
-        start: 'dyndatetime(y,m,10,8)',
-        end: 'dyndatetime(y,m,11,20)',
+        start: dyndatetime('y,m,10,8'),
+        end: dyndatetime('y,m,11,20'),
         title: 'Leak Detection & Repair',
         resource: 'res5',
       },
       {
-        start: 'dyndatetime(y,m,d,13)',
-        end: 'dyndatetime(y,m,d,17)',
+        start: dyndatetime('y,m,d,13'),
+        end: dyndatetime('y,m,d,17'),
         title: 'Faucet & Sink Fitting',
         resource: 'res5',
       },
       {
-        start: 'dyndatetime(y,m,d,18)',
-        end: 'dyndatetime(y,m,d,20)',
+        start: dyndatetime('y,m,d,18'),
+        end: dyndatetime('y,m,d,20'),
         title: 'Drainage System Setup',
         resource: 'res5',
       },
       {
-        start: 'dyndatetime(y,m,d,9)',
-        end: 'dyndatetime(y,m,d,13)',
+        start: dyndatetime('y,m,d,9'),
+        end: dyndatetime('y,m,d,13'),
         title: 'Surface Polishing',
         resource: 'res6',
       },
       {
-        start: 'dyndatetime(y,m,d,8)',
-        end: 'dyndatetime(y,m,d,10)',
+        start: dyndatetime('y,m,d,8'),
+        end: dyndatetime('y,m,d,10'),
         title: 'Structural Steel Inspections',
         resource: 'res7',
       },
       {
-        start: 'dyndatetime(y,m,d,13)',
-        end: 'dyndatetime(y,m,d,16)',
+        start: dyndatetime('y,m,d,13'),
+        end: dyndatetime('y,m,d,16'),
         title: 'Metal Structure Assembly',
         resource: 'res7',
       },
       {
-        start: 'dyndatetime(y,m,d,17)',
-        end: 'dyndatetime(y,m,d,19)',
+        start: dyndatetime('y,m,d,17'),
+        end: dyndatetime('y,m,d,19'),
         title: 'Heavy Steel Beam Placement',
         resource: 'res7',
       },
       {
-        start: 'dyndatetime(y,m,d,9)',
-        end: 'dyndatetime(y,m,d,12)',
+        start: dyndatetime('y,m,d,9'),
+        end: dyndatetime('y,m,d,12'),
         title: 'Exterior House Painting',
         resource: 'res8',
       },
       {
-        start: 'dyndatetime(y,m,d,15)',
-        end: 'dyndatetime(y,m,d,18)',
+        start: dyndatetime('y,m,d,15'),
+        end: dyndatetime('y,m,d,18'),
         title: 'Deck Staining & Sealing',
         resource: 'res8',
       },
       {
-        start: 'dyndatetime(y,m,d+1,12)',
-        end: 'dyndatetime(y,m,d+1,15)',
+        start: dyndatetime('y,m,d+1,12'),
+        end: dyndatetime('y,m,d+1,15'),
         title: 'Troubleshoot Faulty Breaker',
         resource: 'res2',
       },
       {
-        start: 'dyndatetime(y,m,d+1,10)',
-        end: 'dyndatetime(y,m,d+1,13)',
+        start: dyndatetime('y,m,d+1,10'),
+        end: dyndatetime('y,m,d+1,13'),
         title: 'Frame Interior Partitions',
         resource: 'res3',
       },
       {
-        start: 'dyndatetime(y,m,d+1,16)',
-        end: 'dyndatetime(y,m,d+1,20)',
+        start: dyndatetime('y,m,d+1,16'),
+        end: dyndatetime('y,m,d+1,20'),
         title: 'Weld Structural Beam Connections',
         resource: 'res4',
       },
       {
-        start: 'dyndatetime(y,m,d+1,12)',
-        end: 'dyndatetime(y,m,d+1,16)',
+        start: dyndatetime('y,m,d+1,12'),
+        end: dyndatetime('y,m,d+1,16'),
         title: 'Apply Smooth Trowel Finish to Basement Floor',
         resource: 'res6',
       },

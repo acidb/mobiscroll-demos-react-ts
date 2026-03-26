@@ -37,9 +37,9 @@ const App: FC = () => {
 
   const { current: view } = useRef<MbscEventcalendarView>({ agenda: { type: 'month' } });
   const buttonRef = useRef<Button>(null);
-  const startDate = useRef<Date>();
-  const endDate = useRef<Date>();
-  const timer = useRef<ReturnType<typeof setTimeout>>();
+  const startDate = useRef<Date>(null);
+  const endDate = useRef<Date>(null);
+  const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const handleError = useCallback((resp: { error?: string; result: { error: { message: string } } }) => {
     setToastMessage(resp.error ? resp.error : resp.result.error.message);

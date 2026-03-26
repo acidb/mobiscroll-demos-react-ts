@@ -6,6 +6,7 @@ import {
   setOptions /* localeImport */,
 } from '@mobiscroll/react';
 import { FC, useCallback, useMemo } from 'react';
+import { dyndatetime } from '../../../../dyndatetime';
 import './cell-content-template.css';
 
 setOptions({
@@ -19,86 +20,86 @@ const App: FC = () => {
       {
         id: 1,
         title: 'Team Sync Meeting',
-        start: 'dyndatetime(y, m, d - 1, 10, 15)',
-        end: 'dyndatetime(y, m, d - 1, 11, 30)',
+        start: dyndatetime('y, m, d - 1, 10, 15'),
+        end: dyndatetime('y, m, d - 1, 11, 30'),
       },
       {
         id: 2,
         title: 'Apply Security Update',
-        start: 'dyndatetime(y, m, d - 1, 15, 0)',
-        end: 'dyndatetime(y, m, d - 1, 16, 0)',
+        start: dyndatetime('y, m, d - 1, 15, 0'),
+        end: dyndatetime('y, m, d - 1, 16, 0'),
       },
       {
         id: 3,
         title: 'Database Backup',
-        start: 'dyndatetime(y, m, d - 2, 12, 0)',
-        end: 'dyndatetime(y, m, d - 2, 13, 0)',
+        start: dyndatetime('y, m, d - 2, 12, 0'),
+        end: dyndatetime('y, m, d - 2, 13, 0'),
       },
       {
         id: 4,
         title: 'Project Kickoff & Coffee',
-        start: 'dyndatetime(y, m, d - 2, 9, 0)',
-        end: 'dyndatetime(y, m, d - 2, 10, 0)',
+        start: dyndatetime('y, m, d - 2, 9, 0'),
+        end: dyndatetime('y, m, d - 2, 10, 0'),
       },
       {
         id: 5,
         title: 'System Health Review',
-        start: 'dyndatetime(y, m, d - 2, 8, 0)',
-        end: 'dyndatetime(y, m, d - 2, 8, 45)',
+        start: dyndatetime('y, m, d - 2, 8, 0'),
+        end: dyndatetime('y, m, d - 2, 8, 45'),
       },
       {
         id: 6,
         title: 'Quarterly Health Audit',
-        start: 'dyndatetime(y, m, d, 16, 0)',
-        end: 'dyndatetime(y, m, d, 17, 0)',
+        start: dyndatetime('y, m, d, 16, 0'),
+        end: dyndatetime('y, m, d, 17, 0'),
       },
       {
         id: 7,
         title: 'Deployment Window',
-        start: 'dyndatetime(y, m, d, 14, 0)',
-        end: 'dyndatetime(y, m, d, 15, 0)',
+        start: dyndatetime('y, m, d, 14, 0'),
+        end: dyndatetime('y, m, d, 15, 0'),
       },
       {
         id: 8,
         title: 'Nightly Backup Prep',
-        start: 'dyndatetime(y, m, d, 12, 0)',
-        end: 'dyndatetime(y, m, d, 13, 0)',
+        start: dyndatetime('y, m, d, 12, 0'),
+        end: dyndatetime('y, m, d, 13, 0'),
       },
       {
         id: 9,
         title: 'Morning System Scan',
-        start: 'dyndatetime(y, m, d, 8, 0)',
-        end: 'dyndatetime(y, m, d, 8, 45)',
+        start: dyndatetime('y, m, d, 8, 0'),
+        end: dyndatetime('y, m, d, 8, 45'),
       },
       {
         id: 10,
         title: 'Sprint Review & Coffee',
-        start: 'dyndatetime(y, m, d + 2, 9, 0)',
-        end: 'dyndatetime(y, m, d + 2, 9, 45)',
+        start: dyndatetime('y, m, d + 2, 9, 0'),
+        end: dyndatetime('y, m, d + 2, 9, 45'),
       },
       {
         id: 11,
         title: 'Final Health Check',
-        start: 'dyndatetime(y, m, d + 2, 16, 0)',
-        end: 'dyndatetime(y, m, d + 2, 16, 45)',
+        start: dyndatetime('y, m, d + 2, 16, 0'),
+        end: dyndatetime('y, m, d + 2, 16, 45'),
       },
       {
         id: 12,
         title: 'Weekly Backup',
-        start: 'dyndatetime(y, m, d + 2, 12, 0)',
-        end: 'dyndatetime(y, m, d + 2, 12, 45)',
+        start: dyndatetime('y, m, d + 2, 12, 0'),
+        end: dyndatetime('y, m, d + 2, 12, 45'),
       },
       {
         id: 13,
         title: 'Morning Health Scan',
-        start: 'dyndatetime(y, m, d + 1, 8, 15)',
-        end: 'dyndatetime(y, m, d + 1, 9, 0)',
+        start: dyndatetime('y, m, d + 1, 8, 15'),
+        end: dyndatetime('y, m, d + 1, 9, 0'),
       },
       {
         id: 14,
         title: 'Afternoon Backup',
-        start: 'dyndatetime(y, m, d + 1, 12, 15)',
-        end: 'dyndatetime(y, m, d + 1, 13, 0)',
+        start: dyndatetime('y, m, d + 1, 12, 15'),
+        end: dyndatetime('y, m, d + 1, 13, 0'),
       },
     ],
     [],
@@ -106,7 +107,7 @@ const App: FC = () => {
 
   const myView: MbscEventcalendarView = useMemo(
     () => ({
-      schedule: { type: 'week', startTime: '08:00', endTime: '18:00', startDay: 1, endDay: 5 },
+      scheduler: { type: 'week', startTime: '08:00', endTime: '18:00', startDay: 1, endDay: 5 },
     }),
     [],
   );

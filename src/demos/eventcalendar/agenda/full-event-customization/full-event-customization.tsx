@@ -51,6 +51,6 @@ const App: FC = () => {
     );
   }, []);
 
-  return <Eventcalendar renderEvent={customEvent} data={myEvents} view={myView} />;
+  return <Eventcalendar renderAgendaEvent={customEvent} data={myEvents} view={myView} />;
 };
 export default App;

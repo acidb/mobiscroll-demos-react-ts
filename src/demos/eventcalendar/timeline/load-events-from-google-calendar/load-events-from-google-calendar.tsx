@@ -19,14 +19,14 @@ const App: FC = () => {
   const [events, setEvents] = useState<MbscCalendarEvent[]>([]);
   const [isToastOpen, setToastOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
-  const firstDay = useRef<Date>();
-  const lastDay = useRef<Date>();
+  const firstDay = useRef<Date>(null);
+  const lastDay = useRef<Date>(null);
 
   const calView = useMemo<MbscEventcalendarView>(
     () => ({
       timeline: {
         type: 'month',
-        eventList: true,
+        eventDisplay: 'fill',
       },
     }),
     [],
@@ -45,11 +45,7 @@ const App: FC = () => {
     [],
   );
 
-  const calendarIds = useMemo(
-    () =>
-      calendars.map((cal) => cal.id),
-    [calendars],
-  );
+  const calendarIds = useMemo(() => calendars.map((cal) => cal.id), [calendars]);
 
   const onError = useCallback((resp: { error?: string; result: { error: { message: string } } }) => {
     setToastMessage(resp.error ? resp.error : resp.result.error.message);

@@ -15,6 +15,7 @@ import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import { useCallback, useMemo, useState } from 'react';
+import { dyndatetime } from '../../../../dyndatetime';
 import './multiple-timezone-support.css';
 
 dayjs.extend(utc);
@@ -31,44 +32,44 @@ function App() {
   const myEvents = useMemo<MbscCalendarEvent[]>(
     () => [
       {
-        start: 'dyndatetime(y,m,d-2,7)',
-        end: 'dyndatetime(y,m,d-2,9)',
+        start: dyndatetime('y,m,d-2,7'),
+        end: dyndatetime('y,m,d-2,9'),
         title: 'Stakeholder mtg.',
         color: '#408cff',
       },
       {
-        start: 'dyndatetime(y,m,d-1,18)',
-        end: 'dyndatetime(y,m,d-1,19,30)',
+        start: dyndatetime('y,m,d-1,18'),
+        end: dyndatetime('y,m,d-1,19,30'),
         title: 'Wrapup mtg.',
         color: '#ecbc72',
       },
       {
-        start: 'dyndatetime(y,m,d,14)',
-        end: 'dyndatetime(y,m,d,18)',
+        start: dyndatetime('y,m,d,14'),
+        end: dyndatetime('y,m,d,18'),
         title: 'Business of Software Conference',
         color: '#ff6d42',
       },
       {
-        start: 'dyndatetime(y,m,d+1,20)',
-        end: 'dyndatetime(y,m,d+1,21,50)',
+        start: dyndatetime('y,m,d+1,20'),
+        end: dyndatetime('y,m,d+1,21,50'),
         title: 'Product Team mtg.',
         color: '#913aa7',
       },
       {
-        start: 'dyndatetime(y,m,d+2,13)',
-        end: 'dyndatetime(y,m,d+2,15)',
+        start: dyndatetime('y,m,d+2,13'),
+        end: dyndatetime('y,m,d+2,15'),
         title: 'Decision Making mtg.',
         color: '#5bb7c5',
       },
       {
-        start: 'dyndatetime(y,m,d+3,13)',
-        end: 'dyndatetime(y,m,d+3,14)',
+        start: dyndatetime('y,m,d+3,13'),
+        end: dyndatetime('y,m,d+3,14'),
         title: 'Quick mtg. with Martin',
         color: '#fd002f',
       },
       {
-        start: 'dyndatetime(y,m,d+4,12)',
-        end: 'dyndatetime(y,m,d+4,16)',
+        start: dyndatetime('y,m,d+4,12'),
+        end: dyndatetime('y,m,d+4,16'),
         color: '#50b166',
         title: 'Team-Building',
       },
@@ -120,7 +121,7 @@ function App() {
 
   const myView = useMemo<MbscEventcalendarView>(
     () => ({
-      schedule: { type: 'week' },
+      scheduler: { type: 'week' },
     }),
     [],
   );

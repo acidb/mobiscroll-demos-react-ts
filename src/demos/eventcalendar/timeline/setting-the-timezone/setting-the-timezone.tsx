@@ -10,6 +10,7 @@ import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import { FC, useMemo } from 'react';
+import { dyndatetime } from '../../../../dyndatetime';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -24,44 +25,44 @@ const App: FC = () => {
   const myEvents = useMemo<MbscCalendarEvent[]>(
     () => [
       {
-        start: 'dyndatetime(y,m,d,7)',
-        end: 'dyndatetime(y,m,d,9)',
+        start: dyndatetime('y,m,d,7'),
+        end: dyndatetime('y,m,d,9'),
         title: 'Stakeholder mtg.',
         resource: [1, 2, 4],
       },
       {
-        start: 'dyndatetime(y,m,d+3,18)',
-        end: 'dyndatetime(y,m,d+3,19, 30)',
+        start: dyndatetime('y,m,d+3,18'),
+        end: dyndatetime('y,m,d+3,19, 30'),
         title: 'Wrapup mtg.',
         resource: [2, 3, 5],
       },
       {
-        start: 'dyndatetime(y,m,d,14)',
-        end: 'dyndatetime(y,m,d,18)',
+        start: dyndatetime('y,m,d,14'),
+        end: dyndatetime('y,m,d,18'),
         title: 'Business of Software Conference',
         resource: [1, 3],
       },
       {
-        start: 'dyndatetime(y,m,d+1,20)',
-        end: 'dyndatetime(y,m,d+1,21, 50)',
+        start: dyndatetime('y,m,d+1,20'),
+        end: dyndatetime('y,m,d+1,21, 50'),
         title: 'Product Team mtg.',
         resource: [2, 3, 4],
       },
       {
-        start: 'dyndatetime(y,m,d-1,13)',
-        end: 'dyndatetime(y,m,d-1,15)',
+        start: dyndatetime('y,m,d-1,13'),
+        end: dyndatetime('y,m,d-1,15'),
         title: 'Decision Making mtg.',
         resource: [1, 4, 5],
       },
       {
-        start: 'dyndatetime(y,m,d+1,13)',
-        end: 'dyndatetime(y,m,d+1,14)',
+        start: dyndatetime('y,m,d+1,13'),
+        end: dyndatetime('y,m,d+1,14'),
         title: 'Quick mtg. with Martin',
         resource: 3,
       },
       {
-        start: 'dyndatetime(y,m,d+3,12)',
-        end: 'dyndatetime(y,m,d+3,16)',
+        start: dyndatetime('y,m,d+3,12'),
+        end: dyndatetime('y,m,d+3,16'),
         title: 'Team-Building',
         resource: [1, 2, 3, 4, 5],
       },

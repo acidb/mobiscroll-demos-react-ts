@@ -31,14 +31,14 @@ const App: FC = () => {
   const [rangeVal, setRangeVal] = useState<MbscDatepickerValue>([]);
   const [buttonText, setButtonText] = useState<string>();
   const [calView, setCalView] = useState<MbscEventcalendarView>({
-    schedule: {
+    scheduler: {
       type: 'day',
       size: 14,
     },
   });
 
-  const startDate = useRef<Date>();
-  const endDate = useRef<Date>();
+  const startDate = useRef<Date>(null);
+  const endDate = useRef<Date>(null);
 
   // Returns the number of days between two dates
   const getNrDays = useCallback(
@@ -70,7 +70,7 @@ const App: FC = () => {
       // Set calendar view
       setRefDate(startDate.current);
       setCalView({
-        schedule: {
+        scheduler: {
           type: 'day',
           size: getNrDays(startDate.current, endDate.current),
         },

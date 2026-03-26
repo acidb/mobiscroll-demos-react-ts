@@ -51,15 +51,15 @@ const App: FC = () => {
 
   const buttonRef = useRef<Button | null>(null);
 
-  const debounce = useRef<ReturnType<typeof setTimeout>>();
-  const startDate = useRef<Date>();
-  const endDate = useRef<Date>();
+  const debounce = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const startDate = useRef<Date>(null);
+  const endDate = useRef<Date>(null);
 
   const myView = useMemo<MbscEventcalendarView>(
     () => ({
       timeline: {
         type: 'week',
-        eventList: true,
+        eventDisplay: 'fill',
       },
     }),
     [],

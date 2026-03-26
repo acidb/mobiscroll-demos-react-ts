@@ -9,6 +9,7 @@ import {
   setOptions /* localeImport */,
 } from '@mobiscroll/react';
 import { FC, useCallback, useState } from 'react';
+import { dyndatetime } from '../../../../dyndatetime';
 import './appointment-booking.css';
 
 setOptions({
@@ -17,9 +18,9 @@ setOptions({
 });
 
 const App: FC = () => {
-  const [multiple, setMultiple] = useState<MbscDateType[]>(['dyndatetime(y,m,11)', 'dyndatetime(y,m,16)', 'dyndatetime(y,m,17)']);
-  const min = 'dyndatetime(y,m,d)';
-  const max = 'dyndatetime(y,m+6,d)';
+  const [multiple, setMultiple] = useState<MbscDateType[]>([dyndatetime('y,m,11'), dyndatetime('y,m,16'), dyndatetime('y,m,17')]);
+  const min = dyndatetime('y,m,d');
+  const max = dyndatetime('y,m+6,d');
   const [singleLabels, setSingleLabels] = useState<MbscCalendarLabel[]>([]);
   const [singleInvalid, setSingleInvalid] = useState<Array<object>>([]);
   const [datetimeLabels, setDatetimeLabels] = useState<MbscCalendarLabel[]>([]);

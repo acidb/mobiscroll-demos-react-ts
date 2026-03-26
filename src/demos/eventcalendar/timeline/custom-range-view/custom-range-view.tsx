@@ -68,12 +68,12 @@ const App: FC = () => {
     timeline: {
       type: 'day',
       size: 14,
-      eventList: true,
+      eventDisplay: 'fill',
     },
   });
 
-  const startDate = useRef<Date>();
-  const endDate = useRef<Date>();
+  const startDate = useRef<Date>(null);
+  const endDate = useRef<Date>(null);
 
   // Returns the number of days between two dates
   const getNrDays = useCallback(
@@ -108,7 +108,7 @@ const App: FC = () => {
         timeline: {
           type: 'day',
           size: getNrDays(startDate.current, endDate.current),
-          eventList: true,
+          eventDisplay: 'fill',
         },
       });
     }

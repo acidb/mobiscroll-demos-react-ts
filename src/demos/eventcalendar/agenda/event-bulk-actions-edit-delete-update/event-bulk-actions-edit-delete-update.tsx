@@ -182,8 +182,8 @@ function App() {
   }, []);
 
   const handleDeleteKey = useCallback(
-    (ev: KeyboardEvent) => {
-      if (!isConfirmOpen && (ev.code === 'Delete' || ev.code === 'Backspace' || ev.keyCode === 8 || ev.keyCode === 46)) {
+    (ev: { keyCode: number }) => {
+      if (!isConfirmOpen && (ev.keyCode === 8 || ev.keyCode === 46)) {
         deleteSelectedEvents();
       }
     },
@@ -201,8 +201,8 @@ function App() {
   }, []);
 
   return (
-    <Page className="mds-bulk-actions" onKeyDown={handleDeleteKey}>
-      <div className="mbsc-grid mbsc-no-padding">
+    <Page className="mds-bulk-actions">
+      <div className="mbsc-grid mbsc-no-padding" onKeyDown={handleDeleteKey}>
         <div className="mbsc-row">
           <div className="mds-bulk-actions-calendar mbsc-col-sm-9 mbsc-push-sm-3">
             <Eventcalendar

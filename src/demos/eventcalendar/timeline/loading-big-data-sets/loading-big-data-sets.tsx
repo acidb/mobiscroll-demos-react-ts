@@ -34,7 +34,7 @@ const App: FC = () => {
     () => ({
       timeline: {
         type: 'year',
-        eventList: true,
+        eventDisplay: 'fill',
       },
     }),
     [],

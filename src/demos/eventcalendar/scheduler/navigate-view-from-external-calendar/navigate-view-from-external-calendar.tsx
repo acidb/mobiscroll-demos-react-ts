@@ -21,7 +21,7 @@ setOptions({
 function App() {
   const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([]);
   const [mySelectedDate, setSelectedDate] = useState<MbscDateType>(new Date());
-  const dayView = useMemo<MbscEventcalendarView>(() => ({ schedule: { type: 'day' } }), []);
+  const dayView = useMemo<MbscEventcalendarView>(() => ({ scheduler: { type: 'day' } }), []);
 
   const handleDateChange = useCallback((args: MbscDatepickerChangeEvent) => {
     if (args.value) {

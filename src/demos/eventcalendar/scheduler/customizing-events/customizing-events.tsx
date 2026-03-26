@@ -25,14 +25,14 @@ const App: FC = () => {
     () => ({
       xsmall: {
         view: {
-          schedule: {
+          scheduler: {
             type: 'day',
           },
         },
       },
       medium: {
         view: {
-          schedule: {
+          scheduler: {
             type: 'week',
           },
         },
@@ -199,7 +199,7 @@ const App: FC = () => {
     <div>
       <Eventcalendar
         // drag
-        renderScheduleEvent={customScheduleEvent}
+        renderSchedulerEvent={customScheduleEvent}
         renderBufferBefore={myBeforeBuffer}
         responsive={resp}
         data={myEvents}

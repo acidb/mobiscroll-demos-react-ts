@@ -24,7 +24,7 @@ const App: FC = () => {
   const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([]);
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
   const [calView, setCalView] = useState<MbscEventcalendarView>({
-    schedule: {
+    scheduler: {
       type: 'week',
     },
   });
@@ -41,7 +41,7 @@ const App: FC = () => {
         break;
       case 'schedule':
         calendarView = {
-          schedule: {
+          scheduler: {
             type: 'week',
           },
         };

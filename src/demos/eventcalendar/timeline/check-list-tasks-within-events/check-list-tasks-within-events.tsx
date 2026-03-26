@@ -30,7 +30,7 @@ function App() {
       timeline: {
         type: 'week',
         eventHeight: 'variable',
-        eventList: true,
+        eventDisplay: 'fill',
       },
     }),
     [],
@@ -166,7 +166,7 @@ function App() {
         resources={myResources}
         extendDefaultEvent={handleDefaultEvent}
         renderResource={customResource}
-        renderScheduleEventContent={customScheduleEventContent}
+        renderTimelineEventContent={customScheduleEventContent}
       />
       <Prompt title={promptTitle} isOpen={isPromptOpen} onClose={handleClosePrompt} />
       <Toast isOpen={isToastOpen} message={toastMessage} onClose={handleCloseToast} duration={3000} />

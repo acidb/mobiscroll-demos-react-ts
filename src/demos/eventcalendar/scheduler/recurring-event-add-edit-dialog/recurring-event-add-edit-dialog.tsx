@@ -92,7 +92,7 @@ const defaultEvents: MbscCalendarEvent[] = [
 ];
 
 const viewSettings: MbscEventcalendarView = {
-  schedule: {
+  scheduler: {
     type: 'week',
   },
 };

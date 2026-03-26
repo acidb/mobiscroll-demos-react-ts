@@ -24,6 +24,7 @@ import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import { FC, useCallback, useMemo, useState } from 'react';
+import { dyndatetime } from '../../../../dyndatetime';
 import './timezone-meeting-planner.css';
 
 dayjs.extend(utc);
@@ -37,8 +38,8 @@ setOptions({
 
 const defaultEvents: MbscCalendarEvent[] = [
   {
-    start: 'dyndatetime(y,m,d,13)',
-    end: 'dyndatetime(y,m,d,15)',
+    start: dyndatetime('y,m,d,13'),
+    end: dyndatetime('y,m,d,15'),
     title: 'General orientation',
     color: '#1ad404',
   },
@@ -342,7 +343,7 @@ const App: FC = () => {
         resources={myResources}
         invalid={getInvalids}
         extendDefaultEvent={myDefaultEvent}
-        renderScheduleEvent={myScheduleEvent}
+        renderTimelineEvent={myScheduleEvent}
         renderHeader={myHeader}
         renderResource={myResource}
         renderCell={myCell}

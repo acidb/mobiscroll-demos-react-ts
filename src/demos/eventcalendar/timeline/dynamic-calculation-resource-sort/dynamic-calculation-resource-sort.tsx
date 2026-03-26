@@ -23,6 +23,7 @@ import {
   Toast,
 } from '@mobiscroll/react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { dyndatetime } from '../../../../dyndatetime';
 import './dynamic-calculation-resource-sort.css';
 
 setOptions({
@@ -45,136 +46,136 @@ interface MyResource extends MbscResource {
 function App() {
   const [myEvents, setMyEvents] = useState<MyEvent[]>([
     {
-      start: 'dyndatetime(y,m,d-1)',
-      end: 'dyndatetime(y,m,d+3)',
+      start: dyndatetime('y,m,d-1'),
+      end: dyndatetime('y,m,d+3'),
       title: 'Tour #013 - Miami to Seattle',
       resource: 1,
       color: '#FF9933',
       payload: 25,
     },
     {
-      start: 'dyndatetime(y,m,d+1)',
-      end: 'dyndatetime(y,m,d+3)',
+      start: dyndatetime('y,m,d+1'),
+      end: dyndatetime('y,m,d+3'),
       title: 'Tour #014 - Denver to Boston',
       resource: 2,
       color: '#33FFA6',
       payload: 18,
     },
     {
-      start: 'dyndatetime(y,m,d)',
-      end: 'dyndatetime(y,m,d+3)',
+      start: dyndatetime('y,m,d'),
+      end: dyndatetime('y,m,d+3'),
       title: 'Tour #015 - Orlando to Austin',
       resource: 3,
       color: '#9933FF',
       payload: 20,
     },
     {
-      start: 'dyndatetime(y,m,d+1)',
-      end: 'dyndatetime(y,m,d+4)',
+      start: dyndatetime('y,m,d+1'),
+      end: dyndatetime('y,m,d+4'),
       title: 'Tour #016 - Detroit to Baltimore',
       resource: 4,
       color: '#33A6FF',
       payload: 0,
     },
     {
-      start: 'dyndatetime(y,m,d+2)',
-      end: 'dyndatetime(y,m,d+5)',
+      start: dyndatetime('y,m,d+2'),
+      end: dyndatetime('y,m,d+5'),
       title: 'Tour #017 - Las Vegas to Portland',
       resource: 5,
       color: '#FF5733',
       payload: 20,
     },
     {
-      start: 'dyndatetime(y,m,d+2)',
-      end: 'dyndatetime(y,m,d+5)',
+      start: dyndatetime('y,m,d+2'),
+      end: dyndatetime('y,m,d+5'),
       title: 'Tour #018 - Atlanta to Kansas City',
       resource: 6,
       color: '#33FF99',
       payload: 0,
     },
     {
-      start: 'dyndatetime(y,m,d-4,11)',
-      end: 'dyndatetime(y,m,d)',
+      start: dyndatetime('y,m,d-4,11'),
+      end: dyndatetime('y,m,d'),
       title: 'Tour #018 - Dallas to Atlanta',
       resource: 6,
       color: '#33FF99',
       payload: 14,
     },
     {
-      start: 'dyndatetime(y,m,d)',
-      end: 'dyndatetime(y,m,d+4)',
+      start: dyndatetime('y,m,d'),
+      end: dyndatetime('y,m,d+4'),
       title: 'Tour #019 - Charlotte to Indianapolis',
       resource: 7,
       color: '#FF5733',
       payload: 22,
     },
     {
-      start: 'dyndatetime(y,m,d)',
-      end: 'dyndatetime(y,m,d+2)',
+      start: dyndatetime('y,m,d'),
+      end: dyndatetime('y,m,d+2'),
       title: 'Tour #005 - Dallas to San Francisco',
       resource: 7,
       color: '#FF5733',
       payload: 18,
     },
     {
-      start: 'dyndatetime(y,m,d+4)',
-      end: 'dyndatetime(y,m,d+6)',
+      start: dyndatetime('y,m,d+4'),
+      end: dyndatetime('y,m,d+6'),
       title: 'Tour #001 - New York to Los Angeles',
       resource: 7,
       color: '#FF5733',
       payload: 20,
     },
     {
-      start: 'dyndatetime(y,m,d)',
-      end: 'dyndatetime(y,m,d+2)',
+      start: dyndatetime('y,m,d'),
+      end: dyndatetime('y,m,d+2'),
       title: 'Tour #009 - San Diego to Dallas',
       resource: 7,
       color: '#FF5733',
       payload: 16,
     },
     {
-      start: 'dyndatetime(y,m,d+4)',
-      end: 'dyndatetime(y,m,d+6)',
+      start: dyndatetime('y,m,d+4'),
+      end: dyndatetime('y,m,d+6'),
       title: 'Tour #006 - Los Angeles to Chicago',
       resource: 8,
       color: '#FF33A6',
       payload: 10,
     },
     {
-      start: 'dyndatetime(y,m,d-2)',
-      end: 'dyndatetime(y,m,d+2)',
+      start: dyndatetime('y,m,d-2'),
+      end: dyndatetime('y,m,d+2'),
       title: 'Tour #010 - San Francisco to Los Angeles',
       resource: 8,
       color: '#FF33A6',
       payload: 0,
     },
     {
-      start: 'dyndatetime(y,m,d+3)',
-      end: 'dyndatetime(y,m,d+6)',
+      start: dyndatetime('y,m,d+3'),
+      end: dyndatetime('y,m,d+6'),
       title: 'Tour #007 - Houston to New York',
       resource: 9,
       color: '#33FF57',
       payload: 0,
     },
     {
-      start: 'dyndatetime(y,m,d)',
-      end: 'dyndatetime(y,m,d+2)',
+      start: dyndatetime('y,m,d'),
+      end: dyndatetime('y,m,d+2'),
       title: 'Tour #003 - Philadelphia to Phoenix',
       resource: 9,
       color: '#33FF57',
       payload: 0,
     },
     {
-      start: 'dyndatetime(y,m,d-4)',
-      end: 'dyndatetime(y,m,d-1)',
+      start: dyndatetime('y,m,d-4'),
+      end: dyndatetime('y,m,d-1'),
       title: 'Tour #028 - Trenton to Philadelphia',
       resource: 9,
       color: '#33FF57',
       payload: 11,
     },
     {
-      start: 'dyndatetime(y,m,d-4)',
-      end: 'dyndatetime(y,m,d+1)',
+      start: dyndatetime('y,m,d-4'),
+      end: dyndatetime('y,m,d+1'),
       title: 'Tour #004 - San Antonio to San Diego',
       resource: 10,
       color: '#3357FF',
@@ -182,48 +183,48 @@ function App() {
     },
 
     {
-      start: 'dyndatetime(y,m,d+3)',
-      end: 'dyndatetime(y,m,d+6)',
+      start: dyndatetime('y,m,d+3'),
+      end: dyndatetime('y,m,d+6'),
       title: 'Tour #022 - Cleveland to Cincinnati',
       resource: 10,
       color: '#3357FF',
       payload: 17,
     },
     {
-      start: 'dyndatetime(y,m,d-4)',
-      end: 'dyndatetime(y,m,d+1)',
+      start: dyndatetime('y,m,d-4'),
+      end: dyndatetime('y,m,d+1'),
       title: 'Tour #023 - Boston to Philadelphia',
       resource: 11,
       color: '#FF9933',
       payload: 19,
     },
     {
-      start: 'dyndatetime(y,m,d)',
-      end: 'dyndatetime(y,m,d+2)',
+      start: dyndatetime('y,m,d'),
+      end: dyndatetime('y,m,d+2'),
       title: 'Tour #024 - Las Vegas to San Diego',
       resource: 12,
       color: '#33FF57',
       payload: 28,
     },
     {
-      start: 'dyndatetime(y,m,d-3)',
-      end: 'dyndatetime(y,m,d)',
+      start: dyndatetime('y,m,d-3'),
+      end: dyndatetime('y,m,d'),
       title: 'Tour #025 - Miami to Charlotte',
       resource: 13,
       color: '#9933FF',
       payload: 26,
     },
     {
-      start: 'dyndatetime(y,m,d+2)',
-      end: 'dyndatetime(y,m,d+5)',
+      start: dyndatetime('y,m,d+2'),
+      end: dyndatetime('y,m,d+5'),
       title: 'Tour #026 - Seattle to Portland',
       resource: 14,
       color: '#33A6FF',
       payload: 12,
     },
     {
-      start: 'dyndatetime(y,m,d-1)',
-      end: 'dyndatetime(y,m,d+2)',
+      start: dyndatetime('y,m,d-1'),
+      end: dyndatetime('y,m,d+2'),
       title: 'Tour #027 - Atlanta to Orlando',
       resource: 15,
       color: '#FF5733',
@@ -266,9 +267,9 @@ function App() {
   const metricBarAnimation = useRef<boolean>(true);
   const sortColumn = useRef<'standby' | 'payload' | 'deadhead' | 'name'>('standby');
   const sortDirection = useRef<'asc' | 'desc'>('asc');
-  const tempEvent = useRef<MyEvent>();
-  const weekStart = useRef<Date>();
-  const weekEnd = useRef<Date>();
+  const tempEvent = useRef<MyEvent>(undefined);
+  const weekStart = useRef<Date>(undefined);
+  const weekEnd = useRef<Date>(undefined);
 
   const myView = useMemo<MbscEventcalendarView>(() => ({ timeline: { type: 'week', resolutionHorizontal: 'day' } }), []);
 
@@ -544,7 +545,7 @@ function App() {
         renderHeader={myCustomHeader}
         renderResourceHeader={myCustomResourceHeader}
         renderResource={myCustomResource}
-        renderScheduleEventContent={myScheduleEvent}
+        renderTimelineEventContent={myScheduleEvent}
         onPageLoading={handlePageLoading}
         onEventCreated={handleEventCreated}
         onEventDeleted={handleEventDeleted}

@@ -1,5 +1,6 @@
 import { Eventcalendar, MbscCalendarEvent, MbscEventcalendarView, MbscResource, setOptions /* localeImport */ } from '@mobiscroll/react';
 import { FC, useCallback, useMemo } from 'react';
+import { dyndatetime } from '../../../../dyndatetime';
 import './resource-data-structure.css';
 
 setOptions({
@@ -43,7 +44,7 @@ const App: FC = () => {
 
   const myView = useMemo<MbscEventcalendarView>(
     () => ({
-      schedule: {
+      scheduler: {
         type: 'day',
       },
     }),
@@ -53,20 +54,20 @@ const App: FC = () => {
   const myEvents = useMemo<MbscCalendarEvent[]>(
     () => [
       {
-        start: 'dyndatetime(y,m,d,15)',
-        end: 'dyndatetime(y,m,d,18)',
+        start: dyndatetime('y,m,d,15'),
+        end: dyndatetime('y,m,d,18'),
         title: 'General orientation',
         resource: 1,
       },
       {
-        start: 'dyndatetime(y,m,d,9)',
-        end: 'dyndatetime(y,m,d,11)',
+        start: dyndatetime('y,m,d,9'),
+        end: dyndatetime('y,m,d,11'),
         text: 'Stakeholder mtg.',
         resource: 2,
       },
       {
-        start: 'dyndatetime(y,m,d,13,30)',
-        end: 'dyndatetime(y,m,d,15)',
+        start: dyndatetime('y,m,d,13,30'),
+        end: dyndatetime('y,m,d,15'),
         text: "Lunch @ Butcher's",
         resource: 3,
       },

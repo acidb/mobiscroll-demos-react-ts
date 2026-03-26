@@ -74,9 +74,6 @@ function App() {
       onOpen={() => {
         // Your custom event handler goes here
       }}
-      onPosition={() => {
-        // Logic for component positioning
-      }}
       onTempChange={() => {
         // Logic for temporary value change
       }}

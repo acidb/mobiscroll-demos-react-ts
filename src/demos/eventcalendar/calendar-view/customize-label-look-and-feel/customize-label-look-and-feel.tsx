@@ -69,7 +69,7 @@ const App: FC = () => {
     <div>
       <Eventcalendar
         // drag
-        renderLabel={customLabel}
+        renderCalendarEvent={customLabel}
         data={myEvents}
         view={myView}
         onEventClick={onEventClick}

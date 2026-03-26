@@ -109,8 +109,8 @@ const App: FC = () => {
       view={myView}
       data={myEvents}
       resources={myResources}
-      renderDay={myCustomDay}
-      renderScheduleEventContent={myCustomEvent}
+      renderTimelineDay={myCustomDay}
+      renderTimelineEventContent={myCustomEvent}
       extendDefaultEvent={myDefaultEvent}
     />
   );

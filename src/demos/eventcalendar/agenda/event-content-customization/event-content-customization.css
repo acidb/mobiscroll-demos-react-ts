@@ -13,8 +13,10 @@
   line-height: 20px;
 }
 
-.mds-agenda-event-btn.mbsc-ios {
+.mds-agenda-event-btn.mbsc-ios,
+.mds-agenda-event-btn.mbsc-material {
   position: absolute;
   right: 8px;
   bottom: 8px;
+  margin: 0;
 }

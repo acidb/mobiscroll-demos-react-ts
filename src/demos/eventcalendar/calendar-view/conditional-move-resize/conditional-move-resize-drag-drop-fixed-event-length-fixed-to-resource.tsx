@@ -1,5 +1,6 @@
 import { Eventcalendar, MbscCalendarEvent, MbscEventcalendarView, setOptions /* localeImport */ } from '@mobiscroll/react';
 import { FC, useMemo } from 'react';
+import { dyndatetime } from '../../../../dyndatetime';
 
 setOptions({
   // localeJs,
@@ -18,34 +19,34 @@ const App: FC = () => {
     () => [
       {
         color: 'cyan',
-        end: 'dyndatetime(y,m,d-5)',
-        start: 'dyndatetime(y,m,d-6)',
+        end: dyndatetime('y,m,d-5'),
+        start: dyndatetime('y,m,d-6'),
         title: 'Event 1',
       },
       {
         color: 'blue',
         dragInTime: false,
-        end: 'dyndatetime(y,m,d-1)',
-        start: 'dyndatetime(y,m,d-4)',
+        end: dyndatetime('y,m,d-1'),
+        start: dyndatetime('y,m,d-4'),
         title: 'Event 2 (cannot be moved in time)',
       },
       {
         color: 'brown',
-        end: 'dyndatetime(y,m,d+3)',
-        start: 'dyndatetime(y,m,d)',
+        end: dyndatetime('y,m,d+3'),
+        start: dyndatetime('y,m,d'),
         resize: false,
         title: 'Event 3 (cannot be resized)',
       },
       {
         color: 'teal',
-        end: 'dyndatetime(y,m,d+4)',
-        start: 'dyndatetime(y,m,d+3)',
+        end: dyndatetime('y,m,d+4'),
+        start: dyndatetime('y,m,d+3'),
         title: 'Event 4',
       },
       {
         color: 'yellow',
-        end: 'dyndatetime(y,m,d+6)',
-        start: 'dyndatetime(y,m,d+5)',
+        end: dyndatetime('y,m,d+6'),
+        start: dyndatetime('y,m,d+5'),
         title: 'Event 5',
       },
     ],

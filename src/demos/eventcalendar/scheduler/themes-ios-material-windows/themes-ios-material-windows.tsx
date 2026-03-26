@@ -19,7 +19,7 @@ const App: FC = () => {
   const [myTheme, setTheme] = useState();
   const [myThemeVariant, setThemeVariant] = useState();
 
-  const myView = useMemo<MbscEventcalendarView>(() => ({ schedule: { type: 'week' } }), []);
+  const myView = useMemo<MbscEventcalendarView>(() => ({ scheduler: { type: 'week' } }), []);
 
   const handleThemeChange = useCallback((ev: MbscCalendarEvent) => {
     setTheme(ev.target.value);

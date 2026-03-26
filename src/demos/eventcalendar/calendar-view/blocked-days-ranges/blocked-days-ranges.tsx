@@ -1,5 +1,6 @@
 import { Eventcalendar, getJson, MbscCalendarEvent, setOptions, Toast /* localeImport */ } from '@mobiscroll/react';
 import { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import { dyndatetime } from '../../../../dyndatetime';
 
 setOptions({
   // localeJs,
@@ -21,13 +22,13 @@ const App: FC = () => {
       },
       {
         allDay: true,
-        start: 'dyndatetime(y,m,19)',
-        end: 'dyndatetime(y,m,20)',
+        start: dyndatetime('y,m,19'),
+        end: dyndatetime('y,m,20'),
       },
       {
         allDay: true,
-        start: 'dyndatetime(y,m,26)',
-        end: 'dyndatetime(y,m,27)',
+        start: dyndatetime('y,m,26'),
+        end: dyndatetime('y,m,27'),
       },
     ],
     [],

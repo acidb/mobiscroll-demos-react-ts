@@ -32,10 +32,8 @@ const App: FC = () => {
         responsive={myResponsive}
         select="range"
         showRangeLabels={true}
-        inputOptions={{
-          inputStyle: 'box',
-          placeholder: 'Please Select...',
-        }}
+        inputStyle="box"
+        placeholder="Please Select..."
       />
     </Page>
   );

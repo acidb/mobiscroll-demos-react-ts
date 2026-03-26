@@ -8,6 +8,7 @@ import {
   Toast /* localeImport */,
 } from '@mobiscroll/react';
 import { FC, useCallback, useMemo, useRef, useState } from 'react';
+import { dyndatetime } from '../../../../dyndatetime';
 import './event-data-structure.css';
 
 setOptions({
@@ -19,8 +20,8 @@ const App: FC = () => {
   const [isToastOpen, setToastOpen] = useState<boolean>(false);
   const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([
     {
-      start: 'dyndatetime(y,m,d,11)',
-      end: 'dyndatetime(y,m,d,13)',
+      start: dyndatetime('y,m,d,11'),
+      end: dyndatetime('y,m,d,13'),
       title: 'General orientation',
       resource: 2,
       bufferBefore: 20,
@@ -48,8 +49,8 @@ const App: FC = () => {
     const newEvent = {
       // Base properties
       title: 'Product planning',
-      start: 'dyndatetime(y,m,d,15)',
-      end: 'dyndatetime(y,m,d,17)',
+      start: dyndatetime('y,m,d,15'),
+      end: dyndatetime('y,m,d,17'),
       resource: 4,
       bufferBefore: 20,
       bufferAfter: 30,

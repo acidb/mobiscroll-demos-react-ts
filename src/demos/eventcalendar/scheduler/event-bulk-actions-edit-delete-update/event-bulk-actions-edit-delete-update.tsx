@@ -48,7 +48,7 @@ function App() {
   const [isToastOpen, setIsToastOpen] = useState<boolean>(false);
   const [toastText, setToastText] = useState<string>('');
   const toastContext = useMemo(() => '.md-bulk-operations-border', []);
-  const myView = useMemo<MbscEventcalendarView>(() => ({ schedule: { type: 'week' } }), []);
+  const myView = useMemo<MbscEventcalendarView>(() => ({ scheduler: { type: 'week' } }), []);
   const calRef = useRef<Eventcalendar>(null);
 
   const getSelectedEventTitles = useCallback((events: MbscCalendarEvent[]) => {
@@ -236,8 +236,8 @@ function App() {
   }, []);
 
   return (
-    <Page className="md-bulk-operations" onKeyDown={handleDeleteKey}>
-      <div className="mbsc-grid mbsc-no-padding">
+    <Page className="md-bulk-operations">
+      <div className="mbsc-grid mbsc-no-padding" onKeyDown={handleDeleteKey}>
         <div className="mbsc-row">
           <div className="mbsc-col-sm-9 mbsc-push-sm-3">
             <Eventcalendar

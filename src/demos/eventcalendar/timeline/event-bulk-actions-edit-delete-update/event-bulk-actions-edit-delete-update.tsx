@@ -266,8 +266,8 @@ function App() {
   }, []);
 
   return (
-    <Page className="md-bulk-operations" onKeyDown={handleDeleteKey}>
-      <div className="mbsc-grid mbsc-no-padding">
+    <Page className="md-bulk-operations">
+      <div className="mbsc-grid mbsc-no-padding" onKeyDown={handleDeleteKey}>
         <div className="mbsc-row">
           <div className="mbsc-col-sm-9 mbsc-push-sm-3">
             <Eventcalendar

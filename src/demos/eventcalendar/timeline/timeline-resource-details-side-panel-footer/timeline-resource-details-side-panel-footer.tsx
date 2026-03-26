@@ -49,7 +49,7 @@ const App: FC = () => {
   const calRef = useRef<Eventcalendar>(null);
   const sortColumn = useRef<string>('');
   const sortDirection = useRef<string>('');
-  const sortDay = useRef<number>();
+  const sortDay = useRef<number>(undefined);
   const loadedEvents = useRef<MbscCalendarEvent[]>([]);
 
   const getUTCDateOnly = useCallback((d: Date) => Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()), []);
@@ -266,7 +266,7 @@ const App: FC = () => {
       renderSidebarHeader={myCustomSidebarHeader}
       renderSidebar={myCustomSidebar}
       renderResourceFooter={myCustomResourceFooter}
-      renderDay={myCustomDay}
+      renderTimelineDay={myCustomDay}
       renderDayFooter={myCustomDayFooter}
       renderSidebarFooter={myCustomSidebarFooter}
       onPageLoading={handlePageLoading}

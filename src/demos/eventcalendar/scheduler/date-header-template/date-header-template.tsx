@@ -8,21 +8,22 @@ import {
   MbscResource /* localeImport */,
 } from '@mobiscroll/react';
 import { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import { dyndatetime } from '../../../../dyndatetime';
 import './date-header-template.css';
 
 const milestones = [
   {
-    date: 'dyndatetime(y,m,d-2)',
+    date: dyndatetime('y,m,d-2'),
     name: 'Project review',
     color: '#f5da7b',
   },
   {
-    date: 'dyndatetime(y,m,d-1)',
+    date: dyndatetime('y,m,d-1'),
     name: 'Product shipping',
     color: '#acf3a3',
   },
   {
-    date: 'dyndatetime(y,m,d+1)',
+    date: dyndatetime('y,m,d+1'),
     name: 'Cycle finish',
     color: '#ff84a0',
   },
@@ -33,7 +34,7 @@ const App: FC = () => {
 
   const myView = useMemo<MbscEventcalendarView>(
     () => ({
-      schedule: {
+      scheduler: {
         type: 'week',
         allDay: false,
         startDay: 1,
@@ -71,7 +72,7 @@ const App: FC = () => {
 
   const renderCustomDay = useCallback((args: { date: Date }) => {
     const date = args.date;
-    const task: { date: string; name: string; color: string } = milestones.find((obj) => +new Date(obj.date) === +date)!;
+    const task: { date?: string; name?: string; color?: string } = milestones.find((obj) => +new Date(obj.date) === +date) || {};
 
     return (
       <div className="header-template-container">
@@ -79,8 +80,8 @@ const App: FC = () => {
           <div className="header-template-day-name">{formatDate('DDDD', date)}</div>
           <div className="header-template-day">{formatDate('MMMM DD', date)}</div>
         </div>
-        <div className="header-template-task" style={{ background: task.color }}>
-          {task.name}
+        <div className="header-template-task" style={{ background: task.color || '' }}>
+          {task.name || ''}
         </div>
       </div>
     );
@@ -113,7 +114,7 @@ const App: FC = () => {
       data={myEvents}
       resources={myResources}
       groupBy="date"
-      renderDay={renderCustomDay}
+      renderSchedulerDay={renderCustomDay}
       renderResource={renderCustomResource}
     />
   );

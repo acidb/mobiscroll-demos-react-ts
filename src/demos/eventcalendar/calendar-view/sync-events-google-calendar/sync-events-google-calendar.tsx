@@ -45,9 +45,9 @@ const App: FC = () => {
 
   const { current: view } = useRef<MbscEventcalendarView>({ calendar: { labels: true } });
 
-  const debounce = useRef<ReturnType<typeof setTimeout>>();
-  const startDate = useRef<Date>();
-  const endDate = useRef<Date>();
+  const debounce = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const startDate = useRef<Date>(null);
+  const endDate = useRef<Date>(null);
 
   const handleError = useCallback((resp: { error?: string; result: { error: { message: string } } }) => {
     setToastMessage(resp.error ? resp.error : resp.result.error.message);

@@ -37,7 +37,7 @@ const App: FC = () => {
         break;
       case 'schedule':
         calendarView = {
-          schedule: {
+          scheduler: {
             type: 'week',
           },
         };

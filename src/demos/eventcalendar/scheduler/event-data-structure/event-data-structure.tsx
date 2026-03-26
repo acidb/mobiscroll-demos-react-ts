@@ -32,7 +32,7 @@ const App: FC = () => {
 
   const calInst = useRef<Eventcalendar>(null);
 
-  const myView = useMemo<MbscEventcalendarView>(() => ({ schedule: { type: 'day' } }), []);
+  const myView = useMemo<MbscEventcalendarView>(() => ({ scheduler: { type: 'day' } }), []);
 
   const handleToastClose = useCallback(() => {
     setToastOpen(false);

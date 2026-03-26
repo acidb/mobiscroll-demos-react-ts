@@ -105,7 +105,7 @@ const App: FC = () => {
     <div>
       <Eventcalendar
         // drag
-        renderEventContent={customEventContent}
+        renderPopoverEventContent={customEventContent}
         data={myEvents}
         view={myView}
       />
