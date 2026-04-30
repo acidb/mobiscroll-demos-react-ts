@@ -4,28 +4,56 @@ import {
   CalendarPrev,
   CalendarToday,
   Checkbox,
+  Confirm,
+  Datepicker,
   Eventcalendar,
   formatDate,
   MbscCalendarEvent,
   MbscCalendarEventData,
-  MbscEventcalendarView,
+  MbscDatepickerChangeEvent,
+  MbscDateType,
   MbscEventUpdateEvent,
   MbscResource,
   MbscSelectData,
+  Segmented,
+  SegmentedGroup,
   Select,
   setOptions,
-  Toast /* localeImport */,
+  Toast,
 } from '@mobiscroll/react';
-import { ChangeEvent, FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ChangeEvent, FC, useCallback, useMemo, useRef, useState } from 'react';
 import { dyndatetime } from '../../../../dyndatetime';
 import './event-grouping-bulk-action.css';
+
+interface WorkEvent extends MbscCalendarEvent {
+  type: string;
+  clientGroup: string;
+}
+
+interface DisplayEvent extends WorkEvent {
+  assignee: number | string;
+}
+
+interface GroupedWorkEvent extends MbscCalendarEvent {
+  clientGroup: string;
+  year: number;
+  period: number;
+  count: number;
+  originalEvents: WorkEvent[];
+  collapsed: boolean;
+}
+
+interface AssigneeResource extends MbscResource {
+  img: string;
+  title: string;
+}
 
 setOptions({
   // localeJs,
   // themeJs
 });
 
-const assigneeResources: MbscResource[] = [
+const assigneeResources: AssigneeResource[] = [
   {
     id: 1,
     name: 'Sarah Johnson',
@@ -71,45 +99,19 @@ const assigneeResources: MbscResource[] = [
 ];
 
 const typeResources: MbscResource[] = [
-  {
-    id: 'installation',
-    name: 'installation',
-    color: '#3b5998',
-  },
-  {
-    id: 'maintenance',
-    name: 'maintenance',
-    color: '#2d7a4f',
-  },
-  {
-    id: 'repair',
-    name: 'repair',
-    color: '#b8621b',
-  },
-  {
-    id: 'inspection',
-    name: 'inspection',
-    color: '#6b4fa3',
-  },
-  {
-    id: 'upgrade',
-    name: 'upgrade',
-    color: '#a03a3a',
-  },
+  { id: 'installation', name: 'installation', color: '#3b5998' },
+  { id: 'maintenance', name: 'maintenance', color: '#2d7a4f' },
+  { id: 'repair', name: 'repair', color: '#b8621b' },
+  { id: 'inspection', name: 'inspection', color: '#6b4fa3' },
+  { id: 'upgrade', name: 'upgrade', color: '#a03a3a' },
 ];
 
 const selectData: MbscSelectData[] = [
-  {
-    text: 'View by Assignee',
-    value: 'assignee',
-  },
-  {
-    text: 'View by Type',
-    value: 'type',
-  },
+  { text: 'View by Assignee', value: 'assignee' },
+  { text: 'View by Type', value: 'type' },
 ];
 
-const defaultEvents: MbscCalendarEvent[] = [
+const defaultEvents: WorkEvent[] = [
   {
     id: 1,
     title: 'Office Tower HVAC System Overhaul',
@@ -2365,54 +2367,43 @@ const defaultEvents: MbscCalendarEvent[] = [
 ];
 
 const App: FC = () => {
-  const myView = useMemo<MbscEventcalendarView>(
+  const [myEvents, setMyEvents] = useState(defaultEvents);
+  const [collapsedMap, setCollapsedMap] = useState<Record<string, boolean>>({});
+  const [groupBy, setGroupBy] = useState('assignee');
+  const [groupByClientQuarter, setGroupByClientQuarter] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState<'month' | 'day' | 'week' | 'year' | 'quarter' | 'hour' | undefined>('month');
+  const [isToastOpen, setToastOpen] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+  const [isConfirmOpen, setConfirmOpen] = useState(false);
+  const [confirmMessage, setConfirmMessage] = useState('');
+  const confirmCallbackRef = useRef<(() => void) | null>(null);
+  const [editingEventId, setEditingEventId] = useState<string | number | null>(null);
+  const [editEventTitle, setEditEventTitle] = useState('');
+  const [editEventDateRange, setEditEventDateRange] = useState<MbscDateType[]>([]);
+  const [isDatePickerOpen, setDatePickerOpen] = useState(false);
+
+  const calendarRef = useRef<Eventcalendar>(null);
+
+  const myView = useMemo(
     () => ({
       timeline: {
-        type: 'year',
-        resolutionHorizontal: 'month',
-        eventHeight: 'variable',
+        type: 'year' as const,
+        resolutionHorizontal: zoomLevel,
+        eventHeight: 'variable' as const,
       },
     }),
-    [],
+    [zoomLevel],
   );
 
-  const [myEvents, setMyEvents] = useState<MbscCalendarEvent[]>(defaultEvents);
-  const [displayEvents, setDisplayEvents] = useState<MbscCalendarEvent[]>([]);
-  const [myResources, setMyResources] = useState<MbscResource[]>(assigneeResources);
-  const [groupedEvents, setGroupedEvents] = useState<MbscCalendarEvent[]>([]);
-  const [groupBy, setGroupBy] = useState<string>('assignee');
-  const [groupByClientQuarter, setGroupByClientQuarter] = useState<boolean>(false);
-  const [isToastOpen, setToastOpen] = useState<boolean>(false);
-  const [toastMessage, setToastMessage] = useState<string>('');
-
-  const groupedEventsRef = useRef(groupedEvents);
-  useEffect(() => {
-    groupedEventsRef.current = groupedEvents;
-  }, [groupedEvents]);
-
   const groupEventsByClientQuarter = useCallback(
-    (events: MbscCalendarEvent[]) => {
-      const groups: Record<
-        string,
-        {
-          resource: string | number;
-          clientGroup: string;
-          year: number;
-          period: number;
-          events: MbscCalendarEvent[];
-        }
-      > = {};
-      const result: MbscCalendarEvent[] = [];
-
-      const oldCollapsedStates: Record<string, boolean | undefined> = {};
-      groupedEventsRef.current.forEach((ge) => {
-        const stateKey = `${ge.resource}-${ge.clientGroup}-${ge.year}-${ge.period}`;
-        oldCollapsedStates[stateKey] = ge.collapsed;
-      });
+    (events: WorkEvent[], collapsed: Record<string, boolean>): GroupedWorkEvent[] => {
+      const groups: Record<string, { resource: string | number; clientGroup: string; year: number; period: number; events: WorkEvent[] }> =
+        {};
+      const result: GroupedWorkEvent[] = [];
 
       events.forEach((event) => {
-        const resourceId = groupBy === 'assignee' ? event.resource : event.type;
-        const eventStart = new Date(event.start as string | number | Date);
+        const resourceId = (groupBy === 'assignee' ? event.resource : event.type) as string | number;
+        const eventStart = new Date(event.start as string | Date);
         const month = eventStart.getMonth();
         const year = eventStart.getFullYear();
         const period = Math.floor(month / 3);
@@ -2448,7 +2439,7 @@ const App: FC = () => {
           color,
           count: periodEvents.length,
           originalEvents: periodEvents,
-          collapsed: stateKey in oldCollapsedStates ? oldCollapsedStates[stateKey] : true,
+          collapsed: collapsed[stateKey] ?? true,
         });
       });
 
@@ -2457,9 +2448,14 @@ const App: FC = () => {
     [groupBy],
   );
 
+  const groupedEvents = useMemo(
+    () => (groupByClientQuarter ? groupEventsByClientQuarter(myEvents, collapsedMap) : []),
+    [groupByClientQuarter, groupEventsByClientQuarter, myEvents, collapsedMap],
+  );
+
   const prepareEventsForDisplay = useCallback(
-    (events: MbscCalendarEvent[]) =>
-      events.map((event: MbscCalendarEvent) => ({
+    (events: WorkEvent[]) =>
+      events.map((event) => ({
         id: event.id,
         title: event.title,
         start: event.start,
@@ -2473,33 +2469,53 @@ const App: FC = () => {
     [groupBy],
   );
 
-  useEffect(() => {
-    if (groupByClientQuarter) {
-      const newGrouped = groupEventsByClientQuarter(myEvents);
-      setGroupedEvents(newGrouped);
-      setDisplayEvents(newGrouped);
-      setMyResources(groupBy === 'assignee' ? assigneeResources : typeResources);
-    } else {
-      setGroupedEvents([]);
-      setDisplayEvents(prepareEventsForDisplay(myEvents));
-      setMyResources(groupBy === 'assignee' ? assigneeResources : typeResources);
-    }
-  }, [myEvents, groupBy, groupByClientQuarter, groupEventsByClientQuarter, prepareEventsForDisplay]);
+  const displayEvents = useMemo(
+    () => (groupByClientQuarter ? groupedEvents : prepareEventsForDisplay(myEvents)),
+    [groupByClientQuarter, groupedEvents, myEvents, prepareEventsForDisplay],
+  );
+
+  const myResources = useMemo(() => (groupBy === 'assignee' ? assigneeResources : typeResources), [groupBy]);
+
+  // --- Render helpers ---
+
+  const getEventMarginLeft = (ev: WorkEvent, group: GroupedWorkEvent): string => {
+    const groupStart = new Date(group.start as string | Date).getTime();
+    const groupEnd = new Date(group.end as string | Date).getTime();
+    const groupDuration = groupEnd - groupStart;
+    const evStart = new Date(ev.start as string | Date).getTime();
+    return groupDuration > 0 ? ((evStart - groupStart) / groupDuration) * 100 + '%' : '0%';
+  };
+
+  const getEventWidth = (ev: WorkEvent, group: GroupedWorkEvent): string => {
+    const groupStart = new Date(group.start as string | Date).getTime();
+    const groupEnd = new Date(group.end as string | Date).getTime();
+    const groupDuration = groupEnd - groupStart;
+    const evStart = new Date(ev.start as string | Date).getTime();
+    const evEnd = new Date(ev.end as string | Date).getTime();
+    return groupDuration > 0 ? ((evEnd - evStart) / groupDuration) * 100 + '%' : '100%';
+  };
+
+  const handleEditEvent = useCallback((ev: WorkEvent) => {
+    setEditingEventId(ev.id ?? null);
+    setEditEventTitle(ev.title ?? '');
+    setEditEventDateRange([new Date(ev.start as string | Date), new Date(ev.end as string | Date)]);
+    setDatePickerOpen(true);
+  }, []);
 
   const renderGroupedEvent = useCallback(
     (event: MbscCalendarEventData) => {
-      const origEvent = event.original as MbscCalendarEvent;
+      const origEvent = event.original as GroupedWorkEvent;
       const isExpanded = !origEvent.collapsed;
-      const originalEvents: MbscCalendarEvent[] = origEvent.originalEvents ?? [];
+      const originalEvents = origEvent.originalEvents || [];
 
-      const uniqueItems: Record<string, MbscResource> = {};
-      originalEvents.forEach((ev: MbscCalendarEvent) => {
+      const uniqueItems: Record<string | number, MbscResource | AssigneeResource> = {};
+      originalEvents.forEach((ev) => {
         if (groupBy === 'assignee') {
           const typeObj = typeResources.find((r) => r.id === ev.type);
-          if (typeObj) uniqueItems[typeObj.id as string] = typeObj;
+          if (typeObj) uniqueItems[typeObj.id] = typeObj;
         } else {
           const emp = assigneeResources.find((r) => r.id === ev.resource);
-          if (emp) uniqueItems[emp.id as string] = emp;
+          if (emp) uniqueItems[emp.id] = emp;
         }
       });
 
@@ -2508,107 +2524,127 @@ const App: FC = () => {
 
       return (
         <div
-          className={`mbsc-flex mds-event-grouping-task mds-event-grouping-task-client${isExpanded ? ' expanded' : ''}`}
+          className={`mbsc-flex mds-event-group-task mds-event-group-task-client${isExpanded ? ' expanded' : ''}`}
           style={{ borderLeftColor: origEvent.color }}
         >
-          <div className="mbsc-flex mds-event-grouping-content">
-            <div className="mds-event-grouping-title-text">{origEvent.clientGroup}</div>
-            <div className="mbsc-flex mds-event-grouping-right">
-              <div className="mbsc-flex mds-event-grouping-meta">
-                <div className="mds-event-grouping-date-range">
-                  {formatDate('DD MMM', new Date(origEvent.start as string))} - {formatDate('DD MMM', new Date(origEvent.end as string))}
+          <div className="mbsc-flex mds-event-group-content">
+            <div className="mds-event-group-title-text mds-event-group-text-truncate">{origEvent.clientGroup}</div>
+            <div className="mbsc-flex mds-event-group-right">
+              <div className="mbsc-flex mds-event-group-meta">
+                <div className="mds-event-group-date-range">
+                  {formatDate('DD MMM', new Date(origEvent.start as string | Date))} -{' '}
+                  {formatDate('DD MMM', new Date(origEvent.end as string | Date))}
                 </div>
-                <div className="mds-event-grouping-count">
+                <div className="mds-event-group-count">
                   {origEvent.count} task{origEvent.count > 1 ? 's' : ''}, {itemCount} {itemLabel}
                   {itemCount > 1 ? 's' : ''}
                 </div>
               </div>
               <div
-                className="mbsc-flex mds-event-grouping-icon mbsc-icon mbsc-font-icon mbsc-icon-material-keyboard-arrow-down"
-                onClick={() =>
-                  setGroupedEvents((prev) => {
-                    const next = prev.map((ge) => (ge.id === origEvent.id ? { ...ge, collapsed: !ge.collapsed } : ge));
-                    setDisplayEvents(next);
-                    return next;
-                  })
-                }
+                className="mbsc-flex mds-event-group-icon mbsc-icon mbsc-font-icon mbsc-icon-material-keyboard-arrow-down"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  const stateKey = `${origEvent.resource}-${origEvent.clientGroup}-${origEvent.year}-${origEvent.period}`;
+                  setCollapsedMap((prev) => ({ ...prev, [stateKey]: !(prev[stateKey] ?? true) }));
+                  setTimeout(() => calendarRef.current?.refresh(), 200);
+                }}
               />
             </div>
           </div>
-          <div className="mds-event-grouping-events">
-            <div className="mds-event-grouping-events-inner">
-              {originalEvents.map((ev: MbscCalendarEvent) => {
-                let detailText = '';
-                let typeDotColor = '';
-                let avatarUrl = '';
+          <div className="mds-event-group-events">
+            <div className="mds-event-group-events-inner">
+              {isExpanded &&
+                originalEvents.map((ev) => {
+                  let detailText;
+                  let typeDotColor;
+                  let avatarUrl;
 
-                if (groupBy === 'assignee') {
-                  const typeObj = typeResources.find((r) => r.id === ev.type);
-                  if (typeObj) {
-                    detailText = typeObj.name ?? '';
-                    typeDotColor = typeObj.color ?? '';
+                  if (groupBy === 'assignee') {
+                    const typeObj = typeResources.find((r) => r.id === ev.type);
+                    if (typeObj) {
+                      detailText = typeObj.name;
+                      typeDotColor = typeObj.color;
+                    }
+                  } else {
+                    const employee = assigneeResources.find((r) => r.id === ev.resource);
+                    if (employee) {
+                      detailText = employee.name;
+                      avatarUrl = employee.img;
+                    }
                   }
-                } else {
-                  const employee = assigneeResources.find((r) => r.id === ev.resource);
-                  if (employee) {
-                    detailText = employee.name ?? '';
-                    avatarUrl = employee.img ?? '';
-                  }
-                }
 
-                return (
-                  <div key={ev.id} className="mds-event-grouping-original-event" style={{ display: isExpanded ? '' : 'none' }}>
-                    <div className="mbsc-flex mds-event-grouping-event-content">
-                      <div className="mds-event-grouping-event-title">{ev.title}</div>
-                      <div className="mbsc-flex mds-event-grouping-event-right">
-                        <div className="mds-event-grouping-event-date">
-                          {formatDate('DD MMM', new Date(ev.start as string))} - {formatDate('DD MMM', new Date(ev.end as string))}
+                  return (
+                    <div
+                      key={ev.id}
+                      className="mds-event-group-original-event"
+                      title={`${ev.title}, ${formatDate('MM/DD/YYYY', new Date(ev.start as string | Date))} - ${formatDate(
+                        'MM/DD/YYYY',
+                        new Date(ev.end as string | Date),
+                      )}`}
+                      style={{ marginLeft: getEventMarginLeft(ev, origEvent), width: getEventWidth(ev, origEvent) }}
+                    >
+                      <div className="mbsc-flex mds-event-group-event-content">
+                        <div className="mds-event-group-event-title mds-event-group-text-truncate">{ev.title}</div>
+                        <div className="mbsc-flex mds-event-group-event-right">
+                          <div className="mds-event-group-event-date mds-event-group-text-truncate">
+                            {formatDate('DD MMM', new Date(ev.start as string | Date))} -{' '}
+                            {formatDate('DD MMM', new Date(ev.end as string | Date))}
+                          </div>
+                          <div className="mbsc-flex mds-event-group-event-detail">
+                            {avatarUrl && <img src={avatarUrl} alt={detailText} className="mds-event-group-event-avatar" />}
+                            {typeDotColor && <span className="mds-event-group-type-dot" style={{ backgroundColor: typeDotColor }} />}
+                            <div className="mds-event-group-event-info mds-event-group-text-truncate">{detailText}</div>
+                          </div>
                         </div>
-                        <div className="mbsc-flex mds-event-grouping-event-detail">
-                          {avatarUrl && <img src={avatarUrl} alt={detailText} className="mds-event-grouping-event-avatar" />}
-                          {typeDotColor && <span className="mds-event-grouping-type-dot" style={{ backgroundColor: typeDotColor }} />}
-                          <div className="mds-event-grouping-event-info">{detailText}</div>
-                        </div>
+                        <div
+                          className="mds-event-group-edit-btn mbsc-flex mbsc-icon mbsc-font-icon mbsc-icon-pencil"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleEditEvent(ev);
+                          }}
+                        />
                       </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
             </div>
           </div>
         </div>
       );
     },
-    [groupBy],
+    [groupBy, handleEditEvent],
   );
 
   const renderSimpleEvent = useCallback(
     (event: MbscCalendarEventData) => {
-      const origEvent = event.original as MbscCalendarEvent;
-      let detailText = '';
-      let avatarUrl = '';
-      let typeDotColor = '';
+      const origEvent = event.original as DisplayEvent;
+      let detailText;
+      let avatarUrl;
+      let typeDotColor;
 
       if (groupBy === 'assignee') {
         const typeObj = typeResources.find((t) => t.id === origEvent.type);
         if (typeObj) {
-          detailText = typeObj.name ?? '';
-          typeDotColor = typeObj.color ?? '';
+          detailText = typeObj.name;
+          typeDotColor = typeObj.color;
         }
       } else {
         const employee = assigneeResources.find((r) => r.id === origEvent.assignee);
         if (employee) {
-          detailText = employee.name ?? '';
-          avatarUrl = employee.img ?? '';
+          detailText = employee.name;
+          avatarUrl = employee.img;
         }
       }
 
       return (
-        <div className="mbsc-flex mds-event-simple" style={{ background: origEvent.color }}>
-          <div className="mds-event-simple-title">{origEvent.title}</div>
+        <div className="mbsc-flex mds-event-simple">
+          <div className="mds-event-simple-title">
+            <div className="mds-event-simple-title-inner mds-event-group-text-truncate">{origEvent.title}</div>
+          </div>
           <div className="mbsc-flex mds-event-simple-right">
             <div className="mds-event-simple-date">
-              {formatDate('DD MMM', new Date(origEvent.start as string))} - {formatDate('DD MMM', new Date(origEvent.end as string))}
+              {formatDate('DD MMM', new Date(origEvent.start as string | Date))} -{' '}
+              {formatDate('DD MMM', new Date(origEvent.end as string | Date))}
             </div>
             {detailText && (
               <div className="mbsc-flex mds-event-simple-subtitle-wrapper">
@@ -2626,119 +2662,213 @@ const App: FC = () => {
     [groupBy],
   );
 
-  const changeByClientQuarter = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    setGroupByClientQuarter(event.target.checked);
-  }, []);
-
-  // ✅ Mobiscroll Select fires a custom event object {value}, not a native ChangeEvent
-  const changeGroupBy = useCallback((event: { value: string }) => {
-    setGroupBy(event.value);
+  const renderCustomResource = useCallback((resource: MbscResource) => {
+    const assigneeResource = resource as AssigneeResource;
+    if (assigneeResource.img) {
+      return (
+        <div className="mbsc-flex">
+          <img alt={assigneeResource.name} className="mds-event-group-avatar" src={assigneeResource.img} />
+          <div className="mds-event-group-cont">
+            <div className="mds-event-group-name">{assigneeResource.name}</div>
+            <div className="mds-event-group-title">{assigneeResource.title}</div>
+          </div>
+        </div>
+      );
+    }
+    return (
+      <div className="mbsc-flex mds-event-group-type-resource">
+        <div className="mds-event-group-type-badge" style={{ backgroundColor: resource.color }}></div>
+        <div className="mds-event-group-type-name">{resource.name}</div>
+      </div>
+    );
   }, []);
 
   const renderCustomHeader = useCallback(
     () => (
       <>
         <CalendarNav />
-        <div className="mbsc-flex mbsc-flex-1-0 mbsc-justify-content-end mds-event-grouping-header-controls">
-          <Checkbox checked={groupByClientQuarter} onChange={changeByClientQuarter} label="Group by Client/Quarter" />
-          <Select inputStyle="box" display="anchored" touchUi={false} data={selectData} value={groupBy} onChange={changeGroupBy} />
+        <div className="mbsc-flex mbsc-flex-1-0 mbsc-justify-content-end mds-event-group-header-controls">
+          <Checkbox
+            checked={groupByClientQuarter}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setGroupByClientQuarter(e.target.checked)}
+            theme="material"
+            label="Group by Client/Quarter"
+          />
+          <Select
+            inputStyle="box"
+            display="anchored"
+            touchUi={false}
+            data={selectData}
+            value={groupBy}
+            onChange={(e) => setGroupBy(e.value)}
+          />
         </div>
+        <SegmentedGroup value={zoomLevel} onChange={(e: ChangeEvent<HTMLInputElement>) => setZoomLevel(e.target.value as typeof zoomLevel)}>
+          <Segmented value="quarter">Quarterly</Segmented>
+          <Segmented value="month">Monthly</Segmented>
+          <Segmented value="week">Weekly</Segmented>
+        </SegmentedGroup>
         <CalendarPrev />
         <CalendarToday />
         <CalendarNext />
       </>
     ),
-    [changeByClientQuarter, changeGroupBy, groupBy, groupByClientQuarter],
+    [groupBy, groupByClientQuarter, zoomLevel],
   );
 
-  const renderCustomResource = useCallback((resource: MbscResource) => {
-    if (resource.img) {
-      return (
-        <div className="mbsc-flex">
-          <img alt={resource.name} className="mds-event-grouping-avatar" src={resource.img} />
-          <div className="mds-event-grouping-cont">
-            <div className="mds-event-grouping-name">{resource.name}</div>
-            <div className="mds-event-grouping-title">{resource.title}</div>
-          </div>
-        </div>
-      );
-    }
-    return (
-      <div className="mbsc-flex mds-event-grouping-type-resource">
-        <div className="mds-event-grouping-type-badge" style={{ backgroundColor: resource.color }}></div>
-        <div className="mds-event-grouping-type-name">{resource.name}</div>
-      </div>
-    );
-  }, []);
+  // --- Event update ---
 
   const handleEventUpdate = useCallback(
     (args: MbscEventUpdateEvent) => {
       const updatedEvent = args.event;
       const oldEvent = args.oldEvent!;
+      const newStart = new Date(updatedEvent.start as string | Date).getTime();
+      const newEnd = new Date(updatedEvent.end as string | Date).getTime();
 
       if (groupByClientQuarter) {
-        const startDelta = new Date(updatedEvent.start as string).getTime() - new Date(oldEvent.start as string).getTime();
+        const oldStart = new Date(oldEvent.start as string | Date).getTime();
+        const oldEnd = new Date(oldEvent.end as string | Date).getTime();
+        const startDelta = newStart - oldStart;
+        const endDelta = newEnd - oldEnd;
 
-        if (startDelta === 0) return;
+        if (startDelta === 0 && endDelta === 0) return;
 
         const movedGroupedEvent = groupedEvents.find((ge) => ge.id === oldEvent.id);
         if (!movedGroupedEvent) return;
 
         const { clientGroup: clientGroupName, resource: resourceId, collapsed: wasCollapsed } = movedGroupedEvent;
+        const isMove = startDelta === endDelta;
 
-        const updatedEventIds = new Set((movedGroupedEvent.originalEvents as MbscCalendarEvent[]).map((e) => e.id));
-        let movedCount = 0;
+        let eventsToUpdate: WorkEvent[];
 
-        const newMyEvents = myEvents.map((e) => {
-          if (!updatedEventIds.has(e.id)) return e;
-          movedCount++;
-          return {
-            ...e,
-            start: new Date(new Date(e.start as string).getTime() + startDelta).toISOString(),
-            end: new Date(new Date(e.end as string).getTime() + startDelta).toISOString(),
-          };
-        });
+        if (isMove) {
+          eventsToUpdate = movedGroupedEvent.originalEvents.map((originalEvent) => ({
+            ...originalEvent,
+            start: new Date(new Date(originalEvent.start as string | Date).getTime() + startDelta),
+            end: new Date(new Date(originalEvent.end as string | Date).getTime() + startDelta),
+          }));
+        } else {
+          const oldGroupDuration = oldEnd - oldStart;
+          const newGroupDuration = newEnd - newStart;
 
+          eventsToUpdate = movedGroupedEvent.originalEvents.map((originalEvent) => {
+            const evStart = new Date(originalEvent.start as string | Date).getTime();
+            const evEnd = new Date(originalEvent.end as string | Date).getTime();
+            const relativeStart = oldGroupDuration > 0 ? (evStart - oldStart) / oldGroupDuration : 0;
+            const relativeEnd = oldGroupDuration > 0 ? (evEnd - oldStart) / oldGroupDuration : 1;
+            const mappedStart = newStart + relativeStart * newGroupDuration;
+            const mappedEnd = newStart + relativeEnd * newGroupDuration;
+            const childDurationDays = (mappedEnd - mappedStart) / (1000 * 60 * 60 * 24);
+            return {
+              ...originalEvent,
+              start: new Date(mappedStart),
+              end: new Date(childDurationDays < 1 ? mappedStart + 1000 * 60 * 60 * 24 : mappedEnd),
+            };
+          });
+        }
+
+        const updatedMap = new Map(eventsToUpdate.map((e) => [e.id, e]));
+        const newMyEvents = myEvents.map((e) => (updatedMap.has(e.id) ? updatedMap.get(e.id)! : e));
         setMyEvents(newMyEvents);
 
-        // ✅ Guard against undefined before accessing .start
-        const firstUpdated = newMyEvents.find((e) => updatedEventIds.has(e.id));
-        if (!firstUpdated) return;
+        const newYear = new Date(eventsToUpdate[0].start as string | Date).getFullYear();
+        const newPeriod = Math.floor(new Date(eventsToUpdate[0].start as string | Date).getMonth() / 3);
+        const newStateKey = `${resourceId}-${clientGroupName}-${newYear}-${newPeriod}`;
+        setCollapsedMap((prev) => ({ ...prev, [newStateKey]: wasCollapsed }));
 
-        const newYear = new Date(firstUpdated.start as string).getFullYear();
-        const newPeriod = Math.floor(new Date(firstUpdated.start as string).getMonth() / 3);
-
-        const newGrouped = groupEventsByClientQuarter(newMyEvents).map((ge) =>
-          ge.resource === resourceId && ge.clientGroup === clientGroupName && ge.year === newYear && ge.period === newPeriod
-            ? { ...ge, collapsed: wasCollapsed }
-            : ge,
-        );
-
-        setGroupedEvents(newGrouped);
-        setDisplayEvents(newGrouped);
-
-        setToastMessage(`${movedCount} event(s) for ${clientGroupName} have been moved.`);
+        const actionLabel = isMove ? 'moved' : 'resized';
+        setToastMessage(`${eventsToUpdate.length} event(s) for ${clientGroupName} have been ${actionLabel}.`);
         setToastOpen(true);
       } else {
-        setMyEvents((prev) => prev.map((e) => (e.id === oldEvent.id ? { ...e, start: updatedEvent.start, end: updatedEvent.end } : e)));
+        const oldResource = oldEvent.resource;
+        const newResource = updatedEvent.resource;
+        const resourceChanged = oldResource !== newResource;
+
+        setMyEvents((prev) =>
+          prev.map((e) => {
+            if (e.id !== updatedEvent.id) return e;
+            const update: Partial<WorkEvent> = { start: updatedEvent.start, end: updatedEvent.end };
+            if (resourceChanged) {
+              if (groupBy === 'assignee') update.resource = newResource;
+              else update.type = String(newResource);
+            }
+            return { ...e, ...update };
+          }),
+        );
+
+        if (resourceChanged) {
+          let fromName;
+          let toName;
+          if (groupBy === 'assignee') {
+            const fromRes = assigneeResources.find((r) => r.id === oldResource);
+            const toRes = assigneeResources.find((r) => r.id === newResource);
+            fromName = fromRes ? fromRes.name : String(oldResource);
+            toName = toRes ? toRes.name : String(newResource);
+          } else {
+            fromName = String(oldResource);
+            toName = String(newResource);
+          }
+          setToastMessage(`"${updatedEvent.title}" moved from ${fromName} to ${toName}.`);
+          setToastOpen(true);
+        }
       }
     },
-    [groupByClientQuarter, groupedEvents, groupEventsByClientQuarter, myEvents],
+    [groupBy, groupByClientQuarter, groupedEvents, myEvents],
   );
 
-  const handleCloseToast = useCallback(() => {
-    setToastOpen(false);
-  }, []);
+  // --- Edit event (datepicker) ---
+  const handleEditDateChange = useCallback(
+    (args: MbscDatepickerChangeEvent) => {
+      const dates = args.value as [MbscDateType, MbscDateType] | null;
+      const startVal = dates && dates[0];
+      const endVal = dates && dates[1];
+
+      if (editingEventId === null || !startVal || !endVal) return;
+
+      const oldEvent = myEvents.find((e) => e.id === editingEventId);
+      if (!oldEvent) return;
+
+      const oldQuarter = Math.floor(new Date(oldEvent.start as string | Date).getMonth() / 3);
+      const newQuarter = Math.floor(new Date(startVal as string | Date).getMonth() / 3);
+      const oldYear = new Date(oldEvent.start as string | Date).getFullYear();
+      const newYear = new Date(startVal as string | Date).getFullYear();
+      const quarterChanged = groupByClientQuarter && (oldQuarter !== newQuarter || oldYear !== newYear);
+
+      const applyUpdate = () => {
+        setMyEvents((prev) => prev.map((e) => (e.id === editingEventId ? { ...e, start: startVal, end: endVal } : e)));
+      };
+
+      if (quarterChanged) {
+        const quarterNames = ['Q1', 'Q2', 'Q3', 'Q4'];
+        const fromLabel = `${quarterNames[oldQuarter]} ${oldYear}`;
+        const toLabel = `${quarterNames[newQuarter]} ${newYear}`;
+
+        confirmCallbackRef.current = () => {
+          applyUpdate();
+          setToastMessage(`"${oldEvent.title}" moved to ${toLabel}.`);
+          setToastOpen(true);
+        };
+        setConfirmMessage(`"${oldEvent.title}" will move from ${fromLabel} to ${toLabel}. Do you want to continue?`);
+        setConfirmOpen(true);
+      } else {
+        applyUpdate();
+        setToastMessage(`"${oldEvent.title}" dates updated.`);
+        setToastOpen(true);
+      }
+    },
+    [editingEventId, groupByClientQuarter, myEvents],
+  );
 
   return (
     <>
       <Eventcalendar
-        className="mds-event-grouping-calendar"
+        ref={calendarRef}
+        className="mds-event-group-calendar"
         dragToMove={true}
-        dragToResize={false}
+        dragToResize={true}
         dragToCreate={false}
         clickToCreate={false}
-        dragBetweenResources={false}
+        dragBetweenResources={!groupByClientQuarter}
         view={myView}
         data={displayEvents}
         resources={myResources}
@@ -2747,7 +2877,30 @@ const App: FC = () => {
         renderScheduleEvent={groupByClientQuarter ? renderGroupedEvent : renderSimpleEvent}
         onEventUpdate={handleEventUpdate}
       />
-      <Toast message={toastMessage} isOpen={isToastOpen} onClose={handleCloseToast} />
+      <Datepicker
+        controls={['calendar']}
+        select="range"
+        display="center"
+        touchUi={false}
+        showRangeLabels={false}
+        headerText={editEventTitle}
+        value={editEventDateRange}
+        isOpen={isDatePickerOpen}
+        onClose={() => setDatePickerOpen(false)}
+        onChange={handleEditDateChange}
+      />
+      <Confirm
+        isOpen={isConfirmOpen}
+        title="Move to different group"
+        message={confirmMessage}
+        okText="Move"
+        cancelText="Cancel"
+        onClose={(result: boolean) => {
+          if (result) confirmCallbackRef.current?.();
+          setConfirmOpen(false);
+        }}
+      />
+      <Toast message={toastMessage} isOpen={isToastOpen} onClose={() => setToastOpen(false)} />
     </>
   );
 };
