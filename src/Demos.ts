@@ -174,8 +174,8 @@ import Demo770 from './demos/eventcalendar/scheduler/customize-scheduler-column-
 import Demo659 from './demos/eventcalendar/scheduler/printing-the-view/printing-the-view';
 import Demo581 from './demos/eventcalendar/scheduler/work-week-hours/work-week-hours';
 import Demo721 from './demos/eventcalendar/scheduler/doctors-appointment/doctors-appointment';
-import Demo786 from './demos/eventcalendar/scheduler/24-hour-manufacturing-shift-rota-planning/24-hour-manufacturing-shift-rota-planning';
 import Demo769 from './demos/eventcalendar/scheduler/doctors-availability-calendar-planner/doctors-availability-calendar-planner';
+import Demo786 from './demos/eventcalendar/scheduler/24-hour-manufacturing-shift-rota-planning/24-hour-manufacturing-shift-rota-planning';
 import Demo791 from './demos/eventcalendar/scheduler/drop-assignee-on-event-from-list/drop-assignee-on-event-from-list';
 import Demo696 from './demos/eventcalendar/scheduler/custom-range-view/custom-range-view';
 import Demo733 from './demos/eventcalendar/scheduler/control-number-of-concurrently-shown-events/control-number-of-concurrently-shown-events';
@@ -398,7 +398,7 @@ export const demos = [
               { name: 'Multi month view', unique: 'multiple-months', component: Demo533 },
               { name: 'Quarter or year view', unique: 'quarter-year-view', component: Demo631 },
               { name: 'Switching views', unique: 'week-to-month', component: Demo431 },
-              { name: 'Marked, colored & labels', unique: 'dots-colors-labels', component: Demo326 },
+              { name: 'Highlighted Dates, Dots & Labels', unique: 'dots-colors-labels', component: Demo326 },
               { name: 'Customizing the view', unique: 'month-change-direction-week-numbers-outer-days', component: Demo534 },
             ],
           },
@@ -849,9 +849,9 @@ export const demos = [
             items: [
               { name: 'Work calendar', unique: 'work-week-hours', component: Demo581 },
               { name: 'Doctor’s appointment', unique: 'doctors-appointment', component: Demo721 },
-              { name: 'Continuous shift planning', unique: '24-hour-manufacturing-shift-rota-planning', component: Demo786 },
               { name: 'Availability planner & appointment manager', unique: 'doctors-availability-calendar-planner', component: Demo769 },
-              { name: 'Event Drop Assignment', unique: 'drop-assignee-on-event-from-list', component: Demo791 },
+              { name: 'Continuous shift planning', unique: '24-hour-manufacturing-shift-rota-planning', component: Demo786 },
+              { name: 'Event drop assignment', unique: 'drop-assignee-on-event-from-list', component: Demo791 },
             ],
           },
           {
@@ -1008,7 +1008,7 @@ export const demos = [
               { name: 'Set up custom teams', unique: 'resource-management-with-dynamic-team-creation', component: Demo772 },
               { name: 'Group events by client and apply custom actions', unique: 'event-grouping-bulk-action', component: Demo785 },
               { name: '36 hour rolling view', unique: '36-hour-rolling-window-aircraft-view', component: Demo787 },
-              { name: 'Timeline Event Drop Assignment', unique: 'drop-assignee-on-event-from-list', component: Demo790 }
+              { name: 'Event drop assignment', unique: 'drop-assignee-on-event-from-list', component: Demo790 },
             ],
           },
           {
