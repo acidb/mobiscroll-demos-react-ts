@@ -1,5 +1,13 @@
-.mds-employee-shifts-popup .mbsc-popup-header {
+.mds-employee-shifts-header-primary {
   font-size: 16px;
+  line-height: 20px;
+}
+
+.mds-employee-shifts-header-date {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  opacity: 0.6;
 }
 
 .mds-employee-shifts .mbsc-timeline-resource-col {

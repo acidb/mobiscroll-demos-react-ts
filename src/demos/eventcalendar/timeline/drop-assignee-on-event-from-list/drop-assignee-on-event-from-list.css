@@ -1,17 +1,17 @@
-.mds-drop-assignee-on-event-from-list,
-.mds-drop-assignee-on-event-from-list .mbsc-grid,
-.mds-drop-assignee-on-event-from-list .mbsc-row {
+.mds-drop-on-events,
+.mds-drop-on-events .mbsc-grid,
+.mds-drop-on-events .mbsc-row {
   height: 100%;
 }
-.mds-drop-assignee-on-event-from-list .mds-sidebar {
+.mds-drop-on-events-sidebar {
   overflow-y: auto;
 }
-.mds-drop-assignee-on-event-from-list .mds-employee-list {
+.mds-drop-on-events-employee-list {
   padding: 8px;
   flex-direction: column;
   gap: 4px;
 }
-.mds-drop-assignee-on-event-from-list .mds-employee-item {
+.mds-drop-on-events-employee-item {
   align-items: center;
   gap: 10px;
   padding: 10px 12px;
@@ -26,15 +26,15 @@
     box-shadow 0.2s,
     transform 0.15s;
 }
-.mds-drop-assignee-on-event-from-list .mds-employee-item:hover {
+.mds-drop-on-events-employee-item:hover {
   background: rgba(128, 128, 128, 0.4);
   transform: translateY(-1px);
 }
-.mds-drop-assignee-on-event-from-list .mds-employee-item:active {
+.mds-drop-on-events-employee-item:active {
   transform: translateY(0);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
-.mds-drop-assignee-on-event-from-list .mds-employee-avatar {
+.mds-drop-on-events-employee-avatar {
   width: 34px;
   height: 34px;
   border-radius: 50%;
@@ -47,29 +47,29 @@
   letter-spacing: 0.5px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
-.mds-drop-assignee-on-event-from-list .mds-employee-info {
+.mds-drop-on-events-employee-info {
   flex-direction: column;
   overflow: hidden;
 }
-.mds-drop-assignee-on-event-from-list .mds-employee-name {
+.mds-drop-on-events-employee-name {
   font-size: 15px;
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.mds-drop-assignee-on-event-from-list .mds-employee-count {
+.mds-drop-on-events-employee-count {
   font-size: 13px;
   opacity: 0.55;
 }
-.mds-drop-assignee-on-event-from-list .mds-calendar-wrapper {
+.mds-drop-on-events-calendar-wrapper {
   border-left: 1px solid rgba(0, 0, 0, 0.1);
 }
 /* Drag clone is appended to body, outside the root — keep unscoped */
-.mds-employee-item.mbsc-drag-clone {
+.mds-drop-on-events-employee-item.mbsc-drag-clone {
   opacity: 0.8;
 }
-.mds-drop-assignee-on-event-from-list .mds-custom-event {
+.mds-drop-on-events-custom-event {
   background: #cccccc;
   border-radius: 6px;
   padding: 6px 8px;
@@ -82,11 +82,11 @@
   transition: background 0.15s;
   position: relative;
 }
-.mds-drop-assignee-on-event-from-list .mds-event-header {
+.mds-drop-on-events-event-header {
   flex-direction: column;
   gap: 1px;
 }
-.mds-drop-assignee-on-event-from-list .mds-event-title {
+.mds-drop-on-events-event-title {
   font-size: 14px;
   font-weight: 600;
   color: #181818;
@@ -94,29 +94,29 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.mds-drop-assignee-on-event-from-list .mds-event-time {
+.mds-drop-on-events-event-time {
   font-size: 12px;
   color: #545454;
 }
-.mds-drop-assignee-on-event-from-list .mds-event-attendees {
+.mds-drop-on-events-event-attendees {
   flex-wrap: wrap;
   gap: 3px;
 }
 /* Drop hint - hidden by default, shown only during external drag */
-.mds-drop-assignee-on-event-from-list .mds-event-drop-hint {
+.mds-drop-on-events-event-drop-hint {
   display: none;
   font-size: 11px;
   font-style: italic;
   color: #686868;
 }
 /* Show drop hints and dashed borders on events during external drag */
-.mds-drop-assignee-on-event-from-list.mds-external-dragging .mds-event-drop-hint {
+.mds-drop-on-events-external-dragging .mds-drop-on-events-event-drop-hint {
   display: block;
 }
-.mds-drop-assignee-on-event-from-list.mds-external-dragging .mds-custom-event {
+.mds-drop-on-events-external-dragging .mds-drop-on-events-custom-event {
   outline: 2px dashed #b9b9b9;
 }
-.mds-drop-assignee-on-event-from-list .mds-attendee-chip {
+.mds-drop-on-events-attendee-chip {
   display: flex;
   width: 25px;
   height: 25px;
@@ -131,7 +131,7 @@
   cursor: pointer;
   position: relative;
 }
-.mds-drop-assignee-on-event-from-list .mds-attendee-remove {
+.mds-drop-on-events-attendee-remove {
   display: none;
   position: absolute;
   inset: 0;
@@ -142,22 +142,22 @@
   font-size: 12px;
   line-height: 1;
 }
-.mds-drop-assignee-on-event-from-list .mds-attendee-chip:hover .mds-attendee-remove {
+.mds-drop-on-events-attendee-chip:hover .mds-drop-on-events-attendee-remove {
   display: flex;
 }
-.mds-drop-assignee-on-event-from-list .mds-custom-event.mds-drop-active {
+.mds-drop-on-events-custom-event.mds-drop-active {
   cursor: copy;
   outline: 2px solid rgba(54, 133, 43, 0.8);
   background: rgba(180, 223, 173, 0.8);
 }
-.mds-drop-assignee-on-event-from-list .mds-custom-event.mds-drop-conflict {
+.mds-drop-on-events-custom-event.mds-drop-conflict {
   cursor: not-allowed;
   outline: 2px solid rgba(145, 34, 34, 0.8);
   background: rgba(235, 194, 194, 0.8);
 }
-.mds-drop-assignee-on-event-from-list .mbsc-timeline-event {
+.mds-drop-on-events .mbsc-timeline-event {
   min-height: 80px;
 }
-.mds-drop-assignee-on-event-from-list .mbsc-schedule-event-inner {
+.mds-drop-on-events .mbsc-schedule-event-inner {
   height: 100%;
 }

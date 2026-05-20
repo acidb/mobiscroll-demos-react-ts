@@ -213,7 +213,8 @@ function App() {
   const [endInput, setEndInput] = useState<Input | null>(null);
   const [minTime, setMinTime] = useState<string>();
   const [maxTime, setMaxTime] = useState<string>();
-  const [popupHeader, setPopupHeader] = useState<string>();
+  const [headerPrimary, setHeaderPrimary] = useState<string>('');
+  const [headerDate, setHeaderDate] = useState<string>('');
   const [toastMessage, setToastMessage] = useState<string>();
   const [isEdit, setEdit] = useState(false);
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -426,6 +427,16 @@ function App() {
     [deletedShift],
   );
 
+  const renderPopupHeader = useCallback(
+    () => (
+      <>
+        <div className="mds-employee-shifts-header-primary">{headerPrimary}</div>
+        <div className="mds-employee-shifts-header-date">{headerDate}</div>
+      </>
+    ),
+    [headerPrimary, headerDate],
+  );
+
   const handleEventClick = useCallback(
     (args: MbscEventClickEvent) => {
       const event = args.event;
@@ -433,15 +444,13 @@ function App() {
       const slot = args.slotObj!;
 
       fillPopup(event, true);
-      setPopupHeader(
-        'Edit ' +
-          resource.name +
-          "'s hours - " +
-          formatDate('DDD', new Date(event.start as Date)) +
+      setHeaderPrimary('Edit ' + resource.name + "'s hours");
+      setHeaderDate(
+        formatDate('DDDD', new Date(event.start as Date)) +
           ' ' +
           slot.name +
           ', ' +
-          formatDate('D MMM YYYY', new Date(event.start as Date)),
+          formatDate('D MMMM YYYY', new Date(event.start as Date)),
       );
       setPopupOpen(true);
     },
@@ -454,13 +463,13 @@ function App() {
       const slot = args.slotObj!;
 
       fillPopup(event, false);
-      setPopupHeader(
-        'New shift - ' +
-          formatDate('DDD', new Date(event.start as Date)) +
+      setHeaderPrimary('New shift');
+      setHeaderDate(
+        formatDate('DDDD', new Date(event.start as Date)) +
           ' ' +
           slot.name +
           ', ' +
-          formatDate('D MMM YYYY', new Date(event.start as Date)),
+          formatDate('D MMMM YYYY', new Date(event.start as Date)),
       );
       setPopupOpen(true);
     },
@@ -564,12 +573,11 @@ function App() {
         onEventUpdateFailed={handleEventUpdateFailed}
       />
       <Popup
-        cssClass="mds-employee-shifts-popup"
         buttons={popupButtons}
         display="bottom"
         contentPadding={false}
         fullScreen={true}
-        headerText={popupHeader}
+        renderHeader={renderPopupHeader}
         isOpen={isPopupOpen}
         responsive={popupResponsive}
         scrollLock={false}

@@ -60,13 +60,13 @@ function EmployeeItem({ emp, assignmentCount, onDragStart }: { emp: Employee; as
   const [dragEl, setDragEl] = useState<HTMLDivElement | null>(null);
 
   return (
-    <div className="mds-employee-item mbsc-flex" ref={setDragEl} onPointerDown={onDragStart}>
-      <div className="mds-employee-avatar mbsc-flex" style={{ background: emp.color }}>
+    <div className="mds-drop-on-events-employee-item mbsc-flex" ref={setDragEl} onPointerDown={onDragStart}>
+      <div className="mds-drop-on-events-employee-avatar mbsc-flex" style={{ background: emp.color }}>
         {emp.avatar}
       </div>
-      <div className="mds-employee-info mbsc-flex">
-        <div className="mds-employee-name">{emp.name}</div>
-        <div className="mds-employee-count">
+      <div className="mds-drop-on-events-employee-info mbsc-flex">
+        <div className="mds-drop-on-events-employee-name">{emp.name}</div>
+        <div className="mds-drop-on-events-employee-count">
           {assignmentCount > 0 ? `${assignmentCount} meeting${assignmentCount > 1 ? 's' : ''}` : 'No assignments'}
         </div>
       </div>
@@ -138,20 +138,20 @@ function MeetingEvent({
   }, []);
 
   return (
-    <div ref={setDropEl} className={`mds-custom-event mbsc-flex ${dropState}`} style={{ borderLeft: `4px solid ${event.color}` }}>
+    <div ref={setDropEl} className={`mds-drop-on-events-custom-event mbsc-flex ${dropState}`} style={{ borderLeft: `4px solid ${event.color}` }}>
       <Dropcontainer element={dropEl} onItemDrop={handleItemDrop} onItemDragEnter={handleDragEnter} onItemDragLeave={handleDragLeave} />
-      <div className="mds-event-header mbsc-flex">
-        <div className="mds-event-title">{event.title}</div>
-        <div className="mds-event-time">
+      <div className="mds-drop-on-events-event-header mbsc-flex">
+        <div className="mds-drop-on-events-event-title">{event.title}</div>
+        <div className="mds-drop-on-events-event-time">
           {data.start} - {data.end}
         </div>
       </div>
       {attendees.length > 0 && (
-        <div className="mds-event-attendees mbsc-flex">
+        <div className="mds-drop-on-events-event-attendees mbsc-flex">
           {attendees.map((att) => (
             <span
               key={att.id}
-              className="mds-attendee-chip"
+              className="mds-drop-on-events-attendee-chip"
               style={{ background: att.color }}
               title={`${att.name} (click to remove)`}
               onClick={(e) => {
@@ -160,12 +160,12 @@ function MeetingEvent({
               }}
             >
               {att.avatar}
-              <span className="mds-attendee-remove">&times;</span>
+              <span className="mds-drop-on-events-attendee-remove">&times;</span>
             </span>
           ))}
         </div>
       )}
-      <div className="mds-event-drop-hint">Drop people to assign</div>
+      <div className="mds-drop-on-events-event-drop-hint">Drop people to assign</div>
     </div>
   );
 }
@@ -179,7 +179,10 @@ const App: FC = () => {
       end: dyndatetime('y,m,d,11'),
       resource: 1,
       color: '#b52db9',
-      attendees: [],
+      attendees: [
+        { id: 'emp1', name: 'Alice Martin', avatar: 'AM', color: '#e74c3c' },
+        { id: 'emp2', name: 'Bob Johnson', avatar: 'BJ', color: '#3498db' },
+      ],
     },
     {
       id: 'evt2',
@@ -197,7 +200,10 @@ const App: FC = () => {
       end: dyndatetime('y,m,d,18'),
       resource: 2,
       color: '#88bd42',
-      attendees: [],
+      attendees: [
+        { id: 'emp3', name: 'Carol Smith', avatar: 'CS', color: '#2ecc71' },
+        { id: 'emp4', name: 'David Lee', avatar: 'DL', color: '#f39c12' },
+      ],
     },
     {
       id: 'evt4',
@@ -505,12 +511,12 @@ const App: FC = () => {
   }, []);
 
   return (
-    <Page className={`mds-drop-assignee-on-event-from-list${isExternalDragging ? ' mds-external-dragging' : ''}`}>
+    <Page className={`mds-drop-on-events${isExternalDragging ? ' mds-drop-on-events-external-dragging' : ''}`}>
       <div className="mbsc-grid mbsc-no-padding">
         <div className="mbsc-row">
-          <div className="mbsc-col-sm-3 mbsc-flex-col mds-sidebar">
+          <div className="mbsc-col-sm-3 mbsc-flex-col mds-drop-on-events-sidebar">
             <div className="mbsc-form-group-title">Team Members</div>
-            <div className="mds-employee-list mbsc-flex">
+            <div className="mds-drop-on-events-employee-list mbsc-flex">
               {employees.map((emp) => (
                 <EmployeeItem
                   key={emp.id}
@@ -521,7 +527,7 @@ const App: FC = () => {
               ))}
             </div>
           </div>
-          <div className="mbsc-col-sm-9 mds-calendar-wrapper">
+          <div className="mbsc-col-sm-9 mds-drop-on-events-calendar-wrapper">
             <Eventcalendar
               view={myView}
               data={meetings}
