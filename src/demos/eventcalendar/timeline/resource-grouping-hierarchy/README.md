@@ -18,8 +18,10 @@ The hierarchy can be of multiple levels. Event creation, drag & drop is enabled 
 The width of the resource column adjusts dynamically as resources are expanded or collapsed to fit their content.
 The default increment step can be modified with a CSS rule, without affecting the algorithm's behavior:
 
+```css
 .md-resource-grouping-hierarchy .mbsc-timeline-resource-depth-step {
 width: 20px;
 }
+```
 
 If the step adjustment is not needed and you want to keep the width of the resources column unchanged, you can disable it by setting the value to `width: 0;`.

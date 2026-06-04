@@ -14,3 +14,12 @@ The event data structure for the agenda is straightforward with a couple of base
 - `end` - Sets the end date and time for the event. The same formats are supported as for `start`
 - `allDay` - Configures the event as a full-day event
 - `recurring` - Configures the recurring rules for the event. [Learn about recurring events](https://demo.mobiscroll.com/react/agenda/recurring-events#)
+- `recurringException` - Represents the exceptions of a recurring event, when specific dates need to be skipped from the rule.
+- `recurringExceptionRule` - Represents the exception rule of a recurring event, when recurring dates need to be skipped from the rule.
+- `resource` - Links the event to one or more resources. Expects a list of IDs part of the resources array.
+- `timezone` - The timezone where the event takes place. If specified, it takes precedence over the calendar's specified `dataTimezone`.
+- `editable` - Denotes if the event is editable. If set `false`, the event cannot be dragged, resized or deleted even if globally enabled
+- `cssClass` - A custom css class for the event. Useful for quick styling adjustments of the event container.
+- `bufferBefore` - Defines a buffer time in minutes that happens before the start of the event. This buffer area can help you visualise delays or added minutes for tasks. It is not automatically rendered in case of the agenda, but can be used in the custom template.
+- `bufferAfter` - Defines a buffer time in minutes that happens after the end of the event. It is not automatically rendered in case of the agenda, but can be used in the custom template.
+- `order` - Specifies the order of the event in the event array. Has precedence over the default ordering rules.

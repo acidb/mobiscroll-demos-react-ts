@@ -8,6 +8,8 @@ Single value selection is the default behavior of the date picker. You can expli
 
 You can dynamically switch between single and multiple select or range select which helps with building a system for one-way and two-way bookings.
 
+- **Looking for multiple select?** [See how to enable multi-select →](https://demo.mobiscroll.com/react/calendar/multiple-select#)
+
 ## Related demos
 
-- **Looking for multiple select?** [See how to enable multi-select →](https://demo.mobiscroll.com/react/calendar/multiple-select#)
+- [See how to enable multi-select →](https://demo.mobiscroll.com/react/calendar/multiple-select#)

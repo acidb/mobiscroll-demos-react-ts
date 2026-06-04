@@ -7,7 +7,6 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 Enforcing validation is essential to a great UX. First make sure to have the [min & max values right](https://demo.mobiscroll.com/react/datetime/min-max-restrictions#) and then work your way through disabled values.
 
 Depending on your situation, you have two options:
-
 - **Set invalid** - set the invalids through the `invalid` option.
 - **Set valid** - set the valids through the `valid` option.
 

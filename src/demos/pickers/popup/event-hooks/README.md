@@ -9,6 +9,8 @@ Events are triggered through the lifecycle of the component where you can tie in
 
 While users interact with the UI events like `onInit`, `onOpen`, `onPosition` ... will be triggered.
 
+- **For a complete list of events go to the documentation** See available lifecycle events →
+
 ## Related demos
 
-- **For a complete list of events go to the documentation** See available lifecycle events →
+- See available lifecycle events →

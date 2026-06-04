@@ -10,6 +10,8 @@ This approach is perfect for providing access to information without cluttering 
 The popup takes care of auto-positioning, taking the guesswork out of where it should show up.
 It also gives you full control over the content where you can use any Mobiscroll or custom component.
 
+- **Looking for more advanced event tooltip ideas?** [Check out this example →](https://demo.mobiscroll.com/react/scheduler/custom-event-tooltip#)
+
 ## Related demos
 
-- **Looking for more advanced event tooltip ideas?** [Check out this example →](https://demo.mobiscroll.com/react/scheduler/custom-event-tooltip#)
+- [Check out this example →](https://demo.mobiscroll.com/react/scheduler/custom-event-tooltip#)

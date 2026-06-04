@@ -537,7 +537,7 @@ const App: FC = () => {
     () => ({
       timeline: {
         endDay: 5,
-        eventList: true,
+        eventDisplay: 'fill',
         type: 'month',
         resolutionHorizontal: 'day',
         startDay: 1,

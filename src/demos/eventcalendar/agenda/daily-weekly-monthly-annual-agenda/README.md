@@ -11,6 +11,8 @@ Use the `agenda` object inside the `view` option to configure the agenda. `type`
 - **month** - `agenda: { type: 'month' }` can be configured for one or more months
 - **year** - `agenda: { type: 'year' }` can be configured for one or more years
 
+- **Interested in combining this with a calendar view?** [Check out the previous example →](https://demo.mobiscroll.com/react/agenda/daily-agenda-with-week-calendar#)
+
 ## Related demos
 
-- **Interested in combining this with a calendar view?** [Check out the previous example →](https://demo.mobiscroll.com/react/agenda/daily-agenda-with-week-calendar#)
+- [Check out the previous example →](https://demo.mobiscroll.com/react/agenda/daily-agenda-with-week-calendar#)

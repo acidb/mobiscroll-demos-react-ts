@@ -6,6 +6,8 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 
 The agenda can be populated by passing an array to the `data` option, that you can construct either inline or by getting it from a remote API. The important thing to remember is that events need to be [in a format that the agenda understands](https://demo.mobiscroll.com/react/agenda/event-data-structure#).
 
+- **Interested in load on demand?** [Dynamically load events on month change →](https://demo.mobiscroll.com/react/agenda/load-events-on-demand#)
+
 ## Related demos
 
-- **Interested in load on demand?** [Dynamically load events on month change →](https://demo.mobiscroll.com/react/agenda/load-events-on-demand#)
+- [Dynamically load events on month change →](https://demo.mobiscroll.com/react/agenda/load-events-on-demand#)

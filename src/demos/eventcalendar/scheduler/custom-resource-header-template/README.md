@@ -6,6 +6,8 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 
 Use the `renderResource` option for rendering a custom resource header. Customize how the resource headers look and what they show. Utilize properties passed in the resources array.
 
+- **Interested in displaying resource information on hover?** [Show details on hover &#8594;](https://demo.mobiscroll.com/react/timeline/display-resource-information-on-hover#)
+
 ## Related demos
 
-- **Interested in displaying resource information on hover?** [Show details on hover &#8594;](https://demo.mobiscroll.com/react/timeline/display-resource-information-on-hover#)
+- [Show details on hover &#8594;](https://demo.mobiscroll.com/react/timeline/display-resource-information-on-hover#)

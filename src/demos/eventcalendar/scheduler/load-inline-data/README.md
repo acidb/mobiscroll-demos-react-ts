@@ -8,6 +8,8 @@ What is a scheduler without any events in it? To populate it with events all you
 
 In a real-world scenario you would probably [load the events from a remote resource](https://demo.mobiscroll.com/react/scheduler/load-events-from-remote-api#) or event better, [load them on demand](https://demo.mobiscroll.com/react/scheduler/load-events-on-demand#). However the point of this example is to understand how easy it is to add events to the scheduler.
 
+- **Do you want to learn about the event data sctructure?** [See how the event object is built &#8594;](https://demo.mobiscroll.com/react/scheduler/event-data-structure#)
+
 ## Related demos
 
-- **Do you want to learn about the event data sctructure?** [See how the event object is built &#8594;](https://demo.mobiscroll.com/react/scheduler/event-data-structure#)
+- [See how the event object is built &#8594;](https://demo.mobiscroll.com/react/scheduler/event-data-structure#)

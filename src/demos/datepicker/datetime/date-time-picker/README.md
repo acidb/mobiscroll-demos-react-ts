@@ -14,6 +14,8 @@ The date picker ships with five built-in variations for rendering the UI. The co
 
 Use `controls: ['datetime']` for rendering a date & time picker within the same control, tied to the same input, or use them separately for two inputs - `controls: ['date']` and `controls: ['time']`. It will render a scrollers for `touchUi: true` and a dropdowns for `touchUi: false`.
 
+- **Interested in dynamically switching between modes?** [Learn how to set up responsive behavior →](https://demo.mobiscroll.com/react/datetime/responsive#)
+
 ## Related demos
 
-- **Interested in dynamically switching between modes?** [Learn how to set up responsive behavior →](https://demo.mobiscroll.com/react/datetime/responsive#)
+- [Learn how to set up responsive behavior →](https://demo.mobiscroll.com/react/datetime/responsive#)

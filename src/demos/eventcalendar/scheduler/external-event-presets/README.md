@@ -14,5 +14,4 @@ Whenever there is more information to be captured, like detailed task notes, cus
 
  lifecycle event. For failed drops (trying to schedule a task during lunch breaks or weekends) the 
 `onEventCreateFailed` event will be triggered.
-Want to see how external presets look & feel for a calendar?&nbsp;
-[Check out this example &#8594;](https://demo.mobiscroll.com/react/eventcalendar/external-event-presets#)
+- **Want to see how external presets look & feel for a calendar?** [Check out this example &#8594;](https://demo.mobiscroll.com/react/eventcalendar/external-event-presets#)

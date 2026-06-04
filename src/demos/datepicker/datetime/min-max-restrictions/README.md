@@ -10,6 +10,8 @@ Setting the values will disable dates/times earlier than `min` and dates/times t
 By default these options are empty and the date picker supports infinite navigation, while the time picker has all 24 hours/60 minutes/... available for selection.
 Values can be passed as [JS date objects, ISO date strings or Moment.js objects](https://demo.mobiscroll.com/react/datetime/date-object-ISO-8601-moment#).
 
+- **Looking to invalidate more dates/times?** [Discover how to disable specific values →](https://demo.mobiscroll.com/react/datetime/disabled-invalid-values#)
+
 ## Related demos
 
-- **Looking to invalidate more dates/times?** [Discover how to disable specific values →](https://demo.mobiscroll.com/react/datetime/disabled-invalid-values#)
+- [Discover how to disable specific values →](https://demo.mobiscroll.com/react/datetime/disabled-invalid-values#)

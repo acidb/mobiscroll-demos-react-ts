@@ -10,6 +10,8 @@ Dragging and dropping events between two timeline instances can be enabled by tu
 `externalDrag` and
 `externalDrop` options.
 
+- **Want to learn about how you can configure the horizontal and vertical resolution?** [Check out how to build a synchronized flight scheduling dashboard &#8594;](https://demo.mobiscroll.com/react/timeline/flight-scheduling-two-synchronized-timelines#)
+
 ## Related demos
 
-- **Want to learn about how you can configure the horizontal and vertical resolution?** [Check out how to build a synchronized flight scheduling dashboard &#8594;](https://demo.mobiscroll.com/react/timeline/flight-scheduling-two-synchronized-timelines#)
+- [Check out how to build a synchronized flight scheduling dashboard &#8594;](https://demo.mobiscroll.com/react/timeline/flight-scheduling-two-synchronized-timelines#)

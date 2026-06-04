@@ -8,6 +8,6 @@ Use the select component as a country picker on mobile and desktop. You can add 
 
 Search is enabled through the filter option.
 
-In this example the data is loaded from a remote JSON in the following format: `{ “value”: “FJ”, “group”: “F”, “text”: “Fiji” }` and the flags are loaded from our server. For your implementation you should embed the list and flags into your own page.
+In this example the data is loaded from a remote JSON in the following format: `{ "value": "FJ", "group": "F", "text": "Fiji" }` and the flags are loaded from our server. For your implementation you should embed the list and flags into your own page.
 
 For the image & text rendering use a [custom item template](https://demo.mobiscroll.com/react/select/item-templating#).

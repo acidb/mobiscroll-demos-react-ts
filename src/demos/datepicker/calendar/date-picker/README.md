@@ -12,10 +12,18 @@ The date picker ships with five built-in variations for rendering the UI. The co
 - `datetime` - renders a date & time scroller or dropdown
 - `calendar` - renders a calendar view for date picking
 
-When passing `controls: ['date']`, the date picker will render a date-only picker - scroller for `touchUi: true` and a dropdown for `touchUi: false`.
+When passing `controls: ['calendar']`, the date picker will render a monthly calendar for selecting a date.
 
-You can further customize the `dateFormat` and `dateWheels` to fine-tune the UX... use it as a credit card expiration picker.
+- **Interested in dynamically switching between modes?** [Learn how to set up responsive behavior →](https://demo.mobiscroll.com/react/calendar/responsive#)
 
 ## Related demos
 
-- **Interested in dynamically switching between modes?** [Learn how to set up responsive behavior →](https://demo.mobiscroll.com/react/calendar/responsive#)
+- [Learn how to set up responsive behavior →](https://demo.mobiscroll.com/react/calendar/responsive#)
+
+## What this demo shows
+
+- A simple inline monthly calendar for selecting a single date.
+
+## Best for
+
+- Selecting a single date in the context of a month view, where the user benefits from seeing surrounding dates and the day-of-week layout.

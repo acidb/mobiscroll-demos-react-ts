@@ -8,6 +8,8 @@ With the agenda you can list out events for any range grouped by days. Use it as
 
 You can add the components - like the calendar and agenda - and configure them in the `view` option.
 
+- **Interested to learn about the calendar view?** [Check out the event calendar →](https://demo.mobiscroll.com/react/eventcalendar/#)
+
 ## Related demos
 
-- **Interested to learn about the calendar view?** [Check out the event calendar →](https://demo.mobiscroll.com/react/eventcalendar/#)
+- [Check out the event calendar →](https://demo.mobiscroll.com/react/eventcalendar/#)

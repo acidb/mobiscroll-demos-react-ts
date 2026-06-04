@@ -8,6 +8,8 @@ The timeline ships with different hooks for deep customization. Events are trigg
 
 While users interact with the UI events like `onEventClick`, `onInit`, `onSelectedDateChange` ... will be triggered.
 
+- **For a complete list of events go to the documentation** See available lifecycle events &#8594;
+
 ## Related demos
 
-- **For a complete list of events go to the documentation** See available lifecycle events &#8594;
+- See available lifecycle events &#8594;

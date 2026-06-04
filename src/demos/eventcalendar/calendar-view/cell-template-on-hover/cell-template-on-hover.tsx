@@ -118,7 +118,7 @@ const App: FC = () => {
         data={myEvents}
         view={myView}
         className="mds-cell-summary"
-        renderDayContent={customDayContent}
+        renderCalendarDayContent={customDayContent}
         onCellHoverIn={handleCellHoverIn}
         onCellHoverOut={handleCellHoverOut}
       />

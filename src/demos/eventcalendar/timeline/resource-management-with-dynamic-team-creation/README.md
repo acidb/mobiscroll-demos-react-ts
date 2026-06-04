@@ -42,5 +42,18 @@ calendar and the
 
 You can also use the :::framework{only="vue"} `resource-drag-leave` ::: :::framework{only="angular"} `onResourceDragLeave` ::: :::framework{only="react"} `onResourceDragLeave` ::: :::framework{only="javascript"} `onResourceDragLeave` ::: :::framework{only="jquery"} `onResourceDragLeave` ::: and :::framework{only="vue"} `resource-drag-enter` ::: :::framework{only="angular"} `onResourceDragEnter` ::: :::framework{only="react"} `onResourceDragEnter` ::: :::framework{only="javascript"} `onResourceDragEnter` ::: :::framework{only="jquery"} `onResourceDragEnter` :::, and the drop container's `onItemDragEnter` and `onItemDragLeave` events to provide visual feedback or running custom logic during drag.
 
-Looking for external event drag & drop?&nbsp;
-[Check out this example &#8594;](https://demo.mobiscroll.com/react/timeline/external-drag-drop-sortable-dragula#)
+- **Looking for external event drag & drop?** [Check out this example &#8594;](https://demo.mobiscroll.com/react/timeline/external-drag-drop-sortable-dragula#)
+
+## Implementation instructions
+
+- Use `type: 'day'` with `startTime: '07:00'`/`endTime: '18:00'` and `resourceReorder: true` in the view config to allow drag-reordering of resources within the timeline.
+- Set `externalResourceDrop: true` to allow resources dragged from the sidebar to be added to the timeline, and `externalResourceDrag: true` to allow timeline resources to be dragged back out. Set `dragBetweenResources: false` to prevent events from being reassigned across team members.
+- Define the timeline resources as a two-level tree of team groups (`eventCreation: false`, `reorder: false`) with installer leaf nodes (custom `name`, `color`, `title`). When a team has no members, give it a single placeholder child (`placeholder: true`, `reorder: false`) with a descriptive name like "Drag Technicians here".
+- Build a separate `availableInstallers` state for the sidebar list. Render each available installer as an `Installer` card component that uses a ref callback to obtain its DOM element, then mounts a `Draggable` with `dragData` set to the resource object and `type: 'resource'`.
+- Wrap the sidebar list in a `Dropcontainer` (with its DOM element passed via a ref callback to the `element` prop). In `onItemDrop`, check that `args.dataType === 'resource'` and add `args.data` back to `availableInstallers`. After adding, increment a `shouldScroll` counter and use a `useEffect` to call `scrollIntoView` on the last card's ref to bring the returned installer into view.
+- In `onResourceCreate`, remove the dropped installer from `availableInstallers` by ID, and show a `Toast` announcing that the person was added to `args.parent.name`.
+- In `onResourceDelete`, show a `Toast` announcing the removal from `args.parent.name`.
+- In `onResourceOrderUpdate`, show a `Toast` when `args.parent` and `args.oldParent` both exist (indicating a cross-team move). Remove the placeholder child from the destination team and, if the source team is now empty, push a new placeholder child onto its `children` array.
+- Use `renderResourceHeader` (Angular: `resourceHeaderTemplate`, Vue: `resourceHeader`) to render a "Set up teams" label alongside an "Add team" `Button`.
+- Use `renderResource` (Angular: `resourceTemplate`, Vue: `resource`) to handle three cases: parent/group nodes render just the team name; placeholder nodes render a styled placeholder label; leaf nodes render a colored avatar (first letter of the name), the installer's name, and their job title.
+- In the Add team handler, append a new group to the installers array with a placeholder child, then call `navigateToEvent` on the calendar instance ref with the new resource ID to scroll the timeline to the newly added team.

@@ -13,5 +13,4 @@ Customize the visible days and hours along with the scale of the time grid throu
 - **Control the visibility of fully invalid columns** - Use the `hideInvalidColumns` property
 - **Control the granularity of the time grid** - Use the `timeCellStep` and `timeLabelStep` properties
 
-Building a work calendar?&nbsp;
-[Check out this example &#8594;](https://demo.mobiscroll.com/react/scheduler/work-week-hours#)
+- **Building a work calendar?** [Check out this example &#8594;](https://demo.mobiscroll.com/react/scheduler/work-week-hours#)

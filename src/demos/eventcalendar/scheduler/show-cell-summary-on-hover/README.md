@@ -10,5 +10,8 @@ Using
 
 `onCellHoverIn`
 
- and 
-`onCellHoverOut` events, each tooltip dynamically displays the total number of events, invalid and colors in the hovered cell.
+and 
+
+`onCellHoverOut`
+
+events, each tooltip dynamically displays the total number of events, invalid and colors in the hovered cell.

@@ -13,6 +13,8 @@ The output could be a custom background to individual rows and it can be used fo
 - Resource selection, where the selected resource has a different background.
 - Setting different backgrounds for the resource titles/grid rows/sidebar
 
+- **Interested in highlighting date ranges only?** [Explore this example &#8594;](https://demo.mobiscroll.com/react/timeline/colors-invalids-css-class#)
+
 ## Related demos
 
-- **Interested in highlighting date ranges only?** [Explore this example &#8594;](https://demo.mobiscroll.com/react/timeline/colors-invalids-css-class#)
+- [Explore this example &#8594;](https://demo.mobiscroll.com/react/timeline/colors-invalids-css-class#)

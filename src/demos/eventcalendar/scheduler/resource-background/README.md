@@ -12,6 +12,8 @@ The output could be a custom background to individual resources or columns and i
 - Resource selection, where the selected resource has a different background.
 - Setting different backgrounds for the resource titles and grid columns.
 
+- **Interested in highlighting date ranges only?** [Explore this example &#8594;](https://demo.mobiscroll.com/react/scheduler/colored-cell-background#)
+
 ## Related demos
 
-- **Interested in highlighting date ranges only?** [Explore this example &#8594;](https://demo.mobiscroll.com/react/scheduler/colored-cell-background#)
+- [Explore this example &#8594;](https://demo.mobiscroll.com/react/scheduler/colored-cell-background#)

@@ -15,6 +15,8 @@ Use presets with pre-defined colors on top of the theme colors. Every theme ship
 - Light &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 - Dark &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
+- **Customize the colors or use your own colors:** Learn how to change the Sass variables for the presets →
+
 ## Related demos
 
-- **Customize the colors or use your own colors:** Learn how to change the Sass variables for the presets →
+- Learn how to change the Sass variables for the presets →

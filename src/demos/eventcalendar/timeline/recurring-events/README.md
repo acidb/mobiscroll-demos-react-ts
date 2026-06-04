@@ -10,5 +10,4 @@ You can pass the recurrence rule in the `recurring` property of the event as an 
 
 Use the configurator to experiment, build strings and objects that you can grab and use.
 
-Interested in adding recurrence configuration to your UI?&nbsp;
-[Take a look at this add/edit dialog &#8594;](https://demo.mobiscroll.com/react/eventcalendar/recurring-event-add-edit-dialog#)
+- **Interested in adding recurrence configuration to your UI?** [Take a look at this add/edit dialog &#8594;](https://demo.mobiscroll.com/react/eventcalendar/recurring-event-add-edit-dialog#)

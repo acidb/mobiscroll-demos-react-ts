@@ -11,6 +11,8 @@ The main difference between the two rendering modes is how the picker is laid ou
 Use the date picker on an existing form field, custom input or use it on Mobiscroll form fields. You can also embed it directly into your page.
 When linked to an input, the component will be shown on focus or when someone clicks on the field. Alternatively, you can leave the input editable and show the component only on a button click.
 
+- **Handle different screen sizes by setting it up responsively** [Check out the responsive demo →](https://demo.mobiscroll.com/react/datetime/responsive#)
+
 ## Related demos
 
-- **Handle different screen sizes by setting it up responsively** [Check out the responsive demo →](https://demo.mobiscroll.com/react/datetime/responsive#)
+- [Check out the responsive demo →](https://demo.mobiscroll.com/react/datetime/responsive#)

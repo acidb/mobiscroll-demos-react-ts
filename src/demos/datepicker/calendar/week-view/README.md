@@ -8,6 +8,8 @@ Show a week calendar instead of a monthly calendar view to save space. By settin
 
 You can dynamically change the number of weeks or switch between month and week view without the need for recycling the whole component.
 
+- **Interested in switching week and month view?** [Learn how to set up switch inside the calendar →](https://demo.mobiscroll.com/react/calendar/week-to-month#)
+
 ## Related demos
 
-- **Interested in switching week and month view?** [Learn how to set up switch inside the calendar →](https://demo.mobiscroll.com/react/calendar/week-to-month#)
+- [Learn how to set up switch inside the calendar →](https://demo.mobiscroll.com/react/calendar/week-to-month#)

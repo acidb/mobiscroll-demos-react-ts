@@ -16,6 +16,8 @@ Icon support is built in along with three different styles:
 - flat buttons
 - outlined buttons
 
+- **Customize the look & feel:** [See how to apply color presets →](https://demo.mobiscroll.com/react/forms/button-segmented-stepper-colors#)
+
 ## Related demos
 
-- **Customize the look & feel:** [See how to apply color presets →](https://demo.mobiscroll.com/react/forms/button-segmented-stepper-colors#)
+- [See how to apply color presets →](https://demo.mobiscroll.com/react/forms/button-segmented-stepper-colors#)

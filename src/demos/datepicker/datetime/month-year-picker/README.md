@@ -8,6 +8,8 @@ Customize the wheels and format the date picker for month & year. Choose a `mont
 
 This and even more can be done with the `dateWheels` setting.
 
+- **Interested in changing the date format?** [Explore formatting options →](https://demo.mobiscroll.com/react/datetime/formatting-return-values#)
+
 ## Related demos
 
-- **Interested in changing the date format?** [Explore formatting options →](https://demo.mobiscroll.com/react/datetime/formatting-return-values#)
+- [Explore formatting options →](https://demo.mobiscroll.com/react/datetime/formatting-return-values#)

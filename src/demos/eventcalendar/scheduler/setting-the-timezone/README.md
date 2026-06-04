@@ -4,7 +4,7 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 
 ## Demo description
 
-The event calendar works with local times by default, but ships with support for changing the timezone. The conversions and correct output relies on either of the two external libraries: [luxon](https://moment.github.io/luxon/) or [moment-timezone](https://momentjs.com/timezone/). For installing and using these libraries check out this guide.
+The event calendar works with local times by default, but ships with support for changing the timezone. The conversions and correct output relies on either of these three external libraries: [luxon](https://moment.github.io/luxon/), [moment-timezone](https://momentjs.com/timezone/) and [day.js](https://day.js.org/). For installing and using these libraries check out this guide.
 
 There are two angles regarding timezones:
 
@@ -15,5 +15,4 @@ specifically for the event using the `timezone` property of the [event data](htt
 
 - `displayTimezone` - the calendar displays the events in this timezone. The date-times will be converted from the `dataTimezone` and displayed accordingly. It is `'local'` by default
 
-Enable switching the timezone in the UI?&nbsp;
-[Learn how to dynamically change timezones &#8594;](https://demo.mobiscroll.com/react/scheduler/multiple-timezone-support#)
+- **Enable switching the timezone in the UI?** [Learn how to dynamically change timezones &#8594;](https://demo.mobiscroll.com/react/scheduler/multiple-timezone-support#)

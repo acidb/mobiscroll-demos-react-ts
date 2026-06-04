@@ -18,8 +18,7 @@ To disable past event creation and manipulation, a couple of things need to be h
 
 `onEventCreate`
 
- lifecycle events
-
+lifecycle events
 - **Give feedback to the user** - optionally, a toast can be displayed to give feedback to the user why an event cannot be dropped, moved and created in the past. For this we can use the
 
 `onEventCreateFailed`
@@ -28,4 +27,35 @@ To disable past event creation and manipulation, a couple of things need to be h
 
 `onEventUpdateFailed`
 
- lifecycle events
+lifecycle events
+
+## Implementation instructions
+
+- **Lock past events** Set the event object's `editable` property to `false` for events that should remain fixed on past dates.
+- **Use lifecycle validation** Apply the past-date checks in `onEventCreate` and `onEventUpdate` to prevent changes to past occurrences when needed.
+- **Show feedback on blocked actions** Use `onEventCreateFailed` and `onEventUpdateFailed` to display a toast or similar feedback when creating, moving, or updating past events is not allowed.
+
+## What this demo shows
+
+- A desktop month view event calendar with multiple events displayed directly in the month grid.
+- **Header** Standard month navigation controls are shown in the header, including previous and next arrows, month and year navigation, and a Today button.
+- **Past dates** Day cells before today are disabled and rendered with a gray background.
+- **Disabled past days** Disabled past dates block event creation and drag and drop interactions on those cells.
+- **Past events** Events on past dates remain visible, but they cannot be moved or repositioned.
+- **Failed past updates** If a user tries to move a past event, a toast appears at the bottom center with the message `Can't move past events.`
+- **Event overflow** The number of visible event labels in a day cell depends on the available vertical space.
+- **More events popup** When not all events fit in a day cell, an `X more` label appears, where `X` is the number of hidden events.
+- **Popover** Clicking the `X more` label opens a popup that shows the additional events for that day.
+- **Selection** Clicking an event highlights the selected event label.
+- **Event creation** Users can create events on allowed dates by dragging across calendar cells or by double-clicking a day cell.
+- **Hover on past days** Hovering a disabled past day shows a disabled icon.
+- **Hover on future days** Hovering a future day highlights the day number in the top-right corner with a gray background.
+- **Day selection** Clicking the empty area of a future day cell selects that day and highlights the day number in blue.
+- **Future dates** Future day cells remain interactive and support new event creation.
+
+## Best for
+
+- **Booking and scheduling flows** Preventing users from creating or changing events in the past when only current and future availability should be managed.
+- **Operational calendars** Keeping historical calendar data fixed for teams that use the month view for planning upcoming work, appointments, or activities.
+- **Audit-sensitive workflows** Protecting past entries from accidental edits in cases where historical event records should stay unchanged.
+- **Mixed-interaction month views** Allowing users to keep creating and editing future events while clearly separating past dates as read-only.

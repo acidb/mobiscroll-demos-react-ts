@@ -4,7 +4,7 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 
 ## Demo description
 
-The calendar works with local times by default, but ships with support for changing the timezone. The conversions and correct output relies on either of the two external libraries: [luxon](https://moment.github.io/luxon/) or [moment-timezone](https://momentjs.com/timezone/). For installing and using these libraries check out this guide.
+The calendar works with local times by default, but ships with support for changing the timezone. The conversions and correct output relies on either of these three external libraries: [luxon](https://moment.github.io/luxon/), [moment-timezone](https://momentjs.com/timezone/) and [day.js](https://day.js.org/). For installing and using these libraries check out this guide.
 
 There are two angles regarding timezones:
 

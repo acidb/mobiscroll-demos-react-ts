@@ -16,5 +16,4 @@ Drag to resize and drag to move is enabled. Events can be reordered and resized.
 
 Delete can be implemented inside the edit dialog with a button. It's just a matter of removing it from the data object. If a dialog is not shown on click, focused events can be deleted with the *backspace* and *delete* keys.
 
-Interested in adding recurrence configuration?&nbsp;
-[Check out this example &#8594;](https://demo.mobiscroll.com/react/eventcalendar/recurring-event-add-edit-dialog#)
+- **Interested in adding recurrence configuration?** [Check out this example &#8594;](https://demo.mobiscroll.com/react/eventcalendar/recurring-event-add-edit-dialog#)

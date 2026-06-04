@@ -14,6 +14,8 @@ Use the
 
  lifecycle event to load the data runtime. You can [learn about lifecycle events](https://demo.mobiscroll.com/react/timeline/event-hooks#) and places where to drop logic to customize the experience.
 
+- **Interested in loading events from Google Calendar?** [Show events from Google Calendar &#8594;](https://demo.mobiscroll.com/react/scheduler/load-events-from-google-calendar#)
+
 ## Related demos
 
-- **Interested in loading events from Google Calendar?** [Show events from Google Calendar &#8594;](https://demo.mobiscroll.com/react/scheduler/load-events-from-google-calendar#)
+- [Show events from Google Calendar &#8594;](https://demo.mobiscroll.com/react/scheduler/load-events-from-google-calendar#)

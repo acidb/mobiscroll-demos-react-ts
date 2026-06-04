@@ -6,6 +6,8 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 
 RTL support is built in and can be explicitly controlled through the `rtl` option. If not set, it is inherited from the `locale` settings.
 
+- **Explore the different locales** [Check out this example →](https://demo.mobiscroll.com/react/select/localization#)
+
 ## Related demos
 
-- **Explore the different locales** [Check out this example →](https://demo.mobiscroll.com/react/select/localization#)
+- [Check out this example →](https://demo.mobiscroll.com/react/select/localization#)

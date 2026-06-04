@@ -10,6 +10,8 @@ When you want to update the shape you can simply use CSS and override the stylin
 
 If you need to show different shapes, you can pass a custom CSS class in the `markCssClass` property of the marked option. Use it to show triangles, squares and dots for different marks.
 
+- **What else can you use to add extra information to the day cells?** [Learn how to add labels and color days →](https://demo.mobiscroll.com/react/range/dots-colors-labels#)
+
 ## Related demos
 
-- **What else can you use to add extra information to the day cells?** [Learn how to add labels and color days →](https://demo.mobiscroll.com/react/range/dots-colors-labels#)
+- [Learn how to add labels and color days →](https://demo.mobiscroll.com/react/range/dots-colors-labels#)

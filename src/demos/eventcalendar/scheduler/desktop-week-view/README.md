@@ -8,5 +8,4 @@ Render a full weeks worth of schedule on the screen. The header with days of the
 
 The current hour is displayed so that upcoming events can be spotted easily.
 
-Interested in daily schedule?&nbsp;
-[Explore this example &#8594;](https://demo.mobiscroll.com/react/scheduler/mobile-day-view#)
+- **Interested in daily schedule?** [Explore this example &#8594;](https://demo.mobiscroll.com/react/scheduler/mobile-day-view#)

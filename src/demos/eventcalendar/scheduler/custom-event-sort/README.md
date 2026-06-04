@@ -24,5 +24,4 @@ The event layout process determines the visual positioning and dimensions of eve
 
 The `order` property of the event data can be used to override the default ordering. The `order` property takes precedence over the default rules. If two events have the same order value, the default rules apply. For a more advanced order logic, the eventOrder option can be used which expects a function that compares two events and returns an order (-1 or 1).
 
-Do you want to learn about the event ordering?&nbsp;
-[Learn more about it in the documentation &#8594;](https://docs.mobiscroll.com/react/eventcalendar/scheduler#event-order)
+- **Do you want to learn about the event ordering?** [Learn more about it in the documentation &#8594;](https://docs.mobiscroll.com/react/eventcalendar/scheduler#event-order)

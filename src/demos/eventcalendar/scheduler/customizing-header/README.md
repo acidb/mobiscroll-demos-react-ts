@@ -19,11 +19,15 @@ For changing the order the controls are laid out, you only need to set up the `r
 
 For a custom order on a theme to theme basis, you will need to use a little CSS. [Flex layout](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) makes reordering easy. It's just a matter of setting the order in CSS. For material use the `.mbsc-material`, for windows the `.mbsc-windows` prefix and for iOS it is `.mbsc-ios` class. Eg.:
 
-`.mbsc-material .md-header-filter-prev { order: 1; }
+```css
+.mbsc-material .md-header-filter-prev { order: 1; }
 .mbsc-material .md-header-filter-next { order: 2; }
 .mbsc-material .md-header-filter-controls { order: 3; }
-.mbsc-material .md-header-filter-today { order: 4; }`
+.mbsc-material .md-header-filter-today { order: 4; }
+```
+
+- **Want to add a filter to the header?** [Check out the next example &#8594;](https://demo.mobiscroll.com/react/eventcalendar/resource-filtering-in-header#)
 
 ## Related demos
 
-- **Want to add a filter to the header?** [Check out the next example &#8594;](https://demo.mobiscroll.com/react/eventcalendar/resource-filtering-in-header#)
+- [Check out the next example &#8594;](https://demo.mobiscroll.com/react/eventcalendar/resource-filtering-in-header#)

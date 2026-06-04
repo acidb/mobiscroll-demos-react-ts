@@ -11,6 +11,8 @@ Check out the [different display modes](https://demo.mobiscroll.com/react/popup/
 You have full control over what is shown within the popup.
 Use  [Mobiscroll form elements](https://demo.mobiscroll.com/react/forms/#) or any components that you are already using throughout your application.
 
+- **Interested in exploring the event calendar?** [Check out these examples →](https://demo.mobiscroll.com/react/eventcalendar/#)
+
 ## Related demos
 
-- **Interested in exploring the event calendar?** [Check out these examples →](https://demo.mobiscroll.com/react/eventcalendar/#)
+- [Check out these examples →](https://demo.mobiscroll.com/react/eventcalendar/#)

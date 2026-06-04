@@ -16,6 +16,8 @@ When passing `controls: ['time']`, it will render a time-only picker - scroller 
 
 You can change the `timeFormat` or rely on the formats coming from the [locale settings](https://demo.mobiscroll.com/react/datetime/localization#).
 
+- **Interested in date selection?** [Learn how to set up a date-only picker →](https://demo.mobiscroll.com/react/datetime/date-picker#)
+
 ## Related demos
 
-- **Interested in date selection?** [Learn how to set up a date-only picker →](https://demo.mobiscroll.com/react/datetime/date-picker#)
+- [Learn how to set up a date-only picker →](https://demo.mobiscroll.com/react/datetime/date-picker#)

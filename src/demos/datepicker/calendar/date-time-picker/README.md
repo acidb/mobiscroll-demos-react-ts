@@ -16,6 +16,8 @@ Use `controls: ['datetime']` for rendering a date & time picker within the same 
 
 For a time grid use the `controls: ['timegrid']` instead of `'time'`.
 
+- **Interested in dynamically switching between modes?** [Learn how to set up responsive behavior →](https://demo.mobiscroll.com/react/calendar/responsive#)
+
 ## Related demos
 
-- **Interested in dynamically switching between modes?** [Learn how to set up responsive behavior →](https://demo.mobiscroll.com/react/calendar/responsive#)
+- [Learn how to set up responsive behavior →](https://demo.mobiscroll.com/react/calendar/responsive#)

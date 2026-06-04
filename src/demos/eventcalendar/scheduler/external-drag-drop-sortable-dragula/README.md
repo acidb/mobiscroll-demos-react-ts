@@ -9,9 +9,7 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 Events can be scheduled by dragging and dropping an external item onto the scheduler with Mobiscroll `draggable`.
 In order for that to work you will need to have two things set up:
 
-- Enable the scheduler to receive external events by setting `externalDrop`
-
-to `true`.
+- Enable the scheduler to receive external events by setting `externalDrop` to `true`.
 
 - Initialize the external events (containers) as `draggable` components.
 
@@ -69,10 +67,7 @@ calendar and the
 
 You can also use the :::framework{only="vue"} `event-drag-leave` ::: :::framework{only="angular"} `onEventDragLeave` ::: :::framework{only="react"} `onEventDragLeave` ::: :::framework{only="javascript"} `onEventDragLeave` ::: :::framework{only="jquery"} `onEventDragLeave` ::: and :::framework{only="vue"} `event-drag-enter` ::: :::framework{only="angular"} `onEventDragEnter` ::: :::framework{only="react"} `onEventDragEnter` ::: :::framework{only="javascript"} `onEventDragEnter` ::: :::framework{only="jquery"} `onEventDragEnter` :::, and the drop container's `onItemDragEnter` and `onItemDragLeave` events to provide visual feedback or running custom logic during drag.
 
-if (pagemode != PageMode.Vue)
-{
-    Learn more from the external drag & drop documentation.
-}
+Learn more from the external drag & drop documentation.
 
 **Unscheduling events to SortableJS and Dragula lists**
 Dropping events from the Eventcalendar to [SortableJS](https://sortablejs.github.io/Sortable/) and
@@ -86,6 +81,8 @@ and `dragulaDraggable` plugins. To enable this behavior you will need to set the
 
 For details, and option lists see the `externalDrop` section in the documentation
 
+- **Looking for external drag into a calendar?** [Check out this example &#8594;](https://demo.mobiscroll.com/react/eventcalendar/external-drag-drop-sortable-dragula#)
+
 ## Related demos
 
-- **Looking for external drag into a calendar?** [Check out this example &#8594;](https://demo.mobiscroll.com/react/eventcalendar/external-drag-drop-sortable-dragula#)
+- [Check out this example &#8594;](https://demo.mobiscroll.com/react/eventcalendar/external-drag-drop-sortable-dragula#)

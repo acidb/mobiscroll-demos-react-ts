@@ -8,6 +8,8 @@ Single value selection is the default behavior of the picker. You can explicitly
 
 You can dynamically switch between single and multiple select.
 
+- **Looking for multiple select?** [Check out the next example →](https://demo.mobiscroll.com/react/select/multiple-select#)
+
 ## Related demos
 
-- **Looking for multiple select?** [Check out the next example →](https://demo.mobiscroll.com/react/select/multiple-select#)
+- [Check out the next example →](https://demo.mobiscroll.com/react/select/multiple-select#)

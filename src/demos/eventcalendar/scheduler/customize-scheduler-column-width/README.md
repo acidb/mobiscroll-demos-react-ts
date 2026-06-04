@@ -8,5 +8,4 @@ Customize the width of scheduler columns using the `.mbsc-schedule-col-width` CS
 
 When using resources, the defined width is applied to resource columns. If no resources are present, it applies to day columns instead.
 
-Interested in individually adjusting resource widths?&nbsp;
-[Discover how &#8594;](https://demo.mobiscroll.com/react/scheduler/dynamic-content-based-resource-width#)
+- **Interested in individually adjusting resource widths?** [Discover how &#8594;](https://demo.mobiscroll.com/react/scheduler/dynamic-content-based-resource-width#)

@@ -10,6 +10,8 @@ The timeline supports multiple calendar systems. You can control it with the `ca
 - **Jalali** - it is the default system of the Persian calendar and is included within the Farsi language pack
 - **Hijri** - it is included in the Arabic language pack
 
+- **Interested in localization?** [Explore this example &#8594;](https://demo.mobiscroll.com/react/timeline/localization#)
+
 ## Related demos
 
-- **Interested in localization?** [Explore this example &#8594;](https://demo.mobiscroll.com/react/timeline/localization#)
+- [Explore this example &#8594;](https://demo.mobiscroll.com/react/timeline/localization#)

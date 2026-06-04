@@ -16,6 +16,8 @@ Use the touchUi option to switch between touch optimized mobile rendering and po
 
 The defaults change on a theme to theme basis. The `ios` theme comes with `bottom` on mobile and `anchored` on desktop while the `material` and `windows` themes have `center` on mobile and `anchored` on desktop.
 
+- **Want to see how to set up responsiveness?** [Check out the previous example →](https://demo.mobiscroll.com/react/datetime/responsive#)
+
 ## Related demos
 
-- **Want to see how to set up responsiveness?** [Check out the previous example →](https://demo.mobiscroll.com/react/datetime/responsive#)
+- [Check out the previous example →](https://demo.mobiscroll.com/react/datetime/responsive#)

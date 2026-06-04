@@ -8,6 +8,8 @@ Use the segmented control to render multiple-choice lists with single or multipl
 
 Break the monotony of event add/edit forms by mixing it in with other inline fields.
 
+- **Interested in add/edit screens for events?** [Check out how the segmented can be used in an event form →](https://demo.mobiscroll.com/react/eventcalendar/create-read-update-delete-CRUD#)
+
 ## Related demos
 
-- **Interested in add/edit screens for events?** [Check out how the segmented can be used in an event form →](https://demo.mobiscroll.com/react/eventcalendar/create-read-update-delete-CRUD#)
+- [Check out how the segmented can be used in an event form →](https://demo.mobiscroll.com/react/eventcalendar/create-read-update-delete-CRUD#)

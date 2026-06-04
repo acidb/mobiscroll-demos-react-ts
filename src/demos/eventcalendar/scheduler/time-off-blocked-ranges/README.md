@@ -28,6 +28,8 @@ The built-in logic of how the calendar handles validation on user interaction ca
 
 If you're interested in invalids for a given range (including recurring occurrences), you can use the `getInvalids` function.
 
+- **Want to prevent double booking?** [Learn how to manage event overlaps &#8594;](https://demo.mobiscroll.com/react/scheduler/prevent-double-booking-events#)
+
 ## Related demos
 
-- **Want to prevent double booking?** [Learn how to manage event overlaps &#8594;](https://demo.mobiscroll.com/react/scheduler/prevent-double-booking-events#)
+- [Learn how to manage event overlaps &#8594;](https://demo.mobiscroll.com/react/scheduler/prevent-double-booking-events#)

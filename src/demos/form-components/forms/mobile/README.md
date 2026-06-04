@@ -9,6 +9,8 @@ Easily create single column layouts and render mobile forms using the various fo
 
 Use the global options for setting the theme, localization options and everything that should be consistent across your app.
 
+- **Building for larger screens?** [See how to make forms for tablets & desktops →](https://demo.mobiscroll.com/react/forms/desktop#)
+
 ## Related demos
 
-- **Building for larger screens?** [See how to make forms for tablets & desktops →](https://demo.mobiscroll.com/react/forms/desktop#)
+- [See how to make forms for tablets & desktops →](https://demo.mobiscroll.com/react/forms/desktop#)

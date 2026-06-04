@@ -14,6 +14,8 @@ be used to load the data on scroll rather than load everything on initial page r
 
 This dramatically improves performance in case of a large event and resource count since not all data is loaded in memory from start.
 
+- **Looking to load events on scroll?** [Check out this example &#8594;](https://demo.mobiscroll.com/react/timeline/load-events-on-scroll#)
+
 ## Related demos
 
-- **Looking to load events on scroll?** [Check out this example &#8594;](https://demo.mobiscroll.com/react/timeline/load-events-on-scroll#)
+- [Check out this example &#8594;](https://demo.mobiscroll.com/react/timeline/load-events-on-scroll#)

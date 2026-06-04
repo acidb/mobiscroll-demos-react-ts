@@ -8,6 +8,8 @@ By default, the agenda doesn’t render days with no events. However, in some ca
 especially when you want to add extra functionalities for those days or make it easier to schedule future events.
 In such cases, you can use the `showEmptyDays` property under the `view.agenda` option.
 
+- **Interested in how to customize the day headers?** [Check out this example →](https://demo.mobiscroll.com/react/agenda/customizing-day-header#)
+
 ## Related demos
 
-- **Interested in how to customize the day headers?** [Check out this example →](https://demo.mobiscroll.com/react/agenda/customizing-day-header#)
+- [Check out this example →](https://demo.mobiscroll.com/react/agenda/customizing-day-header#)

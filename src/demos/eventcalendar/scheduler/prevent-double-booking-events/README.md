@@ -17,5 +17,4 @@ If set to `false`, the [resource](https://demo.mobiscroll.com/react/scheduler/re
 
 Give feedback to the user - optionally, a toast can be displayed to explain why an event cannot be dropped, moved or created. For this we can use the `onEventCreateFailed` and `onEventUpdateFailed` lifecycle events.
 
-Looking to implement time off or block out ranges?&nbsp;
-[Learn how to add lunch breaks, working hours and disable weekends &#8594;](https://demo.mobiscroll.com/react/scheduler/time-off-blocked-ranges#)
+- **Looking to implement time off or block out ranges?** [Learn how to add lunch breaks, working hours and disable weekends &#8594;](https://demo.mobiscroll.com/react/scheduler/time-off-blocked-ranges#)

@@ -7,7 +7,6 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 Enforcing validation is essential to a great UX. First make sure to have the [min & max values right](https://demo.mobiscroll.com/react/calendar/min-max-restrictions#) and then work your way through disabled values.
 
 Depending on your situation, you have two options:
-
 - **Set invalid** - set the invalids through the `invalid` option.
 - **Set valid** - set the valids through the `valid` option.
 
@@ -22,5 +21,4 @@ Having invalids set up correctly not just enhances the UX, but improves performa
 
 The passed date-times can also contain timezone data which requires a `timezonePlugin` to be interpreted correctly.
 
-Using date-times across different timezones?&nbsp;
-[Learn more about timezone support →](https://demo.mobiscroll.com/react/calendar/setting-the-picker-timezone#)
+- **Using date-times across different timezones?** [Learn more about timezone support →](https://demo.mobiscroll.com/react/calendar/setting-the-picker-timezone#)

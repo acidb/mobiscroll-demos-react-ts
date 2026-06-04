@@ -27,3 +27,18 @@ There are cases when you are using a third party library, something like md-boos
 `showEventTooltip` option and use the third-party tooltip accordingly.
 In case of md-boostrap, you can add the tooltip directive to the [custom event template](https://demo.mobiscroll.com/react/timeline/timeline-custom-event-rendering#)
 so that the library knows where and when to show the tooltip.
+
+## Implementation instructions
+
+- Use `timeline: { type: 'day', startDay: 1, endDay: 5, startTime: '08:00', endTime: '16:00' }` — Mon–Fri, 8am–4pm.
+- Define 3 doctor resources, each with `id`, `name`, and `color`. Each appointment event carries custom properties: `age`, `confirmed` (boolean), `reason`, and `location`, in addition to the standard `title`, `start`, `end`, and `resource`.
+- Set `showEventTooltip: false` to suppress the native browser tooltip. Set `dragToMove: true`; disable all create and resize interactions.
+- Use a `Popup` component as the custom tooltip. Configure it with `display="anchored"`, `showOverlay={false}`, `scrollLock={false}`, `touchUi={false}`, `contentPadding={false}`. The `anchor` prop is set dynamically to the hovered event's DOM element, obtained via `args.domEvent.target.closest('.mbsc-timeline-event')` inside the hover handler.
+- **Tooltip open/close logic** — use a shared timer ref to bridge the gap between the event element and the popup:
+  - `onEventHoverIn` / `onEventClick`: clear any pending close timer, populate popup state from `args.event` (title, age, confirmed, reason, location) and `args.resourceObj` (color), format the time range with `formatDate`, set the anchor, and open the popup.
+  - `onEventHoverOut`: start a 200ms timer to close the popup.
+  - Mouse-enter on the popup itself: clear the close timer so the popup stays open when the cursor moves from the event onto the popup.
+  - Mouse-leave on the popup: start a 200ms close timer.
+  - `onEventDragStart`: close the popup immediately.
+- **Popup content**: a colored header showing patient name + age and the formatted appointment time (color driven by `args.resourceObj.color`); a body with the appointment status (Confirmed/Canceled) and a toggle button (`Button color="warning"|"success" variant="outline"`), reason for visit, location, a "View patient file" button (`color="secondary"`), and a "Delete appointment" button (`color="danger" variant="outline"`).
+- Use a `Toast` component to confirm user actions: status toggle, file view, and deletion.

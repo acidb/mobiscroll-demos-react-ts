@@ -14,6 +14,8 @@ The passed date-times can also contain timezone data which requires a `timezoneP
 
 Use the `onPageLoading` lifecycle event to load the data runtime. You can [learn about lifecycle events](https://demo.mobiscroll.com/react/calendar/event-hooks#) and places where to drop logic to customize the experience.
 
+- **Looking to show event data and use multiple labels?** [Check out the event calendar →](https://demo.mobiscroll.com/react/eventcalendar/event-labels#)
+
 ## Related demos
 
-- **Looking to show event data and use multiple labels?** [Check out the event calendar →](https://demo.mobiscroll.com/react/eventcalendar/event-labels#)
+- [Check out the event calendar →](https://demo.mobiscroll.com/react/eventcalendar/event-labels#)

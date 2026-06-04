@@ -50,5 +50,4 @@ You can also use the :::framework{only="vue"} `event-drag-leave` ::: :::framewor
 
 Learn more from the external drag & drop documentation.
 
-Looking for external drag into a calendar?&nbsp;
-[Check out this example &#8594;](https://demo.mobiscroll.com/react/eventcalendar/external-drag-drop-sortable-dragula#)
+- **Looking for external drag into a calendar?** [Check out this example &#8594;](https://demo.mobiscroll.com/react/eventcalendar/external-drag-drop-sortable-dragula#)

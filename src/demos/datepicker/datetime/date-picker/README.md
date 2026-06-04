@@ -16,6 +16,8 @@ When passing `controls: ['date']`, the date picker will render a date-only picke
 
 You can further customize the `dateFormat` and `dateWheels` to fine-tune the UX... use it as a credit card expiration picker.
 
+- **Interested in dynamically switching between modes?** [Learn how to set up responsive behavior →](https://demo.mobiscroll.com/react/datetime/responsive#)
+
 ## Related demos
 
-- **Interested in dynamically switching between modes?** [Learn how to set up responsive behavior →](https://demo.mobiscroll.com/react/datetime/responsive#)
+- [Learn how to set up responsive behavior →](https://demo.mobiscroll.com/react/datetime/responsive#)

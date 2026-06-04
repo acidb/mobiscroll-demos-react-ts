@@ -8,5 +8,4 @@ If the context requires users being able to change the timezone on the fly, you 
 
 Set the timezone of the incoming data through the `dataTimezone` - eg. `'utc'`,  and set the display timezone through the `displayTimezone` - eg. `'America/Los_Angeles'`
 
-Wanna show multiple timezone tracks?&nbsp;
-[Check out the next example &#8594;](https://demo.mobiscroll.com/react/scheduler/show-multiple-timezones#)
+- **Wanna show multiple timezone tracks?** [Check out the next example &#8594;](https://demo.mobiscroll.com/react/scheduler/show-multiple-timezones#)

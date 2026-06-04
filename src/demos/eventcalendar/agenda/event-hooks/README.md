@@ -8,6 +8,8 @@ The agenda ships with different hooks for deep customization. Events are trigger
 
 While users interact with the UI events like `onEventClick`, `onInit`, `onSelectedDateChange` ... will be triggered.
 
+- **For a complete list of events go to the documentation** See available lifecycle events →
+
 ## Related demos
 
-- **For a complete list of events go to the documentation** See available lifecycle events →
+- See available lifecycle events →

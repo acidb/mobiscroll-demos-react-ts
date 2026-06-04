@@ -8,6 +8,8 @@ The components are fully localized.
 In case of the agenda this covers date and time format, button copy, rtl and more.
 You can see how each example shows up by clicking on the small flag icon or checking the examples below.
 
+- **All settings can be manually overridden** See what options the localization impacts →
+
 ## Related demos
 
-- **All settings can be manually overridden** See what options the localization impacts →
+- See what options the localization impacts →

@@ -101,7 +101,7 @@ const App: FC = () => {
 
   const renderSidebar = useCallback((resource: MbscResource) => <div>{resource.name} Sidebar</div>, []);
 
-  const renderDay = useCallback(
+  const renderTimelineDay = useCallback(
     (day: MbscCalendarDayData) => {
       const isHover = hoverDate && day.date.getTime() === hoverDate.getTime();
       const hoverClass = isHover ? ' mds-highlight-col-hover' : '';
@@ -127,7 +127,7 @@ const App: FC = () => {
         resources={myResources}
         renderCell={renderCell}
         renderSidebar={renderSidebar}
-        renderDay={renderDay}
+        renderTimelineDay={renderTimelineDay}
         renderDayFooter={renderDayFooter}
         onCellHoverIn={handleCellHoverIn}
         onCellHoverOut={handleCellHoverOut}

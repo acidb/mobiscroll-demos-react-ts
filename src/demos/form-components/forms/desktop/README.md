@@ -8,6 +8,8 @@ Use the grid layout to create single and multiple column forms suited for medium
 
 Use the global options for setting the theme, localization options and everything that should be consistent across your app.
 
+- **Looking for mobile forms?** [Learn how to create full width, single column forms →](https://demo.mobiscroll.com/react/forms/mobile#)
+
 ## Related demos
 
-- **Looking for mobile forms?** [Learn how to create full width, single column forms →](https://demo.mobiscroll.com/react/forms/mobile#)
+- [Learn how to create full width, single column forms →](https://demo.mobiscroll.com/react/forms/mobile#)

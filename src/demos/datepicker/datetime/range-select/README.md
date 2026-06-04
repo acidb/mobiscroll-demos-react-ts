@@ -12,6 +12,8 @@ Besides [invalidating selection that is before and after a specific date](https:
 
 Dynamically switching between single, multiple or range select can be done with option changes.
 
+- **Looking for more range picker?** [Learn how to customize range selection →](https://demo.mobiscroll.com/react/range/#)
+
 ## Related demos
 
-- **Looking for more range picker?** [Learn how to customize range selection →](https://demo.mobiscroll.com/react/range/#)
+- [Learn how to customize range selection →](https://demo.mobiscroll.com/react/range/#)

@@ -8,6 +8,8 @@ Use the `dateFormat`, `timeFormat` options to customize how the values show up i
 
 Besides customizing the date and time formats you can reorder the time picker wheels and change its formats with the `timeWheels` options.
 
+- **Interested in learning about localization?** [Check out how the return format changes based on locale →](https://demo.mobiscroll.com/react/range/localization#)
+
 ## Related demos
 
-- **Interested in learning about localization?** [Check out how the return format changes based on locale →](https://demo.mobiscroll.com/react/range/localization#)
+- [Check out how the return format changes based on locale →](https://demo.mobiscroll.com/react/range/localization#)

@@ -13,6 +13,8 @@ The popup has four built-in display modes that can be controlled through the `di
 
 The defaults change on a theme-to-theme basis. it defaults to `bottom` for the iOS theme and to `center` for all other themes.
 
+- **Want to see how to set up responsiveness?** [Check out this example →](https://demo.mobiscroll.com/react/popup/responsive#)
+
 ## Related demos
 
-- **Want to see how to set up responsiveness?** [Check out this example →](https://demo.mobiscroll.com/react/popup/responsive#)
+- [Check out this example →](https://demo.mobiscroll.com/react/popup/responsive#)

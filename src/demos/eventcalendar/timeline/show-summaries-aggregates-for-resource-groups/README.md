@@ -22,5 +22,4 @@ Whenever new bookings are made, updated or deleted, use the
 As we are working with variable event heights, make sure to set `eventHeight: 'variable'`
 which can be configured under the `view`. This is necessary if the actual booked events have a different height than the summary events (for parent resources).
 
-Variable event height is an experimental feature.&nbsp;
-[Learn more about it in the documentation &#8594;](https://docs.mobiscroll.com/react/eventcalendar/timeline#variable-event-height)
+- **Variable event height is an experimental feature.** [Learn more about it in the documentation &#8594;](https://docs.mobiscroll.com/react/eventcalendar/timeline#variable-event-height)
