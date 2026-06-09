@@ -1060,15 +1060,12 @@ function App() {
     [nowRef, currentViewStartRef, currentViewEndRef],
   );
 
-  const getEffectiveStatus = useCallback(
-    (ev: DispatchEvent): string => {
-      if (ev.status === 'actual') return ev.title === 'Completed' ? 'completed' : 'in progress';
-      if (ev.end && new Date(ev.end as string) <= nowRef.current) return 'completed';
-      if (ev.start && new Date(ev.start as string) < nowRef.current) return 'in progress';
-      return ev.status || 'scheduled';
-    },
-    [],
-  );
+  const getEffectiveStatus = useCallback((ev: DispatchEvent): string => {
+    if (ev.status === 'actual') return ev.title === 'Completed' ? 'completed' : 'in progress';
+    if (ev.end && new Date(ev.end as string) <= nowRef.current) return 'completed';
+    if (ev.start && new Date(ev.start as string) < nowRef.current) return 'in progress';
+    return ev.status || 'scheduled';
+  }, []);
 
   const getStatusFilteredEvents = useCallback(
     (events: DispatchEvent[], currentStatusFilters?: string[]): DispatchEvent[] => {
@@ -1078,21 +1075,18 @@ function App() {
     [statusFilters, getEffectiveStatus],
   );
 
-  const getMaxAvailableCapacity = useCallback(
-    (currentFilters?: Filters): number => {
-      const f = currentFilters !== undefined ? currentFilters : filtersRef.current;
-      let max = 0;
-      allResources.forEach((group) => {
-        if (f[group.id as string]) {
-          group.children.forEach((child) => {
-            if (!String(child.id).includes('actual') && (child.capacity || 0) > max) max = child.capacity!;
-          });
-        }
-      });
-      return max;
-    },
-    [],
-  );
+  const getMaxAvailableCapacity = useCallback((currentFilters?: Filters): number => {
+    const f = currentFilters !== undefined ? currentFilters : filtersRef.current;
+    let max = 0;
+    allResources.forEach((group) => {
+      if (f[group.id as string]) {
+        group.children.forEach((child) => {
+          if (!String(child.id).includes('actual') && (child.capacity || 0) > max) max = child.capacity!;
+        });
+      }
+    });
+    return max;
+  }, []);
 
   const refreshJobList = useCallback(
     (currentFilters?: Filters, currentScheduledIds?: number[], rangeStart?: Date, rangeDays?: number) => {
@@ -1173,7 +1167,8 @@ function App() {
             const aOff = possibleOffsets[Math.floor(Math.random() * possibleOffsets.length)] * 60000;
             let cAStart = new Date(evStart.getTime() + dOff);
             if (!(cAStart >= evStart && cAStart < evEnd)) cAStart = evStart;
-            const drop0 = event.drop![0] instanceof Date ? (event.drop![0] as Date).getTime() : new Date(event.drop![0] as string).getTime();
+            const drop0 =
+              event.drop![0] instanceof Date ? (event.drop![0] as Date).getTime() : new Date(event.drop![0] as string).getTime();
             let cAEnd = new Date(drop0 + aOff);
             const minEnd = new Date(cAStart.getTime() + 30 * 60000);
             if (cAEnd < minEnd) cAEnd = minEnd;
@@ -1197,7 +1192,8 @@ function App() {
             events.push(cNewEvent);
           } else if (event.actualRef && event.actualRef.title !== 'Completed') {
             const aOff = possibleOffsets[Math.floor(Math.random() * possibleOffsets.length)] * 60000;
-            const drop0 = event.drop![0] instanceof Date ? (event.drop![0] as Date).getTime() : new Date(event.drop![0] as string).getTime();
+            const drop0 =
+              event.drop![0] instanceof Date ? (event.drop![0] as Date).getTime() : new Date(event.drop![0] as string).getTime();
             let cAEnd = new Date(drop0 + aOff);
             const minEnd = new Date((event.actualRef.start as Date).getTime() + 30 * 60000);
             if (cAEnd < minEnd) cAEnd = minEnd;

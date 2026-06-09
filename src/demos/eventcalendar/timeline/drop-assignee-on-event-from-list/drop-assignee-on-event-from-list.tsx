@@ -138,7 +138,11 @@ function MeetingEvent({
   }, []);
 
   return (
-    <div ref={setDropEl} className={`mds-drop-on-events-custom-event mbsc-flex ${dropState}`} style={{ borderLeft: `4px solid ${event.color}` }}>
+    <div
+      ref={setDropEl}
+      className={`mds-drop-on-events-custom-event mbsc-flex ${dropState}`}
+      style={{ borderLeft: `4px solid ${event.color}` }}
+    >
       <Dropcontainer element={dropEl} onItemDrop={handleItemDrop} onItemDragEnter={handleDragEnter} onItemDragLeave={handleDragLeave} />
       <div className="mds-drop-on-events-event-header mbsc-flex">
         <div className="mds-drop-on-events-event-title">{event.title}</div>

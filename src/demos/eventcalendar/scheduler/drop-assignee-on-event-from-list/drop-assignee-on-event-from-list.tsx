@@ -300,7 +300,9 @@ function EmployeeItem({ employee, count, onPointerDown }: EmployeeItemProps) {
       </div>
       <div className="mds-drop-on-events-employee-info mbsc-flex">
         <div className="mds-drop-on-events-employee-name">{employee.name}</div>
-        <div className="mds-drop-on-events-employee-count">{count > 0 ? count + ' meeting' + (count > 1 ? 's' : '') : 'No assignments'}</div>
+        <div className="mds-drop-on-events-employee-count">
+          {count > 0 ? count + ' meeting' + (count > 1 ? 's' : '') : 'No assignments'}
+        </div>
       </div>
       <Draggable element={el} dragData={employee} />
     </div>
@@ -355,7 +357,11 @@ function SchedulerEvent({ data, meetingsRef, onDrop, onFindConflict, onRemoveAtt
   }, []);
 
   return (
-    <div ref={setContainerEl} className={'mds-drop-on-events-custom-event mbsc-flex ' + dropClass} style={{ borderLeft: '4px solid ' + event.color }}>
+    <div
+      ref={setContainerEl}
+      className={'mds-drop-on-events-custom-event mbsc-flex ' + dropClass}
+      style={{ borderLeft: '4px solid ' + event.color }}
+    >
       <Dropcontainer element={containerEl} onItemDrop={handleDrop} onItemDragEnter={handleDragEnter} onItemDragLeave={handleDragLeave}>
         <div className="mds-drop-on-events-event-header mbsc-flex">
           <div className="mds-drop-on-events-event-title">{event.title as string}</div>

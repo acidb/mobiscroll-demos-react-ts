@@ -65,7 +65,14 @@ const App: FC = () => {
     const end = formatDate('YYYY-MM-DDTHH:mm:ss', args.viewEnd);
 
     getJson(
-      'https://trial.mobiscroll.com/load-data-scroll/?start=' + start + '&end=' + end + '&rstart=' + args.resourceStart + '&rend=' + args.resourceEnd,
+      'https://trial.mobiscroll.com/load-data-scroll/?start=' +
+        start +
+        '&end=' +
+        end +
+        '&rstart=' +
+        args.resourceStart +
+        '&rend=' +
+        args.resourceEnd,
       (data) => {
         setEvents(data.events);
         setToastOpen(true);
@@ -76,13 +83,7 @@ const App: FC = () => {
 
   return (
     <>
-      <Eventcalendar
-        view={myView}
-        data={myEvents}
-        resources={myResources}
-        groupBy="date"
-        onVirtualLoading={handleVirtualLoading}
-      />
+      <Eventcalendar view={myView} data={myEvents} resources={myResources} groupBy="date" onVirtualLoading={handleVirtualLoading} />
       <Toast message="Loading events..." duration={1000} isOpen={isToastOpen} onClose={handleToastClose} />
     </>
   );

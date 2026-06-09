@@ -1713,9 +1713,7 @@ const App: FC = () => {
         const shift: MyEvent = newEventList.find((ev) => ev.resource === event.resource && ev.id === event.shift)!;
 
         // Remove the deleted task id from the shift data
-        shift.tasks =
-          shift.tasks &&
-          shift.tasks.filter((t) => t !== event.id);
+        shift.tasks = shift.tasks && shift.tasks.filter((t) => t !== event.id);
       }
 
       setEvents(newEventList);
