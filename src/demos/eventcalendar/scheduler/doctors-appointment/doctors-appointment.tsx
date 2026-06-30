@@ -15,7 +15,7 @@ import {
   setOptions,
   Toast /* localeImport */,
 } from '@mobiscroll/react';
-import { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import { FC, useCallback, useMemo, useState } from 'react';
 import { dyndatetime } from '../../../../dyndatetime';
 import './doctors-appointment.css';
 
@@ -54,30 +54,12 @@ const Appointment: FC<{ data: MbscCalendarEvent }> = (props) => {
 const App: FC = () => {
   const doctors = useMemo<MbscResource[]>(
     () => [
-      {
-        id: 1,
-        name: 'Dr. Keila Delores',
-      },
-      {
-        id: 2,
-        name: 'Dr. Gene Cortez',
-      },
-      {
-        id: 3,
-        name: 'Dr. Paula Bush',
-      },
-      {
-        id: 4,
-        name: 'Dr. Pete Nichols',
-      },
-      {
-        id: 5,
-        name: 'Dr. Jean Pearson',
-      },
-      {
-        id: 6,
-        name: 'Dr. Thelma Cain',
-      },
+      { id: 1, name: 'Dr. Keila Delores' },
+      { id: 2, name: 'Dr. Gene Cortez' },
+      { id: 3, name: 'Dr. Paula Bush' },
+      { id: 4, name: 'Dr. Pete Nichols' },
+      { id: 5, name: 'Dr. Jean Pearson' },
+      { id: 6, name: 'Dr. Thelma Cain' },
     ],
     [],
   );
@@ -94,21 +76,7 @@ const App: FC = () => {
     [],
   );
 
-  const myInvalid = useMemo(
-    () => [
-      {
-        recurring: {
-          repeat: 'daily',
-          until: yesterday,
-        },
-      },
-      {
-        start: yesterday,
-        end: today,
-      },
-    ],
-    [],
-  );
+  const myInvalid = useMemo(() => [{ recurring: { repeat: 'daily', until: yesterday } }, { start: yesterday, end: today }], []);
 
   const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([
     {
@@ -185,44 +153,56 @@ const App: FC = () => {
     },
   ]);
 
-  const [appointments, setAppointments] = useState<MbscCalendarEvent[]>([
-    {
-      id: 'd1',
-      title: 'Winfred Lesley',
-      job: 'Teeth whitening',
-      color: '#d1891f',
-      start: dyndatetime('y,m,d,8'),
-      end: dyndatetime('y,m,d,9,30'),
-      unscheduled: true,
-    },
-    {
-      id: 'd2',
-      title: 'Rosalin Delice',
-      job: 'Crown and bridge',
-      color: '#1ca11a',
-      start: dyndatetime('y,m,d,8'),
-      end: dyndatetime('y,m,d,10'),
-      unscheduled: true,
-    },
-    {
-      id: 'd3',
-      title: 'Macy Steven',
-      job: 'Root canal treatment',
-      color: '#cb3939',
-      start: dyndatetime('y,m,d,10'),
-      end: dyndatetime('y,m,d,12,30'),
-      unscheduled: true,
-    },
-    {
-      id: 'd4',
-      title: 'Lavern Cameron',
-      job: 'Tartar removal',
-      color: '#a446b5',
-      start: dyndatetime('y,m,d,12'),
-      end: dyndatetime('y,m,d,13'),
-      unscheduled: true,
-    },
-  ]);
+  const [appointments, setAppointments] = useState<MbscCalendarEvent[]>(
+    [
+      {
+        id: 'd1',
+        title: 'Winfred Lesley',
+        job: 'Teeth whitening',
+        color: '#d1891f',
+        start: dyndatetime('y,m,d,8'),
+        end: dyndatetime('y,m,d,9,30'),
+        unscheduled: true,
+      },
+      {
+        id: 'd2',
+        title: 'Rosalin Delice',
+        job: 'Crown and bridge',
+        color: '#1ca11a',
+        start: dyndatetime('y,m,d,8'),
+        end: dyndatetime('y,m,d,10'),
+        unscheduled: true,
+      },
+      {
+        id: 'd3',
+        title: 'Macy Steven',
+        job: 'Root canal treatment',
+        color: '#cb3939',
+        start: dyndatetime('y,m,d,10'),
+        end: dyndatetime('y,m,d,12,30'),
+        unscheduled: true,
+      },
+      {
+        id: 'd4',
+        title: 'Lavern Cameron',
+        job: 'Tartar removal',
+        color: '#a446b5',
+        start: dyndatetime('y,m,d,12'),
+        end: dyndatetime('y,m,d,13'),
+        unscheduled: true,
+      },
+    ].map((event) => {
+      const start = event.start ? new Date(event.start as string) : event.start;
+      const end = event.end ? new Date(event.end as string) : event.end;
+      return {
+        ...event,
+        start,
+        end,
+        // Mark past events as fixed by setting the event.editable property to false
+        editable: !!(start && today < start),
+      };
+    }),
+  );
 
   const [contBg, setContBg] = useState('');
   const [myColors, setColors] = useState<MbscCalendarColor[]>([]);
@@ -314,16 +294,6 @@ const App: FC = () => {
   const handleToastClose = useCallback(() => {
     setToastOpen(false);
   }, []);
-
-  useEffect(() => {
-    for (const event of myEvents) {
-      // Convert dates to date objects
-      event.start = event.start ? new Date(event.start as string) : event.start;
-      event.end = event.end ? new Date(event.end as string) : event.end;
-      // Mark past events as fixed by setting the event.editable property to false
-      event.editable = !!(event.start && today < event.start);
-    }
-  }, [myEvents]);
 
   return (
     <div className="mbsc-grid mbsc-no-padding">

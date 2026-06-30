@@ -1438,11 +1438,10 @@ function App() {
     (ev: ChangeEvent<HTMLInputElement>) => {
       const key = ev.target.value;
       if (key) {
-        tempFilters[key] = !tempFilters[key];
+        setTempFilters((currentTempFilters) => ({ ...currentTempFilters, [key]: !currentTempFilters[key] }));
       }
-      setTempFilters({ ...tempFilters });
     },
-    [tempFilters],
+    [],
   );
 
   const renderCustomResource = useCallback(

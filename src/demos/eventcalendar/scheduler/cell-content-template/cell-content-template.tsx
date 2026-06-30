@@ -117,20 +117,20 @@ const App: FC = () => {
     const d = cell.date.getDay();
     const icons = [];
 
-    (d === 1 || d === 5) &&
-      h === 9 &&
+    if ((d === 1 || d === 5) && h === 9) {
       icons.push(
         { icon: 'material-people', title: d === 1 ? 'Launch Meeting' : 'Sprint Review' },
         { icon: 'material-message', title: 'Coffee Break' },
       );
-    h === 13 && icons.push({ icon: 'bubbles', title: 'Lunch Time' });
-    d >= 1 && d <= 5 && h === 17 && icons.push({ icon: 'clock', title: 'Wrap Up' });
-    d === 2 && (h === 10 || h === 11) && icons.push({ icon: 'loop2', title: 'Dev Sync' });
-    h % 4 === 0 && icons.push({ icon: 'cogs', title: 'Health Check' });
-    h === 3 && icons.push({ icon: 'connection', title: 'Network Probe' });
-    h === 12 && icons.push({ icon: 'upload', title: 'Backup' });
-    h === 15 && icons.push({ icon: 'lock', title: 'Security Patch' });
-    d === 3 && h === 14 && icons.push({ icon: 'line-paperplane', title: 'Deploy Window' });
+    }
+    if (h === 13) icons.push({ icon: 'bubbles', title: 'Lunch Time' });
+    if (d >= 1 && d <= 5 && h === 17) icons.push({ icon: 'clock', title: 'Wrap Up' });
+    if (d === 2 && (h === 10 || h === 11)) icons.push({ icon: 'loop2', title: 'Dev Sync' });
+    if (h % 4 === 0) icons.push({ icon: 'cogs', title: 'Health Check' });
+    if (h === 3) icons.push({ icon: 'connection', title: 'Network Probe' });
+    if (h === 12) icons.push({ icon: 'upload', title: 'Backup' });
+    if (h === 15) icons.push({ icon: 'lock', title: 'Security Patch' });
+    if (d === 3 && h === 14) icons.push({ icon: 'line-paperplane', title: 'Deploy Window' });
 
     if (!icons.length) return null;
 

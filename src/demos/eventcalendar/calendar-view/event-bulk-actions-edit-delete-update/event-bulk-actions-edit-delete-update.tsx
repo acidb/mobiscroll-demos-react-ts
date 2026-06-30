@@ -37,8 +37,9 @@ const App: FC = () => {
   const [confirmMessage, setConfirmMessage] = useState<string>('');
   const [toastMessage, setToastMessage] = useState<string>('');
 
-  const { current: myView } = useRef<MbscEventcalendarView>({ calendar: { labels: true } });
   const calRef = useRef<Eventcalendar>(null);
+
+  const myView = useMemo<MbscEventcalendarView>(() => ({ calendar: { labels: true } }), []);
 
   const selectData = useMemo(
     () => [
@@ -60,22 +61,23 @@ const App: FC = () => {
     for (const event of events) {
       if (event.recurring) {
         const origEvent = event.original!;
-        let exc = (origEvent.recurringException as Array<string>) || [];
-        const newEvent = event;
-
-        newEvent.recurring = undefined;
-        newEvent.color = 'orange';
-        newEvent.id += '_' + formatDate('YYYY-MM-DD', new Date(event.start as string));
+        const newEvent = {
+          ...event,
+          recurring: undefined,
+          color: 'orange',
+          id: event.id + '_' + formatDate('YYYY-MM-DD', new Date(event.start as string)),
+        };
         eventsToUpdate = [...eventsToUpdate, newEvent];
-
-        exc = [...exc, event.start as string];
-        origEvent!.recurringException = exc;
+        const updatedOrigEvent = {
+          ...origEvent,
+          recurringException: [...((origEvent.recurringException as Array<string>) || []), event.start as string],
+        };
 
         // Update the event in the list
         const index = eventsToUpdate.findIndex((x) => x.id === origEvent.id);
-        eventsToUpdate.splice(index, 1, origEvent);
+        eventsToUpdate.splice(index, 1, updatedOrigEvent);
       } else {
-        const newEv = event;
+        const newEv = { ...event };
         newEv.color = 'orange';
         const index = eventsToUpdate.findIndex((x) => x.id === newEv.id);
         eventsToUpdate.splice(index, 1, newEv);
@@ -100,13 +102,14 @@ const App: FC = () => {
         for (const event of mySelectedEvents) {
           if (event.recurring) {
             const origEvent = event.original!;
-            let exc = (origEvent.recurringException as Array<string>) || [];
-            exc = [...exc, event.start as string];
-            origEvent.recurringException = exc;
+            const updatedOrigEvent = {
+              ...origEvent,
+              recurringException: [...((origEvent.recurringException as Array<string>) || []), event.start as string],
+            };
 
             // Update the event in the list
             const index = eventsToUpdate.findIndex((x) => x.id === origEvent.id);
-            eventsToUpdate.splice(index, 1, origEvent);
+            eventsToUpdate.splice(index, 1, updatedOrigEvent);
           } else {
             eventsToUpdate = eventsToUpdate.filter((ev) => ev.id !== event.id);
           }

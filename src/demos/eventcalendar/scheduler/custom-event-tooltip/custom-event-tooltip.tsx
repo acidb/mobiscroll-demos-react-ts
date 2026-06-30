@@ -558,11 +558,13 @@ function App() {
   }, []);
 
   const updateAppointmentStatus = useCallback(() => {
-    appointment!.confirmed = !appointment!.confirmed;
+    const confirmed = !appointment!.confirmed;
+    setAppointment({ ...appointment!, confirmed });
+    setAppointments(appointments.map((item) => (item.id === appointment!.id ? { ...item, confirmed } : item)));
     setTooltipOpen(false);
-    setToastMessage('Appointment ' + (appointment!.confirmed ? 'confirmed' : 'canceled'));
+    setToastMessage('Appointment ' + (confirmed ? 'confirmed' : 'canceled'));
     setToastOpen(true);
-  }, [appointment]);
+  }, [appointment, appointments]);
 
   const viewAppointmentFile = useCallback(() => {
     setTooltipOpen(false);
@@ -601,7 +603,7 @@ function App() {
         scrollLock={false}
         showOverlay={false}
         touchUi={false}
-        width={350}
+        width={400}
         onClose={handleTooltipClose}
       >
         <div className="mds-tooltip" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>

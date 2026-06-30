@@ -194,10 +194,8 @@ const App: FC = () => {
                 <Select
                   data={myData}
                   label="Date range"
-                  inputProps={{
-                    labelStyle: 'stacked',
-                    inputStyle: 'box',
-                  }}
+                  labelStyle="stacked"
+                  inputStyle="box"
                   responsive={respSelect}
                   touchUi={true}
                   value={selected}
@@ -211,7 +209,7 @@ const App: FC = () => {
                   inputStyle="box"
                   className="demo-date-filtering-range-input"
                   placeholder="Please Select..."
-                ></Input>
+                />
                 <Input
                   ref={endRef}
                   disabled={disabledInput}
@@ -220,7 +218,7 @@ const App: FC = () => {
                   inputStyle="box"
                   className="demo-date-filtering-range-input"
                   placeholder="Please Select..."
-                ></Input>
+                />
               </div>
               <div className="demo-date-filtering-desktop-buttons mbsc-button-group-justified">
                 <Button className="apply-button" onClick={applyClick}>
@@ -233,7 +231,6 @@ const App: FC = () => {
             </div>
             <div className="mbsc-col-sm-8 mbsc-pull-sm-4">
               <Datepicker
-                controls={['calendar']}
                 select="range"
                 display="inline"
                 showRangeLabels={false}
@@ -245,7 +242,7 @@ const App: FC = () => {
                 showOnFocus={false}
                 value={selectedDate}
                 onChange={onDateChange}
-              ></Datepicker>
+              />
             </div>
           </div>
         </div>

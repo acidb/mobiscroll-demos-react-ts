@@ -57,9 +57,11 @@ function App() {
 
   const filter = useCallback(
     (ev: ChangeEvent<HTMLInputElement>) => {
-      participants[+ev.target.value] = ev.target.checked;
-      setParticipants({ ...participants });
-      setResources(resources.filter((r) => participants[+r.id]));
+      const key = +ev.target.value;
+      const checked = ev.target.checked;
+      const updatedParticipants = { ...participants, [key]: checked };
+      setParticipants(updatedParticipants);
+      setResources(resources.filter((r) => updatedParticipants[+r.id]));
     },
     [participants, resources],
   );

@@ -44,6 +44,10 @@ const App: FC = () => {
     [],
   );
 
+  const changeView = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    setCalendarType(event.target.value as 'week' | 'year' | 'month' | undefined);
+  }, []);
+
   const calendarHeaderSwitch = useCallback(
     () => (
       <>
@@ -58,11 +62,9 @@ const App: FC = () => {
         <CalendarNext />
       </>
     ),
-    [calendarType],
+    [calendarType, changeView],
   );
-  const changeView = (event: ChangeEvent<HTMLInputElement>) => {
-    setCalendarType(event.target.value as 'week' | 'year' | 'month' | undefined);
-  };
+
   return (
     <div>
       <Datepicker controls={['calendar']} display="inline" calendarType="week" calendarSize={2} />

@@ -8,6 +8,7 @@ import {
   MbscEventcalendarView,
   MbscEventClickEvent,
   MbscEventUpdateEvent,
+  MbscPageLoadingEvent,
   MbscSelectChangeEvent,
   MbscSelectedEventsChangeEvent,
   Page,
@@ -81,13 +82,14 @@ function App() {
         for (const event of mySelectedEvents) {
           if (event.recurring) {
             const origEvent = event.original!;
-            let exc = (origEvent.recurringException as Array<string>) || [];
-            exc = [...exc, event.start as string];
-            origEvent.recurringException = exc;
+            const updatedOrigEvent = {
+              ...origEvent,
+              recurringException: [...(((origEvent.recurringException as Array<string>) || [])), event.start as string],
+            };
 
             // Update the event in the list
             const index = eventsToUpdate.findIndex((x) => x.id === origEvent.id);
-            eventsToUpdate.splice(index, 1, origEvent);
+            eventsToUpdate.splice(index, 1, updatedOrigEvent);
           } else {
             eventsToUpdate = eventsToUpdate.filter((ev) => ev.id !== event.id);
           }
@@ -111,23 +113,23 @@ function App() {
     for (const event of events) {
       if (event.recurring) {
         const origEvent = event.original!;
-        let exc = (origEvent.recurringException as Array<string>) || [];
-
-        const newEvent = event;
-
-        newEvent.recurring = undefined;
-        newEvent.color = 'orange';
-        newEvent.id += '_' + formatDate('YYYY-MM-DD', new Date(event.start as string));
+        const newEvent = {
+          ...event,
+          recurring: undefined,
+          color: 'orange',
+          id: event.id + '_' + formatDate('YYYY-MM-DD', new Date(event.start as string)),
+        };
         eventsToUpdate = [...eventsToUpdate, newEvent];
-
-        exc = [...exc, event.start as string];
-        origEvent.recurringException = exc;
+        const updatedOrigEvent = {
+          ...origEvent,
+          recurringException: [...(((origEvent.recurringException as Array<string>) || [])), event.start as string],
+        };
 
         // Update the event in the list
         const index = eventsToUpdate.findIndex((x) => x.id === origEvent.id);
-        eventsToUpdate.splice(index, 1, origEvent);
+        eventsToUpdate.splice(index, 1, updatedOrigEvent);
       } else {
-        const newEv = event;
+        const newEv = { ...event };
         newEv.color = 'orange';
         const index = eventsToUpdate.findIndex((x) => x.id === newEv.id);
         eventsToUpdate.splice(index, 1, newEv);
@@ -160,12 +162,12 @@ function App() {
     }
   }, [confirmOpen, deleteSelectedEvents]);
 
-  const handlePageLoading = useCallback(() => {
+  const handlePageLoading = useCallback((args: MbscPageLoadingEvent) => {
     setTimeout(() => {
-      setFirstDay(firstDay);
-      setLastDay(lastDay);
+      setFirstDay(args.firstDay);
+      setLastDay(args.lastDay);
     });
-  }, [firstDay, lastDay]);
+  }, []);
 
   const handleSelectedEventsChange = useCallback(
     (args: MbscSelectedEventsChangeEvent) => {

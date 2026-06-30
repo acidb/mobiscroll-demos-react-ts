@@ -62,11 +62,11 @@ function App() {
           recurring: undefined,
         };
         // Update the original event with a recurring exception
-        const updatedEvent = event.original;
-        const updatedExceptionDates = (updatedEvent!.recurringException as Array<string>) || [];
-        updatedExceptionDates.push(event.start as string);
-        updatedEvent!.recurringException = updatedExceptionDates;
-        updatedEvents.splice(index, 1, updatedEvent!);
+        const updatedEvent = {
+          ...event.original!,
+          recurringException: [...((event.original!.recurringException as Array<string>) || []), event.start as string],
+        };
+        updatedEvents.splice(index, 1, updatedEvent);
         updatedEvents.push(newEvent);
       } else {
         // Update the event color
@@ -112,10 +112,10 @@ function App() {
           // Handle recurring event occurrence
           if (event.recurring) {
             // Update the original event with a recurring exception
-            const updatedEvent = event.original!;
-            const updatedExceptionDates = (updatedEvent.recurringException as Array<string>) || [];
-            updatedExceptionDates.push(event.start as string);
-            updatedEvent.recurringException = updatedExceptionDates;
+            const updatedEvent = {
+              ...event.original!,
+              recurringException: [...((event.original!.recurringException as Array<string>) || []), event.start as string],
+            };
             updatedEvents.splice(index, 1, updatedEvent);
           } else {
             // Remove the event

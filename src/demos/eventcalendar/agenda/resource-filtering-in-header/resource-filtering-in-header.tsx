@@ -49,10 +49,9 @@ const App: FC = () => {
       const checked = ev.target.checked;
       const resource = myResources.find((r) => r.id === value);
 
-      selectedResources[value] = checked;
-
-      setSelectedResources(selectedResources);
-      setFilteredEvents(myEvents.filter((e) => selectedResources[e.resource as number]));
+      const updatedSelectedResources = { ...selectedResources, [value]: checked };
+      setSelectedResources(updatedSelectedResources);
+      setFilteredEvents(myEvents.filter((e) => updatedSelectedResources[e.resource as number]));
       setToastMessage((checked ? 'Showing ' : 'Hiding ') + (resource ? resource.name : '') + ' events');
       setToastOpen(true);
     },

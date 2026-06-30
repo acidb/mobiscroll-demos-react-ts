@@ -18,7 +18,7 @@ import {
   Switch,
   Toast,
 } from '@mobiscroll/react';
-import { ChangeEvent, FC, useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import './sync-events-google-calendar.css';
 
 setOptions({
@@ -34,7 +34,6 @@ const App: FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [editable, setEditable] = useState<boolean>(false);
   const [isLoading, setLoading] = useState<boolean>(false);
-  const [isHidden, setHidden] = useState<boolean>(true);
   const [primaryCalendarId, setPrimaryCalendarId] = useState<string>('');
   const [isToastOpen, setToastOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
@@ -43,11 +42,11 @@ const App: FC = () => {
   const [isUpdateConfirmOpen, setUpdateConfirmOpen] = useState(false);
   const [isDeleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
 
-  const { current: view } = useRef<MbscEventcalendarView>({ calendar: { labels: true } });
-
   const debounce = useRef<ReturnType<typeof setTimeout>>(undefined);
   const startDate = useRef<Date>(null);
   const endDate = useRef<Date>(null);
+
+  const view = useMemo<MbscEventcalendarView>(() => ({ calendar: { labels: true } }), []);
 
   const handleError = useCallback((resp: { error?: string; result: { error: { message: string } } }) => {
     setToastMessage(resp.error ? resp.error : resp.result.error.message);
@@ -81,8 +80,9 @@ const App: FC = () => {
     (ev: ChangeEvent<HTMLInputElement>) => {
       const checked = ev.target.checked;
       const calendarId = ev.target.value;
-      calendarData[calendarId].checked = checked;
+      const updatedCalendarData = { ...calendarData, [calendarId]: { ...calendarData[calendarId], checked } };
       const newCalendarIds = checked ? [...calendarIds, calendarId] : calendarIds.filter((id) => id !== calendarId);
+      setCalendarData(updatedCalendarData);
       setCalendarIds(newCalendarIds);
       if (newCalendarIds.length === 0) {
         setEvents([]);
@@ -264,8 +264,6 @@ const App: FC = () => {
       setEvents([]);
     };
 
-    setHidden(false);
-
     // Init google client
     googleCalendarSync.init({
       apiKey: '<YOUR_GOOGLE_API_KEY>',
@@ -277,7 +275,7 @@ const App: FC = () => {
 
   return (
     <Page className="md-sync-events-google-cont">
-      <div className={'md-sync-events-google-menu ' + (isHidden ? 'mbsc-hidden' : '')}>
+      <div className="md-sync-events-google-menu">
         {isLoggedIn ? (
           <div aria-hidden={!isLoggedIn}>
             <div className="mbsc-form-group-inset mbsc-align-center">

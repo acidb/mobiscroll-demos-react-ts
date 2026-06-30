@@ -1,5 +1,5 @@
 import { Eventcalendar, getJson, MbscCalendarEvent, MbscEventcalendarView, Page, setOptions /* localeImport */ } from '@mobiscroll/react';
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
 
 setOptions({
   // localeJs,
@@ -9,12 +9,12 @@ setOptions({
 const App: FC = () => {
   const [myEvents, setEvents] = useState<MbscCalendarEvent[]>([]);
 
-  const { current: allLabelsView } = useRef<MbscEventcalendarView>({ calendar: { type: 'month', labels: 'all' } });
-  const { current: nrLabelsView } = useRef<MbscEventcalendarView>({ calendar: { type: 'month', labels: 3 } });
-  const { current: fitLabelsView } = useRef<MbscEventcalendarView>({ calendar: { labels: true } });
-  const { current: allLabelsWeekView } = useRef<MbscEventcalendarView>({ calendar: { type: 'week', labels: 'all' } });
-  const { current: nrLabelsWeekView } = useRef<MbscEventcalendarView>({ calendar: { type: 'week', labels: 3 } });
-  const { current: fitLabelsWeekView } = useRef<MbscEventcalendarView>({ calendar: { type: 'week', labels: true } });
+  const allLabelsView = useMemo<MbscEventcalendarView>(() => ({ calendar: { type: 'month', labels: 'all' } }), []);
+  const nrLabelsView = useMemo<MbscEventcalendarView>(() => ({ calendar: { type: 'month', labels: 3 } }), []);
+  const fitLabelsView = useMemo<MbscEventcalendarView>(() => ({ calendar: { labels: true } }), []);
+  const allLabelsWeekView = useMemo<MbscEventcalendarView>(() => ({ calendar: { type: 'week', labels: 'all' } }), []);
+  const nrLabelsWeekView = useMemo<MbscEventcalendarView>(() => ({ calendar: { type: 'week', labels: 3 } }), []);
+  const fitLabelsWeekView = useMemo<MbscEventcalendarView>(() => ({ calendar: { type: 'week', labels: true } }), []);
 
   useEffect(() => {
     getJson(

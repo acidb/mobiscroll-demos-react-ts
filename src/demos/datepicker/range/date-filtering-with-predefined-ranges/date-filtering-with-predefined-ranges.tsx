@@ -30,43 +30,18 @@ const day = now.getDay();
 const monday = now.getDate() - day + (day === 0 ? -6 : 1);
 
 const respSelect = {
-  xsmall: {
-    touchUi: true,
-  },
-  small: {
-    touchUi: false,
-  },
+  xsmall: { touchUi: true },
+  small: { touchUi: false },
 };
 
 const myData = [
-  {
-    value: 'custom',
-    text: 'Custom',
-  },
-  {
-    value: 'today',
-    text: 'Today',
-  },
-  {
-    value: 'yesterday',
-    text: 'Yesterday',
-  },
-  {
-    value: 'last-week',
-    text: 'Last week',
-  },
-  {
-    value: 'last-month',
-    text: 'Last month',
-  },
-  {
-    value: 'last-7-days',
-    text: 'Last 7 days',
-  },
-  {
-    value: 'last-30-days',
-    text: 'Last 30 days',
-  },
+  { value: 'custom', text: 'Custom' },
+  { value: 'today', text: 'Today' },
+  { value: 'yesterday', text: 'Yesterday' },
+  { value: 'last-week', text: 'Last week' },
+  { value: 'last-month', text: 'Last month' },
+  { value: 'last-7-days', text: 'Last 7 days' },
+  { value: 'last-30-days', text: 'Last 30 days' },
 ];
 
 const App: FC = () => {
@@ -166,11 +141,9 @@ const App: FC = () => {
   }, []);
 
   const onDateChange = useCallback((ev: MbscDatepickerChangeEvent) => {
-    const date = ev.value as MbscDateType[];
-
     setDisabledInput(false);
     setSelected('custom');
-    setSelectedDate(date);
+    setSelectedDate(ev.value as MbscDateType[]);
   }, []);
 
   const onClose = useCallback(() => {
@@ -194,10 +167,8 @@ const App: FC = () => {
                 <Select
                   data={myData}
                   label="Date range"
-                  inputProps={{
-                    labelStyle: 'stacked',
-                    inputStyle: 'box',
-                  }}
+                  labelStyle="stacked"
+                  inputStyle="box"
                   responsive={respSelect}
                   touchUi={true}
                   value={selected}
@@ -211,7 +182,7 @@ const App: FC = () => {
                   inputStyle="box"
                   className="demo-date-filtering-range-input"
                   placeholder="Please Select..."
-                ></Input>
+                />
                 <Input
                   ref={endRef}
                   disabled={disabledInput}
@@ -220,7 +191,7 @@ const App: FC = () => {
                   inputStyle="box"
                   className="demo-date-filtering-range-input"
                   placeholder="Please Select..."
-                ></Input>
+                />
               </div>
               <div className="demo-date-filtering-desktop-buttons mbsc-button-group-justified">
                 <Button className="apply-button" onClick={applyClick}>
@@ -233,7 +204,6 @@ const App: FC = () => {
             </div>
             <div className="mbsc-col-sm-8 mbsc-pull-sm-4">
               <Datepicker
-                controls={['calendar']}
                 select="range"
                 display="inline"
                 showRangeLabels={false}
@@ -245,7 +215,7 @@ const App: FC = () => {
                 showOnFocus={false}
                 value={selectedDate}
                 onChange={onDateChange}
-              ></Datepicker>
+              />
             </div>
           </div>
         </div>

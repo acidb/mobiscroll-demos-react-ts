@@ -33,7 +33,7 @@ import {
   Textarea,
   updateRecurringEvent /* localeImport */,
 } from '@mobiscroll/react';
-import { ChangeEvent, FC, useCallback, useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, FC, useCallback, useMemo, useState } from 'react';
 import { dyndatetime } from '../../../../dyndatetime';
 import './recurring-event-add-edit-dialog.css';
 
@@ -156,6 +156,17 @@ function getWeekDayNum(date: Date): number {
   return Math.max(1, count);
 }
 
+function getMonthDays(month: number) {
+  const day30 = [2, 4, 6, 9, 11];
+  const newValues = [];
+  for (let i = 1; i <= 31; i++) {
+    if (!(i === 31 && day30.includes(month)) && !(i === 30 && month === 2)) {
+      newValues.push(i);
+    }
+  }
+  return newValues;
+}
+
 const App: FC = () => {
   const [myEvents, setMyEvents] = useState<MbscCalendarEvent[]>(defaultEvents);
   const [tempEvent, setTempEvent] = useState<MbscCalendarEvent>();
@@ -189,9 +200,9 @@ const App: FC = () => {
   const [untilDate, setUntilDate] = useState<string>();
   const [occurrences, setOccurrences] = useState<number>(10);
   const [selectedMonth, setMonth] = useState<number>(1);
-  const [monthlyDays, setMonthlyDays] = useState<number[]>([1]);
+  const [monthlyDays, setMonthlyDays] = useState<number[]>(() => getMonthDays(1));
   const [monthlyDay, setMonthlyDay] = useState<number>(1);
-  const [yearlyDays, setYearlyDays] = useState<number[]>([1]);
+  const [yearlyDays, setYearlyDays] = useState<number[]>(() => getMonthDays(1));
   const [yearlyDay, setYearlyDay] = useState<number>(1);
   const [weekDays, setWeekDays] = useState<string[]>(['SU']);
 
@@ -608,27 +619,17 @@ const App: FC = () => {
     }
   }, [deleteEvent, tempEvent]);
 
-  const populateMonthDays = useCallback(
-    (month: number, type: string) => {
-      const day30 = [2, 4, 6, 9, 11];
-      const newValues = [];
+  const populateMonthDays = useCallback((month: number, type: string) => {
+    const newValues = getMonthDays(month);
 
-      for (let i = 1; i <= 31; i++) {
-        if (!(i === 31 && day30.includes(month)) && !(i === 30 && month === 2)) {
-          newValues.push(i);
-        }
-      }
-
-      if (type === 'monthly') {
-        setMonthlyDays(newValues);
-        setMonthlyDay(1);
-      } else {
-        setYearlyDays(newValues);
-        setYearlyDay(1);
-      }
-    },
-    [setMonthlyDays, setYearlyDays],
-  );
+    if (type === 'monthly') {
+      setMonthlyDays(newValues);
+      setMonthlyDay(1);
+    } else {
+      setYearlyDays(newValues);
+      setYearlyDay(1);
+    }
+  }, []);
 
   const repeatChange = useCallback((args: MbscSelectChangeEvent) => {
     setSelectedRepeat(args.value);
@@ -843,26 +844,27 @@ const App: FC = () => {
           if (recurringDelete) {
             deleteRecurringEvent();
           } else {
+            const updatedEvent = { ...tempEvent };
             if (editFromPopup) {
-              tempEvent!.title = popupEventTitle;
-              tempEvent!.description = popupEventDescription;
-              tempEvent!.start = popupEventDate[0];
-              tempEvent!.end = popupEventDate[1];
-              tempEvent!.allDay = popupEventAllDay;
-              tempEvent!.recurring = getCustomRule();
+              updatedEvent.title = popupEventTitle;
+              updatedEvent.description = popupEventDescription;
+              updatedEvent.start = popupEventDate[0];
+              updatedEvent.end = popupEventDate[1];
+              updatedEvent.allDay = popupEventAllDay;
+              updatedEvent.recurring = getCustomRule();
             }
 
             if (recurringEditMode === 'current') {
-              delete tempEvent!.id;
-              delete tempEvent!.recurring;
-              delete tempEvent!.recurringException;
+              delete updatedEvent.id;
+              delete updatedEvent.recurring;
+              delete updatedEvent.recurringException;
             }
 
             const events = updateRecurringEvent(
               originalRecurringEvent!,
               eventOccurrence!,
               editFromPopup ? null : newEvent!,
-              editFromPopup ? tempEvent! : null,
+              editFromPopup ? updatedEvent : null,
               recurringEditMode,
             );
 
@@ -913,13 +915,6 @@ const App: FC = () => {
     setRecurringEditMode('current');
     setRecurringEditOpen(false);
   }, []);
-
-  useEffect(() => {
-    populateMonthDays(1, 'monthly');
-    setMonthlyDay(1);
-    populateMonthDays(1, 'yearly');
-    setYearlyDay(1);
-  }, [populateMonthDays]);
 
   return (
     <>

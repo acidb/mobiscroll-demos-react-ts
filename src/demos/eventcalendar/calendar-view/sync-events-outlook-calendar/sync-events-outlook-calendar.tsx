@@ -18,7 +18,7 @@ import {
   Switch,
   Toast,
 } from '@mobiscroll/react';
-import { ChangeEvent, FC, useCallback, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import './sync-events-outlook-calendar.css';
 
 setOptions({
@@ -42,11 +42,11 @@ const App: FC = () => {
   const [isUpdateConfirmOpen, setUpdateConfirmOpen] = useState(false);
   const [isDeleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
 
-  const { current: view } = useRef<MbscEventcalendarView>({ calendar: { labels: true } });
-
   const debounce = useRef<ReturnType<typeof setTimeout>>(undefined);
   const startDate = useRef<Date>(null);
   const endDate = useRef<Date>(null);
+
+  const view = useMemo<MbscEventcalendarView>(() => ({ calendar: { labels: true } }), []);
 
   const onError = useCallback((resp: { message: string }) => {
     setToastMessage(resp.message);
@@ -123,7 +123,8 @@ const App: FC = () => {
     (ev: ChangeEvent<HTMLInputElement>) => {
       const checked = ev.target.checked;
       const calendarId = ev.target.value;
-      calendarData[calendarId].checked = checked;
+      const updatedCalendarData = { ...calendarData, [calendarId]: { ...calendarData[calendarId], checked } };
+      setCalendarData(updatedCalendarData);
       if (checked) {
         setLoading(true);
         setCalendarIds((calIds) => [...calIds, calendarId]);

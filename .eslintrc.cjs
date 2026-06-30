@@ -4,6 +4,7 @@ module.exports = {
   extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react-hooks/recommended'],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
+  settings: { react: { version: '19.2.14' } },
   plugins: ['import', 'react-refresh'],
   rules: {
     'arrow-body-style': ['warn', 'as-needed'],

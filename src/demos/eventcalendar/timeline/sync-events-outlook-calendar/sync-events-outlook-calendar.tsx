@@ -49,20 +49,11 @@ const App: FC = () => {
   const [isDeleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
 
   const buttonRef = useRef<Button | null>(null);
-
   const debounce = useRef<ReturnType<typeof setTimeout>>(undefined);
   const startDate = useRef<Date>(null);
   const endDate = useRef<Date>(null);
 
-  const myView = useMemo<MbscEventcalendarView>(
-    () => ({
-      timeline: {
-        type: 'week',
-        eventDisplay: 'fill',
-      },
-    }),
-    [],
-  );
+  const myView = useMemo<MbscEventcalendarView>(() => ({ timeline: { type: 'week', eventDisplay: 'fill' } }), []);
 
   const onError = useCallback((resp: { message: string }) => {
     setToastMessage(resp.message);
@@ -98,7 +89,8 @@ const App: FC = () => {
     (ev: ChangeEvent<HTMLInputElement>) => {
       const checked = ev.target.checked;
       const calendarId = ev.target.value;
-      calendarData[calendarId].checked = checked;
+      const updatedCalendarData = { ...calendarData, [calendarId]: { ...calendarData[calendarId], checked } };
+      setCalendarData(updatedCalendarData);
       if (checked) {
         setLoading(true);
         setCalendarIds((calIds) => [...calIds, calendarId]);

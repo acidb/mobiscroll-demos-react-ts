@@ -1264,14 +1264,12 @@ function App() {
     });
     addActualEvents(myEventsRef.current);
     const fResources = computeFilteredResources(undefined, '');
-    /* eslint-disable react-hooks/set-state-in-effect */
     setFilteredResources(fResources);
     setMyEvents([...myEventsRef.current]);
     const today = todayRef.current;
     const end = new Date(today.getTime() + 6 * 24 * 60 * 60 * 1000);
     setCalendarRangeValue([today, end]);
     setRangeLabel(formatDate('MMM D', today) + ' – ' + formatDate('MMM D, YYYY', end));
-    /* eslint-enable react-hooks/set-state-in-effect */
     refreshJobList(undefined, []);
     const interval = setInterval(() => {
       const currentNow = new Date();

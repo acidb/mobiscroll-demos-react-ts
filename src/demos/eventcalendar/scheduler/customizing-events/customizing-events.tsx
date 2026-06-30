@@ -3,7 +3,7 @@ import {
   Eventcalendar,
   getJson,
   MbscCalendarEvent,
-  MbscCalendarEventData /* localeImport */,
+  MbscCalendarEventData,
   MbscEventcalendarOptions,
   MbscResponsiveOptions,
   setOptions,
@@ -45,7 +45,7 @@ const App: FC = () => {
     setToastOpen(false);
   }, []);
 
-  const getCategory = (id: number) => {
+  const getCategory = useCallback((id: number) => {
     switch (id) {
       case 1:
         return {
@@ -78,9 +78,9 @@ const App: FC = () => {
           color: '',
         };
     }
-  };
+  }, []);
 
-  const getParticipant = (id: number) => {
+  const getParticipant = useCallback((id: number) => {
     switch (id) {
       case 1:
         return {
@@ -128,62 +128,68 @@ const App: FC = () => {
           img: '',
         };
     }
-  };
+  }, []);
 
-  const edit = () => {
+  const edit = useCallback(() => {
     setToastOpen(true);
-  };
+  }, []);
 
-  const customScheduleEvent = useCallback((data: MbscCalendarEventData) => {
-    const original = data.original!;
-    const cat = getCategory(original.category);
-    if (data.allDay) {
-      return (
-        <div style={{ background: cat.color }} className="md-custom-event-allday-title">
-          {data.title}
-        </div>
-      );
-    } else {
-      return (
-        <div className="md-custom-event-cont" style={{ borderLeft: '5px solid ' + cat.color, background: cat.color }}>
-          <div className="md-custom-event-wrapper">
-            <div style={{ background: cat.color }} className="md-custom-event-category">
-              {cat.name}
-            </div>
-            <div className="md-custom-event-details">
-              <div className="md-custom-event-title">{data.title}</div>
-              <div className="md-custom-event-time">
-                {data.start} - {data.end}
+  const customScheduleEvent = useCallback(
+    (data: MbscCalendarEventData) => {
+      const original = data.original!;
+      const cat = getCategory(original.category);
+      if (data.allDay) {
+        return (
+          <div style={{ background: cat.color }} className="md-custom-event-allday-title">
+            {data.title}
+          </div>
+        );
+      } else {
+        return (
+          <div className="md-custom-event-cont" style={{ borderLeft: '5px solid ' + cat.color, background: cat.color }}>
+            <div className="md-custom-event-wrapper">
+              <div style={{ background: cat.color }} className="md-custom-event-category">
+                {cat.name}
               </div>
-              <Button className="md-custom-event-btn" color="dark" variant="outline" onClick={edit}>
-                Edit
-              </Button>
-              <div className="md-cutom-event-img-cont">
-                {original.participants.map((p: number) => (
-                  <img key={p} className="md-custom-event-img" src={getParticipant(p).img} />
-                ))}
+              <div className="md-custom-event-details">
+                <div className="md-custom-event-title">{data.title}</div>
+                <div className="md-custom-event-time">
+                  {data.start} - {data.end}
+                </div>
+                <Button className="md-custom-event-btn" color="dark" variant="outline" onClick={edit}>
+                  Edit
+                </Button>
+                <div className="md-cutom-event-img-cont">
+                  {original.participants.map((p: number) => (
+                    <img key={p} className="md-custom-event-img" src={getParticipant(p).img} />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
+        );
+      }
+    },
+    [edit, getCategory, getParticipant],
+  );
+
+  const myBeforeBuffer = useCallback(
+    (args: MbscCalendarEventData) => {
+      const cat = getCategory(args.original!.category);
+
+      return (
+        <div className="md-schedule-buffer md-schedule-before-buffer">
+          <div
+            className="md-schedule-buffer-background"
+            style={{ background: `repeating-linear-gradient(-45deg,#fcfffc,#fcfffc 10px,${cat.color} 10px,${cat.color} 20px)` }}
+          ></div>
+          <span className="md-buffer-text">Travel time </span>
+          <span className="md-buffer-time">{args.original!.bufferBefore} minutes </span>
         </div>
       );
-    }
-  }, []);
-
-  const myBeforeBuffer = useCallback((args: MbscCalendarEventData) => {
-    const cat = getCategory(args.original!.category);
-
-    return (
-      <div className="md-schedule-buffer md-schedule-before-buffer">
-        <div
-          className="md-schedule-buffer-background"
-          style={{ background: `repeating-linear-gradient(-45deg,#fcfffc,#fcfffc 10px,${cat.color} 10px,${cat.color} 20px)` }}
-        ></div>
-        <span className="md-buffer-text">Travel time </span>
-        <span className="md-buffer-time">{args.original!.bufferBefore} minutes </span>
-      </div>
-    );
-  }, []);
+    },
+    [getCategory],
+  );
 
   useEffect(() => {
     getJson(
