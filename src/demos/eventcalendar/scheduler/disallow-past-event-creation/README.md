@@ -31,3 +31,39 @@ Moving the past occurrences need to be handled in the
 `onEventUpdateFailed`
 
  lifecycle events
+
+## Implementation instructions
+
+- Use `view: { scheduler: { type: 'week' } }`. Enable all four interaction modes: `clickToCreate: true`, `dragToCreate: true`, `dragToMove: true`, `dragToResize: true`.
+- Compute two date references at module level: `today = new Date(now.setMinutes(59))` (current time with minutes snapped to `:59` — represents the boundary of the blocked past range) and `yesterday` (midnight of the previous day).
+- Pass an `invalid` array with two entries: `{ recurring: { repeat: 'daily', until: yesterday } }` (blocks all day slots through yesterday) and `{ start: yesterday, end: today }` (a continuous block from midnight yesterday through the current `:59` mark, covering all of yesterday and the elapsed portion of today). Together these prevent creating or dropping events at any past time.
+- Load events via JSONP. After loading, convert `event.start` and `event.end` to `Date` objects (`new Date(event.start)`), then set `event.editable = event.start && today < event.start` — only future events are editable; past events get `editable: false`. For the imperative API, call `inst.setEvents(events)`.
+- **`onEventCreateFailed`** — show a toast ("Can't create event in the past") only when `args.originEvent` is absent (guards against false positives from recurring events).
+- **`onEventUpdateFailed`** — show a toast ("Can't move event in the past") only when `args.oldEventOccurrence` is absent.
+- **`onEventCreate`** — handle the recurring event edge case: if `args.originEvent?.start` is before `today`, show a toast ("Can't move past event") and `return false`. For the imperative API, also call `inst.updateEvent(args.originEvent)` to restore the event before returning false.
+- **`onEventUpdate`** — if `args.oldEvent.start < today` or `args.oldEventOccurrence?.start < today`, `return false`. For the imperative API, also call `inst.updateEvent(args.oldEvent)` to restore the event.
+
+## What this demo shows
+
+- A desktop weekly scheduler layout with a fixed week strip at the top, a fixed all-day row below it, and a scrollable scheduler time grid for the selected week.
+- **Header navigation** The month and year label in the top left opens date navigation, while the blue previous and next arrows and the Today button on the right make it easy to move between weeks and jump back to the current day.
+- **Week view** The fixed strip below the header displays the days of the selected week, with the current date highlighted by a blue circle.
+- **All-day events** All-day events appear in a dedicated row that stays fixed above the time grid.
+- **Time grid** The scheduler grid scrolls vertically through the hours of the selected week.
+- **Past dates** Past dates are disabled and rendered with a gray background.
+- **Disabled past days** Disabled past dates block event creation and drag and drop interactions.
+- **Past events** Events on past dates remain visible, but they cannot be moved or repositioned.
+- **Failed past updates** If a user tries to move a past recurring event, a toast appears at the bottom center with the message `Can't move past events.`
+- **Timed events** Timed events are displayed in the weekly scheduler grid as colored cards with a colored stripe on the left, the event title in bold, and the exact start and end time displayed above the title.
+- **Event overlapping** If events overlap, the scheduler places them side by side without hiding any of them or causing other conflicts.
+- **Current time** A blue current-time line appears across the time grid, with a small blue dot marking the current date.
+- **Hover behavior** Hovering over the time grid shows a time indicator that follows the cursor in 15-minute increments.
+- **Event interaction** Hovering over events highlights them and shows drag and resize handles for repositioning or changing duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** Users can create events on future dates/hours by double-clicking the time grid or clicking and dragging on it.
+
+## Best for
+
+- **Employee scheduling and availability management** Display team schedules, vacations, days off, and availability across multiple employees in a single weekly scheduler view.
+- **Resource and shift planning** Organize shifts, assignments, and workload distribution while keeping meetings, tasks, and absences visible.
+- **Team operations and project coordination** Track recurring meetings, deadlines, field activities, and employee commitments alongside personal time-off information.

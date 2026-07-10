@@ -10,7 +10,9 @@ Depending on the height of the parent container the calendar is rendered in, the
 
 ## Implementation instructions
 
-- Configure the multi-month and year layouts through the `calendar.type` and `calendar.size` properties on the `view` option.
+- Define two view configs controlled by a state variable: quarter uses `{ calendar: { type: 'month', size: 3 } }` and year uses `{ calendar: { type: 'year' } }`. Also toggle `height` between `'auto'` (quarter) and `'100%'` (year) so the year grid fills the container.
+- Use `renderHeader` (Angular: `headerTemplate`, Vue: `header`) to build a custom header: `CalendarNav` on the left, a `SegmentedGroup` with `Quarter` and `Year` options in the center, and `CalendarPrev`, `CalendarToday`, `CalendarNext` on the right. When the segmented selection changes, update both the view config and the height.
+- Load events from a remote endpoint using `getJson` and assign them to `data`; for the imperative API, call `inst.setEvents(events)` in the callback.
 
 ## What this demo shows
 

@@ -23,3 +23,34 @@ Only moving events from the top timeline is allowed and events are fixed in time
 - Use `onEventDragStart` on the bottom calendar to compute availability: find all scheduled flights that overlap the dragged booking's time window, collect their jet resource IDs, and set them as `invalid` with `recurring: { repeat: 'daily' }`. Also apply a fade CSS class to the overlapping flights to visually grey them out.
 - Use `onEventDragEnd` to clear the `invalid` array and remove the fade class from all flights.
 - Use `onEventCreated` and `onEventDeleted` to update the scheduled flights state. Use `onEventCreateFailed` and `onEventUpdateFailed` to show a `Toast` when a booking cannot be placed due to a conflict.
+
+## What this demo shows
+
+- Two stacked daily timeline views are synchronized horizontally so flights can be planned across two resource types on the same 24-hour time scale.
+- **Header navigation** The month and year label in the top left opens date navigation, while the blue previous and next arrows and the Today button on the right make it easy to move between days and jump back to the current day.
+- **Date strip** The strip below the header shows the selected day using the `DD DDD MMM YYYY` date format, with the current date highlighted.
+- **Time grid** The timeline uses hourly columns across a 24-hour day.
+- **Top timeline** The first timeline shows flight events against pilot resources.
+- **Bottom timeline** The second timeline hides its own day and hour header while keeping the aircraft resources visible.
+- **Aircraft resources** The bottom timeline uses expandable and collapsible resource groups with aircraft resources inside each group.
+- **Custom resource rendering** Aircraft rows show an image, aircraft name, aircraft number, and a passenger-capacity indicator in the bottom-right corner.
+- **Event cards** Events are rendered as blue cards with a left accent stripe, the flight route in bold, and the exact start and end time below the title.
+- **Event positioning** Events are positioned by assigned resource and by start and end time.
+- **Event movement** Events keep their original time range but can be moved between resources.
+- **Cross-timeline drag and drop** Flights can be dragged from the first timeline to the second timeline to assign them to aircraft.
+- **Scheduled state** After a flight is dropped onto the aircraft timeline, the event changes to green and a confirmation toast appears at the bottom center.
+- **Drop restrictions** Scheduled flights cannot be dragged back to the first timeline.
+- **Overlap prevention** Flights cannot overlap on the same aircraft resource during the same time period.
+- **Conflict feedback** When a conflicting drop is attempted, the affected resource row shows a striped background and a toast message indicates the conflict.
+- **Event interaction** Events are highlighted on hover.
+- **Event selection** Clicking an event selects and highlights it.
+- **Vertical scrolling** The resource area scrolls vertically so more resources can be displayed within each timeline.
+
+## Best for
+
+- **Airline operations** Planning flights across crew and aircraft resources on a shared time scale.
+- **Flight scheduling** Assigning scheduled flights to available aircraft without changing their time range.
+- **Crew management** Reviewing pilot-related flight assignments alongside aircraft availability.
+- **Fleet planning** Managing aircraft availability, capacity, and scheduling conflicts in a timeline layout.
+- **Transportation scheduling** Coordinating different resource types where assignments need to move between planning stages.
+- **Conflict-aware planning** Preventing overlapping assignments on the same resource while giving immediate visual feedback.

@@ -16,8 +16,9 @@ The number of visible labels are determined by the available space and the ones 
 
 ## Implementation instructions
 
-- For the calendar to fill the full height of its parent container (whether that’s a div or a full page), make sure to set `height: 100%` on the parent container.
-- The month view event calendar grows to fill the full width of the parent container by default, so the event labels are also resized automatically and the label texts are displayed correctly without requiring additional implementation.
+- Set `view: { calendar: { labels: true } }` to display a month grid with inline event labels in each day cell. When labels overflow the available cell height, the remainder appear in an `X more` popover automatically.
+- Load events from a remote endpoint using `getJson` and assign them to `data`; for the imperative API, call `inst.setEvents(events)` in the callback.
+- Handle `onEventClick` to show a `Toast` with `args.event.title`.
 
 ## What this demo shows
 

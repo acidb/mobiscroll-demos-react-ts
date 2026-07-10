@@ -31,31 +31,32 @@ lifecycle events
 
 ## Implementation instructions
 
-- **Lock past events** Set the event object's `editable` property to `false` for events that should remain fixed on past dates.
-- **Use lifecycle validation** Apply the past-date checks in `onEventCreate` and `onEventUpdate` to prevent changes to past occurrences when needed.
-- **Show feedback on blocked actions** Use `onEventCreateFailed` and `onEventUpdateFailed` to display a toast or similar feedback when creating, moving, or updating past events is not allowed.
+- Use `view: { calendar: { labels: true } }`. Enable all four interaction modes: `clickToCreate: true`, `dragToCreate: true`, `dragToMove: true`, `dragToResize: true`.
+- Compute `today = new Date()` at module level. Pass `invalid: [{ recurring: { repeat: 'daily', until: today } }]` — this single entry blocks all dates up to and including today, preventing event creation and drop on past day cells.
+- Load events via `getJson`. After loading, convert `event.start` and `event.end` to `Date` objects, then set `event.editable = event.start && today < event.start` — only future events are editable; past events get `editable: false`, which locks them against drag/resize/delete. JS/jQuery: call `inst.setEvents(events)`.
+- **`onEventCreateFailed`** — show a toast (`"Can't create event in the past"`) only when `args.originEvent` is absent (guards against false positives from recurring events).
+- **`onEventUpdateFailed`** — show a toast (`"Can't move event in the past"`) only when `args.oldEventOccurrence` is absent.
+- **`onEventCreate`** — handles the recurring event edge case: if `args.originEvent?.start < today`, show a toast (`"Can't move past event"`) and `return false`. JS/jQuery: also call `inst.updateEvent(args.originEvent)` before returning false to restore the event.
+- **`onEventUpdate`** — if `args.oldEvent.start < today` or `args.oldEventOccurrence?.start < today`, `return false`. JS/jQuery: also call `inst.updateEvent(args.oldEvent)` before returning false.
 
 ## What this demo shows
 
 - A desktop month view event calendar with multiple events displayed directly in the month grid.
-- **Header** Standard month navigation controls are shown in the header, including previous and next arrows, month and year navigation, and a Today button.
+- **Calendar header** The header shows the current month and year on the left, and blue month navigation arrows with a `Today` button (for jumping back to the current date) between them on the right. 
 - **Past dates** Day cells before today are disabled and rendered with a gray background.
 - **Disabled past days** Disabled past dates block event creation and drag and drop interactions on those cells.
 - **Past events** Events on past dates remain visible, but they cannot be moved or repositioned.
-- **Failed past updates** If a user tries to move a past event, a toast appears at the bottom center with the message `Can't move past events.`
-- **Event overflow** The number of visible event labels in a day cell depends on the available vertical space.
-- **More events popup** When not all events fit in a day cell, an `X more` label appears, where `X` is the number of hidden events.
-- **Popover** Clicking the `X more` label opens a popup that shows the additional events for that day.
-- **Selection** Clicking an event highlights the selected event label.
-- **Event creation** Users can create events on allowed dates by dragging across calendar cells or by double-clicking a day cell.
+- **Failed past updates** If a user tries to move a past recurring event, a toast appears at the bottom center with the message `Can't move past events.`
+- **Overflow handling** The number of visible event labels depends on the available height in each day cell. Additional events are collapsed behind an `X more` link.
+- **Popover** Clicking the `X more` link opens a popover that shows the hidden events for that day.
+- **Label interaction** Hovering over or clicking an event label selects it and highlights the selected label.
+- **Event creation** Users can create events on future dates by clicking and dragging across calendar cells or by double-clicking a day cell.
 - **Hover on past days** Hovering a disabled past day shows a disabled icon.
-- **Hover on future days** Hovering a future day highlights the day number in the top-right corner with a gray background.
-- **Day selection** Clicking the empty area of a future day cell selects that day and highlights the day number in blue.
+- **Day cell states for future days** Hovering a day cell highlights the day number with a gray background, while clicking the empty part of the cell selects the day and highlights the day number with a blue background.
 - **Future dates** Future day cells remain interactive and support new event creation.
 
 ## Best for
 
 - **Booking and scheduling flows** Preventing users from creating or changing events in the past when only current and future availability should be managed.
 - **Operational calendars** Keeping historical calendar data fixed for teams that use the month view for planning upcoming work, appointments, or activities.
-- **Audit-sensitive workflows** Protecting past entries from accidental edits in cases where historical event records should stay unchanged.
 - **Mixed-interaction month views** Allowing users to keep creating and editing future events while clearly separating past dates as read-only.

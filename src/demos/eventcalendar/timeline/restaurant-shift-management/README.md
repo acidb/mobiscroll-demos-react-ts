@@ -25,3 +25,32 @@ Try signing somone up for work by double clicking on an empty shift position.
 - Use `onEventCreate` to validate new shifts before saving: call `inst.getEvents()` to check whether the same resource already has a shift in the same slot on the same day, and return `false` to cancel the creation if a duplicate is found.
 - Use `onEventUpdate` to apply the same duplicate check after a drag; also update the event `title` when the resource changes so it reflects the new employee's name. Return `false` to revert if the target cell is already occupied.
 - Use `onEventDeleted` to remove the deleted shift from the events array in state.
+
+## What this demo shows
+
+- A desktop weekly timeline for restaurant shift scheduling, with Monday to Friday working days arranged horizontally and a hierarchical resource tree on the left.
+- **Header navigation** The month and year label in the top left opens date navigation, while the blue previous and next arrows and the Today button on the right make it easy to move between weeks and jump back to the current day.
+- **Header filters:** Checkbox controls in the header let users show or hide individual shift types.
+- **View switching:** A header select control lets users switch between Day and Week timeline views. Changing the view updates the timeline layout.
+- **Week view:** The fixed date strip shows the selected work week from Monday to Friday, using the `DD DDD MMM YYYY` date format, with the current date highlighted.
+- **Shift columns:** The timeline is divided into named work shifts instead of standard hourly intervals.
+- **Shift structure:** Each day repeats the same shift columns: Night (2 AM - 10 AM), Breakfast (8 AM - 12 PM), Lunch (11 AM - 3 PM), Dinner (4 PM - 11 PM), and After hours (11 PM - 1 AM).
+- **Shift headers:** Each shift header shows the shift name, time range, and occupancy indicators with icons and counts for how many people from each resource category are assigned to that shift.
+- **Resources:** The left side shows expandable and collapsible resource groups for Barista, Bartenders, Chefs, Cleaners, Cooks, Hosts, Managers, Servers, and Sommeliers.
+- **Resource styling:** Each parent resource group has its own color and representative icon.
+- **Resource hierarchy:** Individual staff members are organized under their corresponding job categories.
+- **Event cards:** Shift assignments appear as events in the matching shift column for each employee row.
+- **Event colors:** Event colors visually distinguish assignments across resource groups.
+- **Event creation:** Users can create new shift assignments by double-clicking an empty shift position on an individual employee row.
+- **Event interaction:** Events are highlighted on hover.
+- **Event selection:** Clicking an event selects and highlights it.
+- **Vertical scrolling:** The resource list scrolls vertically so many employees can be shown in the same timeline.
+- **Horizontal scrolling:** The timeline supports horizontal scrolling for navigating across multiple days and shift columns.
+
+## Best for
+
+- **Restaurant scheduling:** Planning staff coverage across predefined restaurant shifts.
+- **Hospitality workforce planning:** Assigning employees to structured service periods such as breakfast, lunch, dinner, and after-hours work.
+- **Retail staffing:** Managing teams where employees are scheduled into named shift blocks rather than arbitrary time slots.
+- **Shift-based resource planning:** Showing role groups, individual employees, and occupancy counts in the same scheduling view.
+- **Dense team schedules:** Working with many employees in a hierarchical timeline that supports both vertical and horizontal scrolling.

@@ -19,3 +19,16 @@ Use the
 ## Related demos
 
 - [Show events from Google Calendar &#8594;](https://demo.mobiscroll.com/react/scheduler/load-events-from-google-calendar#)
+
+## Implementation instructions
+
+- Use `timeline: { type: 'day' }` — a single-day view.
+- Define 5 resources: Resource A (yellow `#fdf500`), Resource B (red `#ff0101`), Resource C (blue `#01adff`), Resource D (green `#239a21`), Resource E (orange `#ff4600`).
+- **On-demand loading** is driven by `onPageLoading` (Vue: `@page-loading`), which fires on every page navigation. Inside the handler, read `args.firstDay` to get the first visible day, then build the API URL:
+  ```
+  https://trial.mobiscroll.com/weeklyevents/?year=YYYY&month=M&day=D
+  ```
+  using `args.firstDay.getFullYear()`, `args.firstDay.getMonth()`, `args.firstDay.getDate()`.
+- The endpoint returns a JSONP array. Map each item to `{ start, end, title, resource }` and push to a new array, then set it as the calendar's events.
+- After loading completes, show a Toast with message `"New events loaded"`.
+- Fetch via JSONP using `getJson(url, callback, 'jsonp')`. In the callback, map each returned item to `{ start, end, title, resource }`, set as the calendar's events, and show a `Toast` with `"New events loaded"`. Use `inst.setEvents(events)` for the imperative API.

@@ -16,10 +16,11 @@ Alternatively, search can be implemented in a sidebar next to the event calendar
 
 ## Implementation instructions
 
-- Use the `renderHeader` function to place a search input directly in the event calendar header.
-- Show search matches in a popup below the header input by rendering the results in a separate agenda instance.
-- Load the main calendar data and the filtered search results from the same API endpoint.
-- Filter the returned event data based on the entered search term, then pass the matching items to the agenda view shown in the popup.
+- Set `view: { calendar: { labels: true } }` for the main month calendar. Load events via `onPageLoading` using `getJson` with `args.viewStart`/`args.viewEnd` as date range params.
+- Use `renderHeader` (Angular: `headerTemplate`, Vue: `header`) to build a custom header: `CalendarNav` on the left, a Mobiscroll `Input` with `startIcon="material-search"` and placeholder "Search events" in the center, and `CalendarPrev`, `CalendarToday`, `CalendarNext` on the right.
+- On `Input` `onChange`, debounce by 200ms, then call `getJson` with the search text appended to the API URL. Pass the returned events to a separate search-results `Eventcalendar` and open the `Popup`. Close the popup on empty input.
+- Render a `Popup` anchored to the search `Input` element (`anchor`, `focusElm`, `display="anchored"`). Inside the popup, place a second `Eventcalendar` with `showControls: false` and `view: { agenda: { type: 'year', size: 5 } }`.
+- On `onEventClick` in the results agenda, call `inst.navigateToEvent(args.event)` on the main calendar instance (Angular: use `@ViewChild`) to navigate to that event's date, set it as `selectedEvents` to highlight it, and close the popup.
 
 ## What this demo shows
 

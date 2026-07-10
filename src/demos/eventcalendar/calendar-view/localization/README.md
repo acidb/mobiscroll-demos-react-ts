@@ -16,7 +16,10 @@ You can see how each example shows up by clicking on the small flag icon or chec
 
 ## Implementation instructions
 
-- Use the `locale` option to switch the language and localization settings of the Eventcalendar.
+- Use `view: { calendar: { labels: true } }`.
+- Render a `Dropdown` above the calendar populated with ~35 language options (Arabic through Vietnamese). Default to `'en'`.
+- Pass `locale={locale[localeStr]}` to the Eventcalendar, where `locale` is the map object imported from Mobiscroll and `localeStr` is the currently selected code. Changing the dropdown immediately re-renders the calendar in the new language including date formats, button labels, and RTL layout. For the imperative API, call `inst.setOptions({ locale: mobiscroll.locale[value] })` on dropdown `change`.
+- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. Angular: use `HttpClient.jsonp()` instead. JS/jQuery: call `inst.setEvents(events)` in the callback.
 
 ## What this demo shows
 
@@ -24,19 +27,15 @@ You can see how each example shows up by clicking on the small flag icon or chec
 - **Locale selector** Clicking the `Locale` dropdown opens a list of available locales that updates the calendar localization.
 - **Localization behavior** The localized setup affects date and time formatting, button labels, RTL layout support, and other built-in UI text and behaviors.
 - **Month grid** The calendar displays events as labels inside day cells across a full monthly grid.
-- **Event labels** Events use different label styles and colors to distinguish between all-day events, multi-day all-day events, and timed events.
-- **Overflow handling** The number of visible event labels in a day cell depends on the available vertical space.
-- **More events popup** When a day has more events than can fit, the cell shows an `X more` label, where `X` is the number of hidden events.
-- **Popover details** Clicking the `X more` label opens a popup that shows the additional events for that day.
-- **Event selection** Clicking an event label highlights the selected event.
-- **Day hover state** Hovering over a day cell highlights the day number in the top-right corner with a gray background.
-- **Day selection** Clicking the empty area of a day cell selects that day and highlights the day number with a blue background.
-- **Month navigation** The month can be changed by dragging the calendar left or right.
-- **Header navigation** The header shows the current month and year, previous and next navigation arrows, and a `Today` button for jumping back to the current date.
+- **Event labels** Events use different label styles and colors to distinguish between all-day events, multi-day, and timed events.
+- **Overflow handling** The number of visible event labels depends on the available height in each day cell. Additional events are collapsed behind an `X more` link.
+- **Popover** Clicking the `X more` link opens a popover that shows the hidden events for that day.
+- **Label interaction** Hovering over or clicking an event label selects it and highlights the selected label.
+- **Day cell states for future days** Hovering a day cell highlights the day number with a gray background, while clicking the empty part of the cell selects the day and highlights the day number with a blue background.
+- **Month navigation** The month can be changed by clicking and dragging the calendar left or right.
+- **Calendar header** The header shows the current month and year on the left, and blue month navigation arrows with a `Today` button (for jumping back to the current date) between them on the right.
 
 ## Best for
 
 - **Multi-language calendar UIs** Apps that need the same event calendar experience in multiple languages and regional formats.
-- **Localization testing** Verifying how month-view calendar layouts, labels, buttons, and popups behave across supported locales.
-- **RTL support validation** Checking calendar behavior and layout in right-to-left languages such as Arabic or Hebrew.
 - **Region-specific event experiences** Products that need localized date formats, time formats, and translated interface copy without rebuilding the calendar UI.

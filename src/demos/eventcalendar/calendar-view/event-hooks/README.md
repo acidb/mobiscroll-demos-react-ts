@@ -16,7 +16,16 @@ While users interact with the UI events like `onEventClick`, `onInit`, `onSelect
 
 ## Implementation instructions
 
-- Use lifecycle event callbacks to capture interactions such as initialization, hover, date selection, event selection, drag-and-drop, and event creation.
+- Use `view: { calendar: { labels: true } }`. Enable `dragToCreate: true`, `dragToMove: true`, `dragToResize: true`, and `externalDrop: true`.
+- Add an `invalid` entry blocking weekends: `{ recurring: { repeat: 'weekly', weekDays: 'SA,SU' } }`.
+- **External draggables** — render 2 styled cards above the calendar, each an external draggable with `dragData: { title, color }`. Card 1: `{ title: 'External drag 1', color: '#ffdab8' }`; card 2: `{ title: 'External drag 2', color: '#ddfcf7' }`. React/Vue: use the `Draggable` component with `dragData` and `element` (ref) props. Angular: use the `mbsc-draggable` directive with `[dragData]`. JS/jQuery: use the `mbsc-draggable` attribute with `data-drag-data` as a JSON string.
+- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. Angular: use `HttpClient.jsonp()` instead. JS/jQuery: call `inst.setEvents(events)` in the callback.
+- **All lifecycle hooks** — register every available hook as an empty handler, grouped by concern:
+  - **Cell**: `onCellClick`, `onCellDoubleClick`, `onCellRightClick`, `onCellHoverIn`, `onCellHoverOut`
+  - **Event interaction**: `onEventClick`, `onEventDoubleClick`, `onEventRightClick`, `onEventHoverIn`, `onEventHoverOut`, `onLabelClick`
+  - **Event create/update/delete**: `onEventCreate`, `onEventCreated`, `onEventCreateFailed`, `onEventDelete`, `onEventDeleted`, `onEventUpdate`, `onEventUpdated`, `onEventUpdateFailed`
+  - **Event drag**: `onEventDragStart`, `onEventDragEnd`, `onEventDragEnter`, `onEventDragLeave`
+  - **Page / lifecycle**: `onInit`, `onDestroy`, `onPageChange`, `onPageLoaded`, `onPageLoading`, `onSelectedDateChange`
 
 ## What this demo shows
 
@@ -24,18 +33,14 @@ While users interact with the UI events like `onEventClick`, `onInit`, `onSelect
 - **External drag & drop** Two external events are shown above the calendar and can be dragged onto the month grid.
 - **Month grid** The calendar displays a full month view with weekends disabled.
 - **Event labels** Days with events show colored labels inside the day cells, with different colors distinguishing different events.
-- **Overflow handling** The number of visible event labels depends on the available space in the day cell.
-- **More events popover** When not all events fit, the day cell shows an `X more` label that opens a popover with the hidden events.
-- **Event selection** Clicking an event label highlights the selected event.
-- **Cell hover** Hovering over a day cell highlights the day number in the top-right corner with a gray background.
-- **Date selection** Clicking the empty area of a day cell selects the day and highlights its day number with a blue background.
-- **Month navigation** The calendar supports navigating between months by dragging left or right.
-- **Header controls** The header shows the current month and year, previous and next navigation arrows, and a Today button for returning to the current date.
-- **Event log** An Event log panel is shown at the bottom left and lists the lifecycle events fired during interactions such as event creation, hover, drag, and similar actions.
+- **Overflow handling** The number of visible event labels depends on the available height in each day cell. Additional events are collapsed behind an `X more` link.
+- **Popover** Clicking the `X more` link opens a popover that shows the hidden events for that day.
+- **Label interaction** Hovering over or clicking an event label selects it and highlights the selected label.
+- **Day cell states for future days** Hovering a day cell highlights the day number with a gray background, while clicking the empty part of the cell selects the day and highlights the day number with a blue background.
+- **Event creation** Users can create events by clicking and dragging across calendar cells or by double-clicking a day cell.
+- **Calendar header** The header shows the current month and year on the left, and blue month navigation arrows with a `Today` button (for jumping back to the current date) between them on the right. 
+- **Event log** An Event log panel is shown at the left and lists the lifecycle events fired during interactions such as event creation, hover, drag, and similar actions.
 
 ## Best for
 
 - **Lifecycle event discovery** Understanding which Event calendar lifecycle hooks fire during common user interactions.
-- **Interaction testing** Exploring how the calendar behaves during hover, selection, drag-and-drop, and event creation flows.
-- **Custom event handling** Learning where to attach custom logic when users interact with month-view calendar cells and events.
-- **Implementation planning** Using a practical reference when building custom workflows on top of the Event calendar component.

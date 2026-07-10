@@ -13,3 +13,16 @@ In a real-world scenario you would probably [load the events from a remote resou
 ## Related demos
 
 - [See how the event object is built &#8594;](https://demo.mobiscroll.com/react/timeline/event-data-structure#)
+
+## Implementation instructions
+
+- Use `timeline: { type: 'day' }` — a single-day view.
+- Define 5 resources: Resource A (yellow `#fdf500`), Resource B (red `#ff0101`), Resource C (blue `#01adff`), Resource D (green `#239a21`), Resource E (orange `#ff4600`).
+- Pass a static array directly to the `data` option.
+- The dataset demonstrates the full range of Mobiscroll event patterns:
+  - **Timed events** with `dyndatetime` offsets (yesterday, today, tomorrow, today+N) so the demo always shows content relative to the current date
+  - **Multi-day events** spanning several days, including events crossing midnight
+  - **All-day events** via `allDay: true`
+  - **Multi-resource events** by setting `resource` to an array of IDs (e.g. `resource: [1, 4, 5]`) — the event appears in all listed resource rows simultaneously
+  - **Recurring yearly events** using `recurring: { repeat: 'yearly', month: M, day: D }`, including entries anchored to the current month via `now.getMonth() + 1`
+  - **Recurring weekly events** using `recurring: { repeat: 'weekly', weekDays: 'WE' }` for specific weekday patterns

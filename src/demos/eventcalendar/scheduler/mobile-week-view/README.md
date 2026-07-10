@@ -12,25 +12,28 @@ The screen can easily become crowded so it might be a good idea to think in a re
 
 ## Implementation instructions
 
-- Configure the weekly scheduler view with the `view` option.
+- Use `view: { scheduler: { type: 'week' } }` — a full-week scheduler. The day-of-week header stays fixed at the top while the time grid scrolls vertically.
+- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. For the imperative API, call `inst.setEvents(events)` in the callback.
+- Handle `onEventClick` to show a toast with `args.event.title`.
 
 ## What this demo shows
 
 - A mobile weekly scheduler layout with a fixed week strip at the top, a fixed all-day row below it, and a scrollable scheduler time grid for the selected week.
-- **Week navigation** The visible week can be changed from the month and year label in the top-left header area or with the previous, next, and Today controls in the top-right header area.
-- **All-day events** All-day events are shown in a dedicated row that stays visible below the header and week strip.
-- **Timed events** Timed events are displayed in the weekly scheduler grid as colored event cards with a colored stripe, the event time range, and a bold event title.
-- **Current time** A blue current-time line is shown across the time grid to indicate the current time.
+- **Header navigation** The month and year label in the top left opens date navigation, while the blue previous and next arrows and the Today button on the right make it easy to move between weeks and jump back to the current day.
+- **Week view** The fixed weekly strip below the header shows the days of the week, with the current date highlighted by a blue circle.
+- **All-day events** All-day events are displayed in a dedicated row that stays fixed above the time grid.
+- **Time grid** The scheduler grid scrolls vertically through the hours of the selected week.
+- **Timed events** Timed events are displayed in the weekly scheduler grid as colored cards with a colored stripe on the left, the event title in bold, and the exact start and end time displayed above the title.
+- **Event overlapping** If events overlap, the scheduler places them side by side without hiding any of them or causing other conflicts.
+- **Current time** A blue current-time line appears across the time grid, with a small blue dot marking the current date.
 - **Hover behavior** Hovering over the time grid shows a time indicator that follows the cursor in 15-minute increments.
 - **Event interaction** Hovering over events highlights them and shows drag and resize handles for repositioning or changing duration.
-- **Event creation** Double-clicking in the time grid or dragging across a time range creates a new event.
-- **Event selection** Selecting an event shows a toast message with the title of the selected event.
+- **Event selection** Clicking an event highlights it and displays a toast message with the event title at the bottom center of the scheduler.
+- **Event creation** Double-clicking the time grid or clicking and dragging on it creates a new event.
 
 ## Best for
 
 - **Mobile weekly scheduling** Showing a full weekly scheduler experience on small screens with both all-day and timed events in a compact layout.
 - **Event scheduling apps** Managing meetings, appointments, reminders, and longer events in a single weekly timeline.
-- **Resource booking** Scheduling rooms, staff, vehicles, equipment, or other shared resources across multiple days and times.
-- **Travel and itinerary planning** Combining all-day trips or multi-day plans with timed activities in the same weekly view.
 - **Team calendars** Visualizing work schedules, standups, client calls, and overlapping events with clear time-based placement.
 - **Busy weekly schedules** Helping users scan dense schedules quickly when the week includes overlapping, long-running, and all-day events.

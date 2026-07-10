@@ -13,3 +13,9 @@ The events can be [passed in a couple of different ways](https://demo.mobiscroll
 ## Related demos
 
 - [Learn how to set up the range the agenda covers →](https://demo.mobiscroll.com/react/agenda/daily-weekly-monthly-annual-agenda#)
+
+## Implementation instructions
+
+- Use `view: { agenda: { type: 'month' } }`.
+- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. Angular: use `HttpClient.jsonp()` instead. JS/jQuery: call `inst.setEvents(events)` in the callback.
+- On `onEventClick`: show a Mobiscroll `Toast` with `args.event.title` as the message.

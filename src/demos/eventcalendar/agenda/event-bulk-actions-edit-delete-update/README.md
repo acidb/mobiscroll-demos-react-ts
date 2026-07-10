@@ -12,9 +12,12 @@ Custom actions can be performed with external buttons or with context menu activ
 
 ## Implementation instructions
 
-- Enable multi-event selection with the `selectMultipleEvents` option.
-- Support multi-selection through `CTRL`/`SHIFT`/`CMD` + click, and add programmatic selection flows for actions such as `Select all from view`.
-- Use `getSelectedEvents` to retrieve the current selection and `setSelectedEvents` to update or clear it.
+- Use `view: { agenda: { type: 'month' } }`. Enable multi-event selection with `selectMultipleEvents: true`. Users can select via `CTRL`/`SHIFT`/`CMD` + click. Track selection with the `selectedEvents` option and `onSelectedEventsChange`.
+- Use `inst.getEvents()` (no arguments) to retrieve all visible events in the current view range — use this for "Select all from view". Use `inst.getSelectedEvents()` and `inst.setSelectedEvents()` to programmatically read and update the selection.
+- Wire `onEventRightClick` to open a Mobiscroll `Select` component anchored to `args.domEvent.target`, populated with "Update" and "Delete" actions.
+- Intercept keyboard Delete/Backspace via `onEventDelete` and `onEventUpdate` (checking `args.isDelete`) to route deletion through a confirm dialog before removing events.
+- For recurring event occurrences, handle update and delete by adding the occurrence date to `event.original.recurringException` and, for updates, pushing a new non-recurring event with the modified properties. For the imperative API, call `inst.updateEvent()`, `inst.addEvent()`, and `inst.removeEvent()`.
+- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. Angular: use `HttpClient.jsonp()`. For the imperative API, call `inst.setEvents(events)` in the callback.
 
 ## What this demo shows
 

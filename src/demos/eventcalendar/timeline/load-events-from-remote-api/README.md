@@ -11,3 +11,9 @@ The timeline can be populated by passing an array to the `data` option, that you
 ## Related demos
 
 - [Dynamically load events on month change &#8594;](https://demo.mobiscroll.com/react/timeline/load-events-on-demand#)
+
+## Implementation instructions
+
+- Use `timeline: { type: 'day' }` — a single-day view.
+- Define 6 named resources: Ryan (yellow `#fdf500`), Kate (orange `#ff4600`), John (red `#ff0101`), Mark (green `#239a21`), Sharon (purple `#8f1ed6`), Ashley (blue `#01adff`).
+- On mount, fetch events from `https://trial.mobiscroll.com/timeline-events/` via JSONP using `getJson(url, callback, 'jsonp')`. In the callback, pass the returned array to the calendar — call `inst.setEvents(events)` for the imperative API.

@@ -29,3 +29,33 @@ For example travel time for meetings/appointments, check in before a flight.
 - `bufferAfter` - Defines a buffer time in minutes that will be rendered after the end of the event. This buffer area can help you visualise delays or added minutes for tasks.
 For example travel time after meetings/appointments, check out after flights, inspection, cleaning after certain tasks.
 - `order` - Specifies the order of the event in the event array. Has precedence over the default ordering rules.
+
+## Implementation instructions
+
+- Use `view: { scheduler: { type: 'day' } }`.
+- Pre-load one event with `bufferBefore: 20` and `bufferAfter: 30` (values in minutes). The buffer zones render as shaded areas before the event start and after the event end.
+- Add a button outside the calendar. On click, build a new event with base properties (`title`, `color`, `start`, `end`, `bufferBefore: 20`, `bufferAfter: 30`) and custom fields (`busy: true`, `description`, `location`). Add the event to the events array; for the imperative API, call `inst.addEvent(newEvent)`. Call `inst.navigateToEvent(newEvent)` to scroll the view to the new event, then show a `Toast`.
+
+## What this demo shows
+
+- A desktop daily scheduler layout with a fixed week strip at the top, a fixed all-day event row below it, and a scrollable time grid for the selected day.
+- **Code example** The left-side code snippet shows an event definition with the event properties used by the scheduler.
+- **Add event action** A button below the code snippet lets users add a new event to the scheduler from the event data shown in the code example.
+- **Add event feedback** Hovering the button highlights it, and clicking it adds the event to the scheduler and shows a confirmation toast at the bottom center of the scheduler.
+- **Header navigation** The month and year label in the top left opens date navigation, while the blue previous and next arrows and the Today button on the right make it easy to move between dates and jump back to the current day.
+- **Week view** The fixed week strip below the header shows the surrounding dates for quick day switching. Dates highlight on hover, and the selected day is marked with a blue circle.
+- **All-day events** All-day events are displayed in a dedicated row that stays fixed above the time grid.
+- **Time grid** The scheduler below the all-day row scrolls vertically through the hours of the selected day.
+- **Hover feedback** Hovering the time grid shows a time indicator that follows the pointer in 15-minute increments.
+- **Event rendering** Events appear as colored cards with a colored stripe on the left, the event title in bold, and the exact start and end time displayed above the title. Also shows buffer times before and after the event.
+- **Event overlapping** If events overlap, the scheduler places them side by side without hiding any of them or causing other conflicts.
+- **Event interactions** Hovering an event highlights it and shows resize and drag handles, indicating that events can be resized or repositioned.
+- **Event creation** Double-clicking the time grid or clicking and dragging on it creates a new event.
+- **Event selection** Clicking an event selects and highlights it.
+- **Current time** A blue line across the scheduler indicates the current time.
+
+## Best for
+
+- **Daily team scheduling** Managing meetings, check-ins, and work blocks in a day-based scheduler with quick access to nearby dates.
+- **Workforce and shift planning** Viewing all-day and timed items together when teams need to coordinate daily schedules across a structured timeline.
+- **Event-dense planning interfaces** Helping users spot categories, overlaps, and gaps quickly through color-coded event blocks.

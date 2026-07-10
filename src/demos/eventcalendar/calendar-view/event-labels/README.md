@@ -16,7 +16,9 @@ The number of visible labels are determined by the available space and the ones 
 
 ## Implementation instructions
 
-- Enable event labels in the calendar view by setting `labels: true` on the `calendar` configuration under the `view` option.
+- Set `view: { calendar: { labels: true } }` to display a month grid with inline event labels in each day cell. When labels overflow the available cell height, the remainder appear in an `X more` popover automatically.
+- Load events from a remote endpoint using `getJson` and assign them to `data`; for the imperative API, call `inst.setEvents(events)` in the callback.
+- Handle `onEventClick` to show a `Toast` with `args.event.title`.
 
 ## What this demo shows
 

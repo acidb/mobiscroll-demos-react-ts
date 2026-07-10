@@ -16,3 +16,8 @@ Use the `agenda` object inside the `view` option to configure the agenda. `type`
 ## Related demos
 
 - [Check out the previous example →](https://demo.mobiscroll.com/react/agenda/daily-agenda-with-week-calendar#)
+
+## Implementation instructions
+
+- Render three Eventcalendar instances side by side inside a `Page` component using Mobiscroll's grid (`mbsc-grid` / `mbsc-row` / `mbsc-col`). Configure each with a different `view` type: `{ agenda: { type: 'day' } }`, `{ agenda: { type: 'week' } }`, and `{ agenda: { type: 'month' } }`.
+- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')` and pass the same array to all three instances. Angular: use `HttpClient.jsonp()`. For the imperative API, call `inst.setEvents(events)` on each instance in the callback.

@@ -25,43 +25,28 @@ For failed drops (trying to schedule a task during lunch breaks or weekends) the
 
 ## Implementation instructions
 
-- Render the preset task list outside the calendar and initialize each item as a `draggable` element.
-- Enable `externalDrop` on the Eventcalendar so items from the external list can be dropped onto the month view.
-- Define the preset event skeletons for the external `draggable` items so each dropped task creates the correct multi-day event.
-- Configure the calendar as a desktop month view and mark weekends as invalid dates to block scheduling on those days.
-- Use the
-
-`onEventCreate`
-
- lifecycle event to open a `popup` after a successful drop when more details need to be collected.
-- Build the popup form with fields for the task title, additional details, and technician selection, then confirm the assignment from the popup action button.
-- Handle rejected drops with the
-
-`onEventCreateFailed`
-
- event, for example when a task is dropped onto an invalid weekend date.
+- Set `view: { calendar: { labels: true } }`. Enable `externalDrop: true` to accept drops from outside the calendar and `dragToMove: true` to allow moving already-placed events. Block weekends with `invalid: [{ recurring: { repeat: 'weekly', weekDays: 'SA,SU' } }]`.
+- Define each preset task as an object with `title`, `color`, `start`, and `end` fields (where `start`/`end` represent today-relative offsets that set the event duration when dropped). Render the task list outside the calendar and initialize each item as a draggable element using the `Draggable` component with `dragData` set to the task object. Angular: use the `mbsc-draggable` directive with `[dragData]`. JS/jQuery: call `mobiscroll.draggable(element, { dragData: task })` for each task element.
+- Handle `onEventCreated` (Vue: `@event-created`) after a successful drop: open an anchored `Popup` targeting `args.target` with `display="anchored"`. The popup contains a read-only `Input` prefilled with `args.event.title`, a `Textarea` for details, and a `Select` for technician assignment, with an `['ok']` button to confirm. Show a `Toast` with `'New task added'` when the popup closes. Angular: use `@ViewChild` to get the `MbscPopup` instance and call `.open()` imperatively.
+- Handle `onEventCreateFailed` and `onEventUpdateFailed` (Vue: `@event-create-failed`, `@event-update-failed`) to show a `Toast` when a drop lands on a weekend or other invalid date.
 
 ## What this demo shows
 
-- A desktop month view Eventcalendar paired with an external list of predefined tasks that can be dragged onto the calendar.
-- **Calendar layout** The main view shows a full month grid with the current month and year in the top-left corner.
-- **Calendar navigation** The header includes previous and next month buttons, plus a `Today` button between them to jump back to the current date.
-- **Invalid dates** Weekend days are disabled, so they cannot be used as drop targets for new tasks.
+- A desktop month view event calendar paired with an external list of predefined tasks that can be dragged onto the calendar.
+- **Calendar layout** The main view shows a full month grid with no events.
+- **Calendar header** The header shows the current month and year on the left, and blue month navigation arrows with a `Today` button between them on the right.
+- **Invalid dates** Weekend days are disabled, so they cannot be used as drop targets for new tasks. When a user tries to drop an event in a restricted cell, a `Can't create event on this date` toast appears at the bottom center of the calendar.
 - **External task list** A right-side panel titled `Available tasks` displays preset items: `Small wrap 2 day`, `Full-size wrap 3 days`, `Mid-size wrap 3 days`, `Roadster wrap 3 days`, `SUV wrap 4 days`, and `Hypercar wrap 5 days`.
-- **Empty initial state** The month cells start without any scheduled events.
-- **External drag & drop** Tasks can be dragged from the external list and dropped onto a calendar day to create a new event.
-- **Created event display** After a successful drop, the task label appears inside the selected day cell.
-- **Assignment popup** Creating an event opens a popup below the event label with the title `Assign task`.
+- **External drag & drop** Tasks can be dragged from the external list and dropped onto a calendar day to schedule predefined events.
+- **Created event display** Dropping the task opens a popup below the event label with the title `Assign task`.
 - **Popup form** The popup includes a `Task` text field prefilled with the task title, a `Details` text field with the `Add description…` placeholder, and a `Technician` select with the `Please select…` placeholder.
 - **Popup confirmation** The popup footer contains a blue `Ok` button in the bottom-right corner to confirm the event details.
-- **Hover state** Hovering over a day cell highlights the day number in the top-right corner with a gray background.
-- **Selection state** Clicking an empty area in a day cell selects that day and highlights the day number with a blue background.
-- **Gesture navigation** The month view can also be changed by dragging the calendar left or right.
+- **Scheduled task** After a successful drop and confirmation the task label appears inside day cell and a confirmation toast appears on the bottom center part of the calendar with this message `New task added`.
+- **Day cell states** Hovering a day cell highlights the day number with a gray background, while clicking the empty part of the cell selects the day and highlights the day number with a blue background.
+- **Gesture navigation** The month view can also be changed by clicking and dragging the calendar left or right.
 
 ## Best for
 
 - **Service scheduling** Planning repeatable job types, such as vehicle wrapping tasks, from predefined task templates.
 - **Template-based booking** Letting teams create new calendar events by dragging standard task presets onto available dates.
-- **Desktop monthly planning** Reviewing capacity and assigning longer multi-day work across a full month view.
 - **Technician assignment workflows** Capturing extra scheduling details, such as notes and technician selection, at the moment a task is placed.
-- **Availability-aware scheduling** Preventing drops on non-working dates like weekends.

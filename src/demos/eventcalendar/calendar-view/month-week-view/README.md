@@ -12,8 +12,8 @@ You can also set the first day of the week using the `firstDay` option, where Su
 
 ## Implementation instructions
 
-- Use the `type` and `size` properties of the `view` option to set the size of the month or week view.
-- Use the `firstDay` option to define the first day of the week. Sunday is `0`, Monday is `1`, and other days follow the same numeric pattern.
+- Render three separate `Eventcalendar` instances side by side. Use `type: 'week'` in each `calendar` config, varying `size` to display 1, 2, or 3 weeks: `{ calendar: { type: 'week' } }`, `{ calendar: { type: 'week', size: 2 } }`, `{ calendar: { type: 'week', size: 3 } }`.
+- Load events from a remote endpoint using `getJson` and pass the same `data` array to all three instances; for the imperative API, call `inst.setEvents(events)` in the callback.
 
 ## What this demo shows
 

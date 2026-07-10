@@ -88,32 +88,28 @@ For details, and option lists see the [Third-party dragging support](https://doc
 # What this demo shows
 
 - This demo shows a desktop month view event calendar with a separate external event panel for scheduling and unscheduling events by drag and drop.
-- **Calendar layout** The main area shows a full desktop month calendar with event labels rendered inside the day cells.
+- **Calendar header** The header shows the current month and year on the left, and blue month navigation arrows with a `Today` button between them on the right.
 - **External lists** A scrollable panel on the right contains three external event lists: `Mobiscroll draggable` with four red items, `SortableJS list (externally sortable)` with four yellow items, and `Dragula list (externally sortable)` with four green items.
 - **Scheduling from lists** Any item from the external lists can be dragged onto the month view to create and schedule that event on the target day.
 - **Unscheduling back to lists** Scheduled events can be dragged out of the calendar and dropped back into an external list, removing them from the month view.
 - **List behavior** When an item is scheduled from an external list, it disappears from that list and appears on the calendar.
-- **Feedback on drop** After an event is scheduled from an external list, a toast appears near the bottom center of the calendar showing the event title.
+- **Feedback on drop** After an event is scheduled from an external list, a toast appears near the bottom center of the calendar showing the event title and the `added` meesage.
+- **Feedback on externap list drop** After an event is unscheduled from the calendar and dropped on the external list a toast appears near the bottom center of the calendar showing the event title and the `unscheduled` message.
 - **Event label rendering** Day cells display event labels with different visual styles for all-day, multi-day, and time-specific events.
-- **Color coding** Event label colors vary to indicate different event types or sources.
 - **Overflow handling** The number of visible event labels in a day cell depends on the available vertical space.
 - **More events popup** When not all events fit in a day cell, an `X more` label appears; selecting it opens a popup that shows the hidden events for that day.
 - **Event interaction** Event labels are highlighted on hover and on selection.
-- **Day hover state** Hovering a day cell highlights the day number in the top-right corner with a gray background.
-- **Day selection** Clicking an empty part of a day cell selects that day and highlights the day number with a blue background.
-- **Drag to create** New events can also be created directly on the calendar by dragging across day cells.
-- **Header navigation** The header shows the current month and year on the left, with previous and next navigation arrows plus a `Today` button on the right.
+- **Day cell states** Hovering a day cell highlights the day number with a gray background, while clicking the empty part of the cell selects the day and highlights the day number with a blue background.
+- **Drag to create** New events can be created directly on the calendar by clicking and dragging across the empty space of the day cells.
 
 ## Implementation instructions
 
-- Enable external scheduling onto the calendar by setting `externalDrop` to `true`.
-- Set up the Mobiscroll external list items as `draggable` components so they can be dropped onto the Eventcalendar.
-- When using `SortableJS` or `Dragula`, the dragged element's `data-drag-data` can supply the event definition, or the plugin `eventData` option can return the event object programmatically.
-- Use calendar lifecycle events such as `onEventCreate`, `onEventCreated`, and `onEventCreateFailed` to handle success and failure states, such as showing a toast after a successful drop.
-- Enable dragging events out of the calendar by setting `externalDrag` to `true`.
-- Initialize a `dropcontainer` when you want scheduled events to be unscheduled by dropping them onto an external target. Handle the drop through its `onItemDrop` event.
-- When an event is dropped into an external drop container or another calendar with `externalDrop` enabled, it is removed from the original calendar and the delete lifecycle event fires.
-- Use `onEventDragEnter`, `onEventDragLeave`, `onItemDragEnter`, and `onItemDragLeave` to provide visual feedback while items are dragged between the calendar and external containers.
+- Set `view: { calendar: { labels: true } }`. Enable `externalDrop: true` and `externalDrag: true` to allow events to be dropped in from and dragged out to external lists. Also set `dragToMove: true` and `dragToCreate: true`.
+- **Mobiscroll draggable list**: initialize each task item with the `Draggable` component and `dragData` set to the event object (Angular: `mbsc-draggable` directive with `[dragData]`; JS/jQuery: `mobiscroll.draggable(element, { dragData })` or the `mbsc-draggable` attribute with `data-drag-data`). Wrap the list container with a `Dropcontainer` and handle `onItemDrop` (Vue: `@item-drop`) to re-add events that are dragged back from the calendar — `args.data` carries the event object.
+- **SortableJS list**: initialize `new Sortable(container, options)`, then call `sortableJsDraggable.init(sortableInstance, { cloneSelector: '.sortable-drag', externalDrop: true, onExternalDrop })`. Supply the event definition via each item's `data-drag-data` attribute. The `onExternalDrop` callback receives `args.dragData`, `args.position`, and `args.container` for re-inserting the item when dropped back from the calendar.
+- **Dragula list**: initialize `dragula([container])`, then call `dragulaDraggable.init(drake, { externalDrop: true, onExternalDrop })`. The `onExternalDrop` callback works identically to the SortableJS version.
+- Handle `onEventCreated` (Vue: `@event-created`): when `args.action === 'externalDrop'`, remove the item from its source list and show a `Toast` with `args.event.title + ' added'`. Handle `onEventDeleted` (Vue: `@event-deleted`) to show a `Toast` with `args.event.title + ' unscheduled'`.
+- Load initial calendar events from a remote endpoint using `getJson` and assign them to `data`; for the imperative API, call `inst.setEvents(events)` in the callback.
 
 ## Best for
 
@@ -121,4 +117,3 @@ For details, and option lists see the [Third-party dragging support](https://doc
 - **Desktop planning workflows** Month-based planning experiences where users need a broad date overview together with a side panel of draggable items.
 - **Schedule and unschedule flows** Use cases where users need to move items onto the calendar to assign dates and move them back out to return them to an unscheduled state.
 - **Third-party drag-and-drop integration** Projects that need to combine Mobiscroll Eventcalendar with existing `SortableJS` or `Dragula` list implementations.
-- **Mixed event presentation** Scenarios that need to show all-day, multi-day, and timed events together in a month view with clear label styling and overflow handling.

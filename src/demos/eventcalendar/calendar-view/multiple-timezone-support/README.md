@@ -10,10 +10,11 @@ Set the timezone of the incoming data through the `dataTimezone` - eg. `'utc'`, 
 
 ## Implementation instructions
 
-- Set the timezone of the incoming event data with `dataTimezone` such as `'utc'`.
-- Set the calendar display timezone with `displayTimezone` such as `'America/Los_Angeles'`.
-- Render the custom timezone selector in the calendar header with the `renderHeader` function.
-- Update the selected `displayTimezone` value from the dropdown so the month view re-renders the events in the chosen timezone.
+- Set up dayjs with `dayjs/plugin/utc` and `dayjs/plugin/timezone`, import `dayjsTimezone` from the Mobiscroll package, assign `dayjsTimezone.dayjs = dayjs`, and pass it to `timezonePlugin`.
+- Set `dataTimezone: 'utc'` so the calendar treats all event dates as UTC. Bind `displayTimezone` to a state variable initialized to `'utc'`.
+- Set `view: { calendar: { labels: true } }` to display a month grid with inline event labels.
+- Enable `dragToCreate`, `dragToMove`, and `dragToResize` for interactive event management.
+- Use `renderHeader` (Angular: `headerTemplate`, Vue: `header`) to render a custom header: `CalendarNav` on the left; `CalendarPrev`, `CalendarToday`, `CalendarNext`, and a Mobiscroll `Select` component on the right. The `Select` lists 9 IANA timezone options (e.g. `'America/Los_Angeles'`, `'UTC'`, `'Europe/Berlin'`). On change, update the `displayTimezone` — the calendar re-renders all event labels in the newly selected timezone.
 
 ## What this demo shows
 

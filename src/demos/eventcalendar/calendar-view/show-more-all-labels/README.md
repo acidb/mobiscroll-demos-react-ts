@@ -16,10 +16,13 @@ By default the width of the labels fill the day cells (`eventDisplay: 'fill'`) b
 
 ## Implementation instructions
 
-- Use the `labels` option on `view.calendar` to control how many event labels appear in each day cell.
-- Set `labels: 'all'` to render every label for the day. This allows the week row heights to grow dynamically based on content.
-- Use `eventDisplay: 'fill'` to make event labels fill the available width of the day cell.
-- Use `eventDisplay: 'exact'` to render labels with exact times instead of full-width labels.
+- Render six separate `Eventcalendar` instances arranged in a 2×3 grid to demonstrate all `labels` variants side by side. The first row shows month views; the second row shows week views.
+- The three `labels` values used across both rows:
+  - `labels: 'all'` — every event label is rendered; week row heights grow dynamically to fit all events
+  - `labels: 3` — at most 3 labels per day cell; extra events are hidden behind an `X more` indicator that opens a popover on click
+  - `labels: true` — shows as many labels as fit the cell at equal row height; extras are hidden behind `X more`
+- Month view configs: `{ calendar: { type: 'month', labels: 'all' } }`, `{ calendar: { type: 'month', labels: 3 } }`, `{ calendar: { labels: true } }`. Week view configs: `{ calendar: { type: 'week', labels: 'all' } }`, `{ calendar: { type: 'week', labels: 3 } }`, `{ calendar: { type: 'week', labels: true } }`.
+- Load events from a remote endpoint using `getJson` and pass the same `data` array to all six instances; for the imperative API, call `inst.setEvents(events)` on each in the callback.
 
 ## What this demo shows
 

@@ -23,3 +23,29 @@ Besides being able to update progress right on the event, it is also possible to
 - Build the popup with `Popup`; default to full-screen bottom sheet on mobile and switch to an anchored 400px popup at the medium breakpoint.
 - Include a `Datepicker` in range mode with `startInput`/`endInput` refs for editing the task date range, and a native `<input type="range">` (0–100) for updating the progress value directly in the form.
 - On popup close when the add form is canceled, refresh the events list to remove the temporary placeholder event.
+
+## What this demo shows
+
+- A desktop monthly timeline for project planning and progress tracking, with days arranged horizontally and resources listed vertically on the left.
+- **Header navigation** The month and year label opens date navigation. The previous and next arrows and the Today button move between months and return to the current day.
+- **Timeline header** The fixed date strip shows the days of the selected month in `D DDD` format, with the current date highlighted.
+- **Resources** Hierarchical resource groups organize team members into departments such as Designer Team, Development Team, and QA Team.
+- **Resource details** Individual resources show custom information, including the team member's role or job title.
+- **Event colors** Events for the same team member or group keep a consistent color in the timeline.
+- **Event cards** Events are rendered as colored cards with the project name, a progress percentage, and an inline progress slider.
+- **Inline progress** The progress slider reacts on hover and lets users update completion directly on the event.
+- **Event positioning** Events are placed by assigned resource and by start and end date.
+- **Event creation** Users can create events by double-clicking a resource row or by clicking and dragging across a date range.
+- **Add form** Creating an event opens a form with title, start date, end date, and progress slider fields, plus Cancel and Add actions.
+- **Event editing** Clicking an event selects it and opens a popup for modifying the event details.
+- **Drag and resize** Events show drag and resize handles on hover for moving tasks or changing their duration.
+- **Vertical scrolling** The resource area scrolls vertically so the timeline can display more resources in the same view.
+
+## Best for
+
+- **Project management** Tracking tasks, ownership, timing, and completion progress in a single timeline.
+- **Sprint planning** Planning work across team members and date ranges while keeping progress visible.
+- **Software development teams** Coordinating designers, developers, and QA resources across overlapping project tasks.
+- **Task tracking** Updating task progress directly from the timeline without opening a separate detail view.
+- **Team workload management** Reviewing who is assigned to what, when each task runs, and how far along the work is.
+- **Gantt-style planning** Showing project spans and completion percentages without requiring a full Gantt chart implementation.

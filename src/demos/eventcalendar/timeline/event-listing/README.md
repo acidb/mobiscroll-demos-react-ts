@@ -18,6 +18,6 @@ This is especially useful for spotting overloaded resources/days and helps in ma
   - **Week**: `timeline: { type: 'week', eventDisplay: 'fill' }`
   - **Month** (default): `timeline: { type: 'month', eventDisplay: 'fill' }`
 - Build the custom header from: `CalendarNav`, a centered `SegmentedGroup` containing three `Segmented` options (`workweek` / `week` / `month`), then `CalendarPrev`, `CalendarToday`, `CalendarNext`.
-- When the segmented selection changes, replace the active view config in state/options with the corresponding object above. In React, store `calView` in state and update it in the `onChange` handler. In Vue, use a `ref` for the view. In JS/jQuery, call `calendar.setOptions({ view: ... })` directly.
+- When the segmented selection changes, update the active view config; for the imperative API, call `calendar.setOptions({ view: ... })` directly.
 - Define 6 generic resources (Resource A–F) with `id`, `name`, and `color`.
 - Populate events using `dyndatetime` offsets relative to today — scatter 13 timed events across resources 1–6 on days ranging from today−4 to today+2 so that multiple resources have concurrent events on the same day, making the fill layout's density-spotting advantage visible.

@@ -10,12 +10,11 @@ For customizing the cell content appearance, the `renderCalendarDayContent` is t
 
 ## Implementation instructions
 
-- Use `onCellHoverIn` and `onCellHoverOut` events to track which day cell is currently hovered and show or hide the contextual `Add event` button.
-- Use 
-
-`renderCalendarDayContent`
-
-to customize the day cell structure, including the day number, event labels, and hover-only action area.
+- Set `view: { calendar: { labels: 2 } }` for a month grid that shows up to 2 event labels per day cell; extra events collapse into an "X more" indicator.
+- Track the hovered day in a `hoveredDate` state variable: `onCellHoverIn` (Vue: `@cell-hover-in`) sets it to `args.date`; `onCellHoverOut` (Vue: `@cell-hover-out`) clears it.
+- Use `renderCalendarDayContent` (Angular: `calendarDayContentTemplate`, Vue: `calendarDayContent` slot) to inject content into each day cell. In the renderer, compare `args.date` with `hoveredDate` by timestamp and render an "Add event" button only for the matching cell; return nothing for all other cells.
+- `addEvent()` appends `{ start: hoveredDate, title: 'New Event' }` to the events array and shows a `Toast` with `'Event added on ' + formatDate('YYYY-MM-DD', hoveredDate)` as the message.
+- JS/jQuery: since `renderCalendarDayContent` is not reactive, call `setOptions({ renderCalendarDayContent: ... })` inside both hover handlers to force a re-render when the hovered cell changes. Handle button clicks via event delegation on the calendar container. Use `calendar.addEvent()` to add the new event instead of mutating a data array.
 
 ## What this demo shows
 

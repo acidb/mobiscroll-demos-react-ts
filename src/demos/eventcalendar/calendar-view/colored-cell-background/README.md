@@ -21,7 +21,11 @@ Use the
 
 ## Implementation instructions
 
-- Use the `colors` option to apply colored backgrounds to day cells in the month view.
+- Pass a `colors` array to the `Eventcalendar`. Each entry sets a `background` color value and targets days using one of three shapes:
+  - Single day: `{ date: '2026-01-29', background: '#ffdbdb80' }`
+  - Date range: `{ start: '2026-01-17', end: '2026-01-20', background: '#d5f1ea80' }`
+  - Recurring rule: `{ background: '#d6e81e1a', recurring: { repeat: 'monthly', day: -1 } }` — this example colors the last day of every month; the `recurring` object follows the same recurrence structure as event data.
+- Load events from a remote endpoint using `getJson` and assign them to `data`; for the imperative API, call `inst.setEvents(events)` in the callback.
 
 ## What this demo shows
 

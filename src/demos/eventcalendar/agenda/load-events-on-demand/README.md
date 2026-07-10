@@ -15,3 +15,9 @@ Use the `onPageLoading` lifecycle event to load the data runtime. You can [learn
 ## Related demos
 
 - [Show events from Google Calendar →](https://demo.mobiscroll.com/react/agenda/load-events-from-google-calendar#)
+
+## Implementation instructions
+
+- Use `view: { agenda: { type: 'month' } }`. Wire the `onPageLoading` event to fetch events for the newly visible page. In the handler, extract the year and month from `args.firstDay` (or `args.month` depending on framework) and build the request URL: `https://trial.mobiscroll.com/monthlyevents/?year={year}&month={month}&vers=5`.
+- Fetch the data via JSONP using `getJson(url, callback, 'jsonp')`. Angular: use `HttpClient.jsonp()`. jQuery: `$.getJSON(url+'&callback=?', callback)`. For the imperative API, call `inst.setEvents(events)` in the callback. Replace the entire events array on each page change — do not accumulate.
+- Show a Toast with "New events loaded" after each successful fetch to confirm the data refresh.

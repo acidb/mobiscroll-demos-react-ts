@@ -50,3 +50,12 @@ You can also use the :::framework{only="vue"} `event-drag-leave` ::: :::framewor
 Learn more from the external drag & drop documentation.
 
 - **Looking for external drag into a scheduler?** [Check out this example &#8594;](https://demo.mobiscroll.com/react/scheduler/external-drag-drop-sortable-dragula#)
+
+## Implementation instructions
+
+- Use `view: { calendar: { labels: true } }`. Enable `dragToMove: true`, `dragToCreate: true`, `externalDrop: true`, `externalDrag: true`.
+- Layout: a Mobiscroll 9/3 grid row — Eventcalendar in the left 9 columns, task sidebar in the right 3 columns. The sidebar is a `Dropcontainer` (`MbscDropcontainer` in Vue; `mbsc-dropcontainer` directive in Angular) with an "Available tasks" heading and 4 pre-defined task cards: `Product team meeting` (#cf4343, 08:00–09:30), `General orientation` (#e49516, 08:00–10:00), `Client Training` (#8c429f, 10:00–14:00), `CEO Conference` (#63b548, 12:00–18:00). Each task card is a draggable: React/Vue use the `Draggable` component with `dragData` (full task object: `id`, `title`, `color`, `start`, `end`) and `element` (ref to the card DOM node); Angular uses `mbsc-draggable` directive with `[dragData]`; JS/jQuery use the `mbsc-draggable` attribute on the element with `data-drag-data` as a stringified JSON object.
+- `onEventCreate` (task dropped onto calendar): remove the task from the sidebar task list by `id` (React/Vue: filter state array; JS/jQuery: remove the DOM element). Show a `Toast` saying `"[title] added"`.
+- `onEventDelete` (event dragged off calendar): show a `Toast` saying `"[title] unscheduled"`. The calendar removes the event automatically.
+- `Dropcontainer.onItemDrop`: when an event lands back in the task sidebar, re-add it to the task list (React/Vue: append to state array; JS/jQuery: create the DOM element, append to the task container, and call `mobiscroll.draggable('#element-id', { dragData: event })`).
+- Load initial calendar events from `https://trial.mobiscroll.com/drag-drop-events/` via JSONP using `getJson(url, callback, 'jsonp')`. Angular: use `HttpClient.jsonp()` instead. JS/jQuery: call `myCalendar.setEvents(events)` in the callback.

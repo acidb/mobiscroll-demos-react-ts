@@ -31,3 +31,9 @@ For a custom order on a theme to theme basis, you will need to use a little CSS.
 ## Related demos
 
 - [Check out the next example →](https://demo.mobiscroll.com/react/agenda/resource-filtering-in-header#)
+
+## Implementation instructions
+
+- Use `renderHeader` (React/JS/jQuery) / `headerTemplate` (Angular) / `header` slot (Vue) to replace the default header. Assemble it from the built-in nav components: `CalendarNav` (navigation label), `CalendarToday` (today button), and custom prev/next `Button`s that shift `currentDate` by ±1 month. Place a `SegmentedGroup` at the far right with "agenda" and "calendar" segments to switch views.
+- Keep `selectedDate` and `onSelectedDateChange` wired so that the custom prev/next buttons and the nav label stay in sync. On segment change, swap `view` between `{ agenda: { type: 'month' } }` and `{ calendar: { type: 'month' } }`.
+- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. Angular: use `HttpClient.jsonp()` instead. JS/jQuery: call `inst.setEvents(events)` in the callback.

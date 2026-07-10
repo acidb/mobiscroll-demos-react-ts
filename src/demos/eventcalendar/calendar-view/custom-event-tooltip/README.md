@@ -30,15 +30,16 @@ so that the library knows where and when to show the tooltip.
 
 ## Implementation instructions
 
-- For the native browser tooltip, use the `tooltip` property of the event data object when each event needs custom tooltip text.
-- Set `showEventTooltip` to `false` when the native browser tooltip should be hidden.
-- Build the fully custom tooltip with `onEventHoverIn` and `onEventHoverOut`.
+- Set `view: { calendar: { type: 'week' } }`. Set `showEventTooltip: false` to suppress the native browser tooltip. Set `dragToMove: true` and disable `clickToCreate`, `dragToCreate`, and `dragToResize`.
+- Each event object carries custom fields alongside the standard ones: `age`, `confirmed`, `reason`, and `location`. Use `formatDate` from Mobiscroll to format `event.start` and `event.end` as human-readable time strings for the tooltip header.
+- Render a Mobiscroll `Popup` outside the calendar with `display="anchored"`, `showOverlay={false}`, `scrollLock={false}`, and `touchUi={false}`. In `onEventHoverIn` (Vue: `@event-hover-in`), set the popup anchor to `args.domEvent.target` and open it. The same `openTooltip` logic also runs on `onEventClick` so the tooltip appears on both hover and tap.
+- Implement a hover-bridge timer: `onEventHoverOut` (Vue: `@event-hover-out`) starts a 200ms timer to close the popup; `onMouseEnter` on the popup div cancels the timer so the user can move the mouse from the event into the tooltip without it disappearing; `onMouseLeave` on the popup div starts a new 200ms timer. Close immediately on `onEventDragStart`. Angular: use `@ViewChild` (Angular: `@ViewChild`) to get the `MbscPopup` instance and call `.open()` / `.close()` imperatively.
+- Inside the popup, build a header using the event's `color` as background, and a body with Status (derived from `event.confirmed`), Reason for visit, and Location rows. Add a confirm/cancel toggle `Button` in the Status row, a `View patient file` button (`color="secondary"`), and a `Delete appointment` button (`color="danger"`, `variant="outline"`). Each action closes the tooltip and shows a `Toast`; delete also removes the event from the data array.
 
 ## What this demo shows
 
 - A desktop-style weekly event calendar view with event labels rendered inside day cells.
 - **Event labels** Events are shown as labels, with different visual styles based on the event type or event data.
-
 - **Event selection** Clicking an event label highlights the selected event.
 - **Day hover state** Hovering over a day cell highlights the day number with a gray background.
 - **Day selection** Clicking an empty area of a day cell selects that day and highlights the day number with a blue background.

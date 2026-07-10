@@ -17,9 +17,9 @@ You can use the calendar and agenda together or separately. For more ways to use
 
 ## Implementation instructions
 
-- Combine the calendar and agenda views in the `view` option.
-- Configure both views on the same Eventcalendar instance to render the month grid on top and the agenda below.
-- Mobiscroll automatically keeps the calendar selection and agenda position synchronized when both views are enabled together, without requiring extra wiring.
+- Set `view: { calendar: { type: 'month' }, agenda: { type: 'month' } }` to render a month grid on top and a scrollable agenda list below on the same `Eventcalendar` instance. The calendar selection and agenda scroll position stay synchronized automatically.
+- Load events from a remote endpoint using `getJson` and assign them to `data`; for the imperative API, call `inst.setEvents(events)` in the callback.
+- Handle `onEventClick` to show a `Toast` with `args.event.title`.
 
 ## What this demo shows
 

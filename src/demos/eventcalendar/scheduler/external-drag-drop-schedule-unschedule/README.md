@@ -51,3 +51,12 @@ You can also use the :::framework{only="vue"} `event-drag-leave` ::: :::framewor
 Learn more from the external drag & drop documentation.
 
 - **Looking for external drag into a calendar?** [Check out this example &#8594;](https://demo.mobiscroll.com/react/eventcalendar/external-drag-drop-sortable-dragula#)
+
+## Implementation instructions
+
+- Use `view: { scheduler: { type: 'week' } }`. Enable `dragToMove: true`, `dragToCreate: true`, `externalDrop: true`, `externalDrag: true`.
+- Layout: 9-column calendar + 3-column task panel side by side (`mbsc-col-sm-9` / `mbsc-col-sm-3`).
+- Define 4 initial tasks at module level (Product team meeting, General orientation, Client Training, CEO Conference), each with `id`, `title`, `color`, `start`, `end`. Load scheduled events from `https://trial.mobiscroll.com/drag-drop-events/` via JSONP — call `inst.setEvents(events)` for the imperative API.
+- **Scheduling (task → calendar)**: each task card in the panel is a `Draggable` / `MbscDraggable` with `dragData` set to the full task object and `element` pointing to the card's DOM ref. Angular: use the `mbsc-draggable` directive with `[dragData]`. JS/jQuery: mark each card with `mbsc-draggable` and `data-drag-data` (JSON string). **`onEventCreate`**: filter the tasks array by `args.event.id` to remove the dropped task; JS: remove the DOM element by id. Show a toast "[title] added".
+- **Unscheduling (calendar → task panel)**: wrap the task panel in a `Dropcontainer` / `MbscDropcontainer` / `mobiscroll.dropcontainer()`. **`onItemDrop`**: when `args.data` is present, add the event back to the task list by appending to the tasks array; JS: create a new DOM element and register it as `mobiscroll.draggable()` with `dragData`. **`onEventDelete`**: show a toast "[title] unscheduled".
+- Each task card renders `title` and the event duration in hours (computed as `|end − start| / 3600000`). React: render the card only when `!event.hide`; the `hide` flag is used to suppress re-display after scheduling.

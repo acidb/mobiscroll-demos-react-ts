@@ -13,3 +13,8 @@ When rendering events, the default logic determines the order:
 The `order` property of the event data can be used to override the default ordering. The `order` property takes precedence over the default rules. If two events have the same order value, the default rules apply. For a more advanced order logic, the eventOrder option can be used which expects a function that compares two events and returns an order (-1 or 1).
 
 - **Do you want to learn about the event ordering?** [Learn more about it in the documentation &#8594;](https://docs.mobiscroll.com/react/eventcalendar/agenda#event-order)
+
+## Implementation instructions
+
+- Use `view: { agenda: { type: 'week' } }`.
+- Define a static inline event array — all events are all-day (`allDay: true`). Assign an `order` property to each event to control display sequence: `order: 1` for pending/proposed items (yellow, `#e7b300`), `order: 2` for approved items (green, `#00ca10`). Events with equal `order` fall back to default rules (all-day first, then by start time, then alphabetically by title). Use relative dates so events always land on the current week.

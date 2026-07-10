@@ -23,3 +23,8 @@ The event data structure for the agenda is straightforward with a couple of base
 - `bufferBefore` - Defines a buffer time in minutes that happens before the start of the event. This buffer area can help you visualise delays or added minutes for tasks. It is not automatically rendered in case of the agenda, but can be used in the custom template.
 - `bufferAfter` - Defines a buffer time in minutes that happens after the end of the event. It is not automatically rendered in case of the agenda, but can be used in the custom template.
 - `order` - Specifies the order of the event in the event array. Has precedence over the default ordering rules.
+
+## Implementation instructions
+
+- Use `view: { agenda: { type: 'month' } }`. Pre-seed the calendar with one event for today using standard fields: `title`, `color`, `start`, `end`.
+- Add an "Add event to calendar" Button. On click, create a new event object combining base Mobiscroll fields (`title`, `color`, `start`, `end`) with any custom application fields (e.g. `busy`, `description`, `location`), then add it to the events array. After adding, call `inst.navigateToEvent(newEvent)` to scroll the agenda to the new event. For the imperative API, call `inst.addEvent(newEvent)` before `inst.navigateToEvent(newEvent)`. Show a Toast on success.

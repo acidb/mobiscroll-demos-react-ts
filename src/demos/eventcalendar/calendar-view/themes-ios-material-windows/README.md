@@ -15,9 +15,10 @@ You can also see how every example looks by changing the theme from the header.
 
 ## Implementation instructions
 
-- Use Mobiscroll theming options to switch between the `iOS`, `Material`, and `Windows` base themes.
-- Set the `themeVariant` to control light and dark appearance. Use `'dark'` for a forced dark variant or `'auto'` to follow system settings.
-- Use the theme builder when you need a custom theme derived from a base theme, and extend it further with Sass or CSS overrides when deeper visual changes are required.
+- Use `view: { calendar: { labels: true } }`. Pass `theme` and `themeVariant` as props to the Eventcalendar. Both default to `'auto'` — `theme: 'auto'` lets Mobiscroll pick based on the platform, `themeVariant: 'auto'` follows the OS light/dark preference.
+- Render two `Dropdown` components above the calendar in a two-column Mobiscroll grid: a "Theme" dropdown with options `auto`, `ios`, `material`, `windows`; and a "Theme variant" dropdown with options `auto`, `light`, `dark`. For the imperative API, call `inst.setOptions({ theme: value })` / `inst.setOptions({ themeVariant: value })` on each change.
+- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. Angular: use `HttpClient.jsonp()` instead. JS/jQuery: call `inst.setEvents(events)` in the callback.
+- Wrap the page in a Mobiscroll `Page` component. Use a `mbsc-flex-col` layout so the dropdowns sit above the calendar and the calendar fills the remaining height.
 
 ## What this demo shows
 
@@ -26,14 +27,13 @@ You can also see how every example looks by changing the theme from the header.
 - **Theme variant** A dark-theme switch is enabled by default, showing how the same calendar can be previewed in a dark variant.
 - **Custom theme option** A separate switch for theme builder or Sass-based customization is present but turned off by default.
 - **Month grid** The calendar displays a full desktop month view with event labels rendered directly inside day cells.
-- **Event labels** Events use different label styles and colors to distinguish all-day events, multi-day all-day events, and timed events.
-- **Overflow handling** The number of visible events in a day cell depends on the available height, and overflowed events are grouped under an `X more` indicator.
-- **Event popover** Clicking the `X more` indicator opens a popover with the additional events for that day.
-- **Event selection** Clicking an event label highlights the selected event.
-- **Day hover state** Hovering over a day cell highlights the day number in the top-right corner with a gray background.
-- **Day selection** Clicking the empty area of a day cell selects that day and highlights the day number with a blue background.
-- **Header navigation** The header shows the current month and year, plus previous and next navigation arrows and a `Today` button to jump back to the current date.
-- **Month navigation gesture** The calendar also supports changing months by dragging the calendar left or right.
+- **Event labels** Events use different label styles and colors to distinguish all-day events, multi-day events, and timed events.
+- **Overflow handling** The number of visible event labels depends on the available height in each day cell. Additional events are collapsed behind an `X more` link.
+- **Popover** Clicking the `X more` link opens a popover that shows the hidden events for that day.
+- **Label interaction** Hovering over or clicking an event label selects it and highlights the selected label.
+- **Day cell states for future days** Hovering a day cell highlights the day number with a gray background, while clicking the empty part of the cell selects the day and highlights the day number with a blue background.
+- **Calendar header** The header shows the current month and year on the left, and blue month navigation arrows with a `Today` button (for jumping back to the current date) between them on the right. 
+- **Month navigation gesture** The calendar also supports changing months by clicking and dragging the calendar left or right.
 
 ## Best for
 

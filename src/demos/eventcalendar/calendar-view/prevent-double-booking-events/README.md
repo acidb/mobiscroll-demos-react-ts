@@ -20,30 +20,24 @@ Give feedback to the user - optionally, a toast can be displayed to explain why 
 
 ## Implementation instructions
 
-- The demo shows two ways to control overlap behavior in the Eventcalendar.
-- **Per event** Set the `overlap` property to `false` on an event to prevent other events from overlapping with that specific event.
-- **Globally** Set the `eventOverlap` option to `false` on the calendar instance to disable overlapping events across the calendar.
-- **Precedence** Event-level settings take precedence over the global `eventOverlap` option when overlap is set on individual events.
-- **Failed create or move feedback** Use the `onEventCreateFailed` and `onEventUpdateFailed` lifecycle events to notify users when an overlapping event cannot be created or updated.
+- Set `view: { calendar: { type: 'month', labels: 'all' } }`. Enable `clickToCreate: true`, `dragToCreate: true`, `dragToMove: true`, and `dragToResize: true` so users can create and edit events interactively. Set `exclusiveEndDates: true` so that events touching at a boundary are not treated as overlapping.
+- Set `eventOverlap: false` on the calendar to prevent any two events from overlapping across the whole instance. To prevent a specific event from overlapping regardless of the global setting, set `overlap: false` directly on that event data object.
+- Handle `onEventCreateFailed` and `onEventUpdateFailed` (Vue: `@event-create-failed`, `@event-update-failed`) to show a `Toast` with `'Make sure not to double book'` whenever Mobiscroll blocks a creation or move due to an overlap violation.
 
 ## What this demo shows
 
 - A desktop month view event calendar where events can be allowed or prevented from overlapping, either per event or for the whole calendar.
-- **Month view** The calendar shows a full month grid with the current month and year in the header.
-- **Header navigation** Previous and next arrow buttons navigate between months, and the `Today` button returns to the current date.
-- **Events in day cells** Days with events display blue event labels with a small line on the left, the event title, and an `end` label followed by the event end time.
+- **Calendar header** The header shows the current month and year on the left, and blue month navigation arrows with a `Today` button between them on the right.
+- **Month grid** Day cells display events, each label has a blue line on the left, the background of the event have the same color, the event title, and an `end` value that shows the event end time.
+- **Event interaction** Hovering over or selecting an event label highlights it and shows resize handles on both sides, indicating that the event can be resized by clicking and dragging.
 - **Per-event overlap prevention** Events titled `Event 2 (no event overlap)` and `Event 4 (no event overlap)` block new event creation in their occupied day cells.
 - **Creation feedback** When a user tries to create an overlapping event in a restricted cell, a `Make sure not to overbook` toast appears at the bottom center of the calendar.
-- **Global overlap control** A switch under the text `Control the interaction globally (all events)` lets users enable `Events cannot overlap eventOverlap=false` to prevent overlaps across all events.
-- **Hover states** Hovering a day cell highlights the day number, and any events in that cell are highlighted as well.
-- **Event interaction** Clicking, hovering, or selecting an event label highlights that event.
-- **Date selection** Clicking the empty area of a day cell selects the day and highlights the day number with a blue background.
-- **Event creation** Double-clicking or dragging on the empty area of a day cell creates a new event.
+- **Global overlap control** A switch under this title: `Control the interaction globally (all events)` lets users enable `Events cannot overlap eventOverlap=false` to prevent overlaps across all events.
+- **Day cell states** Hovering a day cell highlights the day number with a gray background, while clicking the empty part of the cell selects the day and highlights the day number with a blue background.
+- **Event creation** Double-clicking or clicking and dragging on the empty area of a day cell creates a new event.
 
 ## Best for
 
 - **Work orders and field service** Preventing technicians, crews, or jobs from being booked into the same time slot when overlap is not allowed.
-- **Resource scheduling** Managing rooms, equipment, vehicles, or other shared resources that cannot be assigned to multiple events at once.
 - **Availability-sensitive booking** Handling internal planning or booking flows where double booking needs to be blocked for some event types or for the whole calendar.
-- **Mixed scheduling rules** Supporting calendars where some events can overlap, while specific events must remain exclusive.
 - **Interactive planning UIs** Showing users immediately when an event cannot be created because it would overbook the selected date or time range.

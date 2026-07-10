@@ -35,37 +35,30 @@ For a custom order on a theme to theme basis, you will need to use a little CSS.
 
 ## Implementation instructions
 
-- Use the standard header building blocks for navigation:
-
-- **Navigation component** `&lt;CalendarNav /&gt;`
-- **Today button** `&lt;CalendarToday /&gt;`
-- **Previous month button** `&lt;CalendarPrev /&gt;`
-- **Next month button** `&lt;CalendarNext /&gt;`
-
-- Use `renderHeader` in React, JavaScript, and jQuery, `headerTemplate` in Angular, and the `header` template in Vue to define the custom header structure and control order.
-- Apply the `.md-header-filter-controls`, `.md-header-filter-today`, `.md-header-filter-prev`, and `.md-header-filter-next` classes when you need custom styling for the built-in controls.
+- Set `view: { calendar: { labels: true } }`. Enable `dragToMove: true` and `dragToResize: true` to allow moving and resizing events.
+- Define a `resources` array where each entry has `id`, `name`, `color`, and `img` fields. Pass the array to the calendar via the `resources` option.
+- Build the custom header with a `SegmentedGroup` set to `select="multiple"`. Render one `Segmented` per resource, each containing the resource's avatar image and name. Initialize the selected state to the first resource's id. Use `renderHeader` to inject the custom header (Angular: `headerTemplate`; Vue: use the `header` slot). Arrange the header elements as: navigation nav → segmented filter block → prev button → today button → next button.
+- On `SegmentedGroup` change, filter the full events array to only those whose `resource` property matches a selected id, update the calendar's `data`, and show a `Toast` with `'Showing [name] events'` or `'Hiding [name] events'`. JS/jQuery: call `calendar.setEvents(filteredEvents)` instead of updating reactive data. Angular: use the `Notifications` service to show the toast.
+- Load events from a remote endpoint using `getJson` and initialize the calendar with the subset filtered to the initially selected resource. JS/jQuery: call `calendar.setEvents(filteredEvents)` in the callback.
 
 ## What this demo shows
 
-- A desktop month view event calendar with resource-based event filtering built into the header.
-- **Header layout** The current month and year are shown on the left, a segmented resource filter is centered in the header, and month navigation controls are shown on the right.
-- **Resource filter** The segmented control contains three selectable options: Barry, Hortense, and Carl, each with an avatar shown before the name.
-- **Resource filtering** Selecting a resource updates the month view to show that person's events, making it possible to show or hide events by resource from the header.
-- **Color coding** Barry's option and events use green, Hortense uses blue, and Carl uses pink, so the active filter and the visible events stay visually aligned.
-- **Month navigation** Previous and next arrow buttons switch between months, and the Today button returns the calendar to the current date.
+- A desktop month view event calendar with resource-based event filtering shown in the custom header.
+- **Header layout** The current month and year are shown on the left, a segmented resource filter is centered in the header, and blue month navigation arrows with a `Today` button between them on the right.
+- **Resource filter** The segmented control contains three selectable options: `Barry`, `Hortense`, and `Carl`, each with an avatar shown before the name.
+- **Resource filtering** Selecting a resource from the segmented control, updates the month view to show that person's events, making it possible to show or hide events by resource from the header.
+- **Color coding** `Barry`'s option and events use green, `Hortense` uses blue, and `Carl` uses pink, so the active filter and the visible events stay visually aligned.
 - **Event labels** Days with events display event labels directly in the month cells, with label colors reflecting the associated resource.
 - **Overflow handling** The number of visible event labels depends on the available height in each day cell. Additional events are collapsed behind an `X more` link.
 - **Popover** Clicking the `X more` link opens a popover that shows the hidden events for that day.
-- **Event interaction** Clicking an event label highlights it, and the selected event can then be manipulated with built-in event interactions such as drag and resize.
-- **Day hover state** Hovering a day cell highlights the day number in the top-right corner with a gray background.
-- **Day selection** Clicking the empty area of a day cell selects that day and highlights the day number with a blue background.
-- **Gesture navigation** The month view can also be changed by dragging the calendar left or right.
+- **Event interaction** Hovering over or selecting an event label highlights it and shows resize handles on both sides, indicating that the event can be resized by clicking and dragging.
+- **Day cell states** Hovering a day cell highlights the day number with a gray background, while clicking the empty part of the cell selects the day and highlights the day number with a blue background.
+- **Gesture navigation** The month view can also be changed by clicking and dragging the calendar left or right.
 
 ## Best for
 
 - **Resource-specific month planning** Viewing one person's month schedule at a time without leaving the calendar view.
 - **Team calendars with simple filtering** Switching between a small set of people or resources from a compact header control.
 - **Color-coded resource views** Making it easy to distinguish which events belong to which resource.
-- **Desktop planning screens** Showing a full month overview with direct access to day-level events and overflow details.
 - **Operational dashboards** Internal scheduling tools where users need quick filtering and fast month-to-month navigation.
 - **Custom calendar toolbars** Cases where the standard header needs extra controls without moving filtering outside the calendar.

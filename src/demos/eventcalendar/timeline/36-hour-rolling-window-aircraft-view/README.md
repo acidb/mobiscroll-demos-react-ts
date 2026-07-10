@@ -21,5 +21,5 @@ The `resources`, representing individual aircraft (tail numbers), are organized 
 - Set `dataTimezone` and `displayTimezone` both to `'utc'` and pass the `dayjsTimezone` plugin to `timezonePlugin` so all timestamps are interpreted and displayed in UTC.
 - Set `showControls={false}` — the view is always anchored to now and needs no date navigation.
 - Define resources as a two-level tree: parent nodes encode aircraft model and home base (e.g., `"A350-900 / LAX"`) with `eventCreation: false`, and child leaf nodes carry individual tail number IDs.
-- Label each event with IATA airport codes in `"ORIG → DEST"` format and assign a `color` per aircraft family. Set no drag, move, or creation options — the calendar is purely read-only.
+- Label each event with IATA airport codes in `"ORIG → DEST"` format and assign a `color` per aircraft family.
 - Use `renderResourceHeader` (Angular: `resourceHeaderTemplate`, Vue: `resourceHeader`) to render a static `"TIMES SHOWN IN UTC"` label in the resource column header.

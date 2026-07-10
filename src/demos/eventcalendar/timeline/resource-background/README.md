@@ -18,3 +18,13 @@ The output could be a custom background to individual rows and it can be used fo
 ## Related demos
 
 - [Explore this example &#8594;](https://demo.mobiscroll.com/react/timeline/colors-invalids-css-class#)
+
+## Implementation instructions
+
+- Use `timeline: { type: 'month' }` — a full-month view with one column per day.
+- Define 7 resources, each demonstrating a different row-styling technique. Include a mix of resources with `background`, `cssClass`, and no extra styling to show the contrast.
+- Add 6 events with `dyndatetime` offsets spread across the current month, each assigned to a different resource.
+- Use `renderSidebar` to render the resource name with a " Sidebar" suffix for each row, so all three row zones (resource label, grid, sidebar) are visible and their background styling is apparent.
+- **Two resource-level styling mechanisms:**
+  - **`background` property**: set a CSS color value (e.g. `rgba(108, 166, 166, 0.37)`) directly on the resource object. Mobiscroll applies it as a background color spanning the full row — resource label column, grid area, and sidebar column.
+  - **`cssClass` property**: Mobiscroll applies the class to each of the three row zone elements. To target only one zone, use a compound CSS selector combining the custom class with the relevant Mobiscroll internal class: `.mbsc-timeline-resource` (resource label column), `.mbsc-timeline-row` (grid area), or `.mbsc-timeline-sidebar-resource` (sidebar column). Without a zone sub-selector, the rule applies to the whole row container.

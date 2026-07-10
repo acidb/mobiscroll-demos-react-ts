@@ -10,9 +10,11 @@ The Datepicker updates the `selectedDate` option of the Calendar in its `onChang
 
 ## Implementation instructions
 
-- Call the Eventcalendar `navigate` method from the Datepicker change event to move the calendar to the selected date.
-- Use the Eventcalendar `onSelectedDateChange` event to keep the Datepicker value in sync with the currently selected calendar date.
-- In the JavaScript and jQuery implementations, update the Datepicker with its `setVal` method from the calendar event handler.
+- Render an inline `Datepicker` (`display="inline"`) in a left pane and an `Eventcalendar` in a right pane side by side.
+- Keep both components in sync through a shared `selectedDate` state variable: in `Datepicker` `onChange`, update `selectedDate` from `args.value`; in `Eventcalendar` `onSelectedDateChange` (Vue: `@selected-date-change`), update `selectedDate` from `args.date`. Pass `selectedDate` to both components so navigating either one updates the other.
+- Angular: bind both components to the same value using `ngModel` on the `Datepicker` and `[selectedDate]` on the `Eventcalendar` — no explicit event handlers are needed since the shared binding keeps them in sync automatically.
+- JS/jQuery: in `Datepicker` `onChange`, call `calendarInst.navigate(args.value)` to move the calendar; in `Eventcalendar` `onSelectedDateChange`, call `datepickerInst.setVal(args.date)` to update the datepicker.
+- Load events from a remote endpoint using `getJson` and assign them to `data`; for the imperative API, call `inst.setEvents(events)` in the callback.
 
 ## What this demo shows
 

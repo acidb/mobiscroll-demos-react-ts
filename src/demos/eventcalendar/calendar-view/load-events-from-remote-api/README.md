@@ -14,24 +14,20 @@ The calendar can be populated by passing an array to the `data` option, that you
 
 ## Implementation instructions
 
-- Load the event data from a remote API, then pass the resulting array to the `data` option.
+- Set `view: { calendar: { labels: true } }`.
+- Use `getJson(url, callback, 'jsonp')` to fetch events from a remote endpoint. In the callback, set the received array as the calendar's `data`. Angular: use `HttpClient.jsonp()` instead of `getJson`. JS/jQuery: call `inst.setEvents(events)` on the calendar instance in the callback.
 
 ## What this demo shows
 
 - A mobile month view event calendar is shown inside a smartphone frame.
-- **Month grid** Day cells display event labels directly on the calendar when there is enough vertical space.
-- **Event rendering** Labels use different colors and styles to distinguish between all-day, multi-day all-day, and timed events.
-- **Overflow handling** When a day has more events than can fit in the cell, the extra items are hidden behind an `X more` label.
-- **Popover** Clicking the `X more` label opens a popover with the remaining events for that day.
-- **Event interaction** Clicking or hovering an event label highlights it.
-- **Day hover state** Hovering an empty area of a day cell highlights the day number with a gray background.
-- **Day selection** Clicking the empty area of a day cell selects the day and highlights the day number with a blue background.
-- **Month navigation** The month can be changed by dragging the calendar left or right.
-- **Header navigation** The header shows the current month and year, previous and next navigation arrows, and a `Today` button for returning to the current date.
+- **Month grid** Days with events display event labels directly in the month cells with different visual styles based on the event type or event data.
+- **Overflow handling** The number of visible event labels depends on the available height in each day cell. Additional events are collapsed behind an `X more` link.
+- **Popover** Clicking the `X more` link opens a popover that shows the hidden events for that day.
+- **Event interaction** Hovering over or selecting an event label highlights it.
+- **Day cell states** Hovering a day cell highlights the day number with a gray background, while clicking the empty part of the cell selects the day and highlights the day number with a blue background.
+- **Month navigation** You can move between months by clicking and dragging the calendar left or right.
+- **Calendar header** The header shows the current month and year on the left, and blue month navigation arrows with a `Today` button (for jumping back to the current date) between them on the right.
 
 ## Best for
 
-- **Remote event loading examples** Showing how to fetch events from an API and pass them to the Eventcalendar month view.
-- **Month-view event rendering** Explaining how all-day, multi-day, and timed events appear in month cells.
-- **Overflow behavior** Demonstrating how the calendar handles more events than can fit in a day cell.
-- **Mobile calendar patterns** Illustrating a touch-friendly month view with built-in navigation and event popovers.
+- **Remote event loading examples** Showing how to fetch events from an API and pass them to the event calendar view.

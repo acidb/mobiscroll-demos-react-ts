@@ -13,3 +13,7 @@ In such cases, you can use the `showEmptyDays` property under the `view.agenda` 
 ## Related demos
 
 - [Check out this example →](https://demo.mobiscroll.com/react/agenda/customizing-day-header#)
+
+## Implementation instructions
+
+- Use `view: { agenda: { type: 'month', showEmptyDays: true } }`. The `showEmptyDays` option inside `view.agenda` causes the agenda to render a day header for every day in the range, even when no events fall on that day (by default those days are hidden). Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. Angular: use `HttpClient.jsonp()`. For the imperative API, call `inst.setEvents(events)` in the callback.

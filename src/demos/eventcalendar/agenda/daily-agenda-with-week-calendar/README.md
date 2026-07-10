@@ -13,3 +13,9 @@ You can add the components - like the calendar and agenda - and configure them i
 ## Related demos
 
 - [Check out the event calendar →](https://demo.mobiscroll.com/react/eventcalendar/#)
+
+## Implementation instructions
+
+- Use `view: { calendar: { type: 'week' }, agenda: { type: 'day' } }` — the week calendar grid and the daily agenda list are rendered together as a single component; clicking a day in the calendar scrolls the agenda to that day.
+- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. Angular: use `HttpClient.jsonp()` instead. JS/jQuery: call `inst.setEvents(events)` in the callback.
+- On `onEventClick`: show a Mobiscroll `Toast` with `args.event.title`.

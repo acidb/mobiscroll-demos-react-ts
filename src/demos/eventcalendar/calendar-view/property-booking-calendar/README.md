@@ -16,7 +16,7 @@ By combining the `eventDisplay: 'exact'` setting under the `view` option with cu
 - Give each event a custom `icon` property (platform logo URL), a `title` (guest name), a per-platform `color`, and `start`/`end` both set to 12:00 to represent noon check-in and noon check-out.
 - Use `renderCalendarEventContent` (Angular: `calendarEventContentTemplate`, Vue: `calendarEventContent`) to render each label as the platform icon image followed by the guest name.
 - Set `extendDefaultEvent` to snap newly created reservations to noon boundaries: set `start` to 12:00 on the drag-start day and `end` to 12:00 on the following day.
-- Enable `clickToCreate`, `dragToCreate`, `dragToMove`, `dragToResize`, and `eventOverlap={false}` for full drag-based booking management with automatic overlap prevention.
+- Enable `clickToCreate`, `dragToCreate`, `dragToMove`, and `dragToResize`; set `eventOverlap: false` to prevent bookings from overlapping.
 - In `onEventCreateFailed` and `onEventUpdateFailed`, show a `Toast` with an overlap error message.
 
 ## What this demo shows

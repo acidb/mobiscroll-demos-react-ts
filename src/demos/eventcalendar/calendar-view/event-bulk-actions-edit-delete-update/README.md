@@ -18,22 +18,31 @@ Custom actions can be performed with external buttons or with context menu activ
 
 ## Implementation instructions
 
-- Enable multi-event selection with the `selectMultipleEvents` option.
-- Support multi-selection through `CTRL`/`SHIFT`/`CMD` + click, and add programmatic selection flows for actions such as `Select all from view`.
-- Use `getSelectedEvents` to retrieve the current selection and `setSelectedEvents` to update or clear it.
+- Use `view: { calendar: { labels: true } }`. Set `selectMultipleEvents: true` to enable Ctrl/Shift/Cmd+click multi-selection. Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP. JS/jQuery: call `inst.setEvents(events)` on load.
+- Use a two-column layout: the calendar occupies most of the space; the sidebar contains three action buttons and a scrollable list of selected event titles. Button labels: React/Vue use "Select all this month"; Angular/JS/jQuery use "Select all from view"; all frameworks use "Reset selection" and "Update selected".
+- Track `firstDay` and `lastDay` via `onPageLoading` (`args.firstDay`, `args.lastDay`). `onSelectedEventsChange` → update the current selection and refresh the displayed titles list.
+- **"Select all"**: call `inst.getEvents(firstDay, lastDay)` to retrieve visible events, then set them as selected; for the imperative API, call `inst.setSelectedEvents(events)`. Show toast.
+- **"Reset selection"**: clear `selectedEvents`; for the imperative API, call `inst.setSelectedEvents([])`. Show toast.
+- **"Update selected"**: iterate the selected events. For **recurring occurrences**: clear `recurring`, set `color = 'orange'`, append `'_' + formatDate('YYYY-MM-DD', event.start)` to the `id`, push `event.start` to `origEvent.recurringException`, then persist the detached event and the updated original. For **non-recurring**: set `color = 'orange'` and update in place. Update the events array in place; for the imperative API, call `inst.updateEvent(eventsToUpdate)` and `inst.addEvent(newEvents)`. Reset selection, show toast.
+- **`deleteSelectedEvents()`**: show a confirm dialog ("Are you sure you want to delete the following events?" / okText: "Delete") with selected event titles. On confirm: for **recurring** events push `event.start` to `origEvent.recurringException` and update the original; for **non-recurring**, remove from the events array; for the imperative API, call `inst.removeEvent(eventsToDelete)` and `inst.setSelectedEvents([])`. Reset selection, show "Deleted" toast.
+- **Delete entry points**: (1) **`onEventDelete`** — `return false` (all frameworks); (2) **`onEventUpdate` with `args.isDelete === true`** — `return false` (React/Angular/JS/jQuery; Vue omits `onEventUpdate`); (3) **context menu "Delete"**. Use a `confirmOpen` flag to prevent double-triggering from (1) and (2).
+- **Right-click context menu**: `onEventRightClick` → `args.domEvent.preventDefault()`, open an anchored `Select` popup with "Update" / "Delete" options. Imperative API: also store `selectedEvent = args.event` as a fallback — used in `deleteSelectedEvents` and `updateSelectedEvents` when `inst.getSelectedEvents()` returns an empty array.
+- **Keyboard delete**: attach a `keydown` listener on the container; if Delete or Backspace is pressed and no confirm dialog is open, call `deleteSelectedEvents()`.
 
 ## What this demo shows
 
 - A desktop month view event calendar that supports selecting and managing multiple events from the current view.
 - **Calendar** A full month calendar displays multiple events, with all events visible and row height expanding to fit the content.
-- **Header controls** The built-in month header includes month and year navigation, previous and next arrows, and a Today button.
+- **Calendar header** The header shows the current month and year on the left, and blue month navigation arrows with a `Today` button (for jumping back to the current date) between them on the right. 
 - **Bulk action panel** A side panel next to the calendar contains `Select all from view`, `Reset selection`, and `Update selected` actions.
-- **Select all from view** Clicking this action selects all events currently visible in the month view and shows a bottom-centered toast message: `All events selected from the view`.
+- **Select all from view** Clicking this action selects all events currently visible and highlights thei titles in the month view and shows a bottom-centered toast message: `All events selected from the view`.
 - **Reset selection** Clicking this action clears the current selection and shows a bottom-centered toast message: `Selection cleared`.
 - **Update selected** Clicking this action changes the color of all selected events to orange and shows a bottom-centered toast message: `All selected event's color changed to orange`.
 - **Currently selected** The side panel includes a `Currently selected` section that is empty by default and lists the titles of all selected events when one or more events are selected.
 - **Multi-selection** Users can select multiple events with `CTRL`/`SHIFT`/`CMD` + click.
 - **Context menu** Right-clicking an event opens a small popup with `Update` and `Delete` actions for that event.
+- **Label interaction** Hovering over or clicking an event label selects it and highlights the selected label.
+- **Day cell states for future days** Hovering a day cell highlights the day number with a gray background, while clicking the empty part of the cell selects the day and highlights the day number with a blue background.
 
 ## Best for
 

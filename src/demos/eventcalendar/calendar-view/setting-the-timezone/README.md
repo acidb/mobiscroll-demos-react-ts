@@ -17,9 +17,10 @@ specifically for the event using the `timezone` property of the [event data](htt
 
 ## Implementation instructions
 
-- Configure the event data with `dataTimezone` to define the timezone the calendar expects when receiving and returning dates. If timezone information is not included in the event dates, the default is `'local'`.
-- Use `displayTimezone` to control how events are rendered in the UI. The calendar converts event times from `dataTimezone` to the selected display timezone.
-- Set `dataTimezone` globally on the calendar when all events use the same source timezone, or use the event `timezone` property when individual events need their own timezone definition.
+- Install a timezone library — this demo uses `dayjs` with `dayjs/plugin/utc` and `dayjs/plugin/timezone`. Import `dayjsTimezone` from the Mobiscroll package, call `dayjs.extend(utc)` and `dayjs.extend(timezone)`, then assign `dayjsTimezone.dayjs = dayjs`. Pass `timezonePlugin` to the `Eventcalendar` to activate timezone-aware date handling.
+- Set `dataTimezone: 'utc'` so the calendar interprets all event dates as UTC, and `displayTimezone: 'local'` to convert and display them in the browser's local timezone.
+- Set `view: { calendar: { popover: true, type: 'month' } }` for a month view where clicking a day cell opens a popover listing that day's events.
+- To display events in a specific timezone at runtime, update `displayTimezone` to any IANA timezone string (e.g. `'America/New_York'`). To define source timezone per-event instead of globally, use the event's own `timezone` property instead of `dataTimezone`.
 
 ## What this demo shows
 

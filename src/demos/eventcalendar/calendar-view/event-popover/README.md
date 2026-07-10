@@ -17,7 +17,9 @@ The same popover is rendered when events are displayed as labels and not all fit
 
 ## Implementation instructions
 
-- Enable the popover month view through the `calendar: { popover: true }` configuration inside the `view` option.
+- Set `view: { calendar: { popover: true, count: true } }` to show a count indicator in each day cell that has events, and open a popover listing all events for that day when the indicator is clicked.
+- Load events from a remote endpoint using `getJson` and assign them to `data`; for the imperative API, call `inst.setEvents(events)` in the callback.
+- Handle `onEventClick` to show a `Toast` with `args.event.title`.
 
 ## What this demo shows
 

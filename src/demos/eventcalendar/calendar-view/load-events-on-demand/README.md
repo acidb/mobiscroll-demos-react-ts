@@ -22,21 +22,19 @@ Use the
 
 ## Implementation instructions
 
-- Use the `onPageLoading` lifecycle event to load event data at runtime for the currently requested page.
-- Fetch events when the visible month changes so the calendar loads data on demand instead of loading everything up front.
-- Use lifecycle hooks as the place to add custom loading logic and connect the calendar to your data source.
+- Set `view: { calendar: { labels: true } }`.
+- Handle the `onPageLoading` event, which fires on the initial load and on each page change. The event argument includes a `month` property (a JS `Date`) — extract `year` and `month` from it to build the request URL. Vue: bind as `@page-loading` in the template.
+- Inside the handler, call `getJson(url, callback, 'jsonp')` with a URL that includes `year` and `month` as query params. In the callback, set the returned array as the calendar's `data` and show a `Toast` with `'New events loaded'`. Angular: use `HttpClient.jsonp()` instead of `getJson` and the `Notifications` service for the toast. JS/jQuery: call `inst.setEvents(data)` on the calendar instance instead of updating reactive data; jQuery: use `$.getJSON()` instead of `getJson`.
 
 ## What this demo shows
 
 - A mobile month view event calendar is shown inside a smartphone frame.
-- **Month view layout** Each day cell can display event labels directly in the month grid.
-- **Event labels** Days with events show one or more labels representing the scheduled events.
-- **Event interaction** Hovering over or selecting an event label highlights that label.
-- **Day hover state** Hovering over a day cell highlights the day number in the top-right corner with a gray background.
-- **Day selection** Clicking the empty area of a day cell selects that day and highlights the day number in the top-right corner with a blue background.
-- **Month navigation** The month can be changed by dragging the calendar left or right.
-- **Header controls** The header shows the current month and year on the left.
-- **Navigation buttons** Previous and next arrow buttons appear on the right side of the header, with a Today button between them to return to the current date.
+- **Month grid** Day cells display events, each label has a colored line on the left, the event title, and an `end` value that shows the event end time.
+- **Loading events on demand** On the initial load or month change, a `New events loaded` toast appears at the bottom center of the calendar. This indicates that the events were loaded real time.
+- **Event interaction** Hovering over or selecting an event label highlights it.
+- **Day cell states** Hovering a day cell highlights the day number with a gray background, while clicking the empty part of the cell selects the day and highlights the day number with a blue background.
+- **Month navigation** You can move between months by clicking and dragging the calendar left or right.
+- **Calendar header** The header shows the current month and year on the left, and blue month navigation arrows with a `Today` button (for jumping back to the current date) between them on the right.
 
 ## Best for
 

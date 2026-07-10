@@ -17,9 +17,10 @@ If you add custom markup you will want to add styling too. Use the `popoverClass
 
 ## Implementation instructions
 
-- Use the `renderPopoverEventContent` option to pass a custom rendering function for the event content shown inside the popover.
-- If you need full control over how each popover event is rendered, use `renderPopoverEvent` instead.
-- Use `popoverClass` under the `view` option to append a custom CSS class to the popover container and target it with specific styling rules.
+- Set `view: { calendar: { labels: false, popover: true, popoverClass: 'custom-event-popover' } }`: `labels: false` suppresses inline labels so only a dot marker appears; `popover: true` opens the event list on day click; `popoverClass` adds a custom CSS class to the popover container for targeted styling.
+- Use `renderPopoverEventContent` (Angular: `popoverEventContentTemplate`, Vue: `popoverEventContent` slot) to customize the content of each event row in the popover while the calendar handles event ordering and the outer popover frame. The render function receives `data` with `data.title` and `data.original` for any custom event fields — this demo uses `data.original.participant` to look up an assignee name and avatar image. For full control over the outer event wrapper, use `renderPopoverEvent` (Angular: `popoverEventTemplate`, Vue: `popoverEvent` slot) instead.
+- Add a `Button` inside the custom content with `color="primary"` and `variant="outline"`. Call `ev.stopPropagation()` in its click handler to prevent the calendar's `onEventClick` from firing, then show a `Toast` with the participant's name.
+- Load events from a remote endpoint using `getJson` and assign them to `data`; for the imperative API, call `inst.setEvents(events)` in the callback.
 
 ## What this demo shows
 

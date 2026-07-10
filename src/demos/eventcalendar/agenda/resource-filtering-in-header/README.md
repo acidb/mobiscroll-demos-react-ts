@@ -32,3 +32,9 @@ For a custom order on a theme to theme basis, you will need to use a little CSS.
 ## Related demos
 
 - [Take a look at the previous example →](https://demo.mobiscroll.com/react/agenda/customizing-calendar-header#)
+
+## Implementation instructions
+
+- Use `view: { agenda: { type: 'month' } }`. Define a `resources` array with 3 entries — each has `id`, `name`, `color`, and `img` (avatar URL). Pass it to the `resources` option. Load events from `https://trial.mobiscroll.com/filter-resource-events/` via JSONP using `getJson(url, callback, 'jsonp')`. Angular: use `HttpClient.jsonp()`. Each event has a `resource` field (integer ID) that links it to a resource.
+- Implement client-side filtering: maintain a `selectedResources` set (initially resource 1 only). After loading, compute `filteredEvents = myEvents.filter(e => selectedResources[e.resource])` and pass `filteredEvents` to the Eventcalendar's `data` option. Recompute and update `filteredEvents` whenever the selection changes.
+- Build a custom header via `renderHeader` (Angular: `headerTemplate`, Vue: `header` slot) containing: `CalendarNav` on the left, a `SegmentedGroup` with `select="multiple"` in the center (each `Segmented` shows the resource's avatar image + name), and `CalendarPrev`, `CalendarToday`, `CalendarNext` on the right. On segment change, update the `selectedResources` map and refresh `filteredEvents`. Show a Toast with "Showing/Hiding {name} events".

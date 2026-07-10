@@ -17,9 +17,12 @@ Custom breakpoints can be added if necessary: `my-custom-breakpoint: { breakpoin
 
 ## Implementation instructions
 
-- Use the `responsive` option to configure different calendar setups for different screen sizes.
-- Start from the built-in breakpoint system (`xsmall`, `small`, `medium`, `large`, `xlarge`) and override the calendar configuration for the breakpoints that need a different layout.
-- Add custom breakpoints when the default set does not match the exact container or viewport widths your application needs.
+- Use the `responsive` option to configure different views per screen size. Each key is a breakpoint name containing a `view` config; custom breakpoints also include a `breakpoint` pixel value.
+- This demo configures two breakpoints:
+  - `xsmall`: `view: { calendar: { type: 'week' }, agenda: { type: 'day' } }` — a week grid with a single-day agenda for narrow screens
+  - `custom`: `{ breakpoint: 600, view: { calendar: { labels: true } } }` — a full month grid with inline event labels from 600px and above
+- The built-in named breakpoints are `xsmall` (≤575px), `small` (≤767px), `medium` (≤991px), `large` (≤1199px), and `xlarge` (≥1200px). Custom numeric breakpoints can be mixed in alongside them.
+- Load events from a remote endpoint using `getJson` and assign them to `data`; for the imperative API, call `inst.setEvents(events)` in the callback.
 
 ## What this demo shows
 

@@ -28,31 +28,26 @@ If you're interested in invalids for a given range (including recurring occurren
 
 ## Implementation instructions
 
-- Use the `invalid` option with an array of invalid rules to disable both recurring and specific dates.
-- **Recurring invalids** To disable weekends, use a recurring rule such as `recurring: { repeat: 'weekly', weekDays: 'SA,SU' }`.
-- **Specific invalid ranges** To disable a fixed date range, pass objects such as `{ start: new Date(2020, 11, 19), end: new Date(2020, 11, 20) }`.
-- **Built-in validation mode** Control how event creation and updates interact with invalid ranges through the `invalidateEvent` option.
-- **`invalidateEvent: 'strict'`** This is the default mode and prevents any overlap with invalid ranges.
-- **`invalidateEvent: 'start-end'`** This mode only checks whether the event start or end falls on an invalid range, while allowing other overlaps.
-- **Failed create or move attempts** When a user drags or creates an event on invalid dates, the action is denied automatically and the `onEventCreateFailed` or `onEventUpdateFailed` events are triggered.
+- Set `view: { calendar: { labels: true } }`. Enable `dragToCreate: true`, `dragToMove: true`, and `dragToResize: true` so users can create and edit events interactively.
+- Pass an `invalid` array to block days. Use a recurring rule for recurring days — for example weekends: `{ recurring: { repeat: 'weekly', weekDays: 'SA,SU' } }`. Block specific date ranges with `{ allDay: true, start: '...', end: '...' }`.
+- Set `invalidateEvent` to control how strictly events interact with invalid ranges: `'strict'` (the default) blocks any overlap with an invalid range; `'start-end'` allows overlap but prevents the event start or end from landing on an invalid range.
+- Handle `onEventCreateFailed` and `onEventUpdateFailed` (Vue: `@event-create-failed`, `@event-update-failed`) to show a `Toast` when Mobiscroll blocks a creation or move due to an invalid date.
+- Load events from a remote endpoint using `getJson` and assign them to `data`; for the imperative API, call `inst.setEvents(events)` in the callback.
 
 ## What this demo shows
 
 - A desktop month view event calendar shows a full month grid with event labels displayed directly inside the day cells.
 - **Invalid days** Weekends are disabled through recurring invalid rules, and additional specific dates are disabled separately.
 - **Disabled cell styling** Invalid day cells have a gray overlay that indicates events cannot be created on those days.
-- **Event rendering** Days with events show label-style event cards inside the cell.
-- **Event label layout** Each event label has a colored line on the left, the event title in the middle, and an `end` label with the event's end time on the right.
-- **Event label states** Event labels are highlighted on hover and on selection.
-- **Validation mode selector** A control panel next to the calendar includes the text `Configure the built-in validation.` with two selectable validation modes.
-- **Validation options** One option allows events to start and end only on valid dates while still allowing overlap with invalid ranges.
-- **Validation options** The default selected option prevents events from overlapping invalid ranges at all.
-- **Cell hover behavior** Hovering a day cell highlights the day number in the top-right corner and also highlights the events in that cell.
-- **Day selection** Clicking the empty area of a day cell selects the day and shows the day number with a blue highlighted background.
-- **Event creation** Double-clicking or dragging on an empty part of a day cell starts event creation.
+- **Month grid** Day cell display events, each event label has a colored line on the left, the event title, and the end time of the event on the right.
+- **Event interaction** Hovering over or selecting an event label highlights it and shows resize handles on both sides, indicating that the event can be resized by clicking and dragging.
+- **Validation mode selector** A control panel next to the calendar (left side) `Configure the built-in validation` includes two selectable validation modes.
+- **Validation options** The first option `Events cannot start or end on invalids, but can overlap` allows events to start and end only on valid dates while still allowing overlap with invalid days.
+- **Validation options** The default selected option `Events cannot overlap invalid ranges at all` prevents events from overlapping invalid days.
+- **Day cell states** Hovering a day cell highlights the day number with a gray background, while clicking the empty part of the cell selects the day and highlights the day number with a blue background.
+- **Event creation** Clicking and dragging on an empty part of a day cell creates a new event.
 - **Validation during creation** Event creation follows the active validation mode and is blocked on invalid dates or invalid overlaps based on the selected option.
-- **Calendar header** The header shows the current month and year on the left.
-- **Navigation** Previous and next arrow buttons move between months, and a `Today` button between them returns the calendar to the current date.
+- **Calendar header** The header shows the current month and year on the left, and blue month navigation arrows with a `Today` button between them on the right.
 
 ## Best for
 
@@ -60,4 +55,3 @@ If you're interested in invalids for a given range (including recurring occurren
 - **Office closures and non-working days** A good fit for workflows where weekends, holidays, or blackout dates should not accept new events.
 - **Operational scheduling** Works well for teams that need to enforce date-based scheduling restrictions while still allowing users to view existing events.
 - **Validation policy comparisons** Helpful when you want to compare stricter invalid-range enforcement with a more permissive start-and-end-only validation rule.
-- **Guided event creation** Useful in products where users create events directly on the calendar and need immediate visual feedback about which dates are valid.

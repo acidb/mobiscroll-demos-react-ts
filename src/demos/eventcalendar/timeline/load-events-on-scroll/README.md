@@ -19,3 +19,15 @@ This dramatically improves performance in case of a large event count since not 
 ## Related demos
 
 - [Check out this example &#8594;](https://demo.mobiscroll.com/react/timeline/load-resources-on-scroll#)
+
+## Implementation instructions
+
+- Use `timeline: { type: 'month', resolutionHorizontal: 'hour' }` — a month view with hourly columns, creating a wide horizontally scrollable grid.
+- Define 25 resources (Resource 1–25) with varied colors.
+- **Scroll-triggered loading** is driven by `onVirtualLoading`, which fires whenever the user scrolls horizontally or vertically through the virtualized timeline. Inside the handler, read `args.viewStart` and `args.viewEnd` to get the currently visible time window, then build the API URL:
+  ```
+  https://trial.mobiscroll.com/load-data-scroll/?start=YYYY-MM-DD&end=YYYY-MM-DD
+  ```
+  Format both dates with `formatDate('YYYY-MM-DD', args.viewStart)` and `formatDate('YYYY-MM-DD', args.viewEnd)`.
+- The endpoint returns a JSONP object with an `events` property (not a plain array). Read `data.events` after the fetch.
+- Fetch via JSONP using `getJson(url, callback, 'jsonp')`. The endpoint returns an object — read `data.events`, not the raw response. After loading, call `inst.setEvents(data.events)` and show a `Toast` with `duration: 1000`.

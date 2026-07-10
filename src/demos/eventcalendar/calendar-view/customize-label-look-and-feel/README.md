@@ -11,14 +11,11 @@ You can customize the look of the labels and show additional content besides the
 
 ## Implementation instructions
 
-- For light customization, use the calendar's event content render hook:
-  - In React and JavaScript/jQuery, use `renderCalendarEventContent`.
-  - In Angular, use `calendarEventContentTemplate`.
-  - In Vue, use the `calendarEventContent` template.
-- For full control over label appearance, use the calendar's full event render hook:
-  - In React and JavaScript/jQuery, use `renderCalendarEvent`.
-  - In Angular, use `calendarEventTemplate`.
-  - In Vue, use the `calendarEvent` template.
+- Set `view: { calendar: { labels: true } }` for a month grid with inline event labels.
+- Use the full label renderer — `renderCalendarEvent` (Angular: `calendarEventTemplate`, Vue: `calendarEvent` slot) — to take complete control over each label's markup and styling. The render function receives a `data` object with computed fields alongside the original event; use `data.isMultiDay` to branch the template: multi-day events get a solid colored background using `data.original.color` with `data.original.title` as text; single-day events get a small colored dot followed by the title.
+- For lighter customization where the calendar handles color and positioning automatically, use `renderCalendarEventContent` (Angular: `calendarEventContentTemplate`, Vue: `calendarEventContent` slot) instead — only the inner content is replaced.
+- Handle `onEventClick` to show a `Toast` with `args.event.title`.
+- Load events from a remote endpoint using `getJson` and assign them to `data`; for the imperative API, call `inst.setEvents(events)` in the callback.
 
 ## What this demo shows
 

@@ -34,7 +34,13 @@ For a custom order on a theme to theme basis, you will need to use a little CSS.
 
 ## Implementation instructions
 
-Use the `renderHeader` option to pass a custom header layout.
+- Define two view configs toggled by a state variable: calendar uses `{ calendar: { labels: true } }`; schedule uses `{ scheduler: { type: 'week' } }`.
+- Use `renderHeader` (Angular: `headerTemplate`, Vue: `header` slot) to build a fully custom header with three zones:
+  - Left: `CalendarNav` for the month/year title
+  - Center: two flat icon `Button` components (`material-arrow-back` and `material-arrow-forward`) flanking `CalendarToday` — these replace the built-in `CalendarPrev`/`CalendarNext`
+  - Right: an icon-only `SegmentedGroup` with a `calendar` icon and a `material-list` icon for switching between views
+- Track the currently displayed date in a `selectedDate` state variable, kept in sync via `onSelectedDateChange`. The custom prev/next buttons call a `navigatePage()` helper that computes the target date based on the active view: in calendar view, it adds or subtracts one month; in schedule view, it adds or subtracts one week. Update `selectedDate` with the result to drive navigation. JS/jQuery: call `inst.navigate(date)` instead of updating a bound prop.
+- Load events from a remote endpoint using `getJson` and assign them to `data`; for the imperative API, call `inst.setEvents(events)` in the callback.
 
 ## What this demo shows
 

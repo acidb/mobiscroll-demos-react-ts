@@ -11,3 +11,7 @@ The agenda can be populated by passing an array to the `data` option, that you c
 ## Related demos
 
 - [Dynamically load events on month change →](https://demo.mobiscroll.com/react/agenda/load-events-on-demand#)
+
+## Implementation instructions
+
+- Use `view: { agenda: { type: 'month' } }`. Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. Angular: use `HttpClient.jsonp()`. For the imperative API, call `inst.setEvents(events)` in the callback. Pass the returned array directly to the `data` option — no transformation needed as long as events use the standard Mobiscroll event structure (`title`, `start`, `end`, etc.).

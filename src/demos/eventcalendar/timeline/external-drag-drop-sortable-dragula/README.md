@@ -73,3 +73,24 @@ To enable this behavior you will need to set the following under the `options` c
 - Use the `onExternalDrop` callback to update the content of the third-party list. The function arguments return the `afterElement` - the list element before which the clone is dropped, `container` - the list container, `dragData` - the dragged event data,  `position` - the index where the clone is dropped on the list.
 
 For details, and option lists see the [Third-party dragging support](https://docs.mobiscroll.com/react/eventcalendar/drag-and-drop#third-party-dragging-support) section in the documentation
+
+## Implementation instructions
+
+- Use `timeline: { type: 'day' }` with 5 fixed calendar resources (A–E). Enable `externalDrop: true`, `externalDrag: true`, and `externalResourceDrop: true` on the `Eventcalendar`.
+- The page has three side-by-side external panel sections, each with an **Event list** and a **Resource list**. The three sections demonstrate three integration paths: Mobiscroll `Draggable`, SortableJS, and Dragula.
+- **Mobiscroll Draggable (native path):**
+  - Each task item renders a `Draggable` component (Angular: `mbsc-draggable` directive, Vue: `MbscDraggable`) with `dragData` set to the full event object and `element` pointing to the item's DOM node.
+  - Resource items use the same pattern with `type="resource"` on the `Draggable`.
+  - Wrap the event list in a `Dropcontainer` (Vue: `MbscDropcontainer`) with `onItemDrop` to handle events dragged back from the calendar — add the returned `args.data` back to the list.
+- **SortableJS (plugin path):**
+  - Initialize `new Sortable(container, { animation: 150, forceFallback: true })` on the list container.
+  - Call `sortableJsDraggable.init(sortableInstance, { cloneSelector: '.sortable-drag' })` from `@mobiscroll/*` to connect the list to the calendar. Pass `type: 'resource'` for resource lists. Pass `externalDrop: true` and `onExternalDrop` for event lists that should also receive events back from the calendar; the callback receives `{ dragData, position }` — splice `dragData` into the list at `position`.
+  - Event data is read from each item element's `data-drag-data` attribute (a stringified JSON of the event object).
+- **Dragula (plugin path):**
+  - Initialize `dragula([container])` on the list container.
+  - Call `dragulaDraggable.init(drake, { ... })` with the same option shape as the SortableJS path.
+- **Calendar event handling:**
+  - `onEventCreated`: if `args.action === 'externalDrop'`, remove the item from whichever source list contains a matching `id`, then show a `Toast` confirming the event was added.
+  - `onEventDelete`: fires when an event is dragged out of the calendar to the `Dropcontainer` — show a toast indicating the event was unscheduled.
+  - `onResourceCreated`: if `args.type === 'onResourceCreated'`, remove the matching resource from the source list and show a toast.
+- Store each panel's items as separate mutable state arrays so items disappear from the list once dropped onto the calendar and re-appear when dragged back.

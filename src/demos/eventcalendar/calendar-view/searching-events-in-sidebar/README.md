@@ -15,10 +15,11 @@ Alternatively, search can be implemented in the header of the event calendar usi
 
 ## Implementation instructions
 
-- Use an Eventcalendar in desktop month view as the primary calendar surface, and place a separate Agenda instance in the sidebar to present search results.
-- Implement inline event search through the agenda instance, showing filtered matches in a popup-style result list below the search input.
-- Load the main calendar data and the filtered search results from the same API endpoint, using the search term to request or derive the matching events.
-- Reuse the shared event data so the month view and the agenda search results stay in sync.
+- Build a split layout: a fixed-width sidebar on the left containing a search `Input` and an inline results `Eventcalendar`, and the main month calendar filling the remaining width on the right.
+- Set `view: { calendar: { labels: true } }` for the main calendar. Load events via `onPageLoading` using `getJson` with `args.viewStart`/`args.viewEnd` as date range params.
+- Place a Mobiscroll `Input` with `startIcon="material-search"` and placeholder "Search events" at the top of the sidebar. On `onChange`, debounce by 200ms, then call `getJson` with the search text appended to the API URL. Pass the returned events to the inline results `Eventcalendar` and show it.
+- The results `Eventcalendar` in the sidebar uses `showControls: false` and `view: { agenda: { type: 'year', size: 5 } }`. Render it conditionally — show it only after the first search has been performed.
+- On `onEventClick` in the results agenda, call `inst.navigateToEvent(args.event)` on the main calendar instance (Angular: use `@ViewChild`) to jump to that event's date, and set it as `selectedEvents` to highlight it.
 
 ## What this demo shows
 
@@ -30,9 +31,9 @@ Alternatively, search can be implemented in the header of the event calendar usi
 - **Month navigation** The month can be changed by clicking and dragging the calendar left or right.
 - **Header layout** The header shows the current month and year on the left and previous, next, and `Today` controls on the right.
 - **Search sidebar** The sidebar contains a search field with a search icon and the `Search events` placeholder text.
-- **Search results** Typing into the search field opens a popup below the input with matching events in an agenda-style list.
+- **Search results** Typing in the search field displays matching events in an agenda-style list below the input.
 - **Agenda result** Search results are grouped by date, and each event row shows a colored marker, the event title, and the event type, such as all-day or timed.
-- **Result selection** Clicking an event in the agenda list closes the popup and navigates the month view to the date that contains the selected event.
+- **Result selection** Clicking an event in the agenda list navigates the month view to the date that contains the selected event.
 - **Empty state** If the search returns no matches, a `No events` message is shown below the search box.
 
 ## Best for

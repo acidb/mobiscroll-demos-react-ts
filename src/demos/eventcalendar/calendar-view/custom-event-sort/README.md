@@ -15,8 +15,10 @@ The `order` property of the event data can be used to override the default order
 
 ## Implementation instructions
 
-- Use the event `order` property to override the default event ordering in the calendar.
-- For more advanced custom sorting logic, use the `eventOrder` option with a compare function that returns `-1` or `1`.
+- Set `view: { calendar: { type: 'week' } }` to display a weekly calendar with event labels in the day cells.
+- Define events with `allDay: true` and assign each a numeric `order` property. PROPOSED requests use `order: 1`; APPROVED use `order: 2` — this places all pending requests above approved ones within each day cell.
+- Use `color` to distinguish status visually: yellow for PROPOSED, green for APPROVED.
+- For more advanced sorting logic, the `eventOrder` option accepts a compare function that receives two events and returns `-1` or `1`.
 
 ## What this demo shows
 

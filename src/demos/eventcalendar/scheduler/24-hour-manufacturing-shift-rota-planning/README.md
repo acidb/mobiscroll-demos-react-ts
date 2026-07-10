@@ -25,3 +25,38 @@ it automatically updates and shifts any conflicting events (those sharing the sa
 - Store the original start, end, and resource in state via `onEventDragStart`. In `onEventUpdate`, first block cross-day moves (return `false` if the drop day's 06:00 boundary differs from the drag day's). Then find conflicts within the same day: if a conflicting event shares the same resource, reassign it to the dragged event's original resource; if it shares the same time slot, move it to the dragged event's original time and update its title and color. Return `false` if the exact drop position is already occupied. After resolving, update `colors` and the red-resource indicator for the source resource.
 - In `onEventDelete`, remove the event from state, apply a red color overlay spanning 06:00–06:00+1 for that resource, set `redResources[resourceId + dayISO]` to `true`, and show a `Toast`.
 - Use `renderResource` (Angular: `resourceTemplate`, Vue: `resource`) with a `(resource, day)` signature: apply a red background style to the crew name div when `redResources[res.id + day.toISOString()]` is `true` for that crew and day.
+
+## What this demo shows
+
+- A desktop weekly scheduler for 24-hour shift planning, with a fixed week strip, repeated resources for each day, and a vertically scrollable time grid running from 6 AM to 6 AM the following day.
+- **Header navigation** The month and year label in the top left opens date navigation, while the blue previous and next arrows and the Today button on the right make it easy to move between weeks and jump back to the current day.
+- **Week strip**: The fixed strip below the header displays the days in the selected week, with the current date highlighted by a blue circle.
+- **Resources**: Each day shows the same three resources: Crew A, Crew B, and Crew C.
+- **Resource columns**: Each crew has its own column within the day column, keeping resources grouped by date.
+- **Time grid**: The scheduler uses a custom 24-hour range from 6 AM to 6 AM the next day, with midnight marked by a stronger horizontal line.
+- **Scrolling behavior**: The time grid scrolls vertically through the hours of the selected week.
+- **Timed events**: Shifts appear as colored event cards with a colored stripe, bold shift title, and start and end time. Morning Shift runs from 6 AM to 2 PM, Afternoon Shift from 2 PM to 10 PM, and Night Shift from 10 PM to 6 AM.
+- **Event overlap**: Shift events cannot overlap.
+- **Shift coverage**: By default, each resource has a scheduled shift. Users can delete, create, or move shifts.
+- **Missing shifts**: When a shift is deleted, the affected resource column is highlighted with a red background to show that no shift is scheduled for that resource.
+- **Available shift slots**: When a resource has no shift, hovering over an available 8-hour shift period highlights the slot in green. 
+- **Shift repositioning**: Moving a shift can automatically update another shift on the same day to preserve coverage.
+- **Current time**: A blue current-time line appears across the time grid.
+- **Hover behavior**: Hovering over the time grid shows a time indicator that follows the cursor in 8-hour increments.
+- **Event interaction**: Hovering over or selecting an event highlights it.
+- **Toast messages**: Clicking an occupied time slot or trying to create a shift when every slot is already assigned shows an "Already assigned" toast at the bottom center of the scheduler. Deleting a shift shows a deletion toast with the shift name.
+
+## Best for
+
+- **Manufacturing and production facilities**: Schedule morning, afternoon, and night shifts across production lines, departments, or work crews while maintaining continuous coverage.
+- **Warehousing and logistics operations**: Coordinate warehouse teams, loading crews, dispatch staff, and distribution personnel across multiple shifts.
+- **Construction and field service teams**: Manage rotating crews, subcontractors, inspectors, and site personnel working across different schedules and locations.
+- **Security and monitoring services**: Plan guard rotations, patrol schedules, control room operators, and emergency response teams around the clock.
+- **Healthcare and care facilities**: Organize nurse rotations, support staff schedules, and departmental coverage across day, evening, and overnight shifts.
+- **Hospitality and tourism businesses**: Schedule hotel staff, front desk teams, housekeeping crews, event staff, and service personnel.
+- **Retail operations**: Manage store associates, supervisors, cashiers, and department teams while balancing staffing levels during peak and off-peak hours.
+- **Transportation and aviation services**: Coordinate drivers, dispatchers, pilots, cabin crews, ground staff, and maintenance teams.
+- **Customer support and contact centers**: Plan agent coverage across time zones, shifts, and support channels to meet service level requirements.
+- **Public services and emergency organizations**: Schedule firefighters, police officers, emergency medical personnel, and municipal service teams.
+- **Media, broadcasting, and operations centers**: Coordinate production crews, technical operators, studio staff, and live-event teams that require continuous coverage.
+- **IT and DevOps teams**: Manage on-call rotations, support shifts, operations coverage, and incident response schedules for 24/7 systems.

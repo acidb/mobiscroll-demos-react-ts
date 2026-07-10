@@ -26,3 +26,10 @@ There are cases when you are using a third party library, something like md-boos
 `showEventTooltip` option and use the third-party tooltip accordingly.
 In case of md-boostrap, you can add the tooltip directive to the [custom event template](https://demo.mobiscroll.com/react/agenda/full-event-customization#)
 so that the library knows where and when to show the tooltip.
+
+## Implementation instructions
+
+- Use `view: { agenda: { type: 'week' } }`. Define a static inline event array with medical-appointment fields: `title`, `age`, `start`, `end`, `confirmed`, `reason`, `location`, `color`. Use relative dates so appointments always appear around the current day.
+- Set `showEventTooltip: false` to suppress the native browser tooltip. Handle `onEventHoverIn` to open a Mobiscroll `Popup` anchored to `args.domEvent.target.closest('.mbsc-event')`. Popup options: `display: 'anchored'`, `touchUi: false`, `showOverlay: false`, `scrollLock: false`, `width: 350`, `contentPadding: false`. Handle `onEventHoverOut` with a 200 ms delay before closing — cancel the timer on mouseenter into the Popup, reset it on mouseleave.
+- Wire `onEventClick` to the same open logic for touch/mobile support.
+- Tooltip content: colored header with patient name+age and formatted time range; status line with a confirm/cancel toggle button; reason for visit; location; "View patient file" and "Delete appointment" action buttons.

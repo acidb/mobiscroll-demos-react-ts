@@ -27,3 +27,28 @@ The last thing that needed to be done is to override the event rendering with a 
 - Use `renderHeader` (Angular: `headerTemplate`, Vue: `header`) to render the navigation controls alongside a color legend for working hours, flex hours, and time off.
 - Enable `clickToCreate`, `dragToCreate`, `dragToMove`, and `dragToResize` with `dragTimeStep: 60` for one-hour snapping.
 - Use `onEventCreateFailed` and `onEventUpdateFailed` to open a `Confirm` dialog when a meeting lands in a time-off slot, and proceed with the create or update if the user confirms.
+
+## What this demo shows
+
+- A desktop timeline for planning meetings across multiple time zones, with days arranged horizontally and resources listed vertically.
+- **Header navigation** The month and year label in the top left opens date navigation, while the blue previous and next arrows and the Today button on the right make it easy to move between weeks and jump back to the current day.
+- **Legend** A color legend explains the time-period backgrounds: yellow for working hours, blue for flex hours, and red for time off.
+- **Week view** The fixed date strip shows the selected week, with date labels formatted as `DD DDD MMM YYYY` and the current date highlighted.
+- **Resources** Six team members are shown as timeline rows, each with an avatar, name, and local time zone information.
+- **Hourly timeline** The timeline shows 24 hourly slots, with the hour labels adjusted per resource so local times can be compared across multiple time zones.
+- **Availability backgrounds** Timeline cells use background colors to show each resource's working hours, flex hours, and time-off periods.
+- **Current time** A vertical blue line marks the current time and includes the current time label.
+- **Event cards** Meeting events are rendered as green cards with the localized start and end time above the bold event title.
+- **Resource placement** Events are positioned by date, time range, and assigned resource, with meetings spanning all resources by default.
+- **Event interaction** Events highlight on hover and expose drag and resize handles for moving the meeting or changing its duration.
+- **Event creation** New events can be created directly from the timeline with click-to-create and drag-to-create interactions.
+- **Time-off validation** When a new or updated event overlaps with a time-off period for one of the resources, a confirmation dialog asks whether to proceed.
+- **Horizontal scrolling** The timeline supports horizontal scrolling for navigating through the visible date and time range.
+
+## Best for
+
+- **Global workforce scheduling** Planning meetings and shared work sessions across teams in different time zones.
+- **Distributed teams** Comparing participant availability when each person works from a different location.
+- **International support organizations** Coordinating coverage and collaboration windows across regions.
+- **Cross-time-zone resource planning** Finding meeting times that respect working hours, flex hours, and time-off periods.
+- **Team meeting planning** Scheduling group events that include every selected participant by default.
