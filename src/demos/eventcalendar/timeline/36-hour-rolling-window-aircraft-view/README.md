@@ -23,3 +23,31 @@ The `resources`, representing individual aircraft (tail numbers), are organized 
 - Define resources as a two-level tree: parent nodes encode aircraft model and home base (e.g., `"A350-900 / LAX"`) with `eventCreation: false`, and child leaf nodes carry individual tail number IDs.
 - Label each event with IATA airport codes in `"ORIG → DEST"` format and assign a `color` per aircraft family.
 - Use `renderResourceHeader` (Angular: `resourceHeaderTemplate`, Vue: `resourceHeader`) to render a static `"TIMES SHOWN IN UTC"` label in the resource column header.
+
+## What this demo shows
+
+- A desktop timeline configured as a 36-hour rolling window for aircraft scheduling.
+- **Timeline layout** Displays time horizontally and aircraft resources vertically, with a hierarchical resource tree on the left.
+- **Resource grouping** Organizes aircraft under aircraft model and base airport combinations, such as A330-200 / DXB, A330-300 / JFK, and A350-900 / HND.
+- **Aircraft resources** Shows individual aircraft registrations as child resources within each aircraft group.
+- **Flight assignments** Places flight events on the timeline by assigned aircraft, date, start time, and end time.
+- **Flight details** Displays flight cards with origin and destination airport codes, departure time, and arrival time.
+- **Multiple legs** Shows multiple flight legs assigned to the same aircraft within the visible scheduling window.
+- **Overnight flights** Includes flights that continue across the day boundary into the following date.
+- **Event styling** Uses different event colors to distinguish flight assignments or aircraft schedules.
+- **UTC display** Shows the schedule in UTC, with a resource-header label indicating that times are shown in UTC.
+- **Current time** Displays a current time indicator as a vertical blue line with a time label.
+- **Hover behavior** Shows a time indicator over the grid that follows the cursor in 15-minute increments.
+- **Expandable groups** Supports expanding and collapsing aircraft groups to make larger fleets easier to navigate.
+- **Scrolling behavior** Supports horizontal and vertical scrolling for working across many aircraft and time periods.
+- **Event interaction** Highlights events on hover and exposes drag and resize handles for moving events or changing their duration.
+- **Event selection** Selects and highlights an event when it is clicked.
+
+## Best for
+
+- **Airline operations** Managing flight assignments across multiple aircraft in a single timeline.
+- **Aircraft scheduling** Planning aircraft usage by tail number, aircraft model, and base airport.
+- **Fleet management** Reviewing grouped aircraft schedules while still allowing drill-down to individual registrations.
+- **Flight planning** Coordinating multiple flight legs, overnight flights, and long-haul routes across a forward-looking time window.
+- **Operations control rooms** Monitoring time-sensitive aircraft activity in a UTC-based view.
+- **Large resource sets** Navigating schedules that require hierarchical grouping, expandable resource rows, and both horizontal and vertical scrolling.

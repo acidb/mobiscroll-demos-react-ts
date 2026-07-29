@@ -39,7 +39,7 @@ it automatically updates and shifts any conflicting events (those sharing the sa
 - **Event overlap**: Shift events cannot overlap.
 - **Shift coverage**: By default, each resource has a scheduled shift. Users can delete, create, or move shifts.
 - **Missing shifts**: When a shift is deleted, the affected resource column is highlighted with a red background to show that no shift is scheduled for that resource.
-- **Available shift slots**: When a resource has no shift, hovering over an available 8-hour shift period highlights the slot in green. 
+- **Available shift slots**: When a resource has no shift, hovering over an available 8-hour shift period highlights the slot in green.
 - **Shift repositioning**: Moving a shift can automatically update another shift on the same day to preserve coverage.
 - **Current time**: A blue current-time line appears across the time grid.
 - **Hover behavior**: Hovering over the time grid shows a time indicator that follows the cursor in 8-hour increments.

@@ -32,3 +32,31 @@ Use the
   3. Fetch `https://trial.mobiscroll.com/load-resources/?res={args.resource}` (JSONP, where `args.resource` is the group's id).
   4. On response: mutate `resource.children = data.resources` and `resource.loaded = true`, then merge `data.events` into the existing events array.
   5. Update both events and resources state with the merged arrays (spread to signal change), and show a Toast `"Resources loaded"`; for the imperative API, call `inst.setOptions({ data: newEvents, resources: newResources })`.
+
+## What this demo shows
+
+- A desktop timeline with hours arranged horizontally and a hierarchical resource tree arranged vertically on the left.
+- **Loading resources on demand** Expanding a resource group loads its child resources and events at runtime instead of loading the full hierarchy on initialization.
+- **Loading feedback** A `Resources loaded` toast appears at the bottom center of the timeline after child resources are loaded.
+- **Header navigation** The month and year label opens date navigation, the previous and next arrows move between days, and the Today button returns to the current date.
+- **Day view** The strip below the header shows the selected days, with the current date highlighted.
+- **Timeline grid** The timeline displays hourly columns from 12 AM to 12 PM.
+- **Resources** The left side shows expandable and collapsible resource groups, including parent groups.
+- **Resource hierarchy** Nested resources are grouped under parent rows, such as Group 1 and Group 2, before listing individual resources.
+- **Current time** A vertical blue line with a time label marks the current time.
+- **Hover behavior** Hovering over the time grid shows a time indicator that follows the cursor in 15-minute increments.
+- **Event cards** Events appear as colored cards with a colored stripe on the left, the event title in bold, and the exact start and end time displayed below the title.
+- **Date positioning** Events are positioned by their assigned resource and exact date range.
+- **Event interaction** Events highlight on hover and show drag and resize handles for repositioning or changing duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a time range.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through time and resources.
+
+## Best for
+
+- **Large resource hierarchies** Scheduling interfaces where loading every resource and event at startup would slow down the initial view.
+- **Expandable team structures** Workforce planning tools with departments, teams, and individual staff members grouped under parent rows.
+- **Facility and room scheduling** Calendars where buildings, floors, rooms, or equipment groups only need to load when the user expands them.
+- **Field service planning** Dispatch boards with regional groups, crews, vehicles, or technicians that can be loaded as the planner navigates.
+- **Asset and equipment booking** Resource timelines with many machines, vehicles, devices, or shared assets organized into nested groups.
+- **Enterprise scheduling systems** Applications that need to keep the first load fast while still supporting deeper resource trees and event data.

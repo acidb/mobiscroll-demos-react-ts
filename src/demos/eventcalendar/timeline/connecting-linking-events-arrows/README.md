@@ -36,3 +36,29 @@ Pass an array of connection objects where you can specify:
   - `false` — plain line, no arrowhead
 - One connection (5→4) uses `cssClass: 'dashed-line'` to apply a custom CSS rule to the SVG path, rendering it as a dashed line. Define `.dashed-line` in CSS with a `stroke-dasharray` style on the path element.
 - The default connection type is `'fs'` (finish-to-start) when `type` is omitted. The `type` option (`'fs'`, `'sf'`, `'ss'`, `'ff'`) controls which endpoints of the two events are joined.
+
+## What this demo shows
+
+- A desktop monthly timeline where days are arranged horizontally and resources are listed as rows on the left.
+- **Header navigation** The month and year label opens date navigation, the previous and next arrows move between months, and the Today button returns to the current date.
+- **Month view** The strip below the header shows the days of the selected month, with the current date highlighted.
+- **Resources** Multiple resources are shown as separate timeline rows.
+- **Event cards** Events appear as colored cards with a colored stripe on the left, a bold event title, and the exact start and end time below the title.
+- **Date positioning** Events are positioned by their assigned resource and exact date range.
+- **Event connections** Connector lines visualize dependencies between events directly on the timeline.
+- **Dependency direction** Arrows show predecessor and successor relationships so the execution order of scheduled tasks is easier to follow.
+- **Cross-resource dependencies** Connections can link events across different resources and dates.
+- **Connection types** The demo shows finish-to-start, start-to-start, finish-to-finish, and start-to-finish dependency types with configurable connector styling.
+- **Connection styling** Connector lines can use custom colors, arrow styles, and CSS classes, including dashed-line styling.
+- **Event interaction** Events highlight on hover and show drag and resize handles for repositioning or changing duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a time range.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through time and resources.
+
+## Best for
+
+- **Task dependencies** Applications that need to show predecessor and successor relationships between scheduled tasks.
+- **Critical path planning** Project schedules where users need to understand task order, downstream impact, and dependency chains.
+- **Workflow management** Resource-based workflows where work items depend on other tasks being started or completed.
+- **Project scheduling** Planning interfaces that need to connect events across teams, equipment, rooms, jobs, or other resources.
+- **Production planning** Manufacturing, maintenance, construction, and production schedules where task sequencing needs to stay visible on the timeline.

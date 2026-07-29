@@ -107,7 +107,7 @@ For details, and option lists see the `externalDrop` section in the documentatio
 - **Time grid** The scheduler grid scrolls vertically through the hours of the selected week.
 - **External lists** A scrollable panel on the right contains three external event lists: `Mobiscroll draggable` with four red items, `SortableJS list (externally sortable)` with four yellow items, and `Dragula list (externally sortable)` with four green items.
 - **Scheduling from lists** Any item from the external lists can be dragged onto the scheduler to create and schedule that event on the target time.
-- **Unscheduling back to lists** Scheduled events can be dragged out of the scheduler and dropped back into an external list, removing them from the month view.
+- **Unscheduling back to lists** Scheduled events can be dragged out of the scheduler and dropped back into an external list, removing them from the week view.
 - **List behavior** When an item is scheduled from an external list, it disappears from that list and appears on the scheduler.
 - **Feedback on drop** After an event is scheduled from an external list, a toast appears near the bottom center of the scheduler showing the event title and the `added` meesage.
 - **Feedback on externap list drop** After an event is unscheduled from the scheduler and dropped on the external list a toast appears near the bottom center of the scheduler showing the event title and the `unscheduled` message.

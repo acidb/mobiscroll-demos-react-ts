@@ -33,3 +33,19 @@ Because both views are projections of the same event store, a change made in one
 - Set `dragBetweenResources` to `true` in non-grouped mode and `false` in grouped mode (a single expression: `!groupByClientQuarter`). Keep `dragToMove: true` and `dragToResize: true`; disable `clickToCreate` and `dragToCreate`.
 - Use `renderResource` (Angular: `resourceTemplate`, Vue: `resource`) to show a photo, name, and title for assignee resources, and a colored badge with name for type resources.
 - Use `renderHeader` (Angular: `headerTemplate`, Vue: `header`) to render `CalendarNav`, a `Checkbox` for the group toggle, a `Select` for switching between assignee and type views, a `SegmentedGroup` with three `Segmented` controls for zoom level, and `CalendarPrev`/`CalendarToday`/`CalendarNext`.
+
+## What this demo shows
+
+- A desktop monthly timeline for event grouping and bulk actions, with January to December months arranged horizontally and resources arranged vertically on the left.
+- **Header navigation** The year label in the top left opens month navigation, while the blue previous and next arrows and the Today button on the right make it easy to move between months and jump back to the current day.
+- **Custom parts of the header** In the header there are three custom options all arranged to the right but before the navigation arrows and today button: a checkable Group by Client/Quarter option, allows related projects to be organized by customer and reporting period. Next to it a dropdown select from which the user can select to show resourses view by ASssignee or View by Type. The last option is a segmented button with which you can change the zoom level of the calendar by default is set to Monthly, but you can change to Quearterly or Weekly.
+- **Month view** The fixed strip below the header shows the selected years months from January to December, with the current month highlighted.
+
+## Best for
+
+- **Portfolio management** Reviewing client or portfolio-level work across a full year while keeping individual projects available on demand.
+- **Program planning** Coordinating multiple related projects by customer, quarter, assignee, or project type.
+- **Enterprise project roadmaps** Showing long-running initiatives with expandable summary rows and detailed project cards in the same timeline.
+- **Capital project tracking** Planning installation, maintenance, inspection, upgrade, and repair work across months or quarters.
+- **Long-term resource planning** Comparing workload by employee or work category without changing the underlying project data.
+- **Bulk schedule adjustments** Moving grouped project work together when related tasks need to shift as a set.

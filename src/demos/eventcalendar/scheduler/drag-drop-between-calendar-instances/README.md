@@ -37,5 +37,5 @@ Dragging and dropping events between two scheduler instances can be enabled by t
 ## Best for
 
 - **Multi-scheduler planning** Moving events between separate team, department, or location calendars.
-- **Resource reassignment** Reassigning appointments, tasks, or shifts from one schedule to another with direct drag and drop.
-- **Parallel schedule review** Comparing two weekly schedules and adjusting event placement between them.
+- **Resource reassignment** Reassigning appointments, tasks, or shifts from one scheduler to another with direct drag and drop.
+- **Parallel scheduler review** Comparing two weekly schedulers and adjusting event placement between them.

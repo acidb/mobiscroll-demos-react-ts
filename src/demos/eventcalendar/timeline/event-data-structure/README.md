@@ -35,3 +35,27 @@ The event data structure for the timeline is straightforward with a couple of ba
 - Define 5 resources (A–E) with distinct colors: yellow `#fdf500`, red `#ff0101`, blue `#01adff`, green `#239a21`, orange `#ff4600`.
 - Start with one pre-loaded event on Resource B demonstrating `bufferBefore: 20` and `bufferAfter: 30`. The buffer zones render as shaded areas before the event start and after the event end, visualising preparation/wrap-up time in minutes.
 - Add a button outside the calendar that programmatically adds a second event on Resource D combining base event properties with custom fields (`bufferBefore`, `bufferAfter`, `busy`, `description`, `location`). After adding, call `calInst.navigateToEvent(newEvent)` to scroll the calendar to the new event, then show a `Toast` "Event added". Use `calendar.addEvent(newEvent)` for the imperative API.
+
+## What this demo shows
+
+- A desktop resource timeline with hours arranged horizontally and resources listed as rows on the left.
+- **Code example** The left-side code snippet shows an event definition with the event properties used by the timeline.
+- **Add event action** A button below the code snippet lets users add a new event to the timeline from the event data shown in the code example.
+- **Add event feedback** Hovering the button highlights it, and clicking it adds the event to the timeline and shows a confirmation toast at the bottom center of the timeline.
+- **Header navigation** The month and year label opens date navigation, while the previous and next arrows move between weeks and the Today button returns to the current date.
+- **Day view** The day strip shows the selected day, with the current date highlighted. The timeline displays hourly columns from 9 AM to 5 PM.
+- **Resources** Multiple resources are shown as separate timeline rows.
+- **Current time** A vertical blue line with a time label marks the current time.
+- **Hover behavior** Hovering over the time grid shows a time indicator that follows the cursor in 15-minute increments.
+- **Event cards** Events appear as colored cards with a colored stripe on the left, the event title in bold, and the exact start and end time displayed below the title. Also shows buffer times before and after the event.
+- **Date positioning** Events are positioned by their assigned resource and exact date and time range.
+- **Event interaction** Events highlight on hover and show drag and resize handles for repositioning or changing duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a time range.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through time and resources.
+
+## Best for
+
+- **Daily team scheduling** Managing meetings, check-ins, and work blocks in a day-based timeline with quick access to nearby dates.
+- **Workforce and shift planning** Viewing all-day and timed items together when teams need to coordinate daily schedules across a structured timeline.
+- **Event-dense planning interfaces** Helping users spot categories, overlaps, and gaps quickly through color-coded event blocks.

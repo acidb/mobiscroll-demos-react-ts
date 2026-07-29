@@ -26,3 +26,28 @@ To disable past event creation and manipulation, a couple of things need to be h
 - **`onEventUpdateFailed`** — fires when a move or resize is blocked by `invalid`. Only show the toast ("Can't move event in the past") when `args.oldEventOccurrence` is absent — this avoids duplicate toasts for recurring occurrence failures.
 - **`onEventCreate`** — handles the recurring event edge case: a past occurrence of a recurring event can be dragged and will trigger `onEventCreate` (not `onEventUpdateFailed`) because the occurrence is treated as a new event. Read `args.originEvent.start`; if it is before `today`, show a toast ("Can't move past event") and `return false` to cancel.
 - **`onEventUpdate`** — handles recurring events being moved from the past. Check `args.oldEvent.start < today` (master event started in the past) OR `args.oldEventOccurrence.start < today` (a specific past occurrence is being moved). If either is true, `return false` to cancel.
+
+## What this demo shows
+
+- A desktop monthly resource timeline that blocks event creation and event editing in the past.
+- **Header navigation** The month and year label opens date navigation, the previous and next arrows move between months, and the Today button returns to the current date.
+- **Month view** Days are arranged horizontally across the selected month, with the current date highlighted.
+- **Past dates** Dates before today are disabled and rendered with a gray background.
+- **Disabled past days** Disabled past dates block event creation, drag-to-move, and drag-to-resize interactions.
+- **Past events** Events on past dates remain visible, but they cannot be moved, resized, or repositioned.
+- **Failed past updates** When creating or moving an event is blocked by a past date, a toast appears at the bottom center with feedback explaining why the action was not allowed.
+- **Resources** Multiple resources are listed as separate timeline rows on the left.
+- **Event cards** Events appear as colored cards with a colored stripe on the left, a bold event title, and the exact start and end time below the title.
+- **Date positioning** Events are positioned by their assigned resource and exact date range.
+- **Event interaction** Editable events highlight on hover and show drag and resize handles for moving or changing duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a valid time range.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through days and resources.
+
+## Best for
+
+- **Booking systems** Preventing users from creating appointments in dates or times that have already passed.
+- **Resource scheduling** Keeping completed or historical assignments visible while blocking accidental edits.
+- **Workforce planning** Protecting past shifts, jobs, or allocations after the scheduled date has passed.
+- **Service operations** Allowing teams to review past work without changing records that should remain fixed.
+- **Audit-sensitive calendars** Separating future scheduling changes from historical event data that should not be moved or resized.

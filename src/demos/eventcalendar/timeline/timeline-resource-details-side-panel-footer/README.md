@@ -46,3 +46,31 @@ width: 280px;
 - **Sorting logic:** Maintain `sortColumn`, `sortDirection` (asc/desc/def), and `sortDay` (the clicked day's timestamp, or null for resource-column sorts). Clicking the same column again cycles direction; clicking a different column resets to ascending. When `sortDirection` is `def`, restore original resource order (by `id`). Before sorting by `busyHours`, pre-compute `resource.busyHours` for the clicked day from the loaded events.
 - **Data refresh:** Call `refreshData()` in `onPageLoading` (fires on initial load and month navigation) and after `onEventCreated`, `onEventDeleted`, and `onEventUpdated`. After refresh, re-apply the current sort so the order stays consistent.
 - **Resource column width:** The demo requires a wider resource column to accommodate the three sub-cells. Override Mobiscroll's default width by targeting the internal `.mbsc-timeline-resource-col` class with a `min-width` or `width` rule scoped to the calendar's CSS class.
+
+## What this demo shows
+
+- A desktop month timeline where days are arranged horizontally and conference room resources are listed as rows.
+- **Header navigation** The month and year label opens date navigation, while the previous and next arrows move between months and the Today button returns to the current date.
+- **Month view** The day strip below the header shows the selected month, with the current date highlighted.
+- **Resources** Each room is shown as a separate timeline row with custom resource details for room name, capacity, and price per day.
+- **Sidebar revenue** A right-side sidebar column displays the calculated revenue for each resource over the visible month.
+- **Resource summary** The resource footer shows an occupancy label, and the sidebar footer shows total revenue across all resources.
+- **Day footer** Each day displays an occupancy percentage based on how many resources have bookings on that date.
+- **Sorting** Resource, day, and sidebar headers are clickable and cycle through ascending, descending, and default sorting states.
+- **Sorting indicators** Header icons show the current sorting state for each sortable column or day.
+- **Event cards** Events are shown as colored cards with a left color stripe, a bold title, and the start and end time of the booking.
+- **Date positioning** Events are positioned by assigned resource and exact date range.
+- **Event interaction** Events highlight on hover and show drag and resize handles for moving bookings or changing their duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a date range.
+- **Live summaries** Revenue, occupancy, and sorting data are recalculated when events are added, updated, deleted, or when the visible month changes.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through dates and resources.
+
+## Best for
+
+- **Venue booking** Showing room availability, capacity, pricing, and revenue in the same timeline view.
+- **Hospitality timeline** Managing conference rooms, meeting spaces, or rentable areas with occupancy and revenue summaries.
+- **Facility management** Comparing resource usage across a month while keeping operational details visible beside the timeline.
+- **Coworking spaces** Tracking bookings for rooms or shared spaces with capacity, price, and utilization data.
+- **Equipment rental** Scheduling rentable resources where availability, daily pricing, and revenue need to be reviewed together.
+- **Operational reporting** Combining booking data with business metrics such as occupancy and revenue without leaving the timeline.

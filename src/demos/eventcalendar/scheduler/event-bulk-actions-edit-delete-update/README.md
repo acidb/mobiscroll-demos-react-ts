@@ -31,7 +31,7 @@ Custom actions can be performed with external buttons or with context menu activ
 - **All-day events** All-day events appear in a dedicated row that stays fixed above the time grid.
 - **Time grid** The scheduler grid scrolls vertically through the hours of the selected week.
 - **Bulk action panel** A side panel next to the scheduler contains `Select all from view`, `Reset selection`, and `Update selected` actions.
-- **Select all from view** Clicking this action selects all events currently visible and highlights thei titles in the month view and shows a bottom-centered toast message: `All events selected from the view`.
+- **Select all from view** Clicking this action selects all events currently visible and highlights thei titles in the week view and shows a bottom-centered toast message: `All events selected from the view`.
 - **Reset selection** Clicking this action clears the current selection and shows a bottom-centered toast message: `Selection cleared`.
 - **Update selected** Clicking this action changes the color of all selected events to orange and shows a bottom-centered toast message: `All selected event's color changed to orange`.
 - **Currently selected** The side panel includes a `Currently selected` section that is empty by default and lists the titles of all selected events when one or more events are selected.
@@ -46,7 +46,7 @@ Custom actions can be performed with external buttons or with context menu activ
 
 ## Best for
 
-- **Scheduling tools** Scheduling interfaces where users need to review and manage many visible events in a month view.
+- **Scheduling tools** Scheduling interfaces where users need to review and manage many visible events in a week view.
 - **Resource management** Resource planning workflows that require selecting and adjusting multiple bookings, assignments, or availability blocks together.
 - **Operations teams** Internal tools for managing appointments, team shifts, project deadlines, or other time-based records in batches.
 - **Mixed individual and batch actions** Use cases that need both multi-event actions and single-event actions from a contextual right-click menu.

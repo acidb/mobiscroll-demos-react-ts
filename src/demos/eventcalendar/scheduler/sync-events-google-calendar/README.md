@@ -54,4 +54,4 @@ Customizing the interaction, event workflows, whether the events are read-only i
 ## Best for
 
 - **Personal scheduling interfaces** Building scheduler views where users need to browse and manage their own events from an existing Google Calendar.
-- **Calendar overlay experiences** Letting users toggle multiple Google calendars, such as personal and holiday calendars, within the same event calendar.
+- **Calendar overlay experiences** Letting users toggle multiple Google calendars, such as personal and holiday calendars, within the same scheduler.

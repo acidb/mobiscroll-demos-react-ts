@@ -50,5 +50,5 @@ to connect to and load events from Google Calendar and it is not available in th
 
 ## Best for
 
-- **Google Calendar overlays** Showing events from public Google Calendars inside a Mobiscroll calendar.
+- **Google Calendar overlays** Showing events from public Google Calendars inside a Mobiscroll scheduler.
 - **Read-only event publishing** Sharing team, organization, or community calendars where visitors need to browse events but not edit them.

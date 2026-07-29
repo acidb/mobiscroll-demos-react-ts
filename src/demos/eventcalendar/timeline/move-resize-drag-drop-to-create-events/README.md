@@ -32,3 +32,38 @@ Events can be marked as fixed by setting their `editable` property to false. Thi
 - Enable interactions via: `clickToCreate: true`, `dragToCreate: true`, `dragToMove: true`, `dragToResize: true`, `eventDelete: true`.
 - Set `dragTimeStep: 15` to snap all drag actions to 15-minute increments.
 - Mark fixed events with `editable: false` on the event object — this disables delete, drag-to-move, and drag-to-resize for those events only. Mobiscroll automatically adds the `mbsc-event-readonly` CSS class to them; use this class to apply custom CSS overrides (opacity, cursor, etc.).
+
+## What this demo shows
+
+- A desktop daily timeline where hours are arranged horizontally and resources are listed as rows on the left.
+- **Header navigation** The month and year label opens date navigation, while the previous and next arrows move between weeks and the Today button returns to the current date.
+- **Day view** The strip below the header shows the selected day, with the current date highlighted. The timeline displays hourly columns from 12 AM to 12 PM.
+- **Resources** Multiple resources are shown as separate timeline rows.
+- **Current time** A vertical blue line with a time label marks the current time.
+- **Hover behavior** Hovering over the time grid shows a time indicator that follows the cursor in 15-minute increments.
+- **View controls** A configuration panel next to the timeline lets users switch between `Daily timeline` and `Weekly timeline`, with the daily timeline selected by default.
+- **Weekly timeline** Selecting `Weekly timeline` updates the layout to display a weekly timeline view.
+- **Interaction controls** Below the view controls a second panel titled `Granular control over the interaction` allows individual interaction modes to be enabled or disabled.
+- **Toggles** The panel includes five switches, all enabled by default: `Click to create event (double click)`, `Drag to create event`, `Move & reorder`, `Drag to resize existing events`, and `Delete events`.
+- **Create interactions** Double-clicking empty space on time grid creates a new event when click-to-create is enabled.
+- **Drag-create interactions** Clicking and dragging across empty space on time grid creates a new event when drag-to-create is enabled.
+- **Move interactions** Existing events can be dragged to a different date/ hour when move and reorder is enabled.
+- **Resize interactions** Existing events can be resized from either end when drag-to-resize is enabled.
+- **Delete interactions** The focused event can be deleted with the `Delete` or `Backspace` key when event deletion is enabled.
+- **Drag sensitivity controls** A third panel titled `Control drag sensitivity` lets users define the snap interval in minutes used during drag operations.
+- **Read-only events** Events marked with `editable: false` remain visible but cannot be moved, resized, or deleted.
+- **Event cards** Events are shown as colored cards with a left color stripe, a bold title, a description, and a bold time range.
+- **Date positioning** Events are positioned by their assigned resource and exact date range.
+- **Event interaction** Events highlight on hover and show drag and resize handles for repositioning or changing duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a time range.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through time and resources.
+
+## Best for
+
+- **Scheduling UIs with permissions** Scenarios where event creation, moving, resizing, and deletion need to be enabled or disabled independently.
+- **Role-based workflows** Products where different users or application modes should allow different editing actions in the same timeline UI.
+- **Guardrailed editing** Use cases where users should be able to interact with the calendar while specific actions remain restricted.
+- **Mixed editable and fixed events** Timelines that combine movable events with locked entries that should remain visible but not editable.
+- **Admin and operator dashboards** Interfaces where administrators need full editing capabilities while other users have limited access.
+- **Workflow testing and configuration** Applications that need to demonstrate or dynamically configure timeline interaction behavior.

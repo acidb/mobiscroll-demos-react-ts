@@ -37,3 +37,29 @@ Information and actions shown here won't clutter the main view, keep the timelin
 - **Total hours**: use `calRef.getEvents()`, filter by resource id, sum `(end - start) / (1000 * 60 * 60)` across all events visible on the current day.
 - **Date display**: track the visible date via `onPageChange` (`args.firstDay`); format it with `formatDate('D DDD MMM YYYY', date)` for the tooltip.
 - **"Pay" button**: closes the tooltip and shows a `Toast` with `"<name> paid"`.
+
+## What this demo shows
+
+- A desktop resource timeline with hours arranged horizontally and worker resources listed as rows on the left.
+- **Header navigation** The month and year label opens date navigation, the previous and next arrows move between days, and the Today button returns to the current date.
+- **Day view** The day strip shows the selected day, with the current date highlighted. The timeline displays hourly columns from 7 AM to 10 PM.
+- **Resources** Each worker appears as a separate resource row with an avatar, name, and profession in the resource column.
+- **Resource hover** Hovering over a resource row opens a custom popup with additional worker details.
+- **Resource popup** The popup shows the worker avatar, name, hourly rate, scheduled hours for the selected day, estimated earnings, and a Pay action button.
+- **Current time** A vertical blue line with a time label marks the current time.
+- **Hover behavior** Hovering over the time grid shows a time indicator that follows the cursor in 15-minute increments.
+- **Event cards** Events are shown as colored cards with a left color stripe, a bold title, and the exact start and end time below the title.
+- **Date positioning** Events are positioned by their assigned resource and exact date and time range.
+- **Event interaction** Events highlight on hover and show drag and resize handles for repositioning or changing duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a time range.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through time and resources.
+
+## Best for
+
+- **Workforce management** Showing employee schedules together with role, cost, and daily workload details.
+- **Field service scheduling** Reviewing technician assignments while keeping profile details and pay-related actions close to the schedule.
+- **Construction and maintenance planning** Coordinating resource-based work across a day timeline with quick access to worker information.
+- **Healthcare staffing** Comparing staff assignments by time and resource while showing contextual staff details only when needed.
+- **Payroll-aware scheduling** Displaying scheduled hours, hourly rates, estimated earnings, and payment actions alongside planned work.
+- **Resource-heavy operations** Keeping the timeline readable while making worker metadata available from the resource column.

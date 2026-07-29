@@ -39,3 +39,28 @@ which can be configured under the `view`. This is necessary if the actual booked
 - **Refresh cycle**: Store original events in a mutable ref (not state). On `onPageLoading`, capture `args.firstDay` / `args.lastDay`, then call the aggregate recalculation in a `setTimeout`. On `onEventCreated`, `onEventUpdated`, and `onEventDeleted`, update the events ref and call the same recalculation.
 - **Custom resource column** (`renderResource` / `resourceTemplate` / `resource` slot): check `res.isParent` — if true, render `name` + `address`; otherwise render `car`, licence plate, and vehicle type.
 - **Custom event content** (`renderTimelineEventContent` / `timelineEventContentTemplate` / `timeline-event-content` slot): check `event.currentResource.isParent` — if true (summary row), render "Total dist.", "Total cons.", "Est. cost" aggregates; otherwise render the booking title, driver name, estimated distance/consumption, and formatted pick-up / drop-off times using `formatDate('hh:mm A', ...)`.
+
+## What this demo shows
+
+- A desktop timeline that combines a weekly date range with hierarchical resources and group-level summary events.
+- **Header navigation** The month and year label opens date navigation, the previous and next arrows move between weeks, and the Today button returns to the current date.
+- **Week view** The date strip shows the selected week from Sunday to Saturday, with the current date highlighted.
+- **Resource hierarchy** The resource column shows expandable parent groups with nested vehicle resources grouped by fleet or location.
+- **Resource details** Child resource rows display vehicle metadata such as model, license plate, and vehicle type.
+- **Group summaries** Parent resource rows show daily aggregate metrics for all scheduled trips in that group.
+- **Summary metrics** Each group summary displays total estimated distance, total fuel consumption, and estimated operating cost.
+- **Event cards** Trip events show booking details such as destination or appointment, assigned driver, estimated distance, estimated fuel consumption, and pick-up and drop-off times.
+- **Dynamic aggregates** Summary values are recalculated from the scheduled trips in each resource group when events are created, updated, or deleted.
+- **Date positioning** Events are positioned by their assigned resource and exact date range.
+- **Event interaction** Events highlight on hover.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created with double click on timeline cells.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through time and resources.
+
+## Best for
+
+- **Fleet management** Scheduling vehicles while tracking daily distance, fuel consumption, and estimated operating cost by fleet or location.
+- **Transportation planning** Comparing trip assignments across vehicles and resource groups in a timeline layout.
+- **Vehicle reservations** Managing bookings for individual vehicles while keeping parent rows available for group-level utilization summaries.
+- **Logistics operations** Reviewing scheduled trips alongside aggregate travel metrics for each resource group.
+- **Field service scheduling** Assigning vehicles or crews to appointments where travel estimates and operating costs need to stay visible with the schedule.

@@ -94,3 +94,31 @@ For details, and option lists see the [Third-party dragging support](https://doc
   - `onEventDelete`: fires when an event is dragged out of the calendar to the `Dropcontainer` — show a toast indicating the event was unscheduled.
   - `onResourceCreated`: if `args.type === 'onResourceCreated'`, remove the matching resource from the source list and show a toast.
 - Store each panel's items as separate mutable state arrays so items disappear from the list once dropped onto the calendar and re-appear when dragged back.
+
+## What this demo shows
+
+- A desktop daily timeline where hours are arranged horizontally and resources are listed as rows on the left.
+- **Header navigation** The month and year label opens date navigation, while the previous and next arrows move between weeks and the Today button returns to the current date.
+- **Day view** The strip below the header shows the selected day, with the current date highlighted. The timeline displays hourly columns from 12 AM to 12 PM.
+- **Resources** Multiple resources are shown as separate timeline rows.
+- **Current time** A vertical blue line with a time label marks the current time.
+- **Hover behavior** Hovering over the time grid shows a time indicator that follows the cursor in 15-minute increments.
+- **External lists** A scrollable panel on the right contains three external event lists: `Mobiscroll draggable` with four red items, `SortableJS list (externally sortable)` with four yellow items, and `Dragula list (externally sortable)` with four green items. Each list contains four grey resources as well.
+- **Scheduling from lists** Any item from the external lists can be dragged onto the timeline to create and schedule that event on the target time or drop a resource to the resource column.
+- **Unscheduling back to lists** Scheduled events can be dragged out of the timeline and dropped back into an external list, removing them from the day view.
+- **List behavior** When an item is scheduled from an external list, it disappears from that list and appears on the timeline.
+- **Feedback on drop** After an event is scheduled from an external list, a toast appears near the bottom center of the timeline showing the event title and the `added` meesage.
+- **Feedback on externap list drop** After an event is unscheduled from the timeline and dropped on the external list a toast appears near the bottom center of the timeline showing the event title and the `unscheduled` message.
+- **Event cards** Events are shown as colored cards with a left color stripe, a bold title, and the start and end time below the title.
+- **Date positioning** Events are positioned by their assigned resource and exact date range.
+- **Event interaction** Events highlight on hover and show drag and resize handles for repositioning or changing duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a time range.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through time and resources.
+
+## Best for
+
+- **Unscheduled work queues** Managing tasks, appointments, or resources that start in an external backlog and need to be placed onto specific times.
+- **Desktop planning workflows** Daily timeline experiences where users need a time-grid view together with a side panel of draggable events and resources.
+- **Schedule and unschedule flows** Use cases where users assign items to the timeline, then move them back out to return them to an unscheduled state.
+- **Third-party drag-and-drop integration** Projects that combine Mobiscroll timeline with existing `SortableJS` or `Dragula` list implementations.

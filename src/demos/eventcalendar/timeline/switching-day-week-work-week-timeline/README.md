@@ -25,3 +25,34 @@ By dynamically changing the options you can set the level of detail you want to 
   - `{ recurring: { repeat: 'weekly', weekDays: 'SA,SU' } }` — full weekend
 - Handle `onEventCreateFailed` and `onEventUpdateFailed` by showing a `Toast` with the message "Can't schedule outside of working hours". This fires when drag-to-create or drag-to-move lands in an invalid slot.
 - Load events remotely via `getJson` from the trial endpoint.
+
+## What this demo shows
+
+- A desktop scheduler timeline with days arranged horizontally and resources listed as rows on the left.
+- **Header navigation** The month and year label opens date navigation, the previous and next buttons move between weeks, and the Today button returns to the current date.
+- **View switcher** The header includes Day, Work week, and Week options, with Week selected by default.
+- **Day view** Selecting Day updates the timeline to a single-day timeline view.
+- **Work week view** Selecting Work week updates the timeline to show Monday through Friday.
+- **Week view** Selecting Week updates the timeline to show a full Sunday-to-Saturday week.
+- **Week strip** The strip below the header shows the selected week from Sunday to Saturday, with the current date highlighted.
+- **Time grid** The timeline displays hourly columns across the visible day range.
+- **Invalid time ranges** Early-morning and late-evening hours are blocked on weekdays, appear with a gray background, and do not allow event creation or event movement.
+- **Invalid weekend** Saturdays and Sundays are blocked, so the weekend columns appear with a gray background and do not allow event creation.
+- **Resources** Each resource is displayed as a separate timeline row with an avatar, person name, and job title.
+- **Current time** A vertical blue line with a time label marks the current time.
+- **Hover behavior** Hovering over the time grid shows a time indicator that follows the cursor in 15-minute increments.
+- **Event cards** Events are shown as colored cards with a left color stripe, bold title, and time range.
+- **Date positioning** Events are positioned by their assigned resource, date, start time, and end time.
+- **Event interaction** Events highlight on hover and expose drag and resize handles for moving the event or changing its duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a time range.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through time and resources.
+
+## Best for
+
+- **Workforce scheduling** Switching between day, work-week, and full-week views for teams that need both detailed daily planning and broader weekly coverage.
+- **Resource planning** Assigning events to people, teams, rooms, equipment, or other resources that need separate rows in a timeline.
+- **Shift and availability planning** Blocking non-working hours and weekends so users schedule only inside allowed time ranges.
+- **Operational calendars** Reviewing many scheduled items across multiple resources while keeping resource details visible on the left.
+- **Staffing dashboards** Showing names, roles, and avatars next to each resource so planners can identify the right person quickly.
+- **Drag-and-drop scheduling flows** Creating, moving, and resizing events directly on the timeline while preventing updates in invalid time ranges.

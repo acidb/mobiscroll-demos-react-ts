@@ -56,3 +56,34 @@ Customizing the interaction, event workflows, whether the events are read-only i
 
 - **Custom header**: Replace the default header with `CalendarNav` (left-aligned), a loading spinner (visible while events load), and a button group (right-aligned): a "Sync my google calendars" button when not signed in, a "My Calendars" button when signed in, a "Today" button, and `CalendarPrev` / `CalendarNext`.
 - **Popup**: An anchored popup on the "My Calendars" button. Contains a note about sync behavior, an "Enable editing" Switch (controls all four drag/create options), a "My Calendars" section with one Switch per calendar (each toggles visibility and events), and a "Log out of my account" button → calls `googleCalendarSync.signOut()`.
+
+## What this demo shows
+
+- A desktop weekly timeline where days are arranged horizontally and Google calendars are listed as resource rows on the left.
+- **Header navigation** The month and year label opens date navigation, the previous and next arrows move between weeks, and the Today button returns to the current date.
+- **Signed-out state** No events are loaded by default. The `Sync My Google Calendars` button in the header prompts the user to sign in to Google Calendar.
+- **Authentication flow** Clicking the Google sign-in button opens a new browser tab where the user can authenticate with their Google account.
+- **Signed-in state** After sign-in, the header button changes to `My Calendars`. Clicking it opens an anchored popup with guidance about editing events and syncing changes back to Google Calendar.
+- **Editing toggle** The authenticated popup includes an `Enable editing` switch. It is off by default and controls whether event creation, moving, resizing, and updating are allowed.
+- **Update confirmation** When editing is enabled, updating an event opens a confirmation popup with the message `Are you sure you want to update this event? This action will affect your Google Calendar event.`
+- **Update actions** The confirmation popup includes `Cancel` and `Update` buttons. `Cancel` closes the popup and restores the original event, while `Update` applies the change in the Mobiscroll timeline and syncs it back to Google Calendar.
+- **Sync feedback** Creating, updating, or deleting an event shows a bottom-centered toast confirming the change in the selected Google Calendar.
+- **Calendar list** The `My Calendars` popup shows multiple calendar switches, such as the user's personal calendar and country-specific holiday calendars.
+- **Sign-out** The bottom of the popup includes a `Log out of my account` button for disconnecting the Google Calendar account.
+- **Week view** The strip below the header shows the selected week from Sunday to Saturday, with the current date highlighted.
+- **Resources** After sign-in, Google calendars appear as timeline resources, with each calendar shown as a separate row.
+- **Readonly calendars** Calendars without write access are treated as readonly rows and are greyed out.
+- **Event labels** Events appear as colored labels with the event title shown in bold.
+- **Date positioning** Events are positioned by their assigned calendar resource and exact date range.
+- **Event interaction** Events highlight on hover and show drag and resize handles when editing is enabled.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a time range when editing is enabled.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through dates and calendar resources.
+
+## Best for
+
+- **Personal calendar scheduling** Building timeline views where users can browse and manage events from their own Google Calendar.
+- **Google Calendar sync workflows** Creating scheduling interfaces where event changes need to sync back to Google Calendar.
+- **Multi-calendar timelines** Showing several Google calendars, such as personal, shared, and holiday calendars, as separate timeline rows.
+- **Calendar visibility controls** Letting users toggle individual Google calendars on or off inside the same timeline view.
+- **Readonly calendar handling** Displaying calendars without write access while preventing edits to those calendar rows.

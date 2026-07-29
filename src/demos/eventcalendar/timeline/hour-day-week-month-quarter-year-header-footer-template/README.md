@@ -51,3 +51,29 @@ Add summaries, statistics or simply color the background depending on the number
   - Quarter footer: `renderQuarterFooter` → `quarterFooterTemplate` → `#quarterFooter`
   - Year header: `renderYear` → `yearTemplate` → `#year`
   - Year footer: `renderYearFooter` → `yearFooterTemplate` → `#yearFooter`
+
+## What this demo shows
+
+- Shows six timeline configurations with hour, day, week, month, quarter, and year resolutions.
+- **Timeline layout** Time periods are arranged horizontally, while resources are listed as rows on the left.
+- **Header templates** Each timeline resolution uses a custom header format for its time scale, such as hours, days, weeks, months, quarters, or years.
+- **Footer templates** Footer cells display the resource occupancy percentage for each visible time slot.
+- **Occupancy calculation** Percentages are calculated from the number of distinct resources occupied by events in each time slot.
+- **Density overview** Values such as 25%, 63%, 88%, and 100% highlight how fully booked each time slot is.
+- **Header and footer rendering** The demo demonstrates custom rendering for timeline header and footer cells with aggregated scheduling metrics.
+- **Dynamic updates** Occupancy values update as events are created, moved, resized, or removed.
+- **Event cards** Events are shown as colored cards with a left color stripe, a bold title, and the exact start and end time.
+- **Date positioning** Events are positioned by their assigned resource and exact date and time range.
+- **Event interaction** Events highlight on hover and show drag and resize handles for repositioning or changing duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a time range.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through time and resources.
+
+## Best for
+
+- **Workforce planning** Compare staffing coverage and open capacity across different timeline resolutions.
+- **Equipment scheduling** Track when shared equipment is booked and identify time slots with remaining availability.
+- **Room booking** Review resource occupancy across rooms while keeping the individual event schedule visible.
+- **Asset management** Monitor scheduled usage for multiple resources in a row-based timeline layout.
+- **Capacity analysis** Show high-level utilization metrics without hiding the detailed events for each resource.
+- **Custom scheduling dashboards** Add summary values, occupancy indicators, or other aggregated metrics to timeline headers and footers.

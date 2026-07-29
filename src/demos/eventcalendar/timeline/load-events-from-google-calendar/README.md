@@ -49,3 +49,22 @@ to connect to and load events from Google Calendar and it is not available in th
   lastDay  = new Date(end.getFullYear(),   end.getMonth() + 1,   end.getDate())
   ```
   After updating the date variables, call `loadEvents()`.
+
+## What this demo shows
+
+- A desktop monthly timeline that loads events from multiple public Google Calendars.
+- **Header navigation** The month and year label opens date navigation, while the previous and next arrows move between months and the Today button returns to the current date.
+- **Month timeline** Days are arranged horizontally across the selected month, with the current date highlighted.
+- **Resources** Public Google holiday calendars are shown as separate resource rows on the left.
+- **Holiday calendars** The demo includes public holiday calendars for multiple countries.
+- **Event labels** Holidays appear as colored labels with the event title.
+- **Date positioning** Events are placed in the row of their assigned Google Calendar resource and across their matching date range.
+- **Read-only behavior** Public Google Calendar events can be browsed in the timeline but are not edited in this demo.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through dates and resources.
+
+## Best for
+
+- **Public Google Calendar overlays** Showing events from public Google Calendars inside a Mobiscroll timeline.
+- **Holiday calendar timelines** Comparing public holidays across countries in separate resource rows.
+- **Read-only event publishing** Sharing organization, team, or community calendars where users need to browse events without editing them.
+- **External calendar data** Loading remote calendar events into Mobiscroll by using Google Calendar IDs and an API key.

@@ -42,3 +42,35 @@ so that the library knows where and when to show the tooltip.
   - `onEventDragStart`: close the popup immediately.
 - **Popup content**: a colored header showing patient name + age and the formatted appointment time (color driven by `args.resourceObj.color`); a body with the appointment status (Confirmed/Canceled) and a toggle button (`Button color="warning"|"success" variant="outline"`), reason for visit, location, a "View patient file" button (`color="secondary"`), and a "Delete appointment" button (`color="danger" variant="outline"`).
 - Use a `Toast` component to confirm user actions: status toggle, file view, and deletion.
+
+## What this demo shows
+
+- A desktop daily timeline where hours are arranged horizontally and resources are listed as rows on the left.
+- **Header navigation** The month and year label opens date navigation, while the previous and next arrows move between days and the Today button returns to the current date.
+- **Day view** The strip below the header shows the selected day with the timeline displays hourly columns from 8 AM to 4 PM.
+- **Resources** Multiple resources are shown as separate timeline rows.
+- **Current time** A vertical blue line with a time label marks the current time.
+- **Hover behavior** Hovering over the time grid shows a time indicator that follows the cursor in 15-minute increments.
+- **Event cards** Events are shown as colored cards with a left color stripe, a bold title, and the start and end time.
+- **Custom event tooltip** Hovering over an event opens a custom tooltip below the hovered event.
+- **Tooltip header** The tooltip header uses the event color and shows the patient name, age, and event start and end time.
+- **Tooltip details** The tooltip body shows `Status`, `Reason for visiting`, and `Location` rows.
+- **Appointment status** The `Status` row shows whether the appointment is confirmed.
+- **Status action** The tooltip shows either a `Confirm appointment` or `Cancel appointment` button based on the current appointment status.
+- **Status feedback** Clicking the status action changes the appointment status, closes the tooltip, and shows a toast message on the timeline.
+- **Reason for visiting** The tooltip includes a short description of why the patient is visiting.
+- **Location** The tooltip shows the appointment location.
+- **Footer actions** The footer includes a gray `View patient file` button and a red `Delete appointment` button.
+- **View patient action** Clicking `View patient file` shows a toast message with the `View file` text.
+- **Delete action** Clicking `Delete appointment` removes the event.
+- **Date positioning** Events are positioned by their assigned resource and exact date and time range.
+- **Event selection** Clicking an event selects and highlights it.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through time and resources.
+
+## Best for
+
+- **Appointment schedulers** Showing patient appointments with status, reason, location, and event-specific actions.
+- **Healthcare scheduling** Building timeline views where users need quick access to appointment details without opening a separate page.
+- **Desktop workflows** Presenting a weekly timeline layout with hover states, selection states, and header navigation.
+- **Event detail previews** Displaying structured event information in a custom tooltip anchored to the hovered event.
+- **Inline appointment actions** Letting users confirm, cancel, view, or delete appointments directly from the scheduler.

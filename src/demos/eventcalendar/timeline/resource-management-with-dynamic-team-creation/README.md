@@ -57,3 +57,34 @@ You can also use the :::framework{only="vue"} `resource-drag-leave` ::: :::frame
 - Use `renderResourceHeader` (Angular: `resourceHeaderTemplate`, Vue: `resourceHeader`) to render a "Set up teams" label alongside an "Add team" `Button`.
 - Use `renderResource` (Angular: `resourceTemplate`, Vue: `resource`) to handle three cases: parent/group nodes render just the team name; placeholder nodes render a styled placeholder label; leaf nodes render a colored avatar (first letter of the name), the installer's name, and their job title.
 - In the Add team handler, append a new group to the installers array with a placeholder child, then call `navigateToEvent` on the calendar instance ref with the new resource ID to scroll the timeline to the newly added team.
+
+## What this demo shows
+
+- A desktop day timeline for dynamic resource management, with the selected day arranged horizontally and a hierarchical installer team resource tree arranged vertically on the left.
+- **External technician list** An external list beside the timeline shows available technicians that can be dragged into installer teams.
+- **Header navigation** The month and year label opens date navigation, while the previous and next arrows and the Today button move between days or return to the current day.
+- **Day strip** The fixed strip below the header shows the selected day using the `DD DDD MMM YYYY` date format, with the current date highlighted.
+- **Time grid** The timeline shows working hours from 7 AM to 5 PM with hourly columns.
+- **Resources** The resource column shows expandable and collapsible installer teams with technician child resources.
+- **Resource rendering** Technician rows display avatar initials, the technician name, and the job title or specialization.
+- **Adding teams** The resource header includes an Add team action for creating new empty installer teams.
+- **Empty teams** Empty teams display a "Drag Technicians here" placeholder to indicate valid drop targets.
+- **Team assignment** Technicians can be dragged from the external list into installer teams.
+- **Team reorganization** Technicians can be dragged between teams to update team composition.
+- **Drag-and-drop feedback** Drop targets are highlighted while a technician is being dragged.
+- **Confirmation feedback** A toast notification confirms when a technician is assigned to a team.
+- **Current time** A vertical blue line with a time label marks the current time.
+- **Hover behavior** Hovering over the time grid shows a time indicator that follows the cursor in 15-minute increments.
+- **Event cards** Events appear as colored cards with a left color stripe, job name, and exact start and end time.
+- **Event positioning** Events are placed by assigned resource, date, start time, and end time.
+- **Event interaction** Events highlight on hover and expose drag and resize handles for moving events or changing their duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Scrolling** Horizontal and vertical scrolling support larger technician lists, multiple installer teams, and extended schedules.
+
+## Best for
+
+- **Construction workforce planning** Organizing installers into teams and assigning scheduled work from the same timeline interface.
+- **Field service dispatching** Managing technician availability, team assignments, and time-based jobs in a resource timeline.
+- **Installer team management** Creating empty teams, filling them by drag and drop, and reorganizing team composition as plans change.
+- **Crew scheduling** Coordinating multiple teams and technicians across a single workday with visible job timing.
+- **Operational scheduling tools** Building scheduling interfaces where resource grouping, external resource drag and drop, and timeline-based job placement need to work together.

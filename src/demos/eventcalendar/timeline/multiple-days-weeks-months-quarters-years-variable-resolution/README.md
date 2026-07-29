@@ -44,3 +44,29 @@ A couple of examples:
 - Set `hideEmptyRows: true` to suppress resource rows that have no events in the current view. Set `hideInvalidRows: true` to suppress rows that are entirely covered by `allDay` or full-day invalid ranges. Neither property affects parent resource rows unless `resolutionVertical: 'day'` is active.
 - Use `refDate` to fix the start of the view to a specific date (e.g. the first of January for a year view). Without it, today is used as the reference point and navigation moves forward/backward from there.
 - Define room or venue resources with `id`, `name`, and `color`. Load events from a remote endpoint using `getJson` (or any fetch helper) and pass them to `data`.
+
+## What this demo shows
+
+- A desktop timeline layout with a custom date range arranged horizontally and resources listed vertically on the left.
+- **Range controls** A configuration panel beside the timeline lets users choose a numeric size from a select dropdown and switch the timeline type between `Day`, `Week`, `Month`, and `Year`, with `Day` selected by default.
+- **Page size** The range controls define how many days, weeks, months, or years are shown in the timeline.
+- **Horizontal resolution controls** A `Set the horizontal resolution` section lets users switch the timeline column unit between `Hour`, `Day`, `Week`, `Month`, `Quarter`, and `Year`, with `Day` selected by default.
+- **Vertical resolution controls** A `Set the vertical resolution` section lets users switch the vertical resolution between `None` and `Day`, with `None` selected by default.
+- **Hide controls** Two switch controls let users hide empty columns and hide invalid columns, with both options disabled by default.
+- **Initial view date** The first optional date setting is titled `If unset, the initial view date is today`. When enabled, users can set the initial view date with the `Set the initial view date to` checkbox and date picker.
+- **Reference date** The second optional date setting is titled `If unset, the reference date is today`. When enabled, users can set the date used for paging calculations with the `Paging is calculated from` checkbox and date picker.
+- **Header navigation** The custom date range on the left opens date navigation, while the previous and next arrows and the `Today` button on the right move through the configured page range or return to the current day.
+- **Month and day names** A fixed strip below the header shows month names and displays the days in the custom range using the `DD DDD` date format, with the current date highlighted.
+- **Resources** The left resource column shows nine resources.
+- **Event cards** Events appear as colored labels with the event title shown in bold.
+- **Event positioning** Events are placed by assigned resource and date.
+- **Event interaction** Events highlight on hover and expose drag and resize handles for moving events or changing their duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Scrolling** Horizontal and vertical scrolling are supported for navigating through the timeline range and resource list.
+
+## Best for
+
+- **Event planning** Planning projects, releases, or roadmaps that span multiple weeks or months.
+- **Team management** Managing team schedules that need visibility beyond a single week.
+- **Resource allocation** Assigning resources and reviewing capacity across extended date ranges.
+- **Workload distribution** Comparing availability and workload across resources over larger timeline ranges.

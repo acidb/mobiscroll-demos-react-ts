@@ -31,3 +31,32 @@ Use the `immutableData` option to ensure the original data remains unchanged whe
   - When NOT in reorder mode: a flat "Reorder resources" button.
   - When IN reorder mode: "Save" and "Cancel" buttons side by side.
   - `CalendarPrev`, `CalendarToday`, `CalendarNext` on the right.
+
+## What this demo shows
+
+- A desktop timeline in month view, with days arranged horizontally and a hierarchical resource tree arranged vertically on the left.
+- **Header navigation** The month and year label opens date navigation, the previous and next arrows move between months, and the Today button returns to the current date.
+- **Reorder action** The custom header includes a Reorder resources button before the navigation arrows. Clicking it enables resource reordering and replaces the button with Save and Cancel actions.
+- **Month view** The timeline header shows the days in the selected month, with the current date highlighted.
+- **Resources** The left side shows expandable and collapsible resource groups, including parent groups and fixed resources where reordering is disabled.
+- **Resource hierarchy** Nested resources are grouped under parent rows, such as Group 1 and Group 2, before listing individual resources.
+- **Non-reorderable resources** Resource 2 and Resource 4 remain visible in the schedule, but their drag handles are hidden and they cannot be moved.
+- **Resource reordering** Reorder mode lets users move reorderable resources with drag and drop while keeping existing events assigned to their resources.
+- **Grouped resources** Resources can be reordered within the existing expandable group structure.
+- **Drag feedback** A drop indicator shows where the dragged resource will be placed.
+- **Save and cancel flow** Save commits the pending resource order, while Cancel exits reorder mode and restores the previously committed order.
+- **Cancel notification** Canceling the reorder flow shows a notification confirming that the resource order was canceled.
+- **Event cards** Events are shown as colored cards with a left color stripe and the event time displayed under the title.
+- **Date positioning** Events are positioned by their assigned resource and date range.
+- **Event interaction** Events highlight on hover and show drag and resize handles for repositioning or changing duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a time range.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through dates and resources.
+
+## Best for
+
+- **Operational resource planning** Applications where users need to customize resource order based on priorities, preferences, or frequently accessed resources.
+- **Grouped resource schedules** Timelines that organize people, rooms, equipment, or other resources under expandable parent groups.
+- **Controlled manual organization** Workflows where users can review a new resource order before saving or canceling the change.
+- **Mixed reorder rules** Schedules that need some resources to remain fixed while others can be manually rearranged.
+- **Dense timeline views** Desktop timeline interfaces that need horizontal date navigation and vertical resource navigation in the same view.

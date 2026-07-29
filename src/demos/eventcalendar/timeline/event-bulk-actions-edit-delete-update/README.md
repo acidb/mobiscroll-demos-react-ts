@@ -26,3 +26,36 @@ Custom actions can be performed with external buttons or with context menu activ
 - Three entry points trigger `deleteSelectedEvents()`: (1) **`onEventDelete`** — fired by the Delete/Backspace key; use the `confirmOpen` flag to prevent double-triggering, then `return false`; (2) **`onEventUpdate` with `args.isDelete === true`** — fired when Mobiscroll attempts a keyboard delete on a multi-selection; same guard and `return false`; (3) **context menu "Delete" option**.
 - **Right-click context menu**: `onEventRightClick` → store `selectedEvent = args.event` as a fallback (used if no events are selected), `args.domEvent.preventDefault()`, set the menu anchor to `args.domEvent.target`, open an anchored `Select` popup (`display: 'anchored'`, `touchUi: false`, no buttons) with two options ("Update" / "Delete"). On selection dispatch to `updateSelectedEvents()` or `deleteSelectedEvents()`; `updateSelectedEvents` / `deleteSelectedEvents` fall back to `[selectedEvent]` when `getSelectedEvents()` returns empty. On menu close, clear the selected value.
 - **Keyboard delete**: attach a `keydown` listener on the `.md-bulk-operations` container; if Delete or Backspace is pressed and no confirm dialog is open, call `deleteSelectedEvents()`.
+
+## What this demo shows
+
+- A desktop weekly timeline where days are arranged horizontally and resources are listed as rows on the left.
+- **Header navigation** The month and year label opens date navigation, while the previous and next arrows move between weeks, and the Today button returns to the current date.
+- **Week view** The strip below the header shows the selected week from Sunday to Saturday, with the current date highlighted.
+- **Time grid** The timeline displays hourly columns from 12 AM to 12 PM.
+- **Resources** Multiple resources are shown as separate timeline rows.
+- **Current time** A vertical blue line with a time label marks the current time.
+- **Hover behavior** Hovering over the time grid shows a time indicator that follows the cursor in 15-minute increments.
+- **Bulk action panel** A side panel next to the timeline contains `Select all from view`, `Reset selection`, and `Update selected` actions.
+- **Select all from view** Clicking this action selects all events currently visible, highlights their titles in the week view, and shows a bottom-centered toast message: `All events selected from the view`.
+- **Reset selection** Clicking this action clears the current selection and shows a bottom-centered toast message: `Selection cleared`.
+- **Update selected** Clicking this action changes the color of all selected events to orange and shows a bottom-centered toast message: `All selected event's color changed to orange`.
+- **Currently selected** The side panel includes a `Currently selected` section that is empty by default and lists the titles of all selected events when one or more events are selected.
+- **Multi-selection** Users can select multiple events with `CTRL`/`SHIFT`/`CMD` + click.
+- **Context menu** Right-clicking an event opens a small popup with `Update` and `Delete` actions for that event.
+- **Event cards** Events appear as colored cards with a colored stripe on the left, the event title in bold, and the exact start and end time displayed below the title.
+- **Variable event height** Timeline events grow to fit their custom event content instead of forcing every event into the same fixed height.
+- **Resource row height** Resource rows adjust dynamically based on the height of the events they contain.
+- **Date positioning** Events are positioned by their assigned resource and exact date range.
+- **Event interaction** Events highlight on hover and show drag and resize handles for repositioning or changing duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a time range.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through time and resources.
+
+## Best for
+
+- **Bulk schedule updates** Selecting several events and applying the same change, such as updating the color or status of multiple scheduled items at once.
+- **Resource planning workflows** Managing schedules where events are grouped by resource and users need to act on several assignments in the same timeline view.
+- **Operational cleanup** Reviewing a week of visible events and clearing, updating, or deleting selected items without editing each event individually.
+- **Multi-event review** Tracking the current selection in a side panel so users can confirm which events will be affected before running a bulk action.
+- **Context-specific actions** Giving users quick access to update and delete actions from a right-click menu while still supporting toolbar-style bulk actions.

@@ -64,6 +64,8 @@ Moving the past occurrences need to be handled in the
 
 ## Best for
 
-- **Employee scheduling and availability management** Display team schedules, vacations, days off, and availability across multiple employees in a single weekly scheduler view.
-- **Resource and shift planning** Organize shifts, assignments, and workload distribution while keeping meetings, tasks, and absences visible.
-- **Team operations and project coordination** Track recurring meetings, deadlines, field activities, and employee commitments alongside personal time-off information.
+- **Booking systems** Preventing users from creating appointments in dates or times that have already passed.
+- **Resource scheduling** Keeping completed or historical assignments visible while blocking accidental edits.
+- **Workforce planning** Protecting past shifts, jobs, or allocations after the scheduled date has passed.
+- **Service operations** Allowing teams to review past work without changing records that should remain fixed.
+- **Audit-sensitive calendars** Separating future scheduling changes from historical event data that should not be moved or resized.

@@ -18,3 +18,24 @@ The calendar header can be easily customized and a two-way synchronization needs
 - In the `onPageLoaded` event, read `args.firstDay` as the range start. The `args.lastDay` is exclusive (one day past the last visible day), so compute the actual end as `new Date(lastDay.getFullYear(), lastDay.getMonth(), lastDay.getDate() - 1)`. Use both to update the button label text and the range picker's value — this keeps the picker in sync when the user navigates with the prev/next buttons.
 - Implement a `getNrDays(start, end)` helper: `Math.round(Math.abs((end.setHours(0) - start.setHours(0)) / 86400000)) + 1`. Use `formatDate('MMM D, YYYY', date)` from Mobiscroll to build the label string; show a single date when the range spans one day, or "Start - End" for multiple days.
 - Define 6 generic resources with `id`, `name`, and `color`. Load events from a remote endpoint using `getJson` and pass them to `data`.
+
+## What this demo shows
+
+- A desktop timeline layout with a custom date range arranged horizontally and resources arranged vertically on the left.
+- **Header** The header shows the selected custom date range on the left. Clicking the displayed range opens an anchored range picker for choosing a custom range instead of relying only on fixed day, week, month, or year views.
+- **Header navigation** The previous and next controls and the Today button move the timeline range backward, forward, or back to the current day.
+- **Custom range view** The fixed strip below the header displays the days in the selected range, with the current date highlighted.
+- **Resources** Multiple resources are shown vertically on the left side of the timeline as individual rows.
+- **Event labels** Events are rendered as colored labels inside the day cells, with the event title shown in bold.
+- **Date positioning** Events are positioned according to both their assigned resource and their exact date range.
+- **Event interaction** Events are highlighted on hover and show drag and resize handles for repositioning or changing duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** Users can create a new event by double-clicking the timeline or by clicking and dragging across it.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through time and resources.
+
+## Best for
+
+- **Conference and event planning** Coordinate multi-day conferences, trade shows, workshops, festivals, corporate events, meetings, and sessions.
+- **Project and program management** Track project phases, milestones, launches, deadlines, and team activities across several weeks in one timeline view.
+- **Business travel and itineraries** Plan business trips, tours, client visits, training programs, and travel schedules while keeping appointments visible.
+- **Marketing and campaign planning** Manage campaigns, content schedules, product launches, promotional events, and key milestones over extended periods.

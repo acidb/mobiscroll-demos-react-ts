@@ -41,3 +41,26 @@ If the step adjustment is not needed and you want to keep the width of the resou
   - Resources 12–19 — standalone resources after the groups.
 - Add 18 events with `dyndatetime` offsets distributed across the current month, each assigned to a leaf resource `id`.
 - The resource column width expands and contracts automatically as groups are collapsed or expanded to accommodate the indentation depth. The default indentation step can be overridden by targeting Mobiscroll's internal `.mbsc-timeline-resource-depth-step` class; set the width to `0` to disable dynamic column width adjustment entirely.
+
+## What this demo shows
+
+- A desktop month timeline with days arranged horizontally and a hierarchical resource tree arranged vertically on the left.
+- **Header navigation** The month and year label opens date navigation, while the previous and next arrows move between months and the Today button returns to the current date.
+- **Month view** The strip below the header shows the days of the selected month, with the current date highlighted.
+- **Resources** The left side shows expandable and collapsible resource groups, including parent groups and fixed resources at the top.
+- **Resource hierarchy** Nested resources are grouped under parent rows, such as Group 1 and Group 2, before listing individual resources.
+- **Fixed resources** Resource 1 and Resources 2 are fixed to the top through the fixed property of the resource object. The fixed resources have to be placed before any other resource in the order of resources.
+- **Event cards** Events are displayed as colored cards with a left color stripe, a bold title, and the start and end time below the title.
+- **Date positioning** Events are positioned by their assigned resource and exact date range.
+- **Event interaction** Events highlight on hover and show drag and resize handles for repositioning or changing duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a time range.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through time and resources.
+
+## Best for
+
+- **Resource planning with hierarchy** Scheduling work across departments, teams, locations, or other nested resource structures.
+- **Grouped operations schedules** Planning related resources under expandable parent groups while keeping the timeline readable.
+- **Fixed priority resources** Keeping key resources, shared equipment, priority teams, or important rooms visible at the top while the rest of the resource list scrolls.
+- **Long resource lists** Managing schedules where users need to move between many resources without losing the month-level timeline context.
+- **Multi-level organization models** Representing resources that belong to several levels of grouping, such as region, site, team, and individual resource.

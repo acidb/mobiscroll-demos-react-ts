@@ -39,3 +39,29 @@ This dramatically improves performance in case of a large event and resource cou
      - Otherwise: update events only (no new resources for this scroll position).
 
 - **State update after fetch**: spread new resources into the existing array (`[...resources, ...data.resources]`) and update events; for the imperative API, use `inst.setOptions({ resources: updatedList, data: data.events })` when resources change, or `inst.setEvents(data.events)` when only events change.
+
+## What this demo shows
+
+- A desktop month timeline with days arranged horizontally and resources listed as rows on the left.
+- **Loading resources on scroll** A `Loading Resources...` toast appears at the bottom center of the timeline when vertical scrolling reaches unloaded resource rows.
+- **Virtual loading** Scrolling through the virtualized timeline fires the `onVirtualLoading` lifecycle event, which can be used to load resources for the visible range instead of loading all resources during initial rendering.
+- **Header navigation** The month and year label opens date navigation, the previous and next arrows move between months, and the Today button returns to the current date.
+- **Month view** The strip below the header shows the days of the selected month, with the current date highlighted.
+- **Timeline grid** The timeline displays hourly columns from 12 AM to 12 PM.
+- **Resources** Multiple resources are shown as separate timeline rows.
+- **Current time** A vertical blue line with a time label marks the current time.
+- **Hover behavior** Hovering over the time grid shows a time indicator that follows the cursor in 15-minute increments.
+- **Event cards** Events appear as blue cards with a blue stripe on the left, the event title in bold, and the exact start and end time displayed below the title.
+- **Date positioning** Events are positioned by their assigned resource and exact date range.
+- **Event interaction** Events highlight on hover and show drag and resize handles for repositioning or changing duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a time range.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through time and resources.
+
+## Best for
+
+- **Large resource lists** Scheduling interfaces where loading every employee, room, vehicle, asset, or service provider up front would slow initial rendering.
+- **Workforce planning** Staff scheduling boards where users move through long resource lists but only need the currently visible rows loaded at any given time.
+- **Dispatch and field service** Timelines with many technicians, drivers, crews, or vehicles where resource rows can be loaded as the user scrolls.
+- **Multi-location scheduling** Planning views that include resources across several branches, departments, sites, or regions.
+- **High-volume operational views** Resource timelines that need to stay responsive while handling large data sets over time.
