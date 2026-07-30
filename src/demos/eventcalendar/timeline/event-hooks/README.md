@@ -33,3 +33,26 @@ While users interact with the UI events like `onEventClick`, `onInit`, `onSelect
   - **Resource**: `onResourceClick`, `onResourceDoubleClick`, `onResourceRightClick`, `onResourceHoverIn`, `onResourceHoverOut`, `onResourceCreate`, `onResourceCreated`, `onResourceDelete`, `onResourceDeleted`, `onResourceDragStart`, `onResourceDragEnd`, `onResourceDragEnter`, `onResourceDragLeave`, `onResourceOrderUpdate`
   - **Page / lifecycle**: `onInit`, `onDestroy`, `onPageChange`, `onPageLoaded`, `onPageLoading`, `onSelectedDateChange`
 - Style each draggable card with padding, border-radius, and `display: inline-block` so they appear as clickable tiles above the calendar.
+
+## What this demo shows
+
+- A desktop daily timeline where hours are arranged horizontally and a hierarchical resource tree arranged vertically on the left.
+- **External drag & drop** Three external events are shown above the timeline and can be dragged onto the day view.
+- **Event log** An Event log panel is shown at the left and lists the lifecycle events fired during interactions such as event creation, hover, drag, and similar actions.
+- **Header navigation** The month and year label opens date navigation, while the previous and next arrows move between days and the Today button returns to the current date.
+- **Day view** The strip below the header shows the selected days, with the current date highlighted. The timeline displays hourly columns from 12 AM to 12 PM.
+- **Resources** The left side shows expandable and collapsible resource groups, including parent groups and draggable resources.
+- **Resource hierarchy** Nested resources are grouped under parent rows, before listing individual resources.
+- **Resource template** Each resource header shows the resource name in bold.
+- **Current time** A vertical blue line with a time label marks the current time.
+- **Hover behavior** Hovering over the time grid shows a time indicator that follows the cursor in 15-minute increments.
+- **Event cards** Events are shown as colored cards with a left color stripe, a bold title, a description, and a bold time range.
+- **Date positioning** Events are positioned by their assigned resource and exact date range.
+- **Event interaction** Events highlight on hover and show drag and resize handles for repositioning or changing duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a time range.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through time and resources.
+
+## Best for
+
+- **Lifecycle event discovery** Understanding which timeline lifecycle hooks fire during common user interactions.

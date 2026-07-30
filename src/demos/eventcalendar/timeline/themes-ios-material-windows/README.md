@@ -25,3 +25,27 @@ You can also see how every example looks by changing the theme from the header.
   - For the imperative API, attach `change` listeners to the select elements and call `inst.setOptions({ theme: value })` / `inst.setOptions({ themeVariant: value })` on each change.
 - Wrap the whole page in a Mobiscroll `Page` component. Use a flex column layout (`mbsc-flex-col`) so the dropdowns sit above the calendar and the calendar fills the remaining height (`mbsc-flex-1-1`).
 - Add a `.mds-full-height { height: 100%; }` CSS rule to make the page and calendar fill the available viewport height.
+
+## What this demo shows
+
+- A desktop daily timeline where hours are arranged horizontally and resources arranged vertically on the left.
+- **Theme controls** A segmented picker lets you switch between the `iOS`, `Material`, and `Windows` base themes, with `iOS` selected by default.
+- **Theme variant** A dark-theme switch is enabled by default, showing how the same timeline can be previewed in a dark variant.
+- **Custom theme option** A separate switch for theme builder or Sass-based customization is present but turned off by default.
+- **Header navigation** The month and year label opens date navigation, while the previous and next arrows move between days and the Today button returns to the current date.
+- **Day view** The strip below the header shows the selected days, with the current date highlighted. The timeline displays hourly columns from 12 AM to 12 PM.
+- **Resources** Multiple resources are shown as separate timeline rows.
+- **Current time** A vertical blue line with a time label marks the current time.
+- **Hover behavior** Hovering over the time grid shows a time indicator that follows the cursor in 15-minute increments.
+- **Event cards** Events are shown as colored cards with a left color stripe, a bold title, a description, and a bold time range.
+- **Date positioning** Events are positioned by their assigned resource and exact date range.
+- **Event interaction** Events highlight on hover and show drag and resize handles for repositioning or changing duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a time range.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through time and resources.
+
+## Best for
+
+- **Theme comparison** Evaluating how the timeline looks with the `iOS`, `Material`, and `Windows` base themes.
+- **Light and dark mode previewing** Checking how a timeline setup behaves across light and dark theme variants.
+- **Branded calendar experiences** Exploring how a base theme can be extended with theme builder, Sass, or custom CSS to match a product's visual style.

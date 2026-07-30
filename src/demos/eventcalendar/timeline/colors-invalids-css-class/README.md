@@ -29,3 +29,28 @@ This a great way for adding special meaning to certain days and time ranges.
   - `.md-stripes-bg`: diagonal green-tinted `repeating-linear-gradient`
   - `.md-dots-bg`: `radial-gradient` dot pattern with 20×20px `background-size`
   - `.md-rect-bg`: double `repeating-linear-gradient` at 45° creating a pink checkerboard, `opacity: 0.8`
+
+## What this demo shows
+
+- A desktop weekly timeline where days are arranged horizontally and resources are listed as rows on the left.
+- **Header navigation** The month and year label opens date navigation, while the previous and next arrows move between weeks and the Today button returns to the current date.
+- **Week view** The strip below the header shows the selected week from Monday to Friday, with the current date highlighted.
+- **Time grid** The timeline displays hourly columns from 9 AM to 6 PM.
+- **Resources** Multiple resources are shown as separate timeline rows.
+- **Current time** A vertical blue line with a time label marks the current time.
+- **Hover behavior** Hovering over the time grid shows a time indicator that follows the cursor in 15-minute increments.
+- **Colored time ranges** Predefined customized backgrounds mark specific time grid cells without blocking event labels where the colors option is customized with css. 
+- **Lunch marker** Weekdays from Monday to Friday show a grey and white background from 12 PM to 1 PM, with a Lunch break title in the center of the marked cell and these time periods are disabled so the invalid option is customized with css.
+- **Event cards** Events appear as colored cards with a colored stripe on the left, the event title in bold, and the exact start and end time displayed below the title.
+- **Date positioning** Events are positioned by their assigned resource and exact date and time range.
+- **Event interaction** Events highlight on hover and show drag and resize handles for repositioning or changing duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a time range.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through time and resources.
+
+## Best for
+
+- **Recurring marked hours** Highlighting repeated time ranges such as lunch breaks, maintenance windows, or blocked working hours in a weekly timline.
+- **Special dates and observances** Marking public holidays, company observances, or other notable dates directly in the timeline background.
+- **Timeline overview screens** Adding background cues that help people scan important hours while keeping event cards visible and readable.
+- **Availability context** Showing non-event time markers alongside scheduled events without turning those markers into regular event cards.

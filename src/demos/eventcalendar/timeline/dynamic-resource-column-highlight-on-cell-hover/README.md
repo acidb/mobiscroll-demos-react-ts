@@ -29,3 +29,29 @@ This makes it easy to implement custom hover interactions that match your design
   - `onCellHoverIn`: set `anchor: args.domEvent.target`, populate the tooltip with `args.resource.name` and `formatDate('MMM DD, YYYY', args.date)`, then open.
   - `onCellHoverOut`: close the popup.
 - **CSS**: `.mds-highlight-row-hover` and `.mds-highlight-col-hover` share the same background `rgba(220,220,220,0.25)` — the row class is applied via the resource `cssClass` property (Mobiscroll renders it on the row container), and the column class is applied via the overlay div in `renderCell` and the class added in `renderTimelineDay`/`renderDayFooter`.
+
+## What this demo shows
+
+- A desktop monthly timeline with days arranged horizontally and resources listed as rows.
+- **Header navigation** The month and year label opens date navigation, the previous and next arrows move between months, and the Today button returns to the current date.
+- **Month view** The timeline displays the days of the selected month as horizontal date columns.
+- **Footer** The bottom strip repeats the days of the selected month.
+- **Resources** Multiple resources are shown as separate timeline rows on the left.
+- **Sidebar** Resource names are also rendered in a right-side sidebar.
+- **Cell hover** Hovering a timeline cell highlights both the resource row and the date column, making the active cell context clear.
+- **Hover popup** A popup appears on cell hover with contextual information, including the resource name and date.
+- **Column highlight** The highlighted date column is applied across the timeline body, day header, footer, and sidebar rendering areas.
+- **Event cards** Events appear as colored cards with a colored stripe, bold event title, and exact start and end time.
+- **Date positioning** Events are positioned by their assigned resource and date range.
+- **Event interaction** Events highlight on hover and show drag and resize handles for repositioning or changing duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a time range.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through dates and resources.
+
+## Best for
+
+- **Resource timelines** Applications that need to show many resources against a shared monthly timeline.
+- **Context-heavy scheduling** Scheduling interfaces where users need clear row and column feedback before creating, moving, or resizing events.
+- **Operational dashboards** Planning views that benefit from contextual hover details without opening a full editor.
+- **Asset management** Interfaces for tracking equipment, rooms, vehicles, or other assignable resources over time.
+- **Workforce scheduling** Staff planning views where resource names, dates, and scheduled work need to stay easy to follow.

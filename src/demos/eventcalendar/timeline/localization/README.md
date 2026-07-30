@@ -24,3 +24,25 @@ You can see how each example shows up by clicking on the small flag icon or chec
 - For the imperative API, attach a `change` listener to the select element and call `calendar.setOptions({ locale: mobiscroll.locale[value] })` on each change.
 - Wrap the page in a Mobiscroll `Page` component. Use a Mobiscroll grid with a single `mbsc-col-sm-8` column (centered with `margin: 0 auto`) for the dropdown, and a `mbsc-flex-1-1` container for the calendar to fill the remaining height.
 - Add `.mds-full-height { height: 100%; }` and `.mds-locale-cont .mbsc-col-sm-8 { margin: 0 auto; }` CSS rules.
+
+## What this demo shows
+
+- A desktop daily timeline where hours are arranged horizontally and a hierarchical resource tree arranged vertically on the left.
+- **Locale selector** Clicking the `Locale` dropdown opens a list of available locales that updates the timeline localization.
+- **Localization behavior** The localized setup affects date and time formatting, button labels, RTL layout support, and other built-in UI text and behaviors.
+- **Header navigation** The month and year label opens date navigation, while the previous and next arrows move between days and the Today button returns to the current date.
+- **Day view** The strip below the header shows the selected days, with the current date highlighted. The timeline displays hourly columns from 12 AM to 12 PM.
+- **Resources** Multiple resources are shown as separate timeline rows.
+- **Current time** A vertical blue line with a time label marks the current time.
+- **Hover behavior** Hovering over the time grid shows a time indicator that follows the cursor in 15-minute increments.
+- **Event cards** Events are shown as colored cards with a left color stripe, a bold title, a description, and a bold time range.
+- **Date positioning** Events are positioned by their assigned resource and exact date and time range.
+- **Event interaction** Events highlight on hover and show drag and resize handles for repositioning or changing duration.
+- **Event selection** Clicking an event selects and highlights it.
+- **Event creation** New events can be created by double-clicking the timeline or by clicking and dragging across a time range.
+- **Scrolling** The timeline supports horizontal and vertical scrolling for navigating through time and resources.
+
+## Best for
+
+- **Multi-language calendar UIs** Apps that need the same timeline experience in multiple languages and regional formats.
+- **Region-specific event experiences** Products that need localized date formats, time formats, and translated interface copy without rebuilding the timeline UI.
