@@ -4,7 +4,7 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 
 ## Demo description
 
-Use the select component as a country picker on mobile and desktop. You can add the dropdown to any input or use [Mobiscroll input fields](https://demo.mobiscroll.com/react/forms/inputs-text-areas-date-fields#). If you don’t want to make it a dropdown, you can embed the picker inline right into a page.
+Use the select component as a country picker on mobile and desktop. You can add the dropdown to any input or use [Mobiscroll input fields](https://demo.mobiscroll.com/react/forms/inputs-text-areas-date-fields#). If you don't want to make it a dropdown, you can embed the picker inline right into a page.
 
 Search is enabled through the filter option.
 

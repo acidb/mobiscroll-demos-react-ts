@@ -18,3 +18,20 @@ Besides printing, PDF export is possible through the print dialog of the browser
 - Use `view: { agenda: { type: 'month' } }`. Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. Angular: use `HttpClient.jsonp()`. For the imperative API, call `inst.setEvents(events)` in the callback.
 - Get a reference to the component instance. On a "Print agenda" Button click (with `startIcon: 'print'`), call `inst.print()` — this extracts the calendar markup into a temporary page and invokes the browser print dialog. Angular: use `@ViewChild` to get the `MbscEventcalendar` reference.
 - Wrap the layout in a `Page` component with a flex column: Button in a fixed-height top row, Eventcalendar filling the remaining height (`mbsc-flex-1-1`).
+
+## What this demo shows
+
+- Shows a monthly agenda view with events listed and grouped by date.
+- **Printing** A `Print the agenda` button is displayed next to the month view on the left side and opens the browser print dialog, applying print styling so the agenda can be printed or exported to PDF.
+- **Header navigation** The month and year label in the top left opens date navigation. The previous and next arrows and the Today button on the right move between months and jump back to the current date.
+- **Agenda list:** The area below the header lists events for the selected month. Events in the agenda are grouped by date.
+- **Sticky day headers** As the agenda scrolls vertically, each day stays visible with a sticky date header while its events appear underneath.
+- **Events:** Events appear as agenda cards with a colored strip on the left and the event title next to it. Start and end times are stacked on the right side of timed events. All-day events show the all-day label on the right.
+- **Event interaction:** Hovering an event highlights it.
+- **Event selection:** Clicking an event selects and highlights it.
+
+## Best for
+
+- **Printable agendas** Creating printable agenda that can be shared or posted.
+- **Schedules and planning** Preparing printed schedules, planning overviews, and event-based agendas for review or distribution.
+- **Archiving and reporting** Printing or exporting agenda views for record-keeping, handouts, or browser-based PDF generation.

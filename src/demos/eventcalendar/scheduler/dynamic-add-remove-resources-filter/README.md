@@ -36,6 +36,6 @@ Resources can be dynamically turned on and off. This will show or hide the resou
 ## Best for
 
 - **Resource filtering** Showing only selected people, teams, rooms, equipment, or other resources in a scheduler.
-- **Task and workload planning** Reviewing each visible resource’s assigned events without changing the underlying event data.
+- **Task and workload planning** Reviewing each visible resource's assigned events without changing the underlying event data.
 - **Multi-resource scheduling** Managing events that belong to more than one resource and need to stay synchronized when moved or resized.
 - **Runtime configuration** Updating the visible resources at runtime the same way other calendar options can be updated.

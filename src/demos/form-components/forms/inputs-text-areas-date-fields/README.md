@@ -14,4 +14,4 @@ Besides that, you can pick from three label types: `inline`, `stacked` and `floa
 
 Play around and combine different [input types with various label positions](https://demo.mobiscroll.com/react/forms/input-label-types#) to find out what fits you best.
 
-While Mobiscroll doesn’t provide built-in validation, it provides styling for error messages, disabled fields, labels and more. See how the fields look in different themes by changing it dynamically from the floating action bar on the right.
+While Mobiscroll doesn't provide built-in validation, it provides styling for error messages, disabled fields, labels and more. See how the fields look in different themes by changing it dynamically from the floating action bar on the right.
