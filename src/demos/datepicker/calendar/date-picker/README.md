@@ -22,8 +22,14 @@ When passing `controls: ['calendar']`, the date picker will render a monthly cal
 
 ## What this demo shows
 
-- A simple inline monthly calendar for selecting a single date.
+- A monthly date picker for selecting a single date.
+- **Inline date picker** The date picker is embedded directly in the page without an input by using inline display mode.
+- **Header navigation** The month and year label in the top left opens a month and year picker. The blue previous and next arrow buttons on the right navigate between months.
+- **Month view** A fixed weekday header displays abbreviated day names from Sunday through Saturday, with the dates arranged in a grid below it.
+- **Month navigation** The month can be changed by clicking and dragging the calendar left or right.
+- **Day cell states** Hovering a day highlights the day number with a gray background. Selecting a day highlights the day number with a blue background. The current date is highlighted by default and remains blue when the user selects another date.
+- **Adjacent months** Dates from the previous and next months appear with a muted style. Selecting one navigates the calendar to the corresponding month.
 
 ## Best for
 
-- Selecting a single date in the context of a month view, where the user benefits from seeing surrounding dates and the day-of-week layout.
+- **Single-date selection** Choosing one date from a monthly calendar while keeping surrounding dates and the day-of-week layout visible.

@@ -13,3 +13,20 @@ Use the `renderAgendaEmpty` function for putting your custom content together.
 
 - Use `view: { calendar: { type: 'week' }, agenda: { type: 'week' } }`. Define a static event array with events placed 7 days before and 7 days after the current date using relative date helpers — this ensures the current week in the agenda is always empty and consistently triggers the empty state.
 - Pass a custom empty state template via `renderAgendaEmpty` (Angular: `agendaEmptyTemplate`, Vue: `agendaEmpty` slot). The template contains a centered illustration image, a short italic message, and an "Add something to it" Button. On button click, show a Toast.
+
+## What this demo shows
+
+- Shows a mobile-friendly week calendar paired with an agenda list in a single view.
+- **Header navigation** The month and year label in the top left opens date navigation. The previous and next arrows and the Today button on the right move between weeks and jump back to the current date.
+- **Week view** A week calendar is displayed at the top of the view.
+- **Week navigation** The week strip can be changed by clicking and dragging left or right.
+- **Day cell states** Hovering a day highlights the day number with a gray background. Selecting a day highlights the day number with a blue background. The current date is highlighted by default.
+- **Agenda list** By default, no events are displayed in the agenda,and a customized empty state is shown instead. In this example, anillustration of an empty can is displayed with the text "Lookslike this can is empty" and a blue "Add something to it"button below it.
+- **Date selection** Selecting a day in the week calendar updates the agenda.
+
+## Best for
+
+- **First-time use** Explain that no events have been scheduled yet and provide a clear action for adding the first one.
+- **Appointment booking** Prompt users to create an appointment when the selected period has no bookings.
+- **Workforce planning** Offer a direct next step for adding a shift or assignment to an empty schedule.
+- **Filtered calendars** Clarify that the current filters return no events and provide an action for adjusting them.

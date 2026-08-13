@@ -14,16 +14,16 @@ Dynamically switching between single, multiple or range select can be done with 
 
 ## What this demo shows
 
-- Multiple date selection is enabled via the `selectMultiple` option — the calendar lets users pick more than one date in a single session.
-- **Any number of dates** — by default there is no upper limit; users can select as many dates as they want.
-- **Maximum selection cap** — the `selectMax` option limits how many dates can be selected; once the cap is reached, further taps are ignored.
-- **Select counter in the header** — the `selectCounter` option adds a localized count (e.g. "3 dates selected") to the header, updating live as dates are tapped.
-- **Custom header text** — `headerText` replaces the default header with a static string, such as "Pick up to 5 days".
-- **No header count** — when neither `selectCounter` nor `headerText` is active, the number of selected dates is still visible through the highlighted dates in the calendar grid.
+- **Multiple date selection** The `selectMultiple` option lets users select more than one date in a single session.
+- **Any number of dates** Without a selection limit, users can select as many dates as needed.
+- **Maximum selection limit** The `selectMax` option limits the number of selected dates. Once the limit is reached, additional taps are ignored.
+- **Selection counter** The `selectCounter` option displays a localized selection count, such as "3 dates selected," in the header and updates it as dates are selected.
+- **Custom header text** The `headerText` option replaces the default header content with custom text, such as "Pick up to 5 days."
+- **Selection without a header count** When neither `selectCounter` nor `headerText` is set, highlighted dates in the calendar grid indicate the current selection.
 
 ## Best for
 
-- **Availability and override management** — selecting a set of specific days to apply a rule, exception, or configuration change to (e.g. marking days as unavailable, setting price overrides, or flagging special dates).
-- **Multi-date booking and reservations** — any flow where a user needs to reserve or book more than one non-contiguous date at once.
-- **Batch actions on dates** — UI patterns where the user picks a collection of dates and then applies a single action to all of them (bulk scheduling, bulk status changes, etc.).
-- Any use case that needs clear visual feedback of which dates are selected, with the highlighted dates in the calendar serving as the primary indicator.
+- **Availability and override management** Select specific dates before applying an availability rule, exception, price override, or other configuration change.
+- **Multi-date bookings and reservations** Let users book or reserve multiple non-contiguous dates in one flow.
+- **Batch actions** Select a group of dates and apply one action to all of them, such as bulk scheduling or status updates.
+- **Visual selection feedback** Use highlighted dates in the calendar grid as the primary indication of which dates are selected.

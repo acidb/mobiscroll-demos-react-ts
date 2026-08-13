@@ -21,16 +21,20 @@ Custom actions can be performed with external buttons or with context menu activ
 
 ## What this demo shows
 
-- A desktop month view event calendar that supports selecting and managing multiple events from the current view.
-- **Calendar** A full month calendar displays multiple events, with all events visible and row height expanding to fit the content.
-- **Header controls** The built-in month header includes month and year navigation, previous and next arrows, and a Today button.
-- **Bulk action panel** A side panel next to the calendar contains `Select all from view`, `Reset selection`, and `Update selected` actions.
-- **Select all from view** Clicking this action selects all events currently visible in the month view and shows a bottom-centered toast message: `All events selected from the view`.
+- Shows a monthly agenda view with events listed and grouped by date.
+- **Header navigation** The month and year label in the top left opens date navigation. The previous and next arrows and the Today button on the right move between months and jump back to the current date.
+- **Agenda list** The area below the header lists events for the selected month. Events in the agenda are grouped by date.
+- **Sticky day headers** As the agenda scrolls vertically, each day stays visible with a sticky date header while its events appear underneath.
+- **Bulk action panel** A side panel next to the agenda contains `Select all from view`, `Reset selection`, and `Update selected` actions.
+- **Select all from view** Clicking this action selects all events currently visible and highlights thei titles in the week view and shows a bottom-centered toast message: `All events selected from the view`.
 - **Reset selection** Clicking this action clears the current selection and shows a bottom-centered toast message: `Selection cleared`.
 - **Update selected** Clicking this action changes the color of all selected events to orange and shows a bottom-centered toast message: `All selected event's color changed to orange`.
 - **Currently selected** The side panel includes a `Currently selected` section that is empty by default and lists the titles of all selected events when one or more events are selected.
 - **Multi-selection** Users can select multiple events with `CTRL`/`SHIFT`/`CMD` + click.
 - **Context menu** Right-clicking an event opens a small popup with `Update` and `Delete` actions for that event.
+- **Events** Events appear as agenda cards with a colored strip on the left and the event title next to it. Start and end times are stacked on the right side of timed events. All-day events show the all-day label on the right.
+- **Event interaction** Hovering an event highlights it.
+- **Event selection** Clicking an event selects and highlights it.actions for that event.
 
 ## Best for
 

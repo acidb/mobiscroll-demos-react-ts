@@ -28,3 +28,19 @@ The event data structure for the agenda is straightforward with a couple of base
 
 - Use `view: { agenda: { type: 'month' } }`. Pre-seed the calendar with one event for today using standard fields: `title`, `color`, `start`, `end`.
 - Add an "Add event to calendar" Button. On click, create a new event object combining base Mobiscroll fields (`title`, `color`, `start`, `end`) with any custom application fields (e.g. `busy`, `description`, `location`), then add it to the events array. After adding, call `inst.navigateToEvent(newEvent)` to scroll the agenda to the new event. For the imperative API, call `inst.addEvent(newEvent)` before `inst.navigateToEvent(newEvent)`. Show a Toast on success.
+
+## What this demo shows
+
+- Shows a daily agenda view with events listed.
+- **Code example** The left-side code snippet shows an event definition with the event properties used by the agenda.
+- **Add event action** A button below the code snippet lets users add a new event to the agenda from the event data shown in the code example.
+- **Add event feedback** Hovering the button highlights it, and clicking it adds the event to the agenda and shows a confirmation toast at the bottom center of the agenda.
+- **Header navigation** The month and year label in the top left opens date navigation. The previous and next arrows and the Today button on the right move between days and jump back to the current date.
+- **Agenda list** The area below the header lists events for the selected month. Events in the agenda are grouped by date.
+- **Events** Events are displayed as agenda cards with a colored strip on the left, the event title next to it, and the start and end time stacked on the right.
+- **Event interaction** Hovering an event highlights it.
+- **Event selection** Clicking an event selects and highlights it, then shows a toast message with the event title.
+
+## Best for
+
+- **Understanding event data** Showing how Mobiscroll event objects are structured and which built-in properties affect agenda rendering and behavior.

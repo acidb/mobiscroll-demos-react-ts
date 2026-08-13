@@ -13,8 +13,16 @@ The calendar view can be customized with a couple of different parameters:
 
 ## What this demo shows
 
-- The demo shows different calendar view customization options for the date picker, each independently configurable.
-- **Scrolling direction** — the `calendarScroll` option controls whether months transition horizontally (default) or vertically.
-- **First day of the week** — the `firstDay` option sets which day appears in the first column of the calendar grid. When not set, it follows the locale default (e.g. Sunday for `en-US`, Monday for `de-DE`).
-- **Week numbers** — the `showWeekNumbers` option toggles a week counter column on the left side of the grid; it is off by default.
-- **Outer days** — days from the previous and next month that fill the grid edges. With horizontal scrolling they are shown by default; with vertical scrolling they are hidden by default. The `showOuterDays` option overrides either default explicitly.
+- The demo presents independently configurable calendar view options for the date picker.
+- **Scrolling direction** The `calendarScroll` option controls whether users move between months horizontally, which is the default, or vertically.
+- **First day of the week** The `firstDay` option sets which day appears in the first column of the calendar grid. When it is not set, the calendar follows the locale default, such as Sunday for `en-US` or Monday for `de-DE`.
+- **Week numbers** The `showWeekNumbers` option toggles a week counter column on the left side of the grid. Week numbers are hidden by default.
+- **Outer days** The calendar can display days from the previous and next months at the edges of the grid. They are shown by default with horizontal scrolling and hidden by default with vertical scrolling. The `showOuterDays` option explicitly overrides either default.
+
+## Best for
+
+- **Scrolling direction** Date pickers that need horizontal month paging in compact interfaces or vertical month browsing in a scrolling layout.
+- **Regional calendars** Date pickers that need the first day of the week to match a locale, workplace convention, or regional calendar format.
+- **Week-based planning** Workflows where users refer to dates by week number, such as weekly scheduling, reporting, or delivery planning.
+- **Focused month views** Calendars that hide outer days to emphasize the current month and reduce visual clutter.
+- **Continuous date context** Calendars that show outer days so users can see adjacent dates without changing months.
