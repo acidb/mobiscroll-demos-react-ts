@@ -15,11 +15,20 @@ Use the `renderCalendarHeader` option for passing a custom header layout. There 
 
 ## What this demo shows
 
-- The header can be fully hidden, or left at its default — which shows the month, year label, and navigation arrows.
-- Clicking the month/year label opens a picker for navigating to a specific month or year.
-- The navigation arrows page the view: one full month in calendar view, one week in week view.
-- **Default header** — the out-of-the-box header with month, year label, and arrow navigation.
-- **Custom header arrangement** — CalendarNav centered, with CalendarPrev and CalendarNext placed on opposite sides, using predefined components.
-- **Add today button** — a CalendarToday control inserted between the default-positioned navigation arrows.
-- **Switch between week and month view** — a segmented control with week and month icons added to the header, letting the user dynamically toggle the calendar between week and month view.
-- **Preview section** — a header that displays the currently selected date.
+- The Datepicker calendar header can use the default layout, a custom arrangement, or be hidden completely.
+- **Default header**: Displays the current month and year with previous and next navigation controls.
+- **Month and year navigation**: Clicking the month and year label opens a picker for navigating directly to a specific month or year.
+- **Previous and next controls**: Pages the calendar by one month in month view and one week in week view.
+- **Custom header arrangement**: Centers `CalendarNav` and places `CalendarPrev` and `CalendarNext` on opposite sides using predefined calendar components.
+- **Today button**: Adds a `CalendarToday` control between the navigation buttons in their default positions.
+- **Week and month views**: Adds a segmented control with week and month icons for switching the calendar dynamically between the two views.
+- **Selected date preview**: Displays the currently selected date in the header.
+
+## Best for
+
+- **Compact date pickers**: Hide the header when month and year navigation is unnecessary or space is limited.
+- **Long-range date selection**: Open the month and year picker to reach dates that would require many previous or next navigation steps.
+- **Current-date workflows**: Add a Today button when users frequently need to return to the current date.
+- **Flexible date browsing**: Let users switch between week and month views when they need both a focused and a broader calendar view.
+- **Selection confirmation**: Show the selected date in the header when users need a clear preview of their current choice.
+- **Custom header layouts**: Rearrange the built-in navigation controls to fit the date picker's available space and surrounding interface.
