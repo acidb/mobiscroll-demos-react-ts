@@ -15,3 +15,21 @@ If you need to show different shapes, you can pass a custom CSS class in the `ma
 ## Related demos
 
 - [Learn how to add labels and color days →](https://demo.mobiscroll.com/react/calendar/dots-colors-labels#)
+
+## What this demo shows
+
+- This demo shows an inline date picker calendar month view with custom-shaped marked dots.
+- **Header navigation** The month and year label in the top left opens a month and year picker. The blue previous and next arrow buttons on the right navigate between months.
+- **Month view** A fixed weekday header displays abbreviated day names from Sunday through Saturday, with the dates arranged in a grid below it.
+- **Month navigation** The month can be changed by clicking and dragging the calendar left or right.
+- **Day cell states** Hovering a day highlights the day number with a gray background. Selecting a day highlights the day number with a blue background. The current date is highlighted by default and remains blue when the user selects another date.
+- **Marked days** The default shape of day marks is a dot. You can add one or more colored dots to a date through the `marked` option. In cases where different marks need to carry specific meanings, you can customize their shape using CSS and override the default styling.
+- **Adjacent months** Dates from the previous and next months appear with a muted style. Selecting one navigates the calendar to the corresponding month.
+
+## Best for
+
+- **Event calendars** Use different shapes to distinguish meetings, deadlines, holidays, and other event types.
+- **Availability calendars** Mark available, unavailable, or partially available dates with visually distinct indicators.
+- **Booking and reservation calendars** Show dates with reservations, special rates, promotions, or limited availability.
+- **Task and deadline tracking** Use custom marks to differentiate tasks, milestones, reminders, and due dates.
+- **Status-based calendars** Represent different statuses or categories with shapes in addition to colors, making calendar information easier to scan and distinguish.
