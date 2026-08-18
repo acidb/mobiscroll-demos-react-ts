@@ -21,3 +21,19 @@ You can further customize the `dateFormat` and `dateWheels` to fine-tune the UX.
 ## Related demos
 
 - [Learn how to set up responsive behavior →](https://demo.mobiscroll.com/react/datetime/responsive#)
+
+## What this demo shows
+
+- Two wheel-style date picker configurations: one for selecting a specific date and another for selecting only a month and year.
+- **Date picker** The first example opens when the user focuses or clicks the input. Separate scrollable wheels let users select the month, day, and year.
+- **Month and year picker** The second example opens when the user focuses or clicks the input. Separate scrollable wheels let users select the month and year without choosing a day.
+- **Selection** The selected values appear in the central selection area, while neighboring values remain visually subdued.
+- **Scrolling behavior** Users can scroll vertically through neighboring values to move between dates, months, and years.
+- **Input behavior** Each picker opens at the bottom of the container over a darkened backdrop. Clicking outside the picker closes it.
+- **Footer actions** The gray `Cancel` button discards the change, while the blue `Set` button confirms the selection.
+- **Input value** Confirming a selection with `Set` displays the selected value in the associated input.
+
+## Best for
+
+- **Single-date selection** Choosing a specific date while keeping neighboring month, day, and year values visible.
+- **Month and year selection** Choosing month-and-year values when a specific day is unnecessary, such as for credit card expiration dates.

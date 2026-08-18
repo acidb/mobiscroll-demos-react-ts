@@ -21,3 +21,25 @@ The defaults change on a theme to theme basis. The `ios` theme comes with `botto
 ## Related demos
 
 - [Check out the previous example →](https://demo.mobiscroll.com/react/datetime/responsive#)
+
+## What this demo shows
+
+- Shows five wheel-style date pickers demonstrate single-date selection with the supported display modes.
+- **Inline date picker** The inline example embeds the date picker directly in the page without an input or modal.
+- **Anchored date picker** The anchored example opens from an input and positions the picker next to that input or another DOM element.
+- **Top date picker** The top example opens in a modal that slides down from the top.
+- **Bottom date picker** The bottom example opens in a modal that slides up from the bottom.
+- **Center date picker** The center example opens in the middle of the viewport with a pop animation.
+- **Modal behavior** Focusing or clicking an input opens its picker, while clicking outside the picker closes it.
+- **Date selection** Separate scrollable wheels let users select the month, day, and year. The selected values appear in a central selection area, while neighboring values remain visually subdued.
+- **Scrolling behavior** Users can scroll vertically through neighboring values to move between dates, including dates in other months or years.
+- **Footer actions** In the input-based examples, the gray `Cancel` button discards the change, while the blue `Set` button confirms the selected date.
+- **Input value** In the input-based examples, confirming a date with `Set` displays the selected value in the input using a month, day, and year format.
+
+## Best for
+
+- **Inline layouts** Keep the date picker visible in booking flows, forms, dashboards, or side panels where users need direct access to date selection.
+- **Anchored desktop forms** Open the picker next to an input or another page element when the surrounding form should remain visible.
+- **Top-aligned mobile flows** Use a modal that enters from the top when the date picker should follow a top-oriented mobile layout.
+- **Bottom-aligned mobile flows** Use a modal that enters from the bottom for touch-oriented interfaces and bottom-sheet interaction patterns.
+- **Focused modal tasks** Center the picker when date selection should appear as a distinct task in the middle of the viewport.
