@@ -6,7 +6,7 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 
 The calendar view can be customized with a couple of different parameters:
 
-- **Set a month change direction** - specify `'hoizontal'` or `'vertical'` in the `calendarScroll` option
+- **Set a month change direction** - specify `'horizontal'` or `'vertical'` in the `calendarScroll` option
 - **Set the first day of the week** - specify the first day of the week using the `firstDay` option, where Sunday is 0, Monday is 1, etc.
 - **Show week numbers** - set the `showWeekNumbers` to true and show a week counter starting from the first week of every year
 - **Hide the outer days of a month** - set the `showOuterDays` to false in case you don't want to see days from previous and next months

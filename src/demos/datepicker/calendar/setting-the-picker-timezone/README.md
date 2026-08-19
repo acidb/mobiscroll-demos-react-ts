@@ -15,14 +15,14 @@ There are two angles regarding timezones:
 
 ## What this demo shows
 
-- **Timezone configuration** Configure the timezone used for date and time selection and display.
+- Configure the timezone used for date and time selection and display.
 - **Header navigation** Open the month and year picker from the label in the upper-left corner, or use the previous and next arrow buttons on the right to navigate between months.
 - **Month view** View abbreviated weekday names from Sunday through Saturday in a fixed header, with dates arranged in a grid below.
 - **Month navigation** Click and drag the calendar left or right to move between months.
 - **Day cell states** Hover over a date to highlight its day number with a gray background, or select a date to highlight it in blue. The current date is highlighted by default and remains blue when another date is selected.
 - **Adjacent months** View dates from the previous and next months in a muted style. Selecting one navigates to the corresponding month.
 - **Scroller time picker** Select an exact time from the scroller next to the single-month calendar. Its three columns contain hours from 1 to 12, minutes from 0 to 59, and AM/PM options.
-- **Data timezone** View the calendar's data timezone, shown as UTC in a non-editable field labeled `Date timezone is:` above the calendar on the left.
+- **Data timezone** View the calendar's data timezone, shown as UTC in a non-editable field labeled `Date timezone is:` next to the calendar on the left.
 - **Display timezone** Use the selectable field labeled `Display timezone is:` below the data timezone field to open a timezone picker.
 - **Timezone conversion** Select a different display timezone to update the date and time shown by the picker.
 
