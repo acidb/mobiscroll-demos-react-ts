@@ -15,3 +15,15 @@ The date picker supports multiple calendar systems. You can control it with the 
 ## Related demos
 
 - [Explore this example →](https://demo.mobiscroll.com/react/datetime/localization#)
+
+## What this demo shows
+
+- Shows a wheel-style inline date picker with different calendar systems.
+- **Calendar system picker** The left side of the calendar shows a "Pick a calendar system" label with three options, where Gregorian is selected by default and choosing another option (Jalali or Hijri) updates the calendar system.
+- **Inline date picker** The example embeds the picker directly in the page without an input by using inline display mode.
+- **Date selection** Separate scrollable wheels let users select the month, day, and year. The selected values appear in a central selection area, while neighboring values remain visually subdued.
+- **Scrolling behavior** Users can scroll vertically through neighboring values to move between dates, including dates in other months or years.
+
+## Best for
+
+- **Regional user experiences** Products that need to present dates in the calendar system users already rely on, such as Gregorian for international audiences, Jalali for Persian-speaking users, or Hijri for Arabic-speaking users.

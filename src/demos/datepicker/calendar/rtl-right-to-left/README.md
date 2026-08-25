@@ -15,7 +15,7 @@ RTL support is built in and can be explicitly controlled through the `rtl` optio
 ## What this demo shows
 
 - Shows date picker examples for selecting a single date.
-- **RTL control** A side panel next to the timeline includes an `Enable Right-To-Left rendering` switch, which is enabled by default.
+- **RTL control** A side panel next to the date picker calendar includes an `Enable Right-To-Left rendering` switch, which is enabled by default.
 - **Header navigation** The month and year label in the top left opens a month and year picker. The blue previous and next arrow buttons on the right navigate between months.
 - **Month view** A fixed weekday header displays abbreviated day names from Sunday through Saturday, with the dates arranged in a grid below it.
 - **Month navigation** The month can be changed by clicking and dragging the calendar left or right.
