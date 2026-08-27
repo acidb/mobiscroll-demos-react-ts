@@ -15,15 +15,14 @@ Set up the range picker for date & time pair selection. Regardless if you are in
 ## What this demo shows
 
 - Five inline examples of date-and-time range selection, each using a different control configuration.
-- **Calendar + time picker** — a month calendar for date selection combined with a time picker, giving a familiar two-panel layout for picking start and end date-times.
-- **Calendar + time grid** — a month calendar paired with a time grid at 30-minute increments, suited for slot-based selection.
-- **Date-time scroller** — a compact inline scroller combining date and time in a single control for both the start and end values.
-- **Single input with popover/dropdown** — one input field that opens a date-time range scroller as a popover on mobile and as a dropdown on desktop.
-- **Separate start and end inputs** — same responsive behavior as the single-input example, but with dedicated input fields for the start and end date-time.
-- In all examples the selected start and end date-times are displayed above the picker component.
+- **Calendar + time picker** A month calendar for date selection combined with a time picker, giving a familiar two-panel layout for picking start and end date-times.
+- **Calendar + time grid** A month calendar paired with a time grid at 30-minute increments, suited for slot-based selection.
+- **Date-time scroller** A compact inline scroller combining date and time in a single control for both the start and end values.
+- **Single input with popover/dropdown** One input field that opens a date-time range scroller as a popover on mobile and as a dropdown on desktop.
+- **Separate start and end inputs** Same responsive behavior as the single-input example, but with dedicated input fields for the start and end date-time. In all examples the selected start and end date-times are displayed above the picker component.
 
 ## Best for
 
-- **Flexible form configurations** — the five examples cover the most common form layouts: fully inline, single-input, and split start/end inputs, making it easy to pick the right pattern for a given form design.
-- **Use-cases that need both date and time precision** — booking systems, scheduling tools, or any workflow where selecting just a date is not enough and the time component is required for both ends of the range.
-- **Responsive UIs** — the popover/dropdown examples demonstrate how the same control adapts between mobile and desktop without additional configuration.
+- **Flexible form configurations** The five examples cover the most common form layouts: fully inline, single-input, and split start/end inputs, making it easy to pick the right pattern for a given form design.
+- **Use-cases that need both date and time precision** Booking systems, scheduling tools, or any workflow where selecting just a date is not enough and the time component is required for both ends of the range.
+- **Responsive UIs** The popover/dropdown examples demonstrate how the same control adapts between mobile and desktop without additional configuration.

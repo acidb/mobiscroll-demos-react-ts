@@ -15,14 +15,13 @@ Set up the range picker for time pair selection. Regardless if you are intereste
 ## What this demo shows
 
 - Four inline examples of time-only range selection, each using a different control configuration.
-- **Inline time scroller** — a compact scroller for picking start and end times directly on the page, without any date component.
-- **Inline time grid** — a time grid displayed at 30-minute increments, letting users select a start and end slot by tapping directly on the grid.
-- **Single input with popover** — one input field that opens a time range scroller as a popover on mobile and as a dropdown on desktop.
-- **Separate start and end inputs** — dedicated input fields for start and end time, each opening its own popover/dropdown scroller.
-- In all examples the selected start and end times are displayed above the picker component.
+- **Inline time scroller** A compact scroller for picking start and end times directly on the page, without any date component.
+- **Inline time grid** A time grid displayed at 30-minute increments, letting users select a start and end slot by tapping directly on the grid.
+- **Single input with popover** One input field that opens a time range scroller as a popover on mobile and as a dropdown on desktop.
+- **Separate start and end inputs** Dedicated input fields for start and end time, each opening its own popover/dropdown scroller. In all examples the selected start and end times are displayed above the picker component.
 
 ## Best for
 
-- **Time-only scheduling** — use cases where only the time range matters and no date needs to be selected, such as setting working hours, defining shift windows, or configuring opening times.
-- **Slot-based selection** — the time grid variant is well-suited for appointment booking or resource scheduling where time is divided into fixed increments.
-- **Flexible form layouts** — the four examples cover the main form patterns (inline, single input, split inputs), making it straightforward to match the control to the surrounding form design.
+- **Time-only scheduling** Use cases where only the time range matters and no date needs to be selected, such as setting working hours, defining shift windows, or configuring opening times.
+- **Slot-based selection** The time grid variant is well-suited for appointment booking or resource scheduling where time is divided into fixed increments.
+- **Flexible form layouts** The four examples cover the main form patterns (inline, single input, split inputs), making it straightforward to match the control to the surrounding form design.
