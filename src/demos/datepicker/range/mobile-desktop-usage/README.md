@@ -22,7 +22,7 @@ When linked to an input, the component will be shown on focus or when someone cl
 - Shows four date range picker examples for selecting a start and end date from a monthly calendar.
 - **Date range picker with inputs** The first example opens the range picker when the user focuses or clicks a standard input. The second opens it only from the `Show picker` button next to the input. The third uses a Mobiscroll input. 
 - **Input behavior** In the three input-based examples, the range picker opens at the bottom of the container over a darkened backdrop. Clicking outside the picker closes it. 
-- **Inline date picker** The fourth example embeds the date range picker directly in the page without an input by using inline display mode.
+- **Inline date range picker** The fourth example embeds the date range picker directly in the page without an input by using inline display mode.
 - **Start and end inputs** Clickable inputs appear above the calendar header. The active input has a white background, while the inactive input has a gray background. A clear button appears after a range is selected.
 - **Header navigation** The month and year label in the upper-left corner opens the month and year picker. The previous and next arrow buttons on the right navigate between months.
 - **Month view** A fixed weekday header shows abbreviated day names from Sunday through Saturday, with dates arranged in a grid below.
