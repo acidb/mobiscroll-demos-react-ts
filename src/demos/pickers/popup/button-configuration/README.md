@@ -16,3 +16,20 @@ If you want some standard actions you can use the following predefined `buttons`
 - `set` for saving or applying changes
 
 You can add custom buttons with tailored text, style, and functionality if you have more specific needs.
+
+## What this demo shows
+
+- Three popup examples demonstrate no buttons, predefined buttons, and a custom button.
+- **No buttons** The first example opens a popup without buttons, which is the default configuration.
+- **Predefined buttons** The second example opens a popup with a blue `Ok` button and a gray `Cancel` button. Both buttons closes the popup.
+- **Custom button** The third example opens a popup with a custom button. Clicking it displays the message `Custom button clicked`.
+- **Modal layout** Each popup uses the default modal layout.
+- **Popup content** Each popup contains a heading and descriptive text.
+- **Visual separation** A modal overlay and shadow separate each popup from the underlying content.
+
+## Best for
+
+- **Informational popups** Use a buttonless popup when the content does not require an action in the popup footer.
+- **Confirmation prompts** Use predefined `Ok` and `Cancel` buttons when users need to confirm or dismiss an action.
+- **Custom workflows** Use a custom button when an action needs tailored text, styling, or behavior.
+- **Configuration comparison** Compare the available button patterns before choosing one for a popup workflow.
