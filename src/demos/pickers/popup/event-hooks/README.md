@@ -14,3 +14,17 @@ While users interact with the UI events like `onInit`, `onOpen`, `onPosition` ..
 ## Related demos
 
 - See available lifecycle events →
+
+## What this demo shows
+
+- This demo shows a popup which can be opened and closed with buttons.
+- **Opening and closing** Buttons programmatically open and close the popup.
+- **Modal layout** The popup appears as a centered modal with a custom layout and content.
+- **Custom content** The popup contains a custom image or logo, a heading, and descriptive text.
+- **Close action** A `Close` and `oOk` button dismisses the popup.
+- **Visual separation** A modal overlay and shadow separate the popup from the underlying content.
+- **Event log** An Event log panel is shown on the left and lists the lifecycle events fired during interactions such as event creation, hover, drag, and similar actions.
+
+## Best for
+
+- **Lifecycle event discovery** Understanding which popup lifecycle hooks fire during common user interactions.
