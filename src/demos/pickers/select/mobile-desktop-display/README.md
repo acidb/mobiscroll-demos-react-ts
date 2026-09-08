@@ -21,3 +21,26 @@ The defaults change on a theme to theme basis. The `ios` theme comes with `botto
 ## Related demos
 
 - [Check out the previous example →](https://demo.mobiscroll.com/react/select/responsive#)
+
+## What this demo shows
+
+- Five select pickers demonstrate single-value selection across the supported display modes.
+- **Inline select** Embeds the picker directly in the page without an input or modal.
+- **Anchored picker** Opens from an input and positions the picker next to that input or another DOM element.
+- **Top picker** Opens in a modal that slides down from the top.
+- **Bottom picker** Opens in a modal that slides up from the bottom.
+- **Center picker** Opens in the middle of the viewport with a pop animation.
+- **Modal behavior** Focusing or clicking an input opens its picker, while clicking outside the picker closes it.
+- **Picker content** Input-based examples show a predefined list of options in a popup, while inline mode displays the options directly on the page.
+- **Hover state** Hovering over an option highlights it in the picker.
+- **Selection** Selecting an option marks it with a checkmark to indicate the current value.
+- **Footer actions** The gray `Cancel` button discards changes, while the blue `Set` button confirms the selection.
+- **Input value** Confirming a selection updates the associated input with the selected value.
+
+## Best for
+
+- **Inline forms** Keep a short list of options visible when selection is a central part of the page and does not need a popup.
+- **Desktop forms** Use the anchored display to keep the option list close to its input or another triggering element.
+- **Mobile forms** Use the top or bottom display for touch-oriented selection in a modal that enters from a screen edge.
+- **Focused selection** Use the center display when choosing a value should appear as a distinct modal task in the middle of the viewport.
+- **Responsive interfaces** Switch between touch-optimized mobile rendering and pointer-optimized desktop rendering for the same select control.

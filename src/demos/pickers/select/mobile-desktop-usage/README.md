@@ -16,3 +16,22 @@ When linked to an input, the component will be shown on focus or when someone cl
 ## Related demos
 
 - [Check out the responsive demo →](https://demo.mobiscroll.com/react/select/responsive#)
+
+## What this demo shows
+
+- Shows four single-value select examples in touch and desktop layouts.
+- **Select inputs** The first example opens the picker when the user focuses or clicks a standard input. The second opens it only from the `Show picker` button next to the input. The third uses a Mobiscroll input as the trigger.
+- **Input behavior** In the three input-based examples, the picker opens below the input and closes when the user clicks outside it.
+- **Inline select** The fourth example embeds the picker directly in the page without an input by using inline display mode.
+- **Picker content** The input-based examples show a predefined list of options in a dropdown-style popup. Inline mode displays the options directly on the page.
+- **Hover state** Hovering over an option highlights it in the picker.
+- **Selection** Selecting an option marks it with a checkmark to indicate the current value.
+- **Input value** In the input-based examples, selecting an option updates the associated input with that value.
+
+## Best for
+
+- **Responsive forms** Use the touch or desktop layout to match the input method and available screen space.
+- **Profile and account forms** Let users choose a single predefined value, such as a country, language, or notification preference.
+- **Filters and settings** Provide a compact list for selecting one status, category, display mode, or configuration value.
+- **Editable text fields** Keep an input editable while opening the predefined options from a separate button.
+- **Always-visible choices** Use inline mode when the option list should remain visible without opening a popup.
