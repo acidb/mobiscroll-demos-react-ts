@@ -24,8 +24,8 @@ While users interact with the UI events like `onChange`, `onSet`, `onInit` ... w
 - **Month navigation** The month can be changed by clicking and dragging the calendar left or right.
 - **Day cell states** Hovering a day highlights the day number with a gray background. Selecting a day highlights the day number with a blue background. The current date is highlighted by default and remains blue when the user selects another date.
 - **Adjacent months** Dates from the previous and next months appear with a muted style. Selecting one navigates the calendar to the corresponding month.
-- **Footer actions** In the input-based examples, the gray Cancel button discards the change, while the blue Set button confirms the selected date.
-- **Input value** In the input-based examples, confirming a date with Set displays the selected value in the input using a month, day, and year format.
+- **Footer actions** The gray Cancel button discards the change, while the blue Set button confirms the selected date.
+- **Input value** Confirming a date with Set displays the selected value in the input using a month, day, and year format.
 - **Event log** An Event log panel is shown on the left and lists the lifecycle events fired during interactions such as event creation, hover, drag, and similar actions.
 
 ## Best for
