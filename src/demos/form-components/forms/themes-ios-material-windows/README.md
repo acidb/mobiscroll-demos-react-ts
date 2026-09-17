@@ -12,3 +12,18 @@ Forms can be themed and customized. There are four levels of customization:
 - Custom Sass and CSS: If you need further customization, the sky is the limit with Sass and CSS overrides.
 
 You can also see how the other demos look by changing the theme in the floating action bar on the right side (not this example, the themes are hardcoded here).
+
+## What this demo shows
+
+- This demo shows different examples for theming options for the form components.
+- **Base themes** Previews the `iOS`, `Material`, and `Windows` base themes.
+- **Theme variants** Switches between the light and dark variants of each theme.
+- **Component preview** Applies the selected theme to inputs, selects, switches, checkboxes, radio buttons, steppers, buttons, and segmented controls.
+- **Live updates** Updates the component preview when the selected theme or variant changes.
+- **Theme customization** Shows how a base theme can be customized further with the Theme Builder or Sass.
+
+## Best for
+
+- **Theme comparison**: Evaluating how form components look with the `iOS`, `Material`, and `Windows` base themes.
+- **Light and dark mode previewing**: Checking how a form component setup looks across light and dark theme variants.
+- **Branded form experiences**: Exploring how to extend a base theme with the Theme Builder, Sass, or custom CSS to match a product's visual style.

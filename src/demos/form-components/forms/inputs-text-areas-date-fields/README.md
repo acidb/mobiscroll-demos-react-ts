@@ -15,3 +15,23 @@ Besides that, you can pick from three label types: `inline`, `stacked` and `floa
 Play around and combine different [input types with various label positions](https://demo.mobiscroll.com/react/forms/input-label-types#) to find out what fits you best.
 
 While Mobiscroll doesn't provide built-in validation, it provides styling for error messages, disabled fields, labels and more. See how the fields look in different themes by changing it dynamically from the floating action bar on the right.
+
+## What this demo shows
+
+- This demo shows text inputs, text areas, date fields, selects, file uploads, and numeric inputs in a single form.
+- **Text inputs** Shows single-line fields with labels, placeholders, password entry, and left or right icons.
+- **Field states** Includes disabled fields and error states with custom validation messages.
+- **File upload** Shows a file input with an upload icon.
+- **Text areas** Demonstrates multi-line fields with icons, disabled states, and validation errors.
+- **Date entry** Shows native date input, calendar picker, and date scroller options.
+- **Select inputs** Demonstrates native option lists with left or right icons, disabled states, and validation errors.
+- **Numeric input** Shows a native number field with increment and decrement controls.
+
+## Best for
+
+- **Registration and account forms** Combine text, password, date, select, and numeric fields for structured user data entry.
+- **Profile and settings forms** Present editable, disabled, and invalid fields with clear labels, icons, and error messages.
+- **Contact and feedback forms** Use single-line inputs and multi-line text areas for short details and longer responses.
+- **Document submission** Add a file upload field alongside other form details.
+- **Booking and date-based forms** Offer native date entry, a calendar picker, or a date scroller to suit the workflow.
+- **Form pattern evaluation** Compare field types, states, and configurations before applying them to a larger form.

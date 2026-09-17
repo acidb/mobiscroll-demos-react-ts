@@ -20,3 +20,20 @@ Use presets with pre-defined colors on top of the theme colors. Every theme ship
 ## Related demos
 
 - Learn how to change the Sass variables for the presets →
+
+## What this demo shows
+
+- This example demonstrates the available preset colors (primary, secondary, success, danger, warning, info, light, and dark).
+- **Buttons** Shows each preset color applied to buttons.
+- **Segmented controls** Applies the same preset colors to segmented controls with text and icons.
+- **Selection** Keeps the selected segment visually distinct in every color variant.
+- **Steppers** Demonstrates primary, secondary, success, danger, warning, and info color variants for steppers.
+- **Consistent styling** Shows how preset colors provide consistent styling across buttons, segmented controls, and steppers.
+
+## Best for
+
+- **Action hierarchy** Distinguishing primary actions from secondary or lower-priority actions.
+- **Outcome-based actions** Using success, danger, or warning colors for confirm, delete, and caution-related buttons.
+- **Informational actions** Applying the info preset to actions that open help, details, or supporting information.
+- **Contrasting controls** Using light and dark presets where controls need to stand out against different backgrounds.
+- **Consistent control states** Carrying the same color meaning across buttons, segmented controls, and steppers.
