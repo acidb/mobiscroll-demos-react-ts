@@ -11,6 +11,14 @@ The calendar view can be customized with a couple of different parameters:
 - **Show week numbers** - set the `showWeekNumbers` to true and show a week counter starting from the first week of every year
 - **Hide the outer days of a month** - set the `showOuterDays` to false in case you don't want to see days from previous and next months
 
+## Implementation instructions
+
+- A single inline `Datepicker` instance is driven by a live control panel — a segmented control, a dropdown, and two switches — that updates the calendar's options at runtime rather than a statically configured instance.
+- A segmented control (Vertical / Horizontal, defaulting to `'horizontal'`) sets `calendarScroll` to control the month-change direction.
+- A dropdown (Auto / Sunday / Monday) sets `firstDay` to `0` (Sunday) or `1` (Monday), or leaves it unset ("Auto (set by locale)", the default) so the locale decides.
+- A "Show week counter" switch toggles `showWeekNumbers`; off by default.
+- A "Show outer days" switch toggles `showOuterDays`; on by default. Switching `calendarScroll` also flips this switch to match that direction's default (hidden for vertical, visible for horizontal) when it isn't already at that default.
+
 ## What this demo shows
 
 - The demo presents independently configurable calendar view options for the date picker.

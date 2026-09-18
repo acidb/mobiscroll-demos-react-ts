@@ -17,6 +17,13 @@ Use the responsive option to configure the picker and change the options based o
 
 It is a good idea to change the `display` or `controls` option to tailor the UX. This way you can have a **bottom positioned calendar on mobile**, a **popover anchored to the input on tablet** and **desktop display on large screens**.
 
+## Implementation instructions
+
+- Use `controls: ['calendar']`.
+- Pass a `responsive` object keyed by breakpoint name, each value an option override object (e.g. `display`, `touchUi`, `controls`) applied once the viewport reaches that breakpoint: built-in keys are `xsmall`, `small`, `medium`, `large`, `xlarge` (only `xsmall`/`small` are used here — `xsmall: { display: 'bottom' }`, `small: { display: 'anchored' }`).
+- Define a custom breakpoint instead of (or alongside) the built-in ones by giving the key its own `breakpoint` (pixel width) property, e.g. `custom: { breakpoint: 800, display: 'anchored', touchUi: false }` — options from the highest matching breakpoint at or below the current viewport width apply.
+- `responsive` overrides are merged with the base options — set shared options (like `controls`) once at the top level and only the values that change per breakpoint inside each `responsive` entry.
+
 ## What this demo shows
 
 - Shows a monthly date picker example for selecting a single date across touch and desktop layouts.

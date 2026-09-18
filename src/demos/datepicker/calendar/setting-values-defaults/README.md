@@ -6,6 +6,14 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 
 Values can change in a couple of different ways: through defaults, interacting with the UI or programmatically. The date and time picker defaults to `now`, which can be easily overridden with the `defaultSelection` option. The values are set by interacting with the component and making a selection or it can be done programmatically by updating the bound value. Use the `buttons` option for showing/hiding `set`, `cancel` or add custom buttons.
 
+## Implementation instructions
+
+- Use `controls: ['calendar']`. Without any value option set, the picker defaults to today.
+- Set `defaultSelection` to a `Date`/date string to change the initial value shown before the user makes a selection (e.g. `defaultSelection: new Date(2020, 11, 24)`).
+- Update the value from outside the picker (e.g. a shortcut button): in React, set the `value` prop from component state; in Angular/Vue, assign to the `[(ngModel)]`/`v-model`-bound variable; in JS/jQuery, call `instance.setVal(date)` imperatively on the picker instance.
+- Customize the footer with `buttons`, an array mixing custom button objects (`{ text: 'Now', handler: function () { inst.setVal(new Date()); inst.close(); } }`) with built-in string tokens — the predefined tokens are `'ok'`, `'set'`, `'cancel'`, and `'close'` (default `['set', 'cancel']`) — a custom button's `handler` can also be one of these strings as shorthand instead of a function, e.g. `handler: 'cancel'` to just close the picker.
+- A `buttons` array containing only a single close-style button (e.g. `[{ text: 'Close', handler: 'cancel' }]`, or the built-in `['close']` token alone) effectively auto-confirms the picker's live selection without a separate "Set" step, since there's no button left to discard the change.
+
 ## What this demo shows
 
 - Three example groups demonstrate how to control a monthly date picker value through defaults, runtime updates, and action buttons.

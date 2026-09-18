@@ -20,6 +20,10 @@ When passing `controls: ['calendar']`, the date picker will render a monthly cal
 
 - [Learn how to set up responsive behavior →](https://demo.mobiscroll.com/react/calendar/responsive#)
 
+## Implementation instructions
+
+- Use `controls: ['calendar']` and `display: 'inline'` — this is the minimal setup for an embedded, single-date monthly calendar with no other options required.
+
 ## What this demo shows
 
 - A monthly date picker for selecting a single date.

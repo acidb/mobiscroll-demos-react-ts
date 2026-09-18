@@ -14,6 +14,13 @@ While users interact with the UI events like `onChange`, `onSet`, `onInit` ... w
 
 - See available lifecycle events →
 
+## Implementation instructions
+
+- Use `controls: ['calendar']` with `label`, `labelStyle: 'stacked'`, `inputStyle: 'box'`, and a `placeholder` set on the input-triggered `Datepicker`.
+- Wire the full set of lifecycle hooks: `onCancel`, `onCellClick`, `onCellHoverIn`, `onCellHoverOut`, `onChange`, `onClose`, `onDestroy`, `onInit`, `onLabelClick`, `onOpen`, `onPageChange`, `onPageLoaded`, `onPageLoading`, `onTempChange` — each handler receives `(event, inst)` (Angular: bound via `(onX)="..."`; Vue: `@cancel`, `@cell-click`, `@cell-hover-in`, `@cell-hover-out`, `@change`, `@close`, `@destroy`, `@init`, `@label-click`, `@open`, `@page-change`, `@page-loaded`, `@page-loading`, `@temp-change`).
+- In each handler, append a log entry naming the fired event (e.g. to an event-log panel) so users can see the exact firing order and frequency as they interact with the calendar.
+- Note the distinction between `onChange` (confirmed value change) and `onTempChange` (fires on intermediate/temporary selection before confirmation) when documenting hook semantics.
+
 ## What this demo shows
 
 - Shows date picker examples for selecting a single date.

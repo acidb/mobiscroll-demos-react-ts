@@ -14,6 +14,14 @@ Besides customizing the date and time formats you can reorder the time picker wh
 
 - [Check out how the return format changes based on locale →](https://demo.mobiscroll.com/react/calendar/localization#)
 
+## Implementation instructions
+
+- For date-only examples, use `controls: ['calendar']` with `dateFormat` set to a token pattern: `'DD.MM.YYYY'` (separator order), `'MMMM'` (month name only), `'D MMMM YYYY'` (day + month name + year), `'MM/YYYY'` (month/year), `'DDD DD MMM, YYYY'` (weekday name), `'YYYY-MM-DD'` (ATOM-style), or `'DDD, DD MMM YYYY'` (COOKIE-style).
+- For time-only examples, use `controls: ['time']` with `timeFormat` set to `'hh:mm A'` (12-hour with AM/PM), `'HH:mm'` (24-hour), or `'HH:mm:ss'` (24-hour with seconds).
+- For combined date-and-time examples, use `controls: ['calendar', 'time']` with both `dateFormat` and `timeFormat` set together.
+- To also change the wording used in the time-picker scroller wheels (not just the formatted input value), set `dateWheels` to a pipe-delimited token pattern, e.g. `'|DDD D MMM, YYYY|'`.
+- Each example calls `setVal(now, true)` (or the equivalent bound value) on `onInit` purely to populate the input with a preview value in that format — not required for the format option itself to work.
+
 ## What this demo shows
 
 - Fourteen input-based date, month, time, and date-time pickers demonstrate different ways to format selected values.

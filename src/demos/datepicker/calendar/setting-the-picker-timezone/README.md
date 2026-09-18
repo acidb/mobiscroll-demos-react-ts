@@ -13,6 +13,13 @@ There are two angles regarding timezones:
 
 [Invalids](https://demo.mobiscroll.com/react/calendar/disabled-invalid-values#) as well as [marked, colored and labels](https://demo.mobiscroll.com/react/calendar/dots-colors-labels#) date-times will all be interpreted in `dataTimezone` when they contain no timezone info and will be shown in `displayTimezone` on the calendar.
 
+## Implementation instructions
+
+- Load Day.js with its `utc` and `timezone` plugins, call `dayjs.extend(utc)` and `dayjs.extend(timezone)`, then set `dayjsTimezone.dayjs = dayjs` before initializing the picker. In React/Angular/Vue, `dayjsTimezone` is imported directly from the framework package (e.g. `@mobiscroll/react`); in JS/jQuery it's `mobiscroll.dayjsTimezone`, referencing the plugins via `window.dayjs_plugin_utc`/`window.dayjs_plugin_timezone`.
+- Use `controls: ['calendar', 'time']` with `timezonePlugin` set to that `dayjsTimezone` object (`timezonePlugin={dayjsTimezone}` in React/Vue, `[timezonePlugin]="myTimezonePlugin"` in Angular, `timezonePlugin: mobiscroll.dayjsTimezone` in JS/jQuery), plus `dataTimezone` (the timezone the underlying value is stored/returned in, e.g. `'utc'`) and `displayTimezone` (the timezone the picker UI shows dates/times in, e.g. `'local'` or an IANA zone string like `'America/New_York'`).
+- `dataTimezone` stays fixed for the app's storage contract while `displayTimezone` can be changed per user/session.
+- Read the underlying (data-timezone) value from the change event: React binds `value`/`onChange` and reads `ev.value`; Angular/Vue bind via `[(ngModel)]`/`v-model`; JS/jQuery call `inst.getVal()` inside the `onChange` callback. The picker handles the conversion between the data and display timezones transparently.
+
 ## What this demo shows
 
 - Configure the timezone used for date and time selection and display.

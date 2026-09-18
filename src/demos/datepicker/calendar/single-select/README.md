@@ -14,6 +14,14 @@ You can dynamically switch between single and multiple select or range select wh
 
 - [See how to enable multi-select →](https://demo.mobiscroll.com/react/calendar/multiple-select#)
 
+## Implementation instructions
+
+- Three separate inline calendar instances render side by side, each using `display: 'inline'` and `selectMultiple: false` — none is bound to an input.
+- **Date only**: `controls: ['calendar']` — a single-month inline calendar for picking one date.
+- **Date and time (scroller)**: `controls: ['calendar', 'time']` — pairs the inline calendar with a scrollable hour/minute/AM-PM time list.
+- **Date and time (grid)**: `controls: ['calendar', 'timegrid']` — pairs the inline calendar with a fixed-interval time grid instead.
+- `selectMultiple` defaults to `false`; it is passed explicitly in all three variants for clarity even though single-date selection is the default behavior.
+
 ## What this demo shows
 
 - Three inline examples demonstrate different ways to combine single-date selection with optional time selection.

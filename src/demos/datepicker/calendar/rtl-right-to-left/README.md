@@ -12,6 +12,13 @@ RTL support is built in and can be explicitly controlled through the `rtl` optio
 
 - [Check out this example →](https://demo.mobiscroll.com/react/calendar/localization#)
 
+## Implementation instructions
+
+- Use `controls: ['calendar']` and `display: 'inline'`.
+- Set `rtl: true` to mirror the entire calendar layout — header, weekday row, day grid, and navigation arrows all flip to right-to-left; `rtl: false` (or omitting it) renders left-to-right.
+- Toggle at runtime via `setOptions({ rtl: true | false })` on the instance.
+- Pair `rtl` with a matching RTL `locale` (e.g. `mobiscroll.locale.ar`, `mobiscroll.locale.he`) when the language itself is right-to-left, since `rtl` only controls layout direction, not translated day/month names.
+
 ## What this demo shows
 
 - Shows date picker examples for selecting a single date.

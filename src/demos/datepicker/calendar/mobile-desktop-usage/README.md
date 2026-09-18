@@ -17,6 +17,14 @@ When linked to an input, the component will be shown on focus or when someone cl
 
 - [Check out the responsive demo →](https://demo.mobiscroll.com/react/datetime/responsive#)
 
+## Implementation instructions
+
+- **Bind to a plain input**: Angular/Vue/JS/jQuery attach the picker directly to an existing `<input>` with `controls: ['calendar']`/`[controls]="['calendar']"`; React instead sets `inputComponent="input"` with `inputProps` (`className`, `placeholder`) so the `Datepicker` renders into a plain `<input>` — the picker opens on focus/click by default in all frameworks.
+- **Trigger-button only**: set `showOnClick: false` and `showOnFocus: false` so the input no longer opens the picker on its own, then open it from a separate button's click handler. JS/jQuery call the instance's imperative `open()` method; React drives visibility with `isOpen`/`onClose` state and Vue with `:isOpen`/`@close`; Angular grabs a template ref (`#picker="mobiscroll"`) and calls `.open()` on it.
+- **Mobiscroll-styled input**: render the `Datepicker`/`mbsc-datepicker` component itself (instead of binding to a plain `<input>`) with `inputStyle: 'box'` so it shows its own styled input, no separate input markup needed.
+- **Inline, no input**: set `display: 'inline'` on a plain container element instead of an input to embed the calendar directly in the page.
+- All four examples, across every framework, expose a `touchUi` value in their code snippets that tracks a shared mobile/desktop view toggle for the demo — this is not jQuery-specific; every framework's snippet shows the same `touchUi` setting.
+
 ## What this demo shows
 
 - Shows four monthly date picker examples for selecting a single date in touch and desktop layouts.

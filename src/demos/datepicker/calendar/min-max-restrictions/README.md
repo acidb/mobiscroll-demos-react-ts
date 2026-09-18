@@ -16,6 +16,14 @@ Values can be passed as [JS date objects, ISO date strings or Moment.js objects]
 
 - [Discover how to disable specific values →](https://demo.mobiscroll.com/react/calendar/disabled-invalid-values#)
 
+## Implementation instructions
+
+- A single inline `Datepicker` instance is used; a segmented control (Date / Date & time) switches its `controls` at runtime between `['calendar']` and `['calendar', 'time']` via an option update — it is not two separate side-by-side pickers.
+- In Date mode, independent checkboxes enable a minimum and/or maximum date, each bound to its own anchored date input; both are enabled by default, with `min` defaulting to `'1920-01-01'` and `max` to `'2050-01-01'`.
+- A separate "set a dynamically calculated date" checkbox instead sets `max` to an 18-years-ago date, computed as `new Date(now.getFullYear() - 18, now.getMonth(), now.getDate())`; enabling it clears the exact min/max checkboxes, and it's disabled by default.
+- In Date & time mode, the same min/max checkboxes instead bind full date-and-time values (e.g. `min: '2000-01-01T12:00'`, `max: '2050-01-01T12:00'`), toggled independently the same way.
+- `min`/`max` values can be passed as ISO strings, `Date` objects, or Moment.js objects.
+
 ## What this demo shows
 
 - Shows a segmented control switcher between a date picker, which is selected by default, and a date-time picker. Both modes support minimum and maximum selectable values.

@@ -22,6 +22,12 @@ For a time grid use the `controls: ['timegrid']` instead of `'time'`.
 
 - [Learn how to set up responsive behavior →](https://demo.mobiscroll.com/react/calendar/responsive#)
 
+## Implementation instructions
+
+- **Scroller time picker**: set `controls: ['calendar', 'time']` and `display: 'inline'` to pair the calendar with a scrollable time list (hours, minutes, AM/PM wheels).
+- **Time grid picker**: set `controls: ['calendar', 'timegrid']` and `display: 'inline'` to pair the calendar with a fixed-interval time grid instead of the scroller.
+- Each variant is a separate `Datepicker` instance with its own `controls` array — there's no shared/combined instance switching between the two layouts.
+
 ## What this demo shows
 
 - Two inline examples demonstrate different ways to combine date and time selection.

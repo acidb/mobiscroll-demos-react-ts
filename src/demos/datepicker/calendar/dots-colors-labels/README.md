@@ -20,6 +20,15 @@ Use the `onPageLoading` lifecycle event to load the data runtime. You can [learn
 
 - [Check out the event calendar →](https://demo.mobiscroll.com/react/eventcalendar/event-labels#)
 
+## Implementation instructions
+
+- Use `controls: ['calendar']` and `display: 'inline'`.
+- **Marked days**: pass an array to `marked`, each entry with `date` (or a `recurring` rule) and `color` — renders as one or more small colored dots below the date. Multiple entries can share the same `date` to show several dots.
+- **Cell backgrounds / highlighted days**: pass an array to `colors`, each entry with `date` (or `recurring`) and either `background` (rectangular cell background color) or `highlight` (circular highlight around the day number) — an entry can set both on the same date.
+- **Labels**: pass an array to `labels`, each entry with `date` (or `recurring`), `text`, and `color`/`textColor` — renders a colored text label below the date.
+- The demo renders a single inline `Datepicker` initialized with `marked` only. Two switches (`Show cell backgrounds`, `Show highlighted days`) call `setOptions({ colors: [...] })` live to add/remove `background`/`highlight` entries, and a three-way radio (`Show marked days` / `Show labels` / `Don't show marked days and labels`) calls `setOptions({ marked: ... })` or `setOptions({ labels: ... })` to switch which option is active on the same picker — `marked` and `labels` are kept mutually exclusive in this UI because both render below the day number and would compete for space, though nothing prevents setting both directly via the API.
+- All three options (`marked`, `colors`, `labels`) accept a `recurring` object instead of a fixed `date` for repeating entries, e.g. `{ recurring: { repeat: 'yearly', month: 5, day: 1 } }`.
+
 ## What this demo shows
 
 - This inline examples demonstrate different ways how to hilight or mark dates on the date picker calendar. 

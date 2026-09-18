@@ -22,6 +22,14 @@ Dynamically switching between single, multiple or range select can be done with 
 
 - [Learn how to customize range selection →](https://demo.mobiscroll.com/react/range/#)
 
+## Implementation instructions
+
+- Use `controls: ['calendar']`, `display: 'inline'`, and `select: 'range'`.
+- Set `rangeHighlight: true` to shade the full range between start and end; when `false`, only the start/end dates themselves are visually marked.
+- Set `showRangeLabels: true` to display "Start"/"End" style labels on the selected boundary dates; override the default wording with `rangeStartLabel`/`rangeEndLabel` (e.g. `'Outbound'`/`'Return'`), and the placeholder text shown before a value is picked with `rangeStartHelp`/`rangeEndHelp` — leaving these unset falls back to the localized defaults.
+- Set `minRange`/`maxRange` to constrain how short/long the selected range can be — a number of days for a date-only selection, or milliseconds when the picker includes a time part.
+- These are plain reactive props/bindings in React, Vue, and Angular; in JS/jQuery update them at runtime via `setOptions({ rangeHighlight, showRangeLabels, rangeStartLabel, rangeEndLabel, minRange, maxRange })` on the instance.
+
 ## What this demo shows
 
 - An inline date range picker for selecting a start and end date from a calendar.

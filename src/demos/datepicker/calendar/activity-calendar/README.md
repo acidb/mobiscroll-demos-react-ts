@@ -8,6 +8,12 @@ Add custom content to the day cells of the calendar. This can be dynamic content
 
 Use the `renderDayContent` function to return custom markup that will be used when the day cells are being rendered.
 
+## Implementation instructions
+
+- Use `controls: ['calendar']`, `display: 'inline'`, and `touchUi` set to `true`.
+- React/JS/jQuery: pass `renderDayContent`, a function returning custom markup to inject below/around each day number. Angular: use the `dayContentTemplate` option (an `ng-template` bound with a template reference variable). Vue: use the `#dayContent` slot.
+- Inside the renderer, look up the activity/metric value for the rendered day's date from a local data array (matching by date) and render the custom indicator (concentric activity rings, built from plain `div`s with inline `transform`/`background` styles) alongside the default day number — the renderer does not replace the day number itself, only adds to the cell.
+
 ## What this demo shows
 
 - Shows an inline monthly date picker example with custom day cell for selecting a single date.

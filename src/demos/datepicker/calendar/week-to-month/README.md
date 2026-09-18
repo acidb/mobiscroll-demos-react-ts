@@ -6,6 +6,12 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 
 If you want to enable switching between week & month view, you can do it by adding a segmented control to the header and dynamically change the `calendarType` option. If you are not looking for dynamic switching you can configure a [week calendar](https://demo.mobiscroll.com/react/calendar/week-view#) or a [month calendar](https://demo.mobiscroll.com/react/calendar/multiple-months#).
 
+## Implementation instructions
+
+- Use `controls: ['calendar']`, `display: 'inline'`, `calendarType: 'week'`, and `calendarSize: 1` as the starting (week) view.
+- Pass `renderCalendarHeader` (Angular: `calendarHeaderTemplate`, Vue: `#header` slot) returning custom markup with `mbsc-calendar-nav`, a `SegmentedGroup` (radio pair with week/month icons) for the view switcher, and `mbsc-calendar-prev`/`mbsc-calendar-next`.
+- On the segmented control's change event, call `setOptions({ calendarType: 'week' | 'month' })` on the instance to switch between the compact weekly layout and the full month grid — `calendarSize` stays as configured and only applies while in `'week'` type.
+
 ## What this demo shows
 
 - A date picker calendar with a view switcher for changing between week and month views.

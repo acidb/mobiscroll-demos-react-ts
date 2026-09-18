@@ -9,6 +9,12 @@ By setting `pages: 1`, `pages: 2`, the calendar will render the exact number of 
 
 You can dynamically change the number of months or [switch between month and week view](https://demo.mobiscroll.com/react/calendar/week-to-month#) without the need for recycling the whole component.
 
+## Implementation instructions
+
+- Use `controls: ['calendar']`, `calendarType: 'month'`, and `display: 'inline'`.
+- Set `pages` to a number (`1`, `2`, `3`, ...) to show that many months side by side, or to `'auto'` to have the calendar fill the available container width with as many months as fit.
+- A single `Datepicker` instance is used; a segmented control (One month / Two months / 3 months / Auto) updates that instance's `pages` value at runtime via an option update rather than switching between separate pre-configured instances, and the surrounding container is resized to match.
+
 ## What this demo shows
 
 - This example demonstrate different ways to display one/two/ three or as many as fit months of calendar for date selection.

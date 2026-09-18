@@ -14,6 +14,15 @@ Use the configurator to experiment, build strings and objects that you can grab 
 
 - [Discover how invalids work →](https://demo.mobiscroll.com/react/calendar/disabled-invalid-values#)
 
+## Implementation instructions
+
+- Use `controls: ['calendar']` with `marked` (or `colors`/`labels`/`invalid`, depending on the use case) entries that carry a `recurring` object instead of a fixed `date`.
+- `recurring` supports `repeat: 'daily' | 'weekly' | 'monthly' | 'yearly'`, plus: `interval` (repeat every N units, e.g. `{ repeat: 'weekly', weekDays: 'SA', interval: 2 }` for every other Saturday); `weekDays` (comma-separated day codes `'SU','MO','TU','WE','TH','FR','SA'`, weekly/monthly rules); `day`/`month` (fixed day-of-month / month-of-year, monthly/yearly rules); `pos` (ordinal `1`/`2`/`3`/`4`/`-1` for last, combined with `weekDays` for "the second Tuesday of every month"-style rules); `count` (stop after N occurrences); `from`/`until` (bound the rule to a date range).
+- To exclude specific dates from an otherwise-recurring set, add a sibling `recurringException` array of exact dates/strings to exclude.
+- To exclude an entire recurring pattern of dates (rather than individual ones), add a sibling `recurringExceptionRule` object with the same shape as `recurring` — any date matching that rule is skipped.
+- A recurring entry and its exceptions live on the same marked/colors/labels/invalid array item, e.g. `{ recurring: { repeat: 'monthly', day: 1 }, recurringException: ['2021-07-05'], recurringExceptionRule: { repeat: 'monthly', day: 1, month: 12 } }`.
+- `recurring` (and `recurringExceptionRule`) can alternatively be passed as an RRULE string instead of an object, e.g. `'FREQ=WEEKLY;BYDAY=SA;INTERVAL=2'` — `repeat`/`interval`/`weekDays`/`day`/`month`/`pos`/`count`/`until` map to `FREQ`/`INTERVAL`/`BYDAY`/`BYMONTHDAY`/`BYMONTH`/`BYSETPOS`/`COUNT`/`UNTIL`.
+
 ## What this demo shows
 
 - Shows an interactive recurrence configurator with three selectable sections for defining recurrence rules, excluded dates, and recurring exclusions.

@@ -12,6 +12,13 @@ There are three ways to use the calendar:
 - Let the component generate the Mobiscroll input. Give it the extra styling and overrides through options
 - Embed the picker without an input. This can be the page itself or a more complex popup
 
+## Implementation instructions
+
+- **On an input, generated Mobiscroll input**: use `controls: ['calendar']` with `display: 'anchored'` (the default) on a labeled input (`label`, `inputStyle`, `labelStyle`, `placeholder`) — the picker opens on focus/click and writes the formatted value back into the input.
+- **On an input, custom external input**: React/Vue bind the picker to a plain `<input>` (or any custom input component) via the `inputComponent` option, optionally with `inputProps` for attributes like `placeholder`. Angular applies the picker as a directive directly on an existing input element (e.g. `<input mbsc-datepicker>`, including third-party inputs like `ion-input`) instead of using the standalone component. JS/jQuery don't need this variant — their generated Mobiscroll input already covers both input cases.
+- **Multiple dates on a generated input**: `controls: ['calendar']` with `selectMultiple: true` on a tag-enabled input (`tags: true` / `data-tags="true"`) — confirmed dates render as removable chips inside the generated Mobiscroll input.
+- **Inline, no input**: use `controls: ['calendar']` with `display: 'inline'` on a plain container instead of an input.
+
 ## What this demo shows
 
 - Three monthly date picker examples for selecting a single date or multiple dates using input-based pickers or an inline display.

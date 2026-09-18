@@ -10,6 +10,13 @@ But sometimes that is not enough. Luckily you can use the `cellCssClass` propert
 
 You can use the `cellCssClass` in combination with custom cell `background` to highlight a range of days and show the ends as check-in and check-out days.
 
+## Implementation instructions
+
+- Use `controls: ['calendar']` and `display: 'inline'` on a single inline `Datepicker`.
+- Pass an array to `colors`. For half-colored "check-in"/"check-out" cells, use single-date entries with `cellCssClass` (e.g. `{ date: ..., cellCssClass: 'check-in' }`, `{ date: ..., cellCssClass: 'check-out' }`) instead of `background`/`highlight`. For a solid-colored range between them, use a `{ start, end, background }` entry.
+- Define the diagonal half-day look with CSS `linear-gradient` backgrounds targeted directly at the LTR/RTL direction class combined with the custom class, e.g. `.mbsc-datepicker .mbsc-ltr.check-in { background: linear-gradient(to left top, #46c4f3 50%, transparent 50%) no-repeat; }` and the inverted-stop gradient (`transparent 50%, #46c4f3 50%`) for `.mbsc-ltr.check-out`; the `.mbsc-rtl.check-in`/`.mbsc-rtl.check-out` variants use a `to right bottom` gradient direction instead of `to left top`. Reset `border-color: transparent` on `.mbsc-datepicker .mbsc-windows.check-in`/`.mbsc-windows.check-out` since the Windows theme's default cell border would otherwise show a line through the diagonal.
+- Also set `border-color: #46c4f3` on the LTR "check-out"/RTL "check-in" class (`.mbsc-datepicker .mbsc-ltr.check-out`, `.mbsc-datepicker .mbsc-rtl.check-in`) to visually connect adjacent half-day cells into one continuous stay.
+
 ## What this demo shows
 
 - An inline date picker calendar with a month view and custom day cell styling.

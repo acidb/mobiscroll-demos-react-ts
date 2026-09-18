@@ -17,6 +17,13 @@ Control the parameters of the selection:
 
 - [See how start/end selection works →](https://demo.mobiscroll.com/react/calendar/range-select#)
 
+## Implementation instructions
+
+- Use `controls: ['calendar']`, `display: 'inline'`, and `select: 'preset-range'` to select a fixed-length block of consecutive days as a unit (clicking any day within the block selects the whole block).
+- Set `firstSelectDay` (`0`–`6`, Sunday–Saturday) to control which weekday the selected block starts on.
+- Set `selectSize` to the block length in days — `7` for one week, `14` for two weeks, `21` for three weeks, etc.
+- Update either at runtime via `setOptions({ firstSelectDay, selectSize })` on the instance.
+
 ## What this demo shows
 
 - This demo shows an inline date picker calendar from which one ore multiple weeks.
