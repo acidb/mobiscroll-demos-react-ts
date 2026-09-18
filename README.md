@@ -37,4 +37,8 @@ It is meant to be a learning resource and a quick way to start working with Mobi
    npm run dev
    ```
 
+## License
+
+The demo source code in this repository is licensed under the [MIT License](LICENSE). This does not extend to the Mobiscroll components themselves, which remain under Mobiscroll's commercial license — a trial or paid license is required to run these demos, as described above.
+
 _Have you encountered any issues or do you have feedback regarding the demos? Feel free to contact us via our [ticketing system](https://mobiscroll.com/account/supporttickets) or website chat. Alternatively, you can also submit your questions to our [Community Forum](https://forum.mobiscroll.com/)._
