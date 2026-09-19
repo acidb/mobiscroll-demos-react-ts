@@ -14,6 +14,15 @@ Besides customizing the date and time formats you can reorder the picker wheels 
 
 - [Check out how the return format changes based on locale →](https://demo.mobiscroll.com/react/datetime/localization#)
 
+## Implementation instructions
+
+- Fourteen independent input-triggered `Datepicker` instances, each pre-filled on load via `onInit: (event, inst) => inst.setVal(now, true)` so every example shows a populated, formatted value without user interaction.
+- **Date examples** (`controls: ['date']`) vary only `dateFormat`: default (unset), `'DD.MM.YYYY'` (separator), `'MMMM'` (month only), `'D MMMM YYYY'` (full month name), `'MM/YYYY'` (month & year), `'DDD DD MMM, YYYY'` (weekday + abbreviated month), `'YYYY-MM-DD'` (ATOM), `'DDD, DD MMM YYYY'` (COOKIE).
+- **Time examples** (`controls: ['time']`) vary only `timeFormat`: default (unset), `'hh:mm A'` (12-hour), `'HH:mm'` (24-hour), `'HH:mm:ss'` (24-hour with seconds).
+- **Date & time examples** (`controls: ['date', 'time']`) show the default combined format (both unset) and a custom combination: `dateFormat: 'DDD D MMM, YYYY'` with `timeFormat: 'H:mm'`, plus `dateWheels: '|DDD D MMM, YYYY|'` to make the wheel display match the custom `dateFormat` — `dateWheels` only needs to be set when the wheel layout should mirror a non-default `dateFormat`/`timeFormat`; the input-returned value itself is governed purely by `dateFormat`/`timeFormat`.
+- `dateFormat`/`timeFormat` control what value the input displays/returns after selection; `dateWheels`/`timeWheels` independently control which wheels are rendered and their per-wheel format — setting one does not require setting the other unless the wheel layout needs to diverge from (or explicitly match) the return format.
+- When `dateFormat`/`timeFormat` are not explicitly set, the picker falls back to the active locale's default formats.
+
 ## What this demo shows
 
 - Fourteen input-based wheel-style date, month, time, and date-time pickers demonstrate different ways to format selected values.

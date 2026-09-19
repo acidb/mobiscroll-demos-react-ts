@@ -22,7 +22,7 @@ When passing `controls: ['calendar']`, the date picker will render a monthly cal
 
 ## Implementation instructions
 
-- Use `controls: ['calendar']` and `display: 'inline'` — this is the minimal setup for an embedded, single-date monthly calendar with no other options required.
+- `controls: ['calendar']` renders the monthly calendar view — this is the default control, so it doesn't need to be set explicitly unless overriding another value. Set `display: 'inline'` to embed the calendar directly in the page instead of opening it in a modal/popup.
 
 ## What this demo shows
 

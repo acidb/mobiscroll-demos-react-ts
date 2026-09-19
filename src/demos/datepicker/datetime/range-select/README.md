@@ -18,6 +18,14 @@ Dynamically switching between single, multiple or range select can be done with 
 
 - [Learn how to customize range selection →](https://demo.mobiscroll.com/react/range/#)
 
+## Implementation instructions
+
+- Use `display: 'inline'` and `select: 'range'`; pick the picker layout with `controls: ['date']`, `['time']`, `['timegrid']`, or `['datetime']`.
+- Set `showRangeLabels: true` to display "Start"/"End" style labels on the selected boundary dates; override the default wording with `rangeStartLabel`/`rangeEndLabel` (e.g. `'Outbound'`/`'Return'`) — leaving these unset falls back to the localized defaults.
+- Set `minRange`/`maxRange` to constrain how short/long the selected range can be. The unit depends on `controls`: with `controls: ['date']` it's a whole number of days (e.g. `minRange: 3`, `maxRange: 10`); with `['time']`, `['timegrid']`, or `['datetime']` it's milliseconds (e.g. `minRange: 9000000` ≈ 2h30m, `maxRange: 36000000` ≈ 10h).
+- These are plain reactive props/bindings in React, Vue, and Angular; in JS/jQuery update them at runtime via `setOptions({ rangeStartLabel, rangeEndLabel, minRange, maxRange })` on the instance — switching `controls` at runtime also goes through the same `setOptions` call.
+- Read the selected range from the change event/value binding as a two-element array of dates; e.g. `setVal([startDate, endDate])` programmatically sets both boundaries at once.
+
 ## What this demo shows
 
 - An inline date range picker for selecting a start and end date from a wheel-style date picker.

@@ -17,6 +17,14 @@ Use the responsive option to configure the picker and change the options based o
 
 It is a good idea to change the `display` or `controls` option to tailor the UX. This way you can have a **bottom positioned calendar on mobile**, a **popover anchored to the input on tablet** and **desktop display on large screens**.
 
+## Implementation instructions
+
+- Use the `responsive` option to configure per-breakpoint overrides; keys are the predefined breakpoints `xsmall` (min-width 0px), `small` (576px), `medium` (768px), `large` (992px), `xlarge` (1200px), or `custom` with an explicit `breakpoint` number.
+- Each breakpoint entry is a partial options object — commonly `display` (e.g. `'bottom'`, `'anchored'`, `'center'`) and `controls` (e.g. `['date']`, `['calendar']`) — plus `touchUi` to force wheel-style touch UI (`true`) or a compact desktop-style UI (`false`) regardless of viewport.
+- A typical pattern: `xsmall: { display: 'bottom', touchUi: true }`, `small: { display: 'anchored', touchUi: true }`, `custom: { breakpoint: 800, display: 'anchored', touchUi: false }` — bottom sheet on mobile, anchored popover on tablet, and a desktop-style anchored layout above the custom breakpoint.
+- `responsive` is a plain reactive prop/binding in React, Vue, and Angular; in JS/jQuery it's passed in the init config object and can be changed at runtime via `setOptions({ responsive: {...} })`.
+- Breakpoints only apply on window resize/reflow — there is no separate live "viewport switcher" API; simulating different widths (as the demo's own preset switcher does) means resizing the container the picker is bound to.
+
 ## What this demo shows
 
 - Shows a wheel-style date picker example for selecting a single date across touch and desktop layouts.

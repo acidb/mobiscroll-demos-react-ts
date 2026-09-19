@@ -22,6 +22,17 @@ You can change the `timeFormat` or rely on the formats coming from the [locale s
 
 - [Learn how to set up a date-only picker →](https://demo.mobiscroll.com/react/datetime/date-picker#)
 
+## Implementation instructions
+
+- Four separate input-bound picker instances share one `controls` value, driven by a single segmented control (`Time list` / `Time grid`) above them.
+- Each instance is created with `controls: ['time']` (time list by default); the segmented control's `change` handler calls `setOptions({ controls: [control] })` on all four instances at once, swapping every one to `controls: ['timegrid']` when `Time grid` is selected — this is a shared live toggle, not four independent pickers.
+- **Default time picker**: `controls: ['time']` with no `timeFormat` override — uses the locale's default hour/minute/AM-PM format.
+- **24-hour time picker**: `controls: ['time'], timeFormat: 'H:mm'` — hour and minute wheels only, no AM/PM.
+- **12-hour time picker**: `controls: ['time'], timeFormat: 'h:mm A'` — hour, minute, and AM/PM wheels.
+- **Time picker with seconds**: `controls: ['time'], timeFormat: 'HH:mm:ss', headerText: 'Time: {value}'` — adds an hour/minute/second wheel set and overrides the picker header to show the live-selected value via the `{value}` placeholder.
+- Each instance is bound to a Mobiscroll-generated input (`mbsc-input`, `data-input-style="outline"`, `data-label-style="stacked"`) rather than rendered inline.
+- `touchUi` is also settable on each instance to force the touch-scroller wheels (`true`) or the desktop dropdown rendering (`false`) regardless of the detected device; this demo doesn't wire it to a live toggle, but it's a real, valid option on the same picker.
+
 ## What this demo shows
 
 - Four time picker configurations for selecting a single time with different time formats.

@@ -12,6 +12,13 @@ RTL support is built in and can be explicitly controlled through the `rtl` optio
 
 - [Check out this example →](https://demo.mobiscroll.com/react/datetime/localization#)
 
+## Implementation instructions
+
+- Use `controls: ['datetime']` and `display: 'inline'`.
+- Set `rtl: true` to mirror the entire wheel layout — the AM/PM, minute, hour, and date wheel columns all flip order and direction, and all supporting UI text aligns right-to-left; `rtl: false` (or omitting it) renders left-to-right.
+- Toggle at runtime via `setOptions({ rtl: true | false })` on the instance.
+- Pair `rtl` with a matching RTL `locale` (e.g. `mobiscroll.locale.ar`, `mobiscroll.locale.he`) when the language itself is right-to-left, since `rtl` only controls layout direction, not translated day/month names.
+
 ## What this demo shows
 
 - Shows a wheel-style inline date picker with RTL mode enabled.

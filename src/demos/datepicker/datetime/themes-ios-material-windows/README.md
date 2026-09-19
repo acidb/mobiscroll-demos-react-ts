@@ -13,6 +13,14 @@ The look and feel of the date picker can be deeply customized. There are four le
 
 You can also see how every example looks by changing the theme from the header.
 
+## Implementation instructions
+
+- Use `controls: ['date']` and `display: 'inline'` — despite living under the `datetime` view, this demo's live instance is a date-only wheel picker (no time or datetime controls are used).
+- Set `theme` to `'ios'`, `'material'`, or `'windows'` to pick the base theme.
+- Set `themeVariant` to `'light'` or `'dark'` to switch the variant within the chosen base theme.
+- Update either at runtime via `setOptions({ theme })` / `setOptions({ themeVariant })` on the instance — the theme segmented control and the dark-mode switch both drive the same live picker instance through these calls rather than re-initializing it.
+- Toggling the "custom theme" switch swaps in a custom-named theme (e.g. `'material-indigo'`, `'windows-yellow'`, `'ios-gray'`) built on top of the base theme via `setOptions({ theme: customName })`, and hides the theme-variant switch while active, since a custom theme name already encodes its own variant.
+
 ## What this demo shows
 
 - An inline wheel-style date picker is shown alongside theme controls so you can preview different date picker looks in the same layout.

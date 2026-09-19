@@ -16,6 +16,16 @@ Values can be passed as [JS date objects, ISO date strings or Moment.js objects]
 
 - [Discover how to disable specific values →](https://demo.mobiscroll.com/react/datetime/disabled-invalid-values#)
 
+## Implementation instructions
+
+- A single inline `Datepicker` instance is used; a four-way segmented control (`Date` / `Time list` / `Time grid` / `Date & time`) switches its `controls` at runtime between `['date']`, `['time']`, `['timegrid']`, and `['datetime']` via `setOptions` — it is not four separate side-by-side pickers.
+- In `Date` mode, independent checkboxes enable a minimum and/or maximum date, each bound to its own anchored date input; both are enabled by default, with `min` defaulting to `1920-01-01` and `max` to `2050-01-01`.
+- A separate "set a dynamically calculated date" checkbox (Date mode only, disabled by default) instead sets `max` to an 18-years-ago date, computed as `new Date(now.getFullYear() - 18, now.getMonth(), now.getDate())`; enabling it clears the exact min/max checkboxes.
+- In `Time list` mode, independent min/max checkboxes (enabled by default) bind `min`/`max` to time-of-day values seeded relative to the current date, e.g. `10:30` and `19:30`.
+- `Time grid` mode exposes the same independently toggled min/max time checkboxes, applied against `controls: ['timegrid']` instead of `['time']`.
+- In `Date & time` mode, the min/max checkboxes instead bind full date-and-time values (e.g. `min: '2000-01-01T12:00'`, `max: '2050-01-01T12:00'`), toggled independently the same way.
+- `min`/`max` values can be passed as ISO strings, `Date` objects, or Moment.js objects.
+
 ## What this demo shows
 
 - Shows a wheel-style inline date picker for setting min and max values, restrictions.

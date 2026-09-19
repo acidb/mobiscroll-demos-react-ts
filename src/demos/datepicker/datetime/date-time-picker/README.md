@@ -20,6 +20,14 @@ Use `controls: ['datetime']` for rendering a date & time picker within the same 
 
 - [Learn how to set up responsive behavior →](https://demo.mobiscroll.com/react/datetime/responsive#)
 
+## Implementation instructions
+
+- Four independent `Datepicker` instances, each bound to its own input, illustrating three ways to combine date and time controls.
+- **Compact picker** `controls: ['datetime']` renders a single combined wheel set (day/date label + hour + minute + AM/PM) in one control tied to one input.
+- **Expanded picker** `controls: ['date', 'time']` renders the full month/date/year wheels alongside the hour/minute/AM-PM wheels in the same picker instance/input — two control types combined but still one input, distinct from the single fused `datetime` wheel of the compact variant.
+- **Separate inputs** Two independent `Datepicker` instances are used instead of one: `controls: ['date']` on one input and `controls: ['time']` on the other, so date and time are captured, validated, and formatted independently.
+- `touchUi` (true by default on touch devices) determines whether each picker renders as scroller wheels (`touchUi: true`) or dropdowns (`touchUi: false`); all three configurations respect it identically.
+
 ## What this demo shows
 
 - Three wheel-style configurations for selecting a single date and time.

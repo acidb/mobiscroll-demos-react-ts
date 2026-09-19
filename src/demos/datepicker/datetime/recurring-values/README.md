@@ -14,6 +14,15 @@ Use the configurator to experiment, build strings and objects that you can grab 
 
 - [Discover how invalids work →](https://demo.mobiscroll.com/react/datetime/disabled-invalid-values#)
 
+## Implementation instructions
+
+- Use `controls: ['date']` (or another wheel view) with entries in the `invalid` array that carry a `recurring` object instead of a fixed `date`.
+- `recurring` supports `repeat: 'daily' | 'weekly' | 'monthly' | 'yearly'`, plus: `interval` (repeat every N units); `weekDays` (comma-separated day codes `'SU','MO','TU','WE','TH','FR','SA'`, weekly/monthly-by-position/yearly-by-position rules); `day`/`month` (fixed day-of-month / month-of-year, monthly/yearly rules); `pos` (ordinal `1`/`2`/.../`-1` for last, combined with `weekDays` for "the second Tuesday of every month"-style rules); `count` (stop after N occurrences); `until` (stop on a specific date, formatted `'YYYY-MM-DD'`).
+- To exclude specific dates from an otherwise-recurring set, add a sibling `recurringException` array of exact date strings.
+- To exclude an entire recurring pattern of dates (rather than individual ones), add a sibling `recurringExceptionRule` object with the same shape as `recurring` — any date matching that rule is skipped.
+- A recurring entry and its exceptions live on the same array item, e.g. `{ recurring: { repeat: 'monthly', day: 1 }, recurringException: ['2021-07-05'], recurringExceptionRule: { repeat: 'monthly', day: 1, month: 12 } }`.
+- `recurring` (and `recurringExceptionRule`) can alternatively be passed as an RRULE string instead of an object, e.g. `'FREQ=WEEKLY;BYDAY=SA;INTERVAL=2'` — `repeat`/`interval`/`weekDays`/`day`/`month`/`pos`/`count`/`until` map to `FREQ`/`INTERVAL`/`BYDAY`/`BYMONTHDAY`/`BYMONTH`/`BYSETPOS`/`COUNT`/`UNTIL`.
+
 ## What this demo shows
 
 - Shows an interactive recurrence configurator with three selectable sections for defining recurrence rules, excluded dates, and recurring exclusions.

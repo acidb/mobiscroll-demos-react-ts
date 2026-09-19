@@ -6,6 +6,15 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 
 Values can change in a couple of different ways: through defaults, interacting with the UI or programmatically. The date and time picker defaults to `now`, which can be easily overridden with the `defaultSelection` option. The values are set by interacting with the component and making a selection or it can be done programmatically by updating the bound value. Use the `buttons` option for showing/hiding `set`, `cancel` or add custom buttons.
 
+## Implementation instructions
+
+- Use `controls: ['date']` for the base wheel picker; the picker defaults to the current date/time (`now`) if no value or default is set.
+- Set `defaultSelection` to a `Date` object (e.g. `new Date(2020, 11, 24)`) to seed the initial value shown before the user or app ever sets one — this only affects the uncontrolled initial render, not subsequent updates.
+- To change the value programmatically after init: in React/Angular/Vue, update the bound `value`/`v-model`/`[(ngModel)]`; in JS/jQuery call the `setVal(date)` method on the instance (e.g. from external button handlers that call `instance.setVal(new Date())` or `instance.setVal(new Date(2020, 0, 2))`).
+- Use the `buttons` array to control the footer actions: pass string shortcuts like `'set'`/`'cancel'` to keep the defaults, or objects `{ text: 'Now', handler: () => { instance.setVal(new Date()); instance.close(); } }` to add a custom action button that sets a value and closes the picker.
+- Omitting the `'set'` button (e.g. `buttons: [{ text: 'Close', handler: 'cancel' }]`) makes any wheel selection apply immediately without a separate confirmation step — there is no dedicated "auto-set" option, it's simply the absence of a `'set'` button.
+- The `handler` value can be a function for custom logic or the string `'cancel'`/`'set'` to reuse the built-in close/confirm behavior.
+
 ## What this demo shows
 
 - Three example groups demonstrate how to control a wheel-style date picker value through defaults, runtime updates, and action buttons.

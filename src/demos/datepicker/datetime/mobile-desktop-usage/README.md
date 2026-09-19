@@ -17,6 +17,15 @@ When linked to an input, the component will be shown on focus or when someone cl
 
 - [Check out the responsive demo →](https://demo.mobiscroll.com/react/datetime/responsive#)
 
+## Implementation instructions
+
+- Four separate `Datepicker` instances, all using `controls: ['date']` (wheel-style, not the month-grid `calendar` control).
+- The first attaches to a plain input and opens on focus/click by default (no extra options beyond `controls`).
+- The second sets `showOnClick: false` and `showOnFocus: false` so the picker never opens from the input itself, and is opened only by a separate `Show picker` button: React drives it with an `isOpen` prop plus `onClose` handler, Angular grabs a `ViewChild` reference and calls the instance's `open()` method, and Vue/JS/jQuery call `.open()` on the retrieved instance directly. That same instance seeds an initial value without opening the picker via `onInit: (event, inst) => inst.setVal(new Date(), true)`.
+- The third attaches to an `mbsc-input`-styled input (`inputComponent="input"` in React) and opens on focus/click like the first, just with the styled input treatment.
+- The fourth embeds the picker directly with `display: 'inline'` and no associated input.
+- All four examples' code snippets, across every framework, also expose a `touchUi` value that tracks a shared mobile/desktop view toggle for the demo.
+
 ## What this demo shows
 
 - Shows four wheel-style date picker configurations for selecting a single date in touch and desktop layouts.

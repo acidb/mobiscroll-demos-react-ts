@@ -8,6 +8,16 @@ Single value selection is the default behavior of the date picker. You can expli
 
 You can dynamically switch between single and multiple select or range select which helps with building a system for one-way and two-way bookings.
 
+## Implementation instructions
+
+- Four separate inline picker instances render side by side, each using `display: 'inline'` — none is bound to an input.
+- **Date only**: `controls: ['date']` — a single wheel/dropdown control for the month, day, and year.
+- **Time only (list)**: `controls: ['time']` — separate wheels for hour, minute, and AM/PM.
+- **Time only (grid)**: `controls: ['timegrid']` — a fixed-interval time grid instead of scrollable wheels.
+- **Date and time**: `controls: ['datetime']` — combines the date and time wheels into a single scroller.
+- `selectMultiple: false` is passed explicitly in the framework code snippets for clarity even though single-date selection is the default; the live demo script omits it since it's a no-op.
+- `touchUi: false` is set in the fullscreen variant to force the dropdown rendering instead of the touch-scroller wheels; the main (non-fullscreen) demo page relies on the default touch-detected behavior.
+
 ## What this demo shows
 
 - Four inline wheel-style picker configurations for selecting a single date, time, or date and time.

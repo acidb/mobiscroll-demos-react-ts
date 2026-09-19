@@ -22,6 +22,13 @@ You can further customize the `dateFormat` and `dateWheels` to fine-tune the UX.
 
 - [Learn how to set up responsive behavior →](https://demo.mobiscroll.com/react/datetime/responsive#)
 
+## Implementation instructions
+
+- Two independent `Datepicker` instances, each bound to its own input (`display: 'anchored'` by default for an input-triggered picker) with `controls: ['date']`.
+- **Date picker** Uses `controls: ['date']` with no format overrides — renders the default month/day/year wheel set (dropdowns instead of wheels when `touchUi: false`).
+- **Month & year picker** Same `controls: ['date']`, but adds `dateFormat: 'MM/YYYY'` (controls the input's displayed value) and `dateWheels: 'MMMM YYYY'` (controls the wheel/dropdown set actually shown, dropping the day wheel) — both options are needed together; setting only `dateFormat` would still show a day wheel.
+- No other options are required for this pair — it is the minimal setup for a day-level vs. month-level wheel picker sharing the same `controls: ['date']` mode.
+
 ## What this demo shows
 
 - Two wheel-style date picker configurations: one for selecting a specific date and another for selecting only a month and year.

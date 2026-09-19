@@ -12,6 +12,14 @@ There are three ways to use the date picker:
 - Let the component generate the Mobiscroll input. Give it the extra styling and overrides through options
 - Embed the picker without an input. This can be the page itself or a more complex popup
 
+## Implementation instructions
+
+- All examples use `controls: ['date']` — this demo only varies how the picker attaches to the page, not which controls it renders; there is no multiple-date/chip variant here.
+- **On an existing/custom input**: React/Vue bind the picker to a plain `<input>` (or a custom input component) via the `inputComponent` option, with `inputProps` for attributes like `placeholder`. Angular applies the picker as a directive directly on an existing input element (e.g. `<input mbsc-datepicker>`, including third-party inputs like `ion-input`) instead of using the standalone component. JS/jQuery initialize the picker on a plain existing `<input>` element the same way they would on a generated one, since their datepicker call always targets an existing DOM element by selector.
+- **On a generated Mobiscroll input**: for React and Angular, omitting `inputComponent`/the directive form and just rendering `<Datepicker controls={['date']} />` / `<mbsc-datepicker [controls]="['date']">` lets the component generate its own styled Mobiscroll input.
+- **Inline, no input**: use `controls: ['date']` with `display: 'inline'` on a plain container instead of an input. JS/jQuery initialize on a `<div>` (or a hidden `<input type="hidden">`) rather than a visible text input, since there is no input to render when the picker is embedded directly in the page.
+- `display: 'anchored'` (the default) is used for the input-bound variants; it is not set explicitly in the framework snippets since it's the default.
+
 ## What this demo shows
 
 - Shows two wheel-style date picker for selecting a single date using input-based pickers or an inline display.

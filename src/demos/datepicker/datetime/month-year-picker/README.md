@@ -14,6 +14,15 @@ This and even more can be done with the `dateWheels` setting.
 
 - [Explore formatting options →](https://demo.mobiscroll.com/react/datetime/formatting-return-values#)
 
+## Implementation instructions
+
+- A single `Datepicker` (`controls: ['date']`) is anchored to the "Expiration" input inside a plain credit-card form (`Name`, `Card`, `Expiration`, `Security` inputs); the other three inputs are plain/`mbsc-input` fields with no picker attached.
+- `dateFormat: 'MM/YYYY'` controls how the confirmed value is written back into the input; `dateWheels: 'MMMM YYYY'` independently controls the format shown on the wheels themselves (full month name + year) while scrolling — the two formats are set separately and don't need to match.
+- `min` is set to the current date (`now`) and `max` to ten years out, computed as `new Date(now.getFullYear() + 10, now.getMonth())` — both are dynamically calculated, not fixed dates.
+- The input's initial displayed value (`12/2025`) is set as a static `value`, not derived from `min`/`max` or bound to a variable.
+- The raw JS/jQuery init also sets `minWidth: 100` on the picker for layout sizing; this option is omitted from the per-framework code snippets shown to visitors but is present in the actual demo config.
+- All framework snippets also expose a `touchUi` value that tracks a shared mobile/desktop view toggle for the demo.
+
 ## What this demo shows
 
 - Shows a form with fields for the cardholder name, card number, expiration date, and three-digit CVV.

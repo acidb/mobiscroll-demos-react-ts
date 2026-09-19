@@ -19,6 +19,19 @@ Both the `invalid` and `valid` options support the following:
 Exact dates and the start/end pairs can be passed as [JS date objects, ISO date strings or Moment.js objects](https://demo.mobiscroll.com/react/datetime/date-object-ISO-8601-moment#).
 Having invalids set up correctly not just enhances the UX, but improves performance.
 
+## Implementation instructions
+
+- **Picker mode** A `mbsc-segmented-group` switches the single `Datepicker` instance between four modes by changing its `controls` value: Date (`controls: ['date']`), Time list (`controls: ['time']`), Time grid (`controls: ['timegrid']`), and Date & time (`controls: ['datetime']`).
+- **Invalid vs. valid** A second `mbsc-segmented-group` toggles between building an `invalid` array (disable listed dates/times, everything else stays selectable) and a `valid` array (only the listed dates/times are selectable); only one of `invalid`/`valid` is ever set at a time — the other is passed as `undefined` via `setOptions`.
+- **Exact dates** In date mode, a multi-select anchored `calendar`-controls date picker (`selectMultiple: true`) lets the user pick specific days, formatted to `'YYYY-MM-DD'` strings via `mobiscroll.formatDate` and merged into `invalid`/`valid`.
+- **Recurring dates** Checkboxes toggle recurring rules in/out of the array: weekends (`{ recurring: { repeat: 'weekly', weekDays: 'SA,SU' } }`) for invalid mode or weekdays (`{ recurring: { repeat: 'weekly', weekDays: 'MO, TU, WE, TH, FR' } }`) for valid mode, holidays as two yearly rules (`{ recurring: { repeat: 'yearly', day: 24, month: 12 } }`, `{ recurring: { repeat: 'yearly', day: 31, month: 12 } }`), and first/last of month (`{ recurring: { repeat: 'monthly', day: 1 } }`, `{ recurring: { repeat: 'monthly', day: -1 } }` — a negative `day` counts back from the end of the month).
+- **Date ranges** A `select: 'range'` anchored `calendar`-controls date picker produces a `{ start, end }` pair (formatted `'YYYY-MM-DD'`) merged into the array; changing it also live-updates `min`/`max` on a separate picker instance in this demo's wiring.
+- **Exact times** In time-list mode, a comma-separated textarea of times (e.g. `'11:30, 18:00'`) is parsed against an ISO-8601-time regex and each valid entry becomes `{ start: time, end: time, recurring: { repeat: 'daily' } }`.
+- **Time ranges** A comma-separated textarea of `start - end` pairs (e.g. `'13:00 - 14:00, 15:00 - 15:30'`) becomes `{ start, end, recurring: { repeat: 'daily' } }` entries; the same exact-time/time-range textarea pattern is repeated independently for time-grid mode (`timegrid`) with its own checkboxes and textareas.
+- **Exact datetimes and datetime ranges** In date & time mode, textareas accept full ISO 8601 datetime strings (e.g. `'2022-04-28T09:00'`) and `start - end` datetime pairs, producing `{ start, end }` objects (using the full ISO regex) or, when only a time-of-day is given, `{ start: time, end: time, recurring: { repeat: 'daily' } }`.
+- Every checkbox/textarea change and the picker-mode switch rebuild the array and call `.setOptions({ invalid: [...] })` or `.setOptions({ valid: [...] })` (plus `.setOptions({ controls: [...] })` on mode switch) on the datepicker instance so the picker and the displayed code snippet stay in sync.
+- Dates/times covered by `invalid` render disabled and cannot be selected; when `valid` is set, only the listed dates/times remain selectable.
+
 ## What this demo shows
 
 - Shows a wheel-style inline date picker with disabled values.

@@ -10,6 +10,16 @@ Adjust the gaps between the time picker values as needed. Use these three option
 - `stepMinute` - adjusts the gaps between the values for the minute wheel
 - `stepSecond` - adjusts the gaps between the values for the second wheel
 
+## Implementation instructions
+
+- Four separate input-bound picker instances, each with a fixed step configuration — there is no live switcher in this demo; each variant is a distinct static instance.
+- **Date and time, 15-minute steps**: `controls: ['datetime'], stepMinute: 15` — combines the date wheel with hour/minute/AM-PM wheels, restricting the minute wheel to quarter-hour values.
+- **Time, 5-minute steps**: `controls: ['time'], stepMinute: 5` — restricts the minute wheel to 5-minute increments.
+- **Time, 2-hour steps**: `controls: ['time'], stepHour: 2` — restricts the hour wheel to 2-hour increments.
+- **Time, 30-second steps**: `controls: ['time'], stepSecond: 30, timeFormat: 'HH:mm:ss'` — adds a second wheel (via the `HH:mm:ss` format) restricted to 30-second increments.
+- Each instance is bound to a Mobiscroll-generated input (`mbsc-input`, `data-input-style="outline"`, `data-label-style="stacked"`) rather than rendered inline.
+- `stepHour`, `stepMinute`, and `stepSecond` are independent options — a given instance sets only the step(s) relevant to the wheels it renders; unset step options default to 1.
+
 ## What this demo shows
 
 - Four wheel-style date and time picker configurations for selecting a single date and time or a time value with different step intervals.
