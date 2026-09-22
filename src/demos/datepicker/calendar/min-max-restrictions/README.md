@@ -18,10 +18,10 @@ Values can be passed as [JS date objects, ISO date strings or Moment.js objects]
 
 ## Implementation instructions
 
-- A single inline `Datepicker` instance is used; a segmented control (Date / Date & time) switches its `controls` at runtime between `['calendar']` and `['calendar', 'time']` via an option update — it is not two separate side-by-side pickers.
-- In Date mode, independent checkboxes enable a minimum and/or maximum date, each bound to its own anchored date input; both are enabled by default, with `min` defaulting to `'1920-01-01'` and `max` to `'2050-01-01'`.
-- A separate "set a dynamically calculated date" checkbox instead sets `max` to an 18-years-ago date, computed as `new Date(now.getFullYear() - 18, now.getMonth(), now.getDate())`; enabling it clears the exact min/max checkboxes, and it's disabled by default.
-- In Date & time mode, the same min/max checkboxes instead bind full date-and-time values (e.g. `min: '2000-01-01T12:00'`, `max: '2050-01-01T12:00'`), toggled independently the same way.
+- `controls` can be switched at runtime between `['calendar']` and `['calendar', 'time']` via an option update on a single instance.
+- `min` and `max` can each be set independently (e.g. defaulting to `'1920-01-01'` and `'2050-01-01'`) or left unset for no restriction on that bound.
+- `max` can also be set to a dynamically calculated date instead of a fixed one, e.g. 18 years before today (`new Date(now.getFullYear() - 18, now.getMonth(), now.getDate())`).
+- In Date & time mode, `min`/`max` bind full date-and-time values (e.g. `min: '2000-01-01T12:00'`, `max: '2050-01-01T12:00'`).
 - `min`/`max` values can be passed as ISO strings, `Date` objects, or Moment.js objects.
 
 ## What this demo shows

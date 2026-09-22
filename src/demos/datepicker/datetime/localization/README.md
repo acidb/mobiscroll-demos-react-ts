@@ -16,9 +16,9 @@ You can see how each example shows up by clicking on the small flag icon or chec
 
 ## Implementation instructions
 
-- Use `controls: ['date']` and `display: 'inline'` on a single inline `Datepicker` (wheel-style, not the month-grid `calendar` control), initialized with `locale: 'en'`. A "Set localization to" dropdown lists roughly three dozen languages/locales and, on change, calls `setOptions({ locale: mobiscroll.locale[code] })` to live-switch the picker's localization — this is a dropdown-driven live switcher on one picker, not a static single-locale picker.
+- Use `controls: ['date']` and `display: 'inline'` on a single inline `Datepicker` (wheel-style, not the month-grid `calendar` control), initialized with `locale: 'en'`. `locale` can be changed at runtime via `setOptions({ locale: mobiscroll.locale[code] })` to switch the picker's localization on the same instance.
 - React/Angular/Vue import the desired locale as a named export from `@mobiscroll/react`/`@mobiscroll/angular`/`@mobiscroll/vue` (e.g. `localeEs`) and pass it to the `locale` prop/binding. JS/jQuery reference locales off the `mobiscroll` namespace instead (e.g. `mobiscroll.localeEs`) and set it via the `locale` option.
-- `locale` also accepts a plain locale code string (e.g. `'en'`) in place of the imported locale object — used for the picker's initial state before a locale is selected from the dropdown.
+- `locale` also accepts a plain locale code string (e.g. `'en'`) in place of the imported locale object — useful for a picker's initial state before a full locale object is available.
 - `locale` drives month/day names, first-day-of-week, button copy, and date/time formatting conventions together; pair it with `calendarSystem` only when also switching to a non-Gregorian calendar (see the Gregorian/Jalali/Hijri demo).
 
 ## What this demo shows

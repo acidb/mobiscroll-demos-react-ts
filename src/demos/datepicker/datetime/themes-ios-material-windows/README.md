@@ -18,8 +18,8 @@ You can also see how every example looks by changing the theme from the header.
 - Use `controls: ['date']` and `display: 'inline'` — despite living under the `datetime` view, this demo's live instance is a date-only wheel picker (no time or datetime controls are used).
 - Set `theme` to `'ios'`, `'material'`, or `'windows'` to pick the base theme.
 - Set `themeVariant` to `'light'` or `'dark'` to switch the variant within the chosen base theme.
-- Update either at runtime via `setOptions({ theme })` / `setOptions({ themeVariant })` on the instance — the theme segmented control and the dark-mode switch both drive the same live picker instance through these calls rather than re-initializing it.
-- Toggling the "custom theme" switch swaps in a custom-named theme (e.g. `'material-indigo'`, `'windows-yellow'`, `'ios-gray'`) built on top of the base theme via `setOptions({ theme: customName })`, and hides the theme-variant switch while active, since a custom theme name already encodes its own variant.
+- `theme` and `themeVariant` can be updated at runtime via `setOptions({ theme })` / `setOptions({ themeVariant })` on the same live picker instance rather than re-initializing it.
+- `theme` also accepts a custom-named theme (e.g. `'material-indigo'`, `'windows-yellow'`, `'ios-gray'`) built on top of a base theme, settable via `setOptions({ theme: customName })`; a custom theme name already encodes its own light/dark variant, so `themeVariant` does not need to be set alongside it.
 
 ## What this demo shows
 

@@ -17,7 +17,7 @@ You can dynamically change the number of weeks or switch between month and week 
 ## Implementation instructions
 
 - Use `controls: ['calendar']`, `display: 'inline'`, `calendarType: 'week'`, and `calendarSize: 2` as the starting (two-week) view — a single instance, not three separate calendars.
-- A segmented control (one/two/three weeks) switches the count on change; each change calls `setOptions({ calendarSize })` on the instance with `1`, `2`, or `3` to resize the same calendar dynamically without recreating the component.
+- `calendarSize` can be set to `1`, `2`, or `3` via `setOptions({ calendarSize })` to resize the same calendar dynamically without recreating the component.
 
 ## What this demo shows
 

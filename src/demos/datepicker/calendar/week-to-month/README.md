@@ -9,8 +9,8 @@ If you want to enable switching between week & month view, you can do it by addi
 ## Implementation instructions
 
 - Use `controls: ['calendar']`, `display: 'inline'`, `calendarType: 'week'`, and `calendarSize: 1` as the starting (week) view.
-- Pass `renderCalendarHeader` (Angular: `calendarHeaderTemplate`, Vue: `#header` slot) returning custom markup with `mbsc-calendar-nav`, a `SegmentedGroup` (radio pair with week/month icons) for the view switcher, and `mbsc-calendar-prev`/`mbsc-calendar-next`.
-- On the segmented control's change event, call `setOptions({ calendarType: 'week' | 'month' })` on the instance to switch between the compact weekly layout and the full month grid — `calendarSize` stays as configured and only applies while in `'week'` type.
+- Pass `renderCalendarHeader` (Angular: `calendarHeaderTemplate`, Vue: `#header` slot) returning custom markup with `mbsc-calendar-nav` and `mbsc-calendar-prev`/`mbsc-calendar-next`.
+- `calendarType` can be switched at runtime via `setOptions({ calendarType: 'week' | 'month' })` to switch between the compact weekly layout and the full month grid — `calendarSize` stays as configured and only applies while in `'week'` type.
 
 ## What this demo shows
 

@@ -12,7 +12,7 @@ The event calendar can work with **Javascript date objects, ISO strings** and **
 
 - Set `view: { calendar: { type: 'month', popover: true, count: true } }`. `count: true` collapses overflow events into a count badge; `popover: true` opens a popover when that badge is clicked. Render three separate `Eventcalendar` instances side by side, one for each supported date format.
 - The three formats Mobiscroll accepts for `start`, `end`, and any date-valued field (including `marked`, `colors`, and `labels`) are: a JavaScript `Date` object (e.g. `new Date(2020, 4, 19, 7)`), an ISO 8601 string (e.g. `'2020-05-20T07:00:00'`), and a Moment.js object (e.g. `moment([2020, 4, 21, 7])`). Initialize each calendar's `data` with one event using the format that calendar demonstrates.
-- Set `selectedDate` on each calendar to the initial event's date (in the same format) so the calendar opens on the correct month. When the "Add event" button is clicked, append a new event in the same format and update `selectedDate` to navigate to it. JS/jQuery: call `calendar.addEvent(newEvent)` then `calendar.navigate(date)` imperatively.
+- Set `selectedDate` on each calendar to the initial event's date (in the same format) so the calendar opens on the correct month. To add an event programmatically: append a new event in the same format and update `selectedDate` to navigate to it, or (imperative API) call `calendar.addEvent(newEvent)` then `calendar.navigate(date)`.
 
 ## What this demo shows
 

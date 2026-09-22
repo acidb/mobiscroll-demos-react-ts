@@ -19,7 +19,7 @@ You can also see how every example looks by changing the theme from the header.
 - Set `theme` to `'ios'`, `'material'`, `'windows'`, or `'auto'` (platform-based) to pick the base theme.
 - Set `themeVariant` to `'light'`, `'dark'`, or `'auto'` (system-setting-based) to switch the variant within the chosen base theme.
 - Update either at runtime via `setOptions({ theme })` / `setOptions({ themeVariant })` on the instance.
-- For a custom/branded theme, register a custom theme name (built on top of a base theme's CSS custom properties/Sass variables) and pass that custom name as `theme` instead of one of the three built-ins — this demo's "custom theme" toggle swaps in such a custom-named theme instead of the base `'ios'`/`'material'`/`'windows'` value.
+- For a custom/branded theme, register a custom theme name (built on top of a base theme's CSS custom properties/Sass variables) and pass that custom name as `theme` instead of one of the three built-ins.
 
 ## What this demo shows
 

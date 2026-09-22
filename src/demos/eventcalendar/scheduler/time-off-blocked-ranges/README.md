@@ -43,7 +43,7 @@ If you're interested in invalids for a given range (including recurring occurren
   - Lunch break: `{ start: '12:00', end: '13:00', title: 'Lunch break', recurring: { repeat: 'weekly', weekDays: 'MO,TU,WE,TH,FR' } }`
   - Before-hours: `{ start: '00:00', end: '08:00', recurring: { repeat: 'weekly', weekDays: 'MO,TU,WE,TH,FR' } }`
   - After-hours: `{ start: '17:00', end: '23:59', recurring: { repeat: 'weekly', weekDays: 'MO,TU,WE,TH,FR' } }`
-- On `onEventCreateFailed`, show a toast: "Can't create event on this date". On `onEventUpdateFailed`, show a toast: "Can't add event on this date".
+- `onEventCreateFailed` fires when a create is blocked by an invalid range; `onEventUpdateFailed` fires when a move/resize is blocked.
 
 ## What this demo shows
 

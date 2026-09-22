@@ -17,7 +17,7 @@ Besides printing, PDF export is possible through the print dialog of the browser
 - Import `print` from `@mobiscroll/print` and pass it to the `modules` option as an array; JS/jQuery: assign `mobiscroll.print = print` first, then pass `modules: [mobiscroll.print]`. The print add-on is a separate package, not included in the trial.
 - Use `view: { scheduler: { type: 'week' } }`. JS uses `type: 'day'` instead.
 - Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. For the imperative API, call `inst.setEvents(events)` in the callback. jQuery: use `$.getJSON('https://trial.mobiscroll.com/events/?vers=5&callback=?', callback)`. Vue: loads from `https://trial.mobiscroll.com/work-events/` instead.
-- Render a "Print scheduler" button above the calendar. On click, call `inst.print()` — this extracts only the calendar markup, places it in a temporary page, and triggers the browser's print dialog. The same dialog supports PDF export.
+- Calling `inst.print()` extracts only the calendar markup, places it in a temporary page, and triggers the browser's print dialog. The same dialog supports PDF export.
 
 ## What this demo shows
 

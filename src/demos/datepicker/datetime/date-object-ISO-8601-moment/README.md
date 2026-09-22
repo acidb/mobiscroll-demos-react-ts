@@ -14,10 +14,10 @@ When passing dates to the component - eg. [invalids](https://demo.mobiscroll.com
 
 ## Implementation instructions
 
-- Use `controls: ['date']` and `display: 'inline'` on a single `Datepicker`; the three example buttons each call `setVal(...)` on that same instance rather than mounting separate pickers.
-- **JS date object** `Set JS date object` calls `setVal(new Date(2020, 10, 15, 10, 45), ...)` — pairing this with `returnFormat: 'jsdate'` (React/Vue/Angular/JS/jQuery all use the same `returnFormat` option name) makes `getVal()`/the bound value return a `Date` object.
-- **ISO date string** `Set ISO string` calls `setVal('2020-05-20T12:30:00', ...)` with `returnFormat: 'iso8601'`, returning the value as an ISO 8601 string; the string must be passed to `setVal`/the model as a string, not passed through `new Date()` first.
-- **Moment.js object** `Set moment.js object` calls `setVal(moment([2020, 2, 6, 15, 30]), ...)`. Note: the JS/jQuery init snippet sets `returnFormat: 'moment'`, but the on-page button handler (`dateTypeDate.setVal(new Date(2020, 2, 6, 15, 30), ...)`) actually passes a plain `Date`, not a `moment()` instance — a static-demo inconsistency; describe the option and framework snippets (which correctly use `moment([...])`) rather than that button wiring quirk.
+- Use `controls: ['date']` and `display: 'inline'` on a single `Datepicker`; call `setVal(...)` on that instance to programmatically navigate to a date in any of the supported formats.
+- **JS date object** Calling `setVal(new Date(2020, 10, 15, 10, 45), ...)` combined with `returnFormat: 'jsdate'` (React/Vue/Angular/JS/jQuery all use the same `returnFormat` option name) makes `getVal()`/the bound value return a `Date` object.
+- **ISO date string** Calling `setVal('2020-05-20T12:30:00', ...)` with `returnFormat: 'iso8601'` returns the value as an ISO 8601 string; the string must be passed to `setVal`/the model as a string, not passed through `new Date()` first.
+- **Moment.js object** Calling `setVal(moment([2020, 2, 6, 15, 30]), ...)` together with `returnFormat: 'moment'` makes `getVal()`/the bound value return a Moment.js object.
 - React binds via `value`/`onChange` (`ev.value`) with `useState`; Angular/Vue use `[(ngModel)]="date"` / `v-model="date"` two-way binding; JS uses `cal.setVal(...)`/`cal.getVal()`; jQuery uses `$('#cal').mobiscroll('setVal', ...)`/`.mobiscroll('getVal')`.
 - `returnFormat` only controls the shape of the value handed back to the app — it does not change what input formats the picker accepts; dates, ISO strings, and Moment objects can all be passed in regardless of the configured `returnFormat`.
 

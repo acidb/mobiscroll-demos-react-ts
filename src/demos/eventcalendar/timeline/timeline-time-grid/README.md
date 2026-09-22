@@ -23,7 +23,7 @@ You can switch between the two modes by dynamically setting the event calendar o
 - Use `timeline: { type: 'week' }` under the `view` option to render a weekly horizontal timeline with one column per day and one row per resource.
 - Define a `resources` array where each entry has an `id`, a `name`, and a `color`. The color tints all event blocks for that resource row.
 - Load events asynchronously using `getJson` from the Mobiscroll utility (or any equivalent fetch helper) and pass the result to the `data` prop. Each event needs a `resource` id, a `start`, an `end`, and a `title`.
-- To switch to a time-grid layout, replace `timeline: { type: 'week' }` with `schedule: { type: 'week' }` in the view config — resources switch from vertical rows to horizontal columns and time flows vertically. This can be toggled at runtime by updating the `view` prop, for example from an external segmented control bound to a state variable.
+- To switch to a time-grid layout, replace `timeline: { type: 'week' }` with `schedule: { type: 'week' }` in the view config — resources switch from vertical rows to horizontal columns and time flows vertically. This can be toggled at runtime by updating the `view` prop/option.
 
 ## What this demo shows
 

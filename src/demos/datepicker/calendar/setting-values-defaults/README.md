@@ -10,7 +10,7 @@ Values can change in a couple of different ways: through defaults, interacting w
 
 - Use `controls: ['calendar']`. Without any value option set, the picker defaults to today.
 - Set `defaultSelection` to a `Date`/date string to change the initial value shown before the user makes a selection (e.g. `defaultSelection: new Date(2020, 11, 24)`).
-- Update the value from outside the picker (e.g. a shortcut button): in React, set the `value` prop from component state; in Angular/Vue, assign to the `[(ngModel)]`/`v-model`-bound variable; in JS/jQuery, call `instance.setVal(date)` imperatively on the picker instance.
+- The value can be updated programmatically from outside the picker: in React, set the `value` prop from component state; in Angular/Vue, assign to the `[(ngModel)]`/`v-model`-bound variable; in JS/jQuery, call `instance.setVal(date)` imperatively on the picker instance.
 - Customize the footer with `buttons`, an array mixing custom button objects (`{ text: 'Now', handler: function () { inst.setVal(new Date()); inst.close(); } }`) with built-in string tokens — the predefined tokens are `'ok'`, `'set'`, `'cancel'`, and `'close'` (default `['set', 'cancel']`) — a custom button's `handler` can also be one of these strings as shorthand instead of a function, e.g. `handler: 'cancel'` to just close the picker.
 - A `buttons` array containing only a single close-style button (e.g. `[{ text: 'Close', handler: 'cancel' }]`, or the built-in `['close']` token alone) effectively auto-confirms the picker's live selection without a separate "Set" step, since there's no button left to discard the change.
 

@@ -16,8 +16,7 @@ You can also see how every example looks by changing the theme from the header.
 ## Implementation instructions
 
 - Use `view: { agenda: { type: 'month' } }`. Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. Angular: use `HttpClient.jsonp()`. For the imperative API, call `inst.setEvents(events)` in the callback.
-- Add two `Dropdown` controls (both with `inputStyle: 'box'`, `labelStyle: 'stacked'`): one for **Theme** (options: `auto`, `ios`, `material`, `windows`) and one for **Theme variant** (options: `auto`, `light`, `dark`). Pass the selected values to the Eventcalendar's `theme` and `themeVariant` options. For the imperative API, call `inst.setOptions({ theme })` and `inst.setOptions({ themeVariant })` on each dropdown change.
-- Wrap the layout in a `Page` component as a flex column: a `mbsc-grid` row at the top holds the two dropdowns side by side (each `mbsc-col-sm-6`), and the Eventcalendar fills the remaining height (`mbsc-flex-1-1`).
+- `theme` accepts `auto`, `ios`, `material`, `windows`. `themeVariant` accepts `auto`, `light`, `dark`. Both can be changed at runtime via `inst.setOptions({ theme })` / `inst.setOptions({ themeVariant })`.
 
 ## What this demo shows
 

@@ -16,8 +16,8 @@ When using resources, the defined width is applied to resource columns. If no re
 - Define 6 resources, each with `id`, `name`, and `color`. Set `groupBy: 'date'` so columns are days and rows are resources.
 - Maintain two event datasets using `dyndatetime` offsets: one with `resource` references (for resource mode) and one without (for no-resource mode).
 - **Column width**: Set the column width by applying a scoped CSS rule targeting Mobiscroll's internal `.mbsc-schedule-col-width` class. Pass a `cssClass` to the Eventcalendar to scope the rule — swapping the `cssClass` value dynamically switches between width presets. When resources are active, `.mbsc-schedule-col-width` controls resource column width; without resources, it controls day column width.
-- **Width switcher**: Render a `SegmentedGroup` with three width options above the calendar. On selection, update the Eventcalendar's `cssClass` to the matching preset; for the imperative API, call `inst.setOptions({ cssClass: ... })` followed by `inst.navigate(new Date())` to re-render at the current date.
-- **Resource toggle**: Render a second `SegmentedGroup` to switch between "With resources" and "Without resources" modes. On selection, update both `resources` and `data` on the Eventcalendar simultaneously.
+- The `cssClass` option can be swapped at runtime to switch between column-width presets; for the imperative API, call `inst.setOptions({ cssClass: ... })` followed by `inst.navigate(new Date())` to re-render at the current date.
+- Toggling between resource and no-resource modes requires updating both the `resources` and `data` options on the Eventcalendar simultaneously.
 
 ## What this demo shows
 

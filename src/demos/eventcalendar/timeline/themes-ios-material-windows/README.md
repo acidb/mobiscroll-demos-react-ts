@@ -19,10 +19,7 @@ You can also see how every example looks by changing the theme from the header.
 - Define 6 resources, each with `id`, `name`, and `color`.
 - Load events from `https://trial.mobiscroll.com/timeline-events/` via JSONP using `getJson(url, callback, 'jsonp')`. In the callback, call `inst.setEvents(events)` for the imperative API.
 - Pass `theme` and `themeVariant` as props to the `Eventcalendar`. Both default to `'auto'` — `theme: 'auto'` lets Mobiscroll pick the theme based on the platform, and `themeVariant: 'auto'` follows the OS light/dark preference.
-- **Theme switcher UI** — render two `Dropdown` components (Mobiscroll's `Dropdown`) above the calendar, using a Mobiscroll grid layout (`mbsc-grid` / `mbsc-row` / `mbsc-col-sm-6`):
-  - "Theme" dropdown with options: `auto`, `ios`, `material`, `windows`
-  - "Theme variant" dropdown with options: `auto`, `light`, `dark`
-  - For the imperative API, attach `change` listeners to the select elements and call `inst.setOptions({ theme: value })` / `inst.setOptions({ themeVariant: value })` on each change.
+- `theme` accepts `'auto'`, `'ios'`, `'material'`, or `'windows'`; `themeVariant` accepts `'auto'`, `'light'`, or `'dark'`. Both can be changed at runtime: declaratively by updating the `theme`/`themeVariant` prop, or imperatively via `inst.setOptions({ theme: value })` / `inst.setOptions({ themeVariant: value })`.
 - Wrap the whole page in a Mobiscroll `Page` component. Use a flex column layout (`mbsc-flex-col`) so the dropdowns sit above the calendar and the calendar fills the remaining height (`mbsc-flex-1-1`).
 - Add a `.mds-full-height { height: 100%; }` CSS rule to make the page and calendar fill the available viewport height.
 

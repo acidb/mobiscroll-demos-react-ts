@@ -11,7 +11,7 @@ The agenda can work with **Javascript date objects, ISO strings** and **Moment.j
 ## Implementation instructions
 
 - Use `view: { agenda: { type: 'month' } }`. Render three Eventcalendar instances side by side in a `Page` + grid layout, each demonstrating a different date format: JavaScript `Date` object (e.g. `new Date(2020, 4, 19, 7)`), ISO 8601 string (e.g. `'2020-05-20T07:00:00'`), and Moment.js object (e.g. `moment([2020, 4, 21, 7])`). Each instance is pre-seeded with one event using its respective format and navigated to its date on init.
-- Above each calendar place a Button displaying the date format syntax. On click, add a new event in the same format and navigate to that date. For the imperative API, call `inst.addEvent(event)` and `inst.navigate(date)` instead of updating `selectedDate`.
+- Adding an event programmatically: call `addEvent(event)` (or update the `data` array) with the event in the target date format, then navigate to it via `navigate(date)` (or update `selectedDate`).
 
 ## What this demo shows
 

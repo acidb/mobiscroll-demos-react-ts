@@ -14,10 +14,10 @@ When passing dates to the component - eg. [invalids](https://demo.mobiscroll.com
 
 ## Implementation instructions
 
-- Use `controls: ['calendar']` and `display: 'inline'` — a single calendar instance, not one per format; the three code examples and buttons alongside it just drive that one instance.
+- Use `controls: ['calendar']` and `display: 'inline'` — a single calendar instance is used across all return-format examples, not one per format.
 - Set `returnFormat` to control the type the picker's value is read as and accepts: `'jsdate'` (native JS `Date`), `'iso8601'` (ISO date string, e.g. `'2020-05-20T12:30:00'`), or `'moment'` (a Moment.js object).
-- JS/jQuery: keep the datepicker instance in a variable and call `setVal(value, true)` on it from each example button's click handler, with `value` in the corresponding format (e.g. `new Date(2020, 10, 15, 10, 45)`, `'2020-05-20T12:30:00'`, or `moment([2018, 3, 27, 12, 15])`), animating the calendar to the target date; read the current value back with `getVal()` (call `.format()` on it for the moment instance).
-- React: manage the value in state (`useState`) and pass it via `value`/`onChange`, calling `setValue(...)` in the corresponding format instead of an imperative `setVal`. Angular/Vue: bind the value with `[(ngModel)]`/`v-model` and assign the corresponding format directly to the bound variable in each button's click handler.
+- JS/jQuery: keep the datepicker instance in a variable and call `setVal(value, true)` on it, with `value` in the corresponding format (e.g. `new Date(2020, 10, 15, 10, 45)`, `'2020-05-20T12:30:00'`, or `moment([2018, 3, 27, 12, 15])`), animating the calendar to the target date; read the current value back with `getVal()` (call `.format()` on it for the moment instance).
+- React: manage the value in state (`useState`) and pass it via `value`/`onChange`, calling `setValue(...)` in the corresponding format instead of an imperative `setVal`. Angular/Vue: bind the value with `[(ngModel)]`/`v-model` and assign the corresponding format directly to the bound variable.
 
 ## What this demo shows
 

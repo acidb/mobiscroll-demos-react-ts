@@ -34,7 +34,7 @@ The event data structure for the timeline is straightforward with a couple of ba
 - Use `timeline: { type: 'day' }` — a single-day view.
 - Define 5 resources (A–E) with distinct colors: yellow `#fdf500`, red `#ff0101`, blue `#01adff`, green `#239a21`, orange `#ff4600`.
 - Start with one pre-loaded event on Resource B demonstrating `bufferBefore: 20` and `bufferAfter: 30`. The buffer zones render as shaded areas before the event start and after the event end, visualising preparation/wrap-up time in minutes.
-- Add a button outside the calendar that programmatically adds a second event on Resource D combining base event properties with custom fields (`bufferBefore`, `bufferAfter`, `busy`, `description`, `location`). After adding, call `calInst.navigateToEvent(newEvent)` to scroll the calendar to the new event, then show a `Toast` "Event added". Use `calendar.addEvent(newEvent)` for the imperative API.
+- A second event can be added programmatically on Resource D combining base event properties with custom fields (`bufferBefore`, `bufferAfter`, `busy`, `description`, `location`). Use `calendar.addEvent(newEvent)` (imperative API) to add it, and `calInst.navigateToEvent(newEvent)` to scroll the calendar to the newly added event.
 
 ## What this demo shows
 

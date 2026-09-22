@@ -21,8 +21,8 @@ While users interact with the UI events like `onEventClick`, `onInit`, `onSelect
 - Load events from `https://trial.mobiscroll.com/timeline-events/` via JSONP using `getJson(url, callback, 'jsonp')`. Call `inst.setEvents(events)` for the imperative API.
 - Add an `invalid` entry blocking 12:00–13:00 recurring on weekdays (`weekDays: 'MO,TU,WE,TH,FR'`).
 - Enable all interactions: `dragToCreate: true`, `dragToMove: true`, `dragToResize: true`, `externalDrop: true`, `externalResourceDrop: true`.
-- **External draggables** — render 3 styled cards outside the calendar, each registered as a Mobiscroll draggable:
-  - Two event draggables with `dragData: { title, color }` — when dropped onto the calendar, they create new events.
+- **External draggables** — elements outside the calendar can be registered as Mobiscroll draggables:
+  - Event draggables with `dragData: { title, color }` — when dropped onto the calendar, they create new events.
   - One resource draggable with `dragData: { name, color }` and `type="resource"` — when dropped onto the resource column, it creates a new resource row.
   - For the imperative API: use `mbsc-draggable` attribute with `data-drag-data` (JSON string) and `data-type="resource"` on the third card. For component frameworks, use the `Draggable` / `MbscDraggable` component with `dragData` and `type` props.
 - **All lifecycle hooks** — register every available hook as an empty handler to catalog them. The handlers contain no logic; the purpose of the demo is to show what hooks exist. Group them by concern:

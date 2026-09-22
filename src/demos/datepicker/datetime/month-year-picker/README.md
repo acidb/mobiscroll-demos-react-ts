@@ -21,7 +21,7 @@ This and even more can be done with the `dateWheels` setting.
 - `min` is set to the current date (`now`) and `max` to ten years out, computed as `new Date(now.getFullYear() + 10, now.getMonth())` — both are dynamically calculated, not fixed dates.
 - The input's initial displayed value (`12/2025`) is set as a static `value`, not derived from `min`/`max` or bound to a variable.
 - The raw JS/jQuery init also sets `minWidth: 100` on the picker for layout sizing; this option is omitted from the per-framework code snippets shown to visitors but is present in the actual demo config.
-- All framework snippets also expose a `touchUi` value that tracks a shared mobile/desktop view toggle for the demo.
+- `touchUi` (true by default on touch devices) determines whether the picker renders as scroller wheels (`true`) or dropdowns/desktop rendering (`false`).
 
 ## What this demo shows
 

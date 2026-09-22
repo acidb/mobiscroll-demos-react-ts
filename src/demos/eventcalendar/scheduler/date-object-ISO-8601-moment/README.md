@@ -11,9 +11,9 @@ The scheduler can work with **Javascript date objects, ISO strings** and **Momen
 ## Implementation instructions
 
 - Render three separate `Eventcalendar` instances side by side in a 3-column grid. Use `view: { scheduler: { type: 'week' } }` for all three.
-- **Column 1 — JavaScript `Date` object**: pre-load one event using `new Date(2020, 4, 19, 7)` start and `new Date(2020, 4, 19, 8)` end. Navigate to `new Date(2020, 4, 19)` on init. A button adds a second event using `new Date(...)` format, then navigates.
-- **Column 2 — ISO 8601 string**: pre-load one event with `'2020-05-20T07:00:00'` start and `'2020-05-20T08:00:00'` end. Navigate to `'2020-05-20'` on init. A button adds a second event using ISO strings, then navigates.
-- **Column 3 — Moment.js object**: import `moment`; pre-load one event using `moment([2020, 4, 21, 7])` and `moment([2020, 4, 21, 8])`. Navigate to `moment([2020, 4, 21])` on init. A button adds a second event using moment objects.
+- **JavaScript `Date` object**: pre-load one event using `new Date(2020, 4, 19, 7)` start and `new Date(2020, 4, 19, 8)` end. Navigate to `new Date(2020, 4, 19)` on init. A second event can be added using the `new Date(...)` format, followed by navigation to it.
+- **ISO 8601 string**: pre-load one event with `'2020-05-20T07:00:00'` start and `'2020-05-20T08:00:00'` end. Navigate to `'2020-05-20'` on init. A second event can be added using ISO strings, followed by navigation to it.
+- **Moment.js object**: import `moment`; pre-load one event using `moment([2020, 4, 21, 7])` and `moment([2020, 4, 21, 8])`. Navigate to `moment([2020, 4, 21])` on init. A second event can be added using moment objects, followed by navigation to it.
 - **Navigation**: bind `selectedDate` to a state variable using the same date format as that column; for the imperative API, call `inst.navigate(date)` with the matching format.
 - The key insight: `start`, `end`, `selectedDate`, and `.navigate()` all accept Date objects, ISO strings, and Moment objects interchangeably.
 

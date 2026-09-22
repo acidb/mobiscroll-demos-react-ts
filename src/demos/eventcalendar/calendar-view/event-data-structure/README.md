@@ -31,7 +31,7 @@ The event data structure for the calendar is straightforward with a couple of ba
 
 - Set `view: { calendar: { labels: true } }`. Initialize `data` with one event for today's date to show the calendar populated on load.
 - An event object requires at minimum a `start` value; `title`, `color`, and `end` are the most commonly used display properties. Beyond the built-in properties, any custom field (e.g. `busy`, `description`, `location`) can be added to the event object — Mobiscroll passes custom fields through transparently so they remain accessible in event handlers and templates.
-- Render an "Add event to calendar" button outside the calendar. When clicked, construct a new event object with base and custom properties, append it to `data`, call `navigateToEvent(newEvent)` on the calendar instance to jump to the event's date, and show a `Toast` with `'Event added'`. Vue: access the calendar instance via `calInst.value.instance`. Angular: use `@ViewChild` to access the `MbscEventcalendar` instance and the `Notifications` service for the toast. JS/jQuery: call `calendar.addEvent(newEvent)` then `calendar.navigateToEvent(newEvent)` imperatively.
+- To add an event and jump to it: construct a new event object with base and custom properties, append it to `data`, then call `navigateToEvent(newEvent)` on the calendar instance to jump to the event's date. Vue: access the calendar instance via `calInst.value.instance`. Angular: use `@ViewChild` to access the `MbscEventcalendar` instance. JS/jQuery (imperative API): call `calendar.addEvent(newEvent)` then `calendar.navigateToEvent(newEvent)`.
 
 ## What this demo shows
 

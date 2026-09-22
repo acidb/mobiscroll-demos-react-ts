@@ -24,8 +24,8 @@ You can change the `timeFormat` or rely on the formats coming from the [locale s
 
 ## Implementation instructions
 
-- Four separate input-bound picker instances share one `controls` value, driven by a single segmented control (`Time list` / `Time grid`) above them.
-- Each instance is created with `controls: ['time']` (time list by default); the segmented control's `change` handler calls `setOptions({ controls: [control] })` on all four instances at once, swapping every one to `controls: ['timegrid']` when `Time grid` is selected — this is a shared live toggle, not four independent pickers.
+- Four separate input-bound picker instances can share one `controls` value, switchable at runtime between `['time']` and `['timegrid']`.
+- Each instance is created with `controls: ['time']` (time list) by default; `controls` can be updated on multiple instances at once via `setOptions({ controls: [control] })`, e.g. swapping every instance to `controls: ['timegrid']`.
 - **Default time picker**: `controls: ['time']` with no `timeFormat` override — uses the locale's default hour/minute/AM-PM format.
 - **24-hour time picker**: `controls: ['time'], timeFormat: 'H:mm'` — hour and minute wheels only, no AM/PM.
 - **12-hour time picker**: `controls: ['time'], timeFormat: 'h:mm A'` — hour, minute, and AM/PM wheels.

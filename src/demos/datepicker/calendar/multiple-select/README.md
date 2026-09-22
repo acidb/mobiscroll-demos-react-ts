@@ -15,12 +15,12 @@ Dynamically switching between single, multiple or range select can be done with 
 ## Implementation instructions
 
 - Use `controls: ['calendar']`, `display: 'inline'`, and `selectMultiple: true` to allow selecting more than one date.
-- A single `Datepicker` instance is used; a control panel of switches updates its options at runtime rather than switching between separate pre-configured instances.
+- Options below can be updated at runtime via `setOptions` on a single instance.
 - Set `defaultSelection` to an array of `Date` objects to pre-select dates on load (this demo pre-selects the 4th, 15th, and 27th of the current month).
-- A "Select a maximum of N days" switch (off by default, `N` defaulting to `10` in its paired input) sets `selectMax` to a number to cap how many dates can be selected at once — once the cap is reached, further clicks stop adding new dates until one is deselected.
-- A "Show a selection counter in the header" switch (on by default) sets `selectCounter: true` to show a "N selected" style counter in the calendar header.
-- A "Show ... in the header" switch (off by default, its paired input defaulting to `'Pick up to 5 days'`) sets `headerText` to a custom string to show fixed instructional text in the header instead of a live counter.
-- The counter and header-text switches are mutually exclusive — enabling one turns the other off, since `selectCounter` and `headerText` both occupy the same header area.
+- `selectMax` can be set to a number (e.g. `10`) to cap how many dates can be selected at once — once the cap is reached, further clicks stop adding new dates until one is deselected. Unset by default (no cap).
+- `selectCounter: true` shows a "N selected" style counter in the calendar header.
+- `headerText` can be set to a custom string (e.g. `'Pick up to 5 days'`) to show fixed instructional text in the header instead of a live counter.
+- `selectCounter` and `headerText` both occupy the same header area, so typically only one is set at a time.
 
 ## What this demo shows
 

@@ -25,7 +25,7 @@ Give feedback to the user - optionally, a toast can be displayed to explain why 
 - Define 4 resources. Resource 4 has `eventOverlap: false` — no event on this resource may overlap with another, regardless of per-event settings.
 - Add 6 events for today using `new Date(y, m, d, hour)`. Two events carry `overlap: false` (on Resources 1 and 2); the rest can overlap freely unless their resource blocks it.
 - Enable all interactions: `clickToCreate: true`, `dragToCreate: true`, `dragToMove: true`, `dragToResize: true`.
-- Handle both `onEventCreateFailed` and `onEventUpdateFailed` with the same function — show a `Toast` with `'Make sure not to double book'`. The calendar automatically rejects and reverts the action.
+- Handle both `onEventCreateFailed` and `onEventUpdateFailed` to react to a blocked overlap. The calendar automatically rejects and reverts the action.
 - **Precedence**: per-event `overlap: false` and per-resource `eventOverlap: false` both override the global `eventOverlap` option.
 
 ## What this demo shows

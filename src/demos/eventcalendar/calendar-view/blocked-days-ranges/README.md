@@ -31,7 +31,7 @@ If you're interested in invalids for a given range (including recurring occurren
 - Set `view: { calendar: { labels: true } }`. Enable `dragToCreate: true`, `dragToMove: true`, and `dragToResize: true` so users can create and edit events interactively.
 - Pass an `invalid` array to block days. Use a recurring rule for recurring days — for example weekends: `{ recurring: { repeat: 'weekly', weekDays: 'SA,SU' } }`. Block specific date ranges with `{ allDay: true, start: '...', end: '...' }`.
 - Set `invalidateEvent` to control how strictly events interact with invalid ranges: `'strict'` (the default) blocks any overlap with an invalid range; `'start-end'` allows overlap but prevents the event start or end from landing on an invalid range.
-- Handle `onEventCreateFailed` and `onEventUpdateFailed` (Vue: `@event-create-failed`, `@event-update-failed`) to show a `Toast` when Mobiscroll blocks a creation or move due to an invalid date.
+- `onEventCreateFailed` and `onEventUpdateFailed` (Vue: `@event-create-failed`, `@event-update-failed`) fire when Mobiscroll blocks a creation or move due to an invalid date.
 - Load events from a remote endpoint using `getJson` and assign them to `data`; for the imperative API, call `inst.setEvents(events)` in the callback.
 
 ## What this demo shows

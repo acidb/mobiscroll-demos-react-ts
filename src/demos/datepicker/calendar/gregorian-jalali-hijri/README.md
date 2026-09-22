@@ -18,7 +18,7 @@ The date picker supports multiple calendar systems. You can control it with the 
 
 ## Implementation instructions
 
-- Use `controls: ['calendar']` and `display: 'inline'` on a single inline `Datepicker`. A segmented control (`Gregorian` / `Jalali` / `Hijri`) drives which calendar system is active by calling `setOptions({ calendarSystem, locale })` on change — this is a live switcher on one picker, not three separate pickers side by side.
+- Use `controls: ['calendar']` and `display: 'inline'`. `calendarSystem` and `locale` can be updated together at runtime via `setOptions({ calendarSystem, locale })` to switch which calendar system is active on a single picker instance.
 - The picker initializes with no `calendarSystem`/`locale` set, defaulting to Gregorian/English. Selecting `Jalali` sets `calendarSystem: jalaliCalendar` with `locale: localeFa`; selecting `Hijri` sets `calendarSystem: hijriCalendar` with `locale: localeAr`; selecting `Gregorian` again explicitly sets `calendarSystem: gregorianCalendar` with `locale: localeEn` — `gregorianCalendar` and `localeEn` are real exports/namespace members used to switch back, not options the API lacks.
 - React/Angular/Vue import `gregorianCalendar`, `jalaliCalendar`, `hijriCalendar`, `localeEn`, `localeFa`, `localeAr` as named exports from `@mobiscroll/react`/`@mobiscroll/angular`/`@mobiscroll/vue`; JS/jQuery reference them off the `mobiscroll` namespace (`mobiscroll.gregorianCalendar`, `mobiscroll.jalaliCalendar`, `mobiscroll.hijriCalendar`, `mobiscroll.locale.en`, `mobiscroll.locale.fa`, `mobiscroll.locale.ar`).
 - The `locale` supplies month/day names and RTL layout direction alongside the calendar system's date rules for the non-Gregorian systems.

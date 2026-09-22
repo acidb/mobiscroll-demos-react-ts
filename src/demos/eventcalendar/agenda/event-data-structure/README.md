@@ -27,7 +27,7 @@ The event data structure for the agenda is straightforward with a couple of base
 ## Implementation instructions
 
 - Use `view: { agenda: { type: 'month' } }`. Pre-seed the calendar with one event for today using standard fields: `title`, `color`, `start`, `end`.
-- Add an "Add event to calendar" Button. On click, create a new event object combining base Mobiscroll fields (`title`, `color`, `start`, `end`) with any custom application fields (e.g. `busy`, `description`, `location`), then add it to the events array. After adding, call `inst.navigateToEvent(newEvent)` to scroll the agenda to the new event. For the imperative API, call `inst.addEvent(newEvent)` before `inst.navigateToEvent(newEvent)`. Show a Toast on success.
+- An event object combines base Mobiscroll fields (`title`, `color`, `start`, `end`) with any custom application fields (e.g. `busy`, `description`, `location`). To add an event and scroll to it: add the object to the events array (or call `inst.addEvent(newEvent)`), then call `navigateToEvent(newEvent)` (or `inst.navigateToEvent(newEvent)`) to scroll the agenda to it.
 
 ## What this demo shows
 

@@ -22,7 +22,7 @@ Give feedback to the user - optionally, a toast can be displayed to explain why 
 
 - Set `view: { calendar: { type: 'month', labels: 'all' } }`. Enable `clickToCreate: true`, `dragToCreate: true`, `dragToMove: true`, and `dragToResize: true` so users can create and edit events interactively. Set `exclusiveEndDates: true` so that events touching at a boundary are not treated as overlapping.
 - Set `eventOverlap: false` on the calendar to prevent any two events from overlapping across the whole instance. To prevent a specific event from overlapping regardless of the global setting, set `overlap: false` directly on that event data object.
-- Handle `onEventCreateFailed` and `onEventUpdateFailed` (Vue: `@event-create-failed`, `@event-update-failed`) to show a `Toast` with `'Make sure not to double book'` whenever Mobiscroll blocks a creation or move due to an overlap violation.
+- `onEventCreateFailed` and `onEventUpdateFailed` (Vue: `@event-create-failed`, `@event-update-failed`) fire whenever Mobiscroll blocks a creation or move due to an overlap violation.
 
 ## What this demo shows
 

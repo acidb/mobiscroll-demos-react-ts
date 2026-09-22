@@ -27,7 +27,7 @@ The defaults change on a theme to theme basis. The `ios` theme comes with `botto
 - Use `controls: ['calendar']` with `display` set to `'inline'` (embedded, no popup), `'anchored'` (opens next to the input), `'top'` (modal entering from the top), `'bottom'` (modal entering from the bottom), or `'center'` (centered modal).
 - `'inline'` mode has no popup/modal semantics — it's always embedded directly in the page; the other four values all render as a popup relative to an associated input.
 - The four input-based examples set `label`, `labelStyle: 'stacked'`, `inputStyle: 'outline'`, and `placeholder` on the input to render a stacked-label, outline-style field; the `inline` example has no associated input.
-- All five examples' code snippets, across every framework, also expose a `touchUi` value that tracks a shared mobile/desktop view toggle for the demo.
+- `touchUi` can be set to control whether the picker renders in touch-optimized (mobile) or desktop mode.
 
 ## What this demo shows
 

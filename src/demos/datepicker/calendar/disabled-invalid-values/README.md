@@ -25,15 +25,15 @@ The passed date-times can also contain timezone data which requires a `timezoneP
 
 ## Implementation instructions
 
-- **Picker mode** A `mbsc-segmented-group` switches the single `Datepicker` instance between three modes by changing its `controls` value: Date (`controls: ['calendar']`), Time (`controls: ['time']`), and Date & time (`controls: ['calendar', 'time']`).
-- **Invalid vs. valid** A second `mbsc-segmented-group` toggles between building an `invalid` array (disable listed dates/times, everything else stays selectable) and a `valid` array (only the listed dates/times are selectable); only one of `invalid`/`valid` is ever set at a time — the other is passed as `undefined` in `setOptions`.
-- **Exact dates** In date mode, a multi-select anchored date picker (`select: 'multiple'`/`selectMultiple: true`) lets the user pick specific days, converted to an array of `'YYYY-MM-DD'` strings and merged into `invalid`/`valid`.
-- **Recurring dates** Checkboxes toggle recurring rules in/out of the array: weekends (`{ recurring: { repeat: 'weekly', weekDays: 'SA,SU' } }`) for invalid mode or weekdays (`{ recurring: { repeat: 'weekly', weekDays: 'MO,TU,WE,TH,FR' } }`) for valid mode, holidays as two yearly rules (`{ recurring: { repeat: 'yearly', day: 24, month: 12 } }`, `{ recurring: { repeat: 'yearly', day: 31, month: 12 } }`), and first/last of month (`{ recurring: { repeat: 'monthly', day: 1 } }`, `{ recurring: { repeat: 'monthly', day: -1 } }` — a negative `day` counts back from the end of the month).
-- **Date ranges** A `select: 'range'` anchored date picker produces a `{ start, end }` pair (formatted as `'YYYY-MM-DD'` strings) merged into the array.
-- **Exact times** In time mode, a comma-separated textarea of times (e.g. `'11:30, 14:30, 18:00, 22:00'`) is parsed and each entry becomes `{ start: time, end: time, recurring: { repeat: 'daily' } }`.
-- **Time ranges** A comma-separated textarea of `start - end` pairs (e.g. `'02:00 - 04:30'`) becomes `{ start, end, recurring: { repeat: 'daily' } }` entries.
-- **Exact datetimes and datetime ranges** In date & time mode, textareas accept full ISO 8601 datetime strings and `start - end` datetime pairs, producing `{ start, end }` objects with no `recurring` (or `{ start: time, end: time, recurring: { repeat: 'daily' } }` when only a time-of-day is given).
-- Every checkbox/textarea change rebuilds the array and calls `.setOptions({ invalid: [...] })` or `.setOptions({ valid: [...] })` on the calendar instance so the picker and the displayed code snippet stay in sync.
+- `controls` can be set to `['calendar']` (Date), `['time']` (Time), or `['calendar', 'time']` (Date & time) to switch the single `Datepicker` instance between three modes.
+- Only one of `invalid` (disables the listed dates/times, everything else stays selectable) or `valid` (only the listed dates/times are selectable) is set at a time — the other is passed as `undefined` via `setOptions`.
+- Specific days can be added to `invalid`/`valid` as an array of `'YYYY-MM-DD'` date strings.
+- Recurring rules can be added to `invalid`/`valid`, e.g. weekends (`{ recurring: { repeat: 'weekly', weekDays: 'SA,SU' } }`), weekdays (`{ recurring: { repeat: 'weekly', weekDays: 'MO,TU,WE,TH,FR' } }`), holidays as yearly rules (`{ recurring: { repeat: 'yearly', day: 24, month: 12 } }`, `{ recurring: { repeat: 'yearly', day: 31, month: 12 } }`), and first/last of month (`{ recurring: { repeat: 'monthly', day: 1 } }`, `{ recurring: { repeat: 'monthly', day: -1 } }` — a negative `day` counts back from the end of the month).
+- A `{ start, end }` range (formatted as `'YYYY-MM-DD'` strings, via `select: 'range'`) can also be added to `invalid`/`valid`.
+- Exact times can be added to `invalid`/`valid` as `{ start: time, end: time, recurring: { repeat: 'daily' } }` entries.
+- Time ranges can be added to `invalid`/`valid` as `{ start, end, recurring: { repeat: 'daily' } }` entries.
+- In date & time mode, full ISO 8601 datetime strings and `start - end` datetime pairs produce `{ start, end }` objects with no `recurring` (or `{ start: time, end: time, recurring: { repeat: 'daily' } }` when only a time-of-day is given).
+- Changes are applied by calling `.setOptions({ invalid: [...] })` or `.setOptions({ valid: [...] })` on the calendar instance.
 - Dates/times covered by `invalid` render disabled and cannot be selected; when `valid` is set, only the listed dates/times remain selectable.
 
 ## What this demo shows

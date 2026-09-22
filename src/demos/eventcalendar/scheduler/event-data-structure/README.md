@@ -34,7 +34,7 @@ For example travel time after meetings/appointments, check out after flights, in
 
 - Use `view: { scheduler: { type: 'day' } }`.
 - Pre-load one event with `bufferBefore: 20` and `bufferAfter: 30` (values in minutes). The buffer zones render as shaded areas before the event start and after the event end.
-- Add a button outside the calendar. On click, build a new event with base properties (`title`, `color`, `start`, `end`, `bufferBefore: 20`, `bufferAfter: 30`) and custom fields (`busy: true`, `description`, `location`). Add the event to the events array; for the imperative API, call `inst.addEvent(newEvent)`. Call `inst.navigateToEvent(newEvent)` to scroll the view to the new event, then show a `Toast`.
+- A new event can be built with base properties (`title`, `color`, `start`, `end`, `bufferBefore: 20`, `bufferAfter: 30`) and custom fields (`busy: true`, `description`, `location`), then added to the events array; for the imperative API, call `inst.addEvent(newEvent)`. Call `inst.navigateToEvent(newEvent)` to scroll the view to the new event.
 
 ## What this demo shows
 

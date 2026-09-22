@@ -13,7 +13,7 @@ You can dynamically change the number of months or [switch between month and wee
 
 - Use `controls: ['calendar']`, `calendarType: 'month'`, and `display: 'inline'`.
 - Set `pages` to a number (`1`, `2`, `3`, ...) to show that many months side by side, or to `'auto'` to have the calendar fill the available container width with as many months as fit.
-- A single `Datepicker` instance is used; a segmented control (One month / Two months / 3 months / Auto) updates that instance's `pages` value at runtime via an option update rather than switching between separate pre-configured instances, and the surrounding container is resized to match.
+- `pages` can be updated at runtime via an option update on a single instance.
 
 ## What this demo shows
 
