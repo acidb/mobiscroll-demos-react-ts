@@ -16,6 +16,18 @@ Play around and combine different [input types with various label positions](htt
 
 While Mobiscroll doesn't provide built-in validation, it provides styling for error messages, disabled fields, labels and more. See how the fields look in different themes by changing it dynamically from the floating action bar on the right.
 
+## Implementation instructions
+
+- `Input`, `Textarea`, and `Dropdown` all accept `label` (React/Vue prop, Angular `label` attribute, JS/jQuery `data-label` attribute) and `startIcon`/`endIcon` (JS/jQuery `data-start-icon`/`data-end-icon`) for left/right icons.
+- Password fields use `type="password"` plus `passwordToggle` to add a show/hide toggle icon: React `passwordToggle={true}`, Vue `:passwordToggle="true"`, Angular `[passwordToggle]="true"`, JS/jQuery `data-password-toggle="true"`.
+- Disabled state: React `disabled={true}`, Vue `:disabled="true"`, Angular `[disabled]="true"`, JS/jQuery the bare `disabled` attribute — supported on `Input`, `Textarea`, and `Dropdown`.
+- Error state and message: React `error={true} errorMessage="Error message!"`, Vue `:error="true" errorMessage="Error message!"`, Angular `[error]="true" [errorMessage]="errorMessage"`, JS/jQuery `data-error="true" data-error-message="Error message!"` — supported on `Input`, `Textarea`, and `Dropdown`.
+- File upload is an `Input` with `type="file"` (no separate file-upload component).
+- Numeric entry is an `Input` with `type="number"`, rendering the browser's native increment/decrement controls.
+- Native date entry is an `Input` with `type="date"`, rendering the browser's own date control.
+- The calendar-picker date field and the scroller date field are both a `Datepicker` bound to a text input: `controls: ['calendar']` opens a month-view calendar, `controls: ['date']` opens scroller wheels instead. In JS/jQuery this is `$(el).mobiscroll().datepicker({ controls: [...] })`; the demo also sets `display: 'anchored', touchUi: false` so the picker opens as a desktop-anchored popup rather than a full-screen touch picker.
+- Native select uses `<select mbsc-dropdown>`/`Dropdown` with `<option>` children; it supports the same `label`, `startIcon`/`endIcon`, `disabled`, and `error`/`errorMessage` options as `Input`. Angular additionally binds the selected value with `[(ngModel)]` on the `mbsc-dropdown`.
+
 ## What this demo shows
 
 - This demo shows text inputs, text areas, date fields, selects, file uploads, and numeric inputs in a single form.

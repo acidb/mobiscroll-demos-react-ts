@@ -21,6 +21,14 @@ Use presets with pre-defined colors on top of the theme colors. Every theme ship
 
 - Learn how to change the Sass variables for the presets →
 
+## Implementation instructions
+
+- `color` (React/Vue/Angular `color` prop, JS/jQuery `data-color` attribute) accepts all eight presets on `Button`/`mbsc-button`: `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light`, `dark`.
+- The same `color` option applies to `SegmentedGroup`/`mbsc-segmented-group` and each `Segmented`/`mbsc-segmented` child, and to `Stepper`/`mbsc-stepper` — but only six presets are used there: `primary`, `secondary`, `success`, `danger`, `warning`, `info` (no `light`/`dark` variant for segmented or stepper controls).
+- Segmented items share a `name` to group them into one control; each item takes an `icon`/`data-icon` plus `defaultChecked` (React), `[checked]` (Angular), `:defaultChecked` (Vue), or the `checked` attribute (JS/jQuery) to mark the initially selected option.
+- `Stepper`/`mbsc-stepper` also takes `min`, `max`, `step`, and `label`/`data-label`; this demo sets `min={-500}`, `max={500}`, `step={100}` with an initial value of `100`.
+- Framework differences: React `<Button color="primary">`, `<SegmentedGroup name="..." color="primary"><Segmented value="..." icon="..." defaultChecked={true}>...</Segmented></SegmentedGroup>`, `<Stepper color="primary" defaultValue={100} min={-500} max={500} step={100} />`; Angular `<mbsc-button color="primary">`, `<mbsc-segmented-group color="primary"><mbsc-segmented [checked]="true">...</mbsc-segmented></mbsc-segmented-group>`, `<mbsc-stepper color="primary" [(ngModel)]="value" [min]="-500" [max]="500" [step]="100">`; Vue `<MbscButton color="primary">`, `<MbscSegmentedGroup color="primary"><MbscSegmented :defaultChecked="true">...</MbscSegmented></MbscSegmentedGroup>`, `<MbscStepper color="primary" v-model="value" :min="-500" :max="500" :step="100" />`; JS/jQuery plain markup attributes — `data-color`, `data-icon`, the `checked` attribute, and numeric `min`/`step`/`max`/`value` attributes on `input[mbsc-stepper]`/`input[mbsc-segmented]`.
+
 ## What this demo shows
 
 - This example demonstrates the available preset colors (primary, secondary, success, danger, warning, info, light, and dark).

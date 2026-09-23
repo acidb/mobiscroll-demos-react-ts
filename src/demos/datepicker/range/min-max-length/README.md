@@ -8,6 +8,15 @@ Besides [invalidating selection that is before and after a specific date](https:
 
 This form of validation is easy to understand and reduces erroneous entries.
 
+## Implementation instructions
+
+- Set `select: 'range'` together with `minRange`/`maxRange` to constrain how short or how long a range selection may be.
+- With a date-only `controls` value (`['calendar']` or `['date']`), `minRange`/`maxRange` are counted in whole days (e.g. `minRange: 3`, `maxRange: 10`).
+- With a time-only `controls` value (`['time']`) or a date-and-time `controls` value (`['date', 'time']`), `minRange`/`maxRange` are counted in milliseconds (e.g. `minRange: 9000000` ≈ 2h30m, `maxRange: 300000000` ≈ 3d11h20m).
+- Omit `minRange`/`maxRange` (pass `undefined`) to remove that constraint — the picker then accepts any range length again.
+- `controls` can be switched between `['calendar']`, `['date']`, `['date', 'time']`, and `['time']` at runtime on the same instance to change which control renders (calendar grid vs. scroller) without recreating the picker.
+- Across frameworks the options are passed the same way as any other picker option: React `minRange={3}`/`maxRange={10}` props, Angular `[minRange]`/`[maxRange]` bindings, Vue `:minRange`/`:maxRange` bindings, and JS/jQuery `minRange`/`maxRange` keys in the options object (updated imperatively via `setOptions`).
+
 ## What this demo shows
 
 - An inline date range picker for selecting a start and end date from a calendar.

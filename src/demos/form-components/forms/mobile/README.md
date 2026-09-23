@@ -15,6 +15,14 @@ Use the global options for setting the theme, localization options and everythin
 
 - [See how to make forms for tablets & desktops →](https://demo.mobiscroll.com/react/forms/desktop#)
 
+## Implementation instructions
+
+- The single-column layout needs no grid classes — `Input`/`mbsc-input` fields are stacked directly inside an `mbsc-form-group` container and default to full width, which is what makes the layout mobile-friendly without any breakpoint-specific markup.
+- Related fields are grouped into separate `mbsc-form-group` blocks, each with an `mbsc-form-group-title` (a plain `<div>`) labeling the section — e.g. "User Data" and "Phone Number" as two adjacent groups.
+- `label` sets each field's title text (JS/jQuery: `data-label` attribute); `placeholder` sets the empty-state hint text shown inside the input.
+- A checkbox is added with a `Checkbox`/`mbsc-checkbox`-family component; `label`/`description` (JS/jQuery: `data-label`/`data-description`) attach the acknowledgment title and explanatory text next to it, the same pattern used for other form fields.
+- This is the same `Input`/grid-free layout used across the "desktop" demo's single-column variant — the "desktop" demo (`{{demo: section="forms" slug="desktop"}}`) adds the `.mbsc-col-*` grid classes on top of the same field set to span multiple columns on wider screens.
+
 ## What this demo shows
 
 - Shows a clean, single-column form designed for touch-friendly data entry on mobile devices.

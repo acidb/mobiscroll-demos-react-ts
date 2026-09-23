@@ -6,6 +6,18 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 
 Use the stepper to enable controlled increasing and decreasing of values. Configure the steps and choose to provide an input for manual entry.
 
+## Implementation instructions
+
+- `min` sets the lowest selectable value; the decrement button disables automatically once the value reaches it (e.g. `min={1}` on the Adults stepper).
+- `max` sets the highest selectable value; the increment button disables automatically once the value reaches it (e.g. `max={15}`).
+- The starting value is set via `value`/`defaultValue` (React `defaultValue={1}`; JS/jQuery `value="1"` attribute; Angular/Vue default to `0` when omitted).
+- `label` sets the field title text shown above/beside the stepper (JS/jQuery: `data-label` attribute on the `<input mbsc-stepper>`).
+- `description` sets secondary helper text shown under the label (JS/jQuery: `data-description` attribute).
+- `inputPosition` controls where the numeric value/input sits relative to the increment/decrement buttons; set to `'start'` to place it before the buttons (default is after).
+- Manual entry into the value field is enabled by default — the current value renders as an editable input between the two buttons, not just a static number.
+- Framework markup differences: JS/jQuery wraps a plain `<input mbsc-stepper>` in a `<label>` with `data-*` attributes for all options; React uses `<Stepper label="..." description="..." min={1} max={15} defaultValue={1} inputPosition="start" />`; Angular uses `<mbsc-stepper label="..." description="..." [min]="1" [max]="15" inputPosition="start">`; Vue uses `<MbscStepper label="..." description="..." :min="1" :max="15" :defaultValue="1" inputPosition="start" />`.
+- Multiple independent steppers (e.g. Adults, Children, Infant) are separate component instances grouped in one `mbsc-form-group`/`Page` container — each keeps its own `min`/`max`/value state.
+
 ## What this demo shows
 
 - This demo shows a stepper example where the user can nncrease or decrease numeric values with dedicated stepper buttons.

@@ -13,6 +13,14 @@ There are four ways to use the range picker:
 - Use it with two separate inputs of any type, one for `start` and another for `end`
 - Embed the picker without an input. This can be the page itself or a more complex popup
 
+## Implementation instructions
+
+- Set `select: 'range'` on `Datepicker` to enable range selection; `controls: ['calendar']` restricts it to the calendar-only mode used in this demo.
+- Single-input mode is the default — no extra option is needed. In React/Vue, pass an external element via `inputComponent` (e.g. `inputComponent="input"`) to render the picker on a plain `<input>` instead of the generated Mobiscroll input; in Angular, apply `mbsc-datepicker` directly as a directive on an existing `<input>`; in JS/jQuery, initialize the picker on the existing input element's selector/id.
+- Two-input mode is set with `startInput`/`endInput`: in JS/jQuery these take a selector string (`startInput: '#start', endInput: '#end'`); in React/Vue they take input element/ref values (`startInput={start}`, `:startInput="startInput"`); in Angular they take template reference variables (`[startInput]="start"`, `[endInput]="end"` bound to `#start`/`#end` on `mbsc-input` elements).
+- Embedding without an input is done with `display: 'inline'`, which renders the calendar directly in the page or a container instead of anchoring it to an input.
+- `showRangeLabels: true` displays the Start/End clickable input labels above the calendar header when using range selection.
+
 ## What this demo shows
 
 - Shows three date range picker examples for selecting a date range: using a single input, separate start and end inputs, or an inline picker.

@@ -14,6 +14,15 @@ While users interact with the UI events like `onChange`, `onSet`, `onInit` ... w
 
 - See available lifecycle events →
 
+## Implementation instructions
+
+- Use `controls: ['calendar']` with `select: 'range'` on an input-triggered `Datepicker` (`display: 'anchored'` by default), and set `showRangeLabels: true` to show the clickable start/end labels above the calendar header.
+- Wire the lifecycle hooks: `onActiveDateChange`, `onCancel`, `onCellClick`, `onCellHoverIn`, `onCellHoverOut`, `onChange`, `onClose`, `onDestroy`, `onInit`, `onLabelClick`, `onOpen`, `onPageChange`, `onPageLoaded`, `onPageLoading`, `onTempChange`. React/JS/jQuery handlers receive `(event, inst)`; Angular binds via `(onX)="onX($event)"` receiving `$event`; Vue binds via kebab-case `@active-date-change`, `@cancel`, `@cell-click`, `@cell-hover-in`, `@cell-hover-out`, `@change`, `@close`, `@destroy`, `@init`, `@label-click`, `@open`, `@page-change`, `@page-loaded`, `@page-loading`, `@temp-change`.
+- `onCellClick`/`onCellHoverIn`/`onCellHoverOut`/`onLabelClick` fire because this is a calendar-grid (month view) range picker, unlike a scroller-only view with no day cells to hover/click.
+- Each hook handler fires with the described event name; the firing order and frequency reflect which user interactions (hovering, clicking, dragging between months) and API calls trigger which hook.
+- Calling `.setVal(null)` programmatically fires `onChange` and clears the selected range; calling `.open()` programmatically fires `onOpen`.
+- Confirming a range selection displays the start and end dates in the input using the picker's default date format.
+
 ## What this demo shows
 
 - Shows a date range picker example for selecting a start and end date from a monthly calendar.

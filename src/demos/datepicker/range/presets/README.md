@@ -8,6 +8,14 @@ The selected range can be adjusted by the user or you can programmatically set t
 
 This is especially useful and effective when using the range for filtering and you'd like to offer predefined ranges like *Yesterday*, *Today*, *Last week* and so on. Setting the values can be done from something as simple as a button click.
 
+## Implementation instructions
+
+- With `select: 'range'`, the picker's value is a `[start, end]` pair of `Date` objects (or `null` to clear it).
+- A preset button computes the `[start, end]` pair for the target period and applies it to the picker: `[now, now]` for today, `[yesterday, yesterday]` for yesterday, `[firstDayOfWeek, lastDayOfWeek]` for this week (derived from `now.getDate() - now.getDay()`), and `[firstDayOfLastMonth, lastDayOfLastMonth]` for last month (`new Date(y, m - 1, 1)` to `new Date(y, m, 0)`).
+- Clearing the selection is done by applying `null` as the value in place of a `[start, end]` pair.
+- Framework-specific ways to apply a preset: JS/jQuery call `.setVal([start, end])` (or `.setVal(null)` to clear) on the stored picker instance; React updates the controlled `value` state passed to the `value` prop; Angular updates the bound `range` property (two-way `[(ngModel)]` or a plain property re-render); Vue updates the `v-model`-bound ref.
+- The picker itself needs no special option beyond `controls: ['calendar']` and `select: 'range'` — presets only change the bound/set value, not the picker configuration.
+
 ## What this demo shows
 
 - Demonstrates five preset actions for programmatically updating an inline date range picker.

@@ -13,7 +13,7 @@ Custom actions can be performed with external buttons or with context menu activ
 ## Implementation instructions
 
 - Use `view: { agenda: { type: 'month' } }`. Enable multi-event selection with `selectMultipleEvents: true`. Users can select via `CTRL`/`SHIFT`/`CMD` + click. Track selection with the `selectedEvents` option and `onSelectedEventsChange`.
-- Use `inst.getEvents()` (no arguments) to retrieve all visible events in the current view range — use this for "Select all from view". Use `inst.getSelectedEvents()` and `inst.setSelectedEvents()` to programmatically read and update the selection.
+- Use `inst.getEvents()` (no arguments) to retrieve all visible events in the current view range — use this for "Select all from view". React/Angular/Vue: read and update the selection by binding to the `selectedEvents` prop directly (two-way binding). JS/jQuery: call `inst.getSelectedEvents()` and `inst.setSelectedEvents()` to programmatically read and update the selection.
 - Wire `onEventRightClick` to open a Mobiscroll `Select` component anchored to `args.domEvent.target`, populated with "Update" and "Delete" actions.
 - Intercept keyboard Delete/Backspace via `onEventDelete` and `onEventUpdate` (checking `args.isDelete`) to route deletion through a confirm dialog before removing events.
 - For recurring event occurrences, handle update and delete by adding the occurrence date to `event.original.recurringException` and, for updates, pushing a new non-recurring event with the modified properties. For the imperative API, call `inst.updateEvent()`, `inst.addEvent()`, and `inst.removeEvent()`.

@@ -14,6 +14,16 @@ While users interact with the UI events like `onChange`, `onSet`, `onInit` ... w
 
 - See available lifecycle events →
 
+## Implementation instructions
+
+- The demo wires eight lifecycle/interaction events: `onInit` (fires once when the picker instance is created), `onOpen` (fires when the picker starts opening), `onChange` (fires when the confirmed value changes, i.e. after `Set`/selection), `onTempChange` (fires on every temporary/in-progress selection before it's confirmed), `onFilter` (fires when the header search box's filter text changes), `onCancel` (fires when the picker is dismissed via the `Cancel` action), `onClose` (fires when the picker starts closing, regardless of confirm/cancel), and `onDestroy` (fires when the picker instance is destroyed).
+- `filter: true` adds a search input to the popup header; typing into it narrows the visible option list and fires `onFilter` on each keystroke — this is a real Select option, not demo chrome.
+- All handlers receive `(event, inst)` in JS/jQuery — `event` carries hook-specific data and `inst` is the select instance.
+- Event wiring differs per framework: JS/jQuery pass `onInit`/`onOpen`/`onChange`/`onTempChange`/`onFilter`/`onCancel`/`onClose`/`onDestroy` as function options inside `.select({ ... })`; React binds them as same-named props (`onInit`, `onOpen`, `onChange`, `onTempChange`, `onFilter`, `onCancel`, `onClose`, `onDestroy`) on `<Select>`, each taking a `(event, inst)` callback; Vue binds them as `@init`/`@open`/`@change`/`@temp-change`/`@filter`/`@cancel`/`@close`/`@destroy` on `<MbscSelect>` — note `@temp-change` is kebab-cased, not `@tempChange`; Angular binds them as `(onInit)`/`(onOpen)`/`(onChange)`/`(onTempChange)`/`(onFilter)`/`(onCancel)`/`(onClose)`/`(onDestroy)` output bindings on `<mbsc-select>`.
+- Opening/clearing from outside the input is imperative in every framework covered by the demo (JS/jQuery): obtain the instance via `.mobiscroll('getInst')`, then call `inst.open()` from the `Show` button's click handler and `inst.setVal(null)` from the `Clear` button's click handler to programmatically clear the current selection.
+- `inputElement` binds the picker's popup trigger to a separate `<input>` element, same as in the data-sources demo.
+- The demo's event log panel appends one line per fired event, naming the event and linking to its API documentation entry — this logging is demo-page instrumentation, not a Select feature.
+
 ## What this demo shows
 
 - Shows a single-value select examples with the fired event hooks.

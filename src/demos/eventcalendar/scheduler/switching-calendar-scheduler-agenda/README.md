@@ -22,7 +22,7 @@ Use property binding and when the value of the property changes the settings pro
   - **Week**: `{ scheduler: { type: 'week' } }`
   - **Day**: `{ scheduler: { type: 'day' } }`
   - **Agenda**: `{ calendar: { type: 'week' }, agenda: { type: 'week' } }`
-- Render a `SegmentedGroup` in the custom header with one option per view. On selection, update the active view; for the imperative API, call `inst.setOptions({ view: newViewConfig })`.
+- Use `renderHeader` (Angular: `headerTemplate`, Vue: `#header` slot) to render a `SegmentedGroup` in the custom header with one option per view. On selection, update the active view; for the imperative API, call `inst.setOptions({ view: newViewConfig })`.
 - Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. For the imperative API, call `inst.setEvents(events)` in the callback.
 
 ## What this demo shows

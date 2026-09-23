@@ -19,7 +19,7 @@ The timeline supports multiple calendar systems. You can control it with the `ca
 ## Implementation instructions
 
 - Render three separate `Eventcalendar` instances on one page, each using `timeline: { type: 'day' }` and the same 6 resources (`id`, `name`, `color`).
-- Load events once from `https://trial.mobiscroll.com/timeline-events/` via JSONP using `getJson(url, callback, 'jsonp')`. In the callback, pass the same event array to all three instances — call `inst.setEvents(events)` on each for the imperative API.
+- Load events once from `https://trial.mobiscroll.com/timeline-events/` via JSONP using `getJson(url, callback, 'jsonp')`. In the callback, share the same events array across all three instances: React/Angular/Vue assign it to the reactive state/property bound to each instance's `data` prop; for the imperative API (JS/jQuery), call `inst.setEvents(events)` on each of the three instances.
 - **Gregorian instance** — no `calendarSystem` needed (Gregorian is the default). Pass `locale: localeEn` (or omit for the default).
 - **Jalali instance** — pass `calendarSystem: jalaliCalendar` and `locale: localeFa`. `jalaliCalendar` and `localeFa` are imported from the Mobiscroll package.
 - **Hijri instance** — pass `calendarSystem: hijriCalendar` and `locale: localeAr`. `hijriCalendar` and `localeAr` are imported from the Mobiscroll package.

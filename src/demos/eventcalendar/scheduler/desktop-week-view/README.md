@@ -13,7 +13,7 @@ The current hour is displayed so that upcoming events can be spotted easily.
 ## Implementation instructions
 
 - Use `view: { scheduler: { type: 'week' } }` — a full-week scheduler. The day-of-week header stays fixed at the top while the time grid scrolls vertically.
-- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. For the imperative API, call `inst.setEvents(events)` in the callback.
+- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. React/Angular/Vue: assign the fetched array to the state/property bound to the `data` prop. JS/jQuery (imperative API): call `inst.setEvents(events)` in the callback.
 - Handle `onEventClick` to show a toast with `args.event.title`.
 
 ## What this demo shows

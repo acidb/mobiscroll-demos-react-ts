@@ -12,7 +12,7 @@ Custom actions can be performed with external buttons or with context menu activ
 
 ## Implementation instructions
 
-- Use `view: { scheduler: { type: 'week' } }`. Set `selectMultipleEvents: true` to enable Ctrl/Shift/Cmd+click multi-selection. Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP. For the imperative API, call `inst.setEvents(events)` on load.
+- Use `view: { scheduler: { type: 'week' } }`. Set `selectMultipleEvents: true` to enable Ctrl/Shift/Cmd+click multi-selection. Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP. React/Angular/Vue: assign the fetched array to the state/property bound to the `data` prop. JS/jQuery (imperative API): call `inst.setEvents(events)` on load.
 - Use a two-column layout: the calendar occupies most of the space; the sidebar contains three action buttons and a scrollable list of selected event titles. Button labels: React/Vue use "Select all this month"; Angular/JS/jQuery use "Select all from view"; all frameworks use "Reset selection" and "Update selected".
 - Track `firstDay` and `lastDay` via `onPageLoading` (`args.firstDay`, `args.lastDay`). `onSelectedEventsChange` → update the current selection and refresh the displayed titles list.
 - **"Select all"**: call `inst.getEvents(firstDay, lastDay)` to retrieve visible events, then set them as selected; for the imperative API, call `inst.setSelectedEvents(events)`. Show toast.

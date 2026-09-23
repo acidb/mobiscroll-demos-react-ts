@@ -19,12 +19,12 @@ This makes it easy to implement custom hover interactions that match your design
 - Add 10 events with `dyndatetime` offsets spread across the current month.
 - Track the currently hovered cell in a `hoverDateTime` variable (set on hover in, cleared on hover out).
 - **Row highlight** via `cssClass` on resource objects:
-  - `onCellHoverIn`: iterate the resources array, set `cssClass: 'mds-highlight-row-hover'` on the resource whose `id` matches `args.resource.id`, clear `cssClass` on all others. Call `calendar.setOptions({ resources: myResources.slice() })` to push the change and trigger a re-render.
-  - `onCellHoverOut`: clear all `cssClass` values. Wrap `setOptions` in a `setTimeout` (no delay) so the render callbacks reset before the DOM updates.
+  - `onCellHoverIn`: iterate the resources array, set `cssClass: 'mds-highlight-row-hover'` on the resource whose `id` matches `args.resource.id`, clear `cssClass` on all others. JS/jQuery: call `calendar.setOptions({ resources: myResources.slice() })` to push the change and trigger a re-render. React/Angular/Vue: instead update the state/binding feeding the `resources` prop directly (e.g. `setResources(myResources.slice())`).
+  - `onCellHoverOut`: clear all `cssClass` values. JS/jQuery: wrap `setOptions` in a `setTimeout` (no delay) so the render callbacks reset before the DOM updates. React/Angular/Vue: wrap the equivalent `resources` state/binding update (e.g. `setResources(myResources.slice())`) in the same `setTimeout` (no delay) so the render callbacks reset before the DOM updates.
 - **Column highlight** via render callbacks that compare each cell's date to `hoverDateTime`:
-  - `renderCell`: when `args.date` matches `hoverDateTime`, return a full-cell overlay `<div class="mds-highlight-col-hover">` (positioned absolute, `inset: 0`, `pointer-events: none`); otherwise return an empty string.
-  - `renderTimelineDay` and `renderDayFooter`: always render a custom day content div showing `formatDate('D DDD', args.date)`. When the date matches `hoverDateTime`, add `mds-highlight-col-hover` to the div's class.
-  - `renderSidebar`: renders the resource name with a " Sidebar" suffix.
+  - `renderCell` (Angular: `cellTemplate`, Vue: `#cell`): when `args.date` matches `hoverDateTime`, return a full-cell overlay `<div class="mds-highlight-col-hover">` (positioned absolute, `inset: 0`, `pointer-events: none`); otherwise return an empty string.
+  - `renderTimelineDay` (Angular: `timelineDayTemplate`, Vue: `#timelineDay`) and `renderDayFooter` (Angular: `dayFooterTemplate`, Vue: `#dayFooter`): always render a custom day content div showing `formatDate('D DDD', args.date)`. When the date matches `hoverDateTime`, add `mds-highlight-col-hover` to the div's class.
+  - `renderSidebar` (Angular: `sidebarTemplate`, Vue: `#sidebar`): renders the resource name with a " Sidebar" suffix.
 - **Tooltip popup** (`Popup`, `display: 'anchored'`, `showOverlay: false`, `scrollLock: false`, `focusOnClose: false`, `closeOnScroll: true`):
   - `onCellHoverIn`: set `anchor: args.domEvent.target`, populate the tooltip with `args.resource.name` and `formatDate('MMM DD, YYYY', args.date)`, then open.
   - `onCellHoverOut`: close the popup.

@@ -17,6 +17,16 @@ If you want some standard actions you can use the following predefined `buttons`
 
 You can add custom buttons with tailored text, style, and functionality if you have more specific needs.
 
+## Implementation instructions
+
+- `buttons: []` (or the option omitted) renders the popup with no footer buttons — the default, minimal configuration.
+- `buttons: ['ok', 'cancel']` renders the two predefined buttons by name; `ok` renders as the primary (blue) action, `cancel` as the secondary (gray) action. Both predefined buttons close the popup when clicked — no handler is required.
+- Other predefined button keywords are `'close'` (closes the popup without a confirm action) and `'set'` (applies/confirms changes, typically paired with a form).
+- A custom button is an object entry in `buttons`: `{ text: 'Custom', handler: function () { ... } }`. `text` sets the button label; `handler` runs on click and is responsible for any action, including closing the popup (a custom button does not auto-close unless the handler calls `.close()` or the popup instance's close logic).
+- In this demo the custom button's `handler` calls `mobiscroll.toast({ message: 'Custom button clicked' })` rather than closing the popup.
+- `buttons` accepts a mixed array of predefined string keywords and custom button objects in any combination, e.g. `buttons: [{ text: 'Ok', handler: 'set' }, 'cancel']` — a custom object's `handler` can also be one of the predefined action keywords (`'set'`, `'cancel'`, `'close'`) instead of a function.
+- Across frameworks the option is passed the same way: React/Vue bind it as a `buttons`/`:buttons` prop with the same array shape, Angular binds `[buttons]="[...]"`, and JS/jQuery pass it in the options object at `.popup({ buttons: [...] })`.
+
 ## What this demo shows
 
 - Three popup examples demonstrate no buttons, predefined buttons, and a custom button.

@@ -26,7 +26,7 @@ Use the
 - Use `view: { scheduler: { type: 'week' } }` and pass a `colors` array to the Eventcalendar. Each entry defines a background highlight for a date, time range, or recurring pattern.
 - Color object fields: `date` (exact date — highlights the full column for that day), `start`/`end` (time range — use a time string like `'12:00'` for a recurring time-of-day slot, or a full datetime for a one-off range), `allDay: true` (targets the all-day row column rather than the time grid), `background` (color value, e.g., an RGBA hex string with opacity), `title` (optional label displayed on the colored block), `recurring` (same structure as event recurrence rules, e.g., `{ repeat: 'weekly', weekDays: 'MO,TU,WE,TH,FR' }`).
 - Use `dyndatetime('y,m,d±N,hour')` offsets to anchor color ranges relative to today for demo data.
-- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. For the imperative API, call `inst.setEvents(events)` in the callback.
+- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. React/Angular/Vue: assign the fetched array to the state/property bound to the `data` prop. JS/jQuery (imperative API): call `inst.setEvents(events)` in the callback.
 
 ## What this demo shows
 

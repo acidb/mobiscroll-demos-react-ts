@@ -21,7 +21,7 @@ A couple of examples:
 
 - Use `view: { scheduler: { type: 'week', size: 2 } }` — a two-week rolling scheduler. The `size` property multiplies the base `type` unit: `type: 'day'` + `size: 14` = 14-day rolling view, `type: 'month'` + `size: 3` = rolling quarter view.
 - `refDate` sets the anchor point for navigation. It defaults to today, producing a "rolling" view that always starts relative to the current date. Set it to a fixed date (e.g., `'2024-01-01'`) to lock navigation to calendar boundaries such as a full quarter or year.
-- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. For the imperative API, call `inst.setEvents(events)` in the callback.
+- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. React/Angular/Vue: assign the fetched array to the state/property bound to the `data` prop. JS/jQuery (imperative API): call `inst.setEvents(events)` in the callback.
 
 ## What this demo shows
 

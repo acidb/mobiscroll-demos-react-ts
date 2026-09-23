@@ -10,7 +10,7 @@ Resources can be dynamically turned on and off. This will show or hide the resou
 
 - Use `view: { scheduler: { type: 'week', allDay: false, startDay: 1, endDay: 5, startTime: '08:00', endTime: '17:00' } }` — Mon–Fri, 8am–5pm, no all-day row. Enable `clickToCreate: true`, `dragToCreate: true`, `dragToMove: true`, `dragToResize: true`.
 - Define 3 resources: Ryan (id:1), Kate (id:2), John (id:3), each with a pastel color. All three are visible by default.
-- Load events via `getJson` from a JSONP endpoint on mount; for the imperative API, call `inst.setEvents(events)`.
+- Load events via `getJson` from a JSONP endpoint on mount. React/Angular/Vue: assign the fetched array to the state/property bound to the `data` prop. JS/jQuery (imperative API): call `inst.setEvents(events)`.
 - Render a sidebar with one `Checkbox` per resource, all initially checked. Keep a `participants` map (`{ 1: true, 2: true, 3: true }`) tracking each resource's visibility.
 - On checkbox change, update the corresponding entry in `participants`, then set the active resources to `allResources.filter(r => participants[r.id])`; for the imperative API, call `inst.setOptions({ resources: filteredArray })`.
 

@@ -30,7 +30,7 @@ This dramatically improves performance in case of a large event count since not 
   ```
   Format both dates with `formatDate('YYYY-MM-DD', args.viewStart)` and `formatDate('YYYY-MM-DD', args.viewEnd)`.
 - The endpoint returns a JSONP object with an `events` property (not a plain array). Read `data.events` after the fetch.
-- Fetch via JSONP using `getJson(url, callback, 'jsonp')`. The endpoint returns an object — read `data.events`, not the raw response. After loading, call `inst.setEvents(data.events)` and show a `Toast` with `duration: 1000`.
+- Fetch via JSONP using `getJson(url, callback, 'jsonp')`. The endpoint returns an object — read `data.events`, not the raw response. After loading, React/Angular/Vue: assign `data.events` to the state/property bound to the `data` prop. JS/jQuery (imperative API): call `inst.setEvents(data.events)`. Then show a `Toast` with `duration: 1000`.
 
 ## What this demo shows
 

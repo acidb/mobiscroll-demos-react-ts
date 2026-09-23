@@ -14,6 +14,15 @@ As an alternative to the [checkbox list](https://demo.mobiscroll.com/react/forms
 
 - [Check out the previous example →](https://demo.mobiscroll.com/react/select/single-select#)
 
+## Implementation instructions
+
+- `selectMultiple` (boolean) is the option that turns the picker from single-value into multi-value selection; it is the only option that differs between this demo and a single-select instance built from the same `data`.
+- `data` is an array of `{ value, text }` objects (e.g. `{ value: 1, text: 'Books' }`); with `selectMultiple: true` the resolved value becomes an array of the selected `value`s instead of a single scalar.
+- Framework binding is a plain prop/attribute/option in every framework, with no imperative wiring needed for the multi-select behavior itself: React `selectMultiple={true}` on `<Select>`, Vue `:selectMultiple="true"` on `<MbscSelect>`, Angular `[selectMultiple]="true"` on `<mbsc-select>`, JS/jQuery `selectMultiple: true` in the options object passed to `mobiscroll.select(el, {...})` / `$(el).mobiscroll().select({...})`.
+- Selected options are marked with a checkmark inside the popup list, and once confirmed each selected value renders as its own removable chip inside the bound input — this chip rendering is automatic once `selectMultiple` is on and the picker is bound to an input (`inputElement` in JS/jQuery, or the component's own rendered input in React/Vue/Angular), not a separately configured option.
+- Removing a chip's value from the input (via its close icon) deselects that option in the picker; no separate event handler is required to keep the input and the picker's selection in sync — the bound input and the picker's checked state stay linked through the shared `data`/value binding.
+- JS/jQuery can alternatively source `data` from a native multi-select element (`<select multiple>` with `<option>` children) instead of passing a `data` array — the demo's fullscreen markup uses this native-`<select>` form, while the framework code snippets use an explicit `data` array.
+
 ## What this demo shows
 
 - Shows a select that lets users choose multiple options from a predefined list.

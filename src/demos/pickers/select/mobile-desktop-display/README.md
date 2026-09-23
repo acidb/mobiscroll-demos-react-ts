@@ -22,6 +22,15 @@ The defaults change on a theme to theme basis. The `ios` theme comes with `botto
 
 - [Check out the previous example →](https://demo.mobiscroll.com/react/select/responsive#)
 
+## Implementation instructions
+
+- `display` accepts five values on the `Select`/select instance: `'top'` (modal sliding down from the top), `'bottom'` (modal sliding up from the bottom), `'center'` (centered modal with a pop animation), `'anchored'` (positioned relative to the bound input/element), and `'inline'` (rendered directly into the page markup with no modal).
+- `touchUi` (boolean) switches between touch-optimized rendering (`true`) and pointer-optimized desktop rendering (`false`), independent of `display`; it is commonly paired with the `responsive` option to change per breakpoint.
+- Defaults for `display`/`touchUi` are theme-dependent: the `ios` theme defaults to `bottom` on mobile and `anchored` on desktop, while `material` and `windows` default to `center` on mobile and `anchored` on desktop.
+- Each non-inline instance is bound to a plain input via `inputElement` (JS/jQuery) so the input stays independent markup from the picker; the `inline` instance has no input and no `inputElement`.
+- Framework binding differs only in how `display` is passed: React sets it as a `display` prop on `<Select>` (e.g. `display="anchored"`); Vue sets it as a `display` attribute on `<MbscSelect>`; Angular sets it as a static `display` attribute on `<mbsc-select>` (not a `[display]` binding, since it does not change at runtime in this demo) alongside a `[touchUi]` property binding; JS/jQuery pass `{ display: 'anchored', touchUi: ... }` into `mobiscroll.select(el, {...})` / `$(el).mobiscroll().select({...})`.
+- `touchUi` itself is always a bound/dynamic value across frameworks (`touchUi={...}` in React, `:touchUi="..."` in Vue, `[touchUi]="..."` in Angular, `touchUi: ...` in JS/jQuery) because the demo toggles it live to compare mobile vs. desktop rendering per display mode.
+
 ## What this demo shows
 
 - Five select pickers demonstrate single-value selection across the supported display modes.

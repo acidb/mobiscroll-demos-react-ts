@@ -29,7 +29,7 @@ is shown with a 3 second timer and a "Sort now" button for an instant order upda
 - **`onPageLoading`**: Capture `firstDay`/`lastDay`, then recalculate metrics and sort in a `setTimeout`.
 - **Custom resource column header** (`renderResourceHeader` / `resourceHeaderTemplate` / `resourceHeader` slot): Static "Trucks" label.
 - **Custom resource row** (`renderResource` / `resourceTemplate` / `resource` slot): Shows truck name (bold), model, capacity in tons, then the currently active metric label + value + unit (`h` for time-based metrics, `%` for payload). Below that, render a colored progress bar: green if ≤ 33%, yellow if ≤ 66%, red if > 66%. For payload efficiency the bar value equals the metric percentage directly; for standby/deadhead, compute `(metricValue / 168) * 100`. Apply a brief CSS animation class on the bar immediately after a sort.
-- **Custom event content** (`renderTimelineEventContent` / `timelineEventContentTemplate` / `timeline-event-content` slot): Shows the tour title and a payload line — `"X T"` if payload > 0, `"empty"` otherwise.
+- **Custom event content** (`renderTimelineEventContent`, Angular: `timelineEventContentTemplate`, Vue: `#timelineEventContent`): Shows the tour title and a payload line — `"X T"` if payload > 0, `"empty"` otherwise.
 - **Custom header** (`renderHeader` / `headerTemplate` / `header` slot): `CalendarPrev`, `CalendarNext`, `CalendarNav`, then a "Sort Trucks" `Button` with a bars icon aligned to the right.
 
 ## What this demo shows

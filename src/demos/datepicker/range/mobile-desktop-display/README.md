@@ -22,6 +22,15 @@ The defaults change on a theme to theme basis. The `ios` theme comes with `botto
 
 - [Check out the previous example →](https://demo.mobiscroll.com/react/range/responsive#)
 
+## Implementation instructions
+
+- Set the `display` option to `'inline'`, `'anchored'`, `'top'`, `'bottom'`, or `'center'` to control how the range picker is rendered relative to its trigger.
+- Use `touchUi: true`/`false` to switch between touch-optimized (larger, scroller-friendly) and pointer-optimized (compact, mouse-friendly) rendering, independent of `display`.
+- `controls` can be set to `['calendar']`, `['date']` (calendar with scroller), `['date', 'time']`, or `['time']` to change which picker control renders inside any of the five display modes, and can be updated at runtime via `setOptions` without recreating the instance.
+- Pass a `context` selector/element so a non-inline `display` mode (e.g. `'top'`, `'bottom'`, `'center'`) constrains its modal/overlay to a specific container instead of the whole viewport.
+- Default `display` values differ by theme: the `ios` theme defaults to `'bottom'` on mobile and `'anchored'` on desktop, while `material`/`windows` default to `'center'` on mobile and `'anchored'` on desktop — set `display` and `touchUi` explicitly to override the theme default, or combine with the `responsive` option to switch them automatically by breakpoint.
+- Across frameworks `display`/`touchUi`/`controls` are passed the same way as any other option: React/Vue/Angular as props/bindings on the picker component, JS/jQuery as keys in the options object passed to `mobiscroll.datepicker()`/`.mobiscroll().datepicker()`.
+
 ## What this demo shows
 
 - Shows five range picker examples for selecting a start and end date, time or date and time with the supported display modes.

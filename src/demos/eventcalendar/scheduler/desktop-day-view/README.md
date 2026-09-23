@@ -15,7 +15,7 @@ The dates can be quickly navigated by clicking on the month & year indicator.
 ## Implementation instructions
 
 - Use `view: { scheduler: { type: 'day' } }` — a single-day scheduler with a scrollable time grid.
-- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. For the imperative API, call `inst.setEvents(events)` in the callback.
+- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. React/Angular/Vue: assign the fetched array to the state/property bound to the `data` prop. JS/jQuery (imperative API): call `inst.setEvents(events)` in the callback.
 - Handle `onEventClick` to show a toast with `args.event.title`.
 
 ## What this demo shows

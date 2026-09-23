@@ -19,6 +19,16 @@ The defaults change on a theme-to-theme basis. it defaults to `bottom` for the i
 
 - [Check out this example →](https://demo.mobiscroll.com/react/popup/responsive#)
 
+## Implementation instructions
+
+- `display` accepts four values: `'top'` (slides down from the top edge), `'bottom'` (slides up from the bottom edge), `'center'` (pops up centered with a scale/fade animation), and `'anchored'` (positions relative to a DOM element rather than the viewport).
+- Default `display` is theme-dependent: `'bottom'` for the iOS theme, `'center'` for Material/Windows and other themes — set `display` explicitly to override the theme default.
+- `display: 'anchored'` requires an `anchor` value (a DOM element) to position against; without a valid `anchor` the popup has nothing to attach to. In JS/jQuery, `anchor` is set as a plain DOM element reference in the options object (e.g. `anchor: $('#trigger-btn')[0]`); React/Vue instead track the anchor element in state (captured from a `ref`, e.g. via `buttonRef.current.nativeElement`) and bind it as the `anchor`/`:anchor` prop.
+- `touchUi` (shown per-mode in this demo) controls whether the popup renders touch-optimized (mobile-style) or desktop-style controls independent of `display`; it can be combined with any of the four `display` modes.
+- Framework binding for `display`/`touchUi`: React passes them as `display`/`touchUi` props on `<Popup>`; Vue as `display`/`:touchUi` on `<MbscPopup>`; Angular as a plain `display="..."` attribute plus `[touchUi]="..."` binding on `<mbsc-popup>`; JS/jQuery pass both inside the `.popup({ display: '...', touchUi: ... })` options object.
+- Opening each mode is imperative in JS/jQuery: each display mode is a separate popup instance (`.mobiscroll().popup({...}).mobiscroll('getInst')`), and its trigger button's click handler calls that instance's `.open()`. React binds each mode's visibility to its own boolean state variable through the `isOpen` prop, set to `true` by the corresponding trigger button's `onClick` and reset to `false` in `onClose`.
+- `buttons: ['ok', 'cancel']` renders the predefined confirm/dismiss buttons in the popup footer for every display mode in this demo.
+
 ## What this demo shows
 
 - Four popup examples demonstrate the supported display modes.

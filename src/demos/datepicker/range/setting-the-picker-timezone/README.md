@@ -13,6 +13,15 @@ There are two angles regarding timezones:
 
 [Invalids](https://demo.mobiscroll.com/react/range/disabled-invalid-values#) as well as [marked, colored and labels](https://demo.mobiscroll.com/react/range/dots-colors-labels#) date-times will all be interpreted in `dataTimezone` when they contain no timezone info and will be shown in `displayTimezone` on the calendar.
 
+## Implementation instructions
+
+- Timezone conversion requires a `timezonePlugin` backed by one of three external libraries: Day.js (`dayjsTimezone`), Luxon, or Moment Timezone — extend the chosen library with its UTC/timezone plugin(s) first (e.g. `dayjs.extend(utc); dayjs.extend(timezone);`), then set `dayjsTimezone.dayjs = dayjs` (or the Luxon/Moment equivalent) before it's used.
+- Set `dataTimezone` (the timezone the range value is read from/returned in, e.g. `'utc'`) and `displayTimezone` (the timezone the calendar renders in, e.g. `'local'` or an IANA zone name like `'America/New_York'`) on the range `Datepicker` (`select: 'range'`, `controls: ['calendar', 'time']`) along with `timezonePlugin`. Both default to `'local'` when omitted.
+- React imports `dayjsTimezone` from `@mobiscroll/react` and passes `dataTimezone`, `displayTimezone`, and `timezonePlugin` as props; Vue imports it from `@mobiscroll/vue` and binds them with `dataTimezone`/`displayTimezone` (plain strings) plus `:timezonePlugin="dayjsTimezone"`; Angular imports it from `@mobiscroll/angular`, exposes it as a component field, and binds with `dataTimezone`/`displayTimezone` (plain attributes) plus `[timezonePlugin]="myDayjsTimezone"`; JS/jQuery import `mobiscroll.dayjsTimezone` and set `mobiscroll.dayjsTimezone.dayjs = dayjs` before passing `timezonePlugin: mobiscroll.dayjsTimezone` in the options object.
+- `displayTimezone` can be changed at runtime via `.setOptions({ displayTimezone: newZone })` (JS/jQuery) or by updating the bound prop/state — the calendar and its selected range redraw in the new display zone while the underlying `dataTimezone` values are unchanged.
+- Reading the current value with `.getVal()` returns the range's `[start, end]` in `dataTimezone`; the `onChange` handler receives the same timezone-converted values.
+- `invalid`, `marked`, `colors`, and `labels` date-times with no explicit timezone info are interpreted in `dataTimezone` and shown to the user in `displayTimezone`.
+
 ## What this demo shows
 
 - Configure the timezone used for date and time range selection and display.

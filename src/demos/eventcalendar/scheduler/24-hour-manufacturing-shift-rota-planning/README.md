@@ -24,7 +24,7 @@ it automatically updates and shifts any conflicting events (those sharing the sa
 - In `onEventCreate`, define the day window as 06:00–06:00+1 and look for a conflict — another event on the same resource or at the same start hour. If found, show an "Already assigned" `Toast` and return `false`. On success, clear the hover-slot color for that resource/day and reset the red-resource flag.
 - Store the original start, end, and resource in state via `onEventDragStart`. In `onEventUpdate`, first block cross-day moves (return `false` if the drop day's 06:00 boundary differs from the drag day's). Then find conflicts within the same day: if a conflicting event shares the same resource, reassign it to the dragged event's original resource; if it shares the same time slot, move it to the dragged event's original time and update its title and color. Return `false` if the exact drop position is already occupied. After resolving, update `colors` and the red-resource indicator for the source resource.
 - In `onEventDelete`, remove the event from state, apply a red color overlay spanning 06:00–06:00+1 for that resource, set `redResources[resourceId + dayISO]` to `true`, and show a `Toast`.
-- Use `renderResource` (Angular: `resourceTemplate`, Vue: `resource`) with a `(resource, day)` signature: apply a red background style to the crew name div when `redResources[res.id + day.toISOString()]` is `true` for that crew and day.
+- Use `renderResource` (Angular: `resourceTemplate`, Vue: `#resource` slot) with a `(resource, day)` signature: apply a red background style to the crew name div when `redResources[res.id + day.toISOString()]` is `true` for that crew and day.
 
 ## What this demo shows
 

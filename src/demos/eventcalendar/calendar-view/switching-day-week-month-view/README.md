@@ -22,7 +22,7 @@ Thanks to property binding and all option changes are live and propagate accordi
   - Month: `{ calendar: { type: 'month' }, agenda: { type: 'month' } }`
   - Week: `{ calendar: { type: 'week' }, agenda: { type: 'week' } }`
   - Day: `{ agenda: { type: 'day' } }`
-- Use `renderHeader` (Angular: `headerTemplate`, Vue: `header`) to build a custom header: `CalendarNav` on the left, an icon-only `SegmentedGroup` in the center with three `Segmented` items (`material-event-note` for month, `material-date-range` for week, `material-view-day` for day), and `CalendarPrev` and `CalendarNext` on the right.
+- Use `renderHeader` (Angular: `headerTemplate`, Vue: `#header` slot) to build a custom header: `CalendarNav` on the left, an icon-only `SegmentedGroup` in the center with three `Segmented` items (`material-event-note` for month, `material-date-range` for week, `material-view-day` for day), and `CalendarPrev` and `CalendarNext` on the right.
 - When the segmented selection changes, update the active view config. JS/jQuery: call `inst.setOptions({ view: ... })` instead of binding a reactive prop.
 - Load events from a remote endpoint using `getJson` and assign them to `data`; for the imperative API, call `inst.setEvents(events)` in the callback.
 

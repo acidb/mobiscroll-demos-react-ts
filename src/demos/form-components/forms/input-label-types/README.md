@@ -6,6 +6,17 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 
 The three input styles: `underline`, `box` and `outline` can be combined with three label styles: `stacked`, `inline` or `floating`. Try different combinations to find what's right for you.
 
+## Implementation instructions
+
+- `inputStyle` accepts `underline`, `box`, or `outline`; `labelStyle` accepts `stacked`, `inline`, or `floating`. Both options apply uniformly to `Input`, `Textarea`, and `Dropdown` (and to a `type="file"` input, which is just an `Input` variant) and can be combined freely (`data-input-style`/`data-label-style` in JS/jQuery).
+- `startIcon`/`endIcon` (`data-start-icon`/`data-end-icon` in JS/jQuery) place an icon inside the field, before or after the value.
+- `error` (boolean) applies error styling to a field; `errorMessage` adds explanatory text shown below it.
+- `passwordToggle` (boolean), combined with `type="password"`, adds a show/hide toggle control to a password field.
+- Omitting the `label` prop/attribute (and its wrapping text in JS/jQuery) renders the field with no label, keeping only its `placeholder`.
+- `Dropdown`/`mbsc-dropdown`/`select[mbsc-dropdown]` takes the same `inputStyle`, `labelStyle`, `startIcon`, and `endIcon` options as `Input`; its options are plain `<option>` elements.
+- Switching the input/label style dynamically (as this demo's style switcher does) is done by calling `.setOptions({ inputStyle: ... })` / `.setOptions({ labelStyle: ... })` on each field instance in JS/jQuery; in React/Angular/Vue it's done by updating the bound `inputStyle`/`labelStyle` prop value on re-render.
+- Framework differences: React `<Input inputStyle="underline" labelStyle="stacked" startIcon="..." error={true} errorMessage="..." passwordToggle={true} label="..." />`; Vue `<MbscInput inputStyle="underline" labelStyle="stacked" startIcon="..." :error="true" :passwordToggle="true" label="..." />`; Angular `<mbsc-input inputStyle="underline" labelStyle="stacked" startIcon="..." error="true" label="...">`; JS/jQuery `<label>Name<input mbsc-input data-input-style="underline" data-label-style="stacked" data-start-icon="..." data-error="true" /></label>`.
+
 ## What this demo shows
 
 - This demo shows examples for different input and label styles.

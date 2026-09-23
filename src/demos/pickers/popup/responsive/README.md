@@ -17,6 +17,17 @@ Use the responsive option to configure the popup and change the options based on
 
 It is a good idea to adjust the `display` to tailor the UX. This allows you to have the popup **bottom-positioned on mobile devices**, **centered on tablets**, and **anchored to input on larger screens** to enhance the user experience.
 
+## Implementation instructions
+
+- `responsive` is an object keyed by breakpoint name, each value an object of popup options (`display`, `anchor`, etc.) applied once the viewport reaches that breakpoint's minimum width.
+- Predefined breakpoint keys and their `min-width` thresholds: `xsmall` (0px), `small` (576px), `medium` (768px), `large` (992px), `xlarge` (1200px). The matching options apply from that width up to the next defined breakpoint.
+- A `custom` key defines an arbitrary breakpoint via a `breakpoint` (pixel width) property alongside the options to apply at that width, e.g. `custom: { breakpoint: 800, display: 'anchored' }` — `custom` can be combined with the predefined keys in the same `responsive` object.
+- In this demo: `xsmall: { display: 'bottom' }` (mobile — popup slides up from the bottom), `small: { display: 'center' }` (tablet — centered modal), and `custom: { breakpoint: 800, display: 'anchored' }` (wider desktop — popup anchors to the trigger button).
+- When the active breakpoint sets `display: 'anchored'`, an `anchor` must also be supplied (either inside that breakpoint's options or as a top-level option) so the popup has an element to position against.
+- Options set via `responsive` override the popup's top-level options once their breakpoint is active; options not overridden at a given breakpoint fall back to the top-level (or default) value.
+- Framework binding: JS/jQuery pass `responsive` inside `.popup({ responsive: {...} })`; React passes it as a `responsive` prop object on `<Popup>`; Vue defines the object in the `<script setup>` block and binds it with `:responsive="myResp"`; Angular sets it as a property on the component's `MbscPopupOptions` object bound via `[options]`.
+- Resizing the viewport re-evaluates `responsive` live — no manual `.setOptions()` call or popup reopen is needed for the breakpoint options to take effect.
+
 ## What this demo shows
 
 - A responsive popup that uses different display modes across touch and desktop layouts.

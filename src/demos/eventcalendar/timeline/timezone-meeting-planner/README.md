@@ -20,11 +20,11 @@ The last thing that needed to be done is to override the event rendering with a 
 - Give each resource a custom `timezone` property (IANA string) and a display `utcOffset` string, and mark the meeting organizer with a custom flag.
 - Write a helper that converts a UTC hour and a resource timezone to the corresponding local hour and returns a background color and an `invalid` flag: 22:00–6:00 local is time off (red, invalid), 6:00–8:00 and 18:00–22:00 are flex hours (blue), 8:00–18:00 are working hours (yellow).
 - Derive the `invalid` array from the resource list by iterating over all 24 hours per resource and collecting the time-off slots, each marked with `recurring: { repeat: 'daily' }`.
-- Use `renderCell` (Angular: `cellTemplate`, Vue: `cell`) to render each timeline cell with the local hour label and the background color from the hour classification helper.
+- Use `renderCell` (Angular: `cellTemplate`, Vue: `#cell` slot) to render each timeline cell with the local hour label and the background color from the hour classification helper.
 - Use `extendDefaultEvent` to pre-assign all resource IDs to every new event so meetings span all team members by default.
-- Use `renderTimelineEvent` (Angular: `timelineEventTemplate`, Vue: `timelineEvent`) to show localized times per row: call `setTimezone` on the start and end dates with `data.currentResource.timezone` and format the result.
-- Use `renderResource` (Angular: `resourceTemplate`, Vue: `resource`) to display the participant's name, UTC offset, and an organizer label.
-- Use `renderHeader` (Angular: `headerTemplate`, Vue: `header`) to render the navigation controls alongside a color legend for working hours, flex hours, and time off.
+- Use `renderTimelineEvent` (Angular: `timelineEventTemplate`, Vue: `#timelineEvent` slot) to show localized times per row: call `setTimezone` on the start and end dates with `data.currentResource.timezone` and format the result.
+- Use `renderResource` (Angular: `resourceTemplate`, Vue: `#resource` slot) to display the participant's name, UTC offset, and an organizer label.
+- Use `renderHeader` (Angular: `headerTemplate`, Vue: `#header` slot) to render the navigation controls alongside a color legend for working hours, flex hours, and time off.
 - Enable `clickToCreate`, `dragToCreate`, `dragToMove`, and `dragToResize` with `dragTimeStep: 60` for one-hour snapping.
 - Use `onEventCreateFailed` and `onEventUpdateFailed` to open a `Confirm` dialog when a meeting lands in a time-off slot, and proceed with the create or update if the user confirms.
 

@@ -17,7 +17,7 @@ This a great way for adding special meaning to certain days and time ranges.
 ## Implementation instructions
 
 - Use `view: { scheduler: { type: 'week', startDay: 1, endDay: 5, allDay: false } }` — a Mon–Fri work week with no all-day row.
-- Load events from `https://trial.mobiscroll.com/workday-events/` via JSONP using `getJson(url, callback, 'jsonp')`. For the imperative API, call `inst.setEvents(events)` in the callback.
+- Load events from `https://trial.mobiscroll.com/workday-events/` via JSONP using `getJson(url, callback, 'jsonp')`. React/Angular/Vue: assign the fetched array to the state/property bound to the `data` prop. JS/jQuery (imperative API): call `inst.setEvents(events)` in the callback.
 - **Invalid block** — pass one entry to the `invalid` array: 12:00–13:00 recurring on weekdays (`weekDays: 'MO,TU,WE,TH,FR'`), with `title: 'Lunch break'` and a `cssClass` for custom styling. This blocks the lunch slot with a custom visual pattern.
 - **Color overlays** — pass entries to the `colors` array, each targeting a specific time range recurring on a weekday. Assign a `cssClass` to each entry to apply a custom CSS pattern (stripes, dots, checkerboard). The `cssClass` on a `colors` entry works the same way as on `invalid` entries — Mobiscroll applies it to the colored block element so the class can define any background pattern via CSS.
 

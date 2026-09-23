@@ -14,6 +14,14 @@ You can dynamically switch between single and multiple select.
 
 - [Check out the next example →](https://demo.mobiscroll.com/react/select/multiple-select#)
 
+## Implementation instructions
+
+- `selectMultiple` defaults to `false`, so a `Select` instance is single-value out of the box; it only needs to be set explicitly when switching a given instance between single- and multiple-select behavior at runtime.
+- `data` is an array of `{ text, value }` objects (e.g. `{ text: 'Atlanta', value: 'atl' }`); when no `data` is passed, the select instead reads `<option value="...">Label</option>` entries from the native `<select>` element it's bound to.
+- `inputElement` points the select at a separate `<input>` used as the display/trigger field — the popup opens on focus/click of that input, positioned below it, and closes on outside click; the selected option's text becomes the input's value and the selected option itself is marked with a checkmark in the list.
+- `touchUi` (boolean) switches the picker's rendering between the touch-optimized scroller/dialog layout (`true`) and the compact desktop dropdown layout (`false`); the demo's responsive layout toggle drives this option to preview both.
+- Per framework: JS/jQuery pass `touchUi`/`inputElement`/`data` inside `.select({ ... })` / `mobiscroll.select(el, { ... })`; React sets `touchUi`/`data` as props on `<Select>`; Angular binds `[touchUi]`/`[data]` on `<mbsc-select>`; Vue binds `:touchUi`/`:data` on `<MbscSelect>`.
+
 ## What this demo shows
 
 - Shows a single-value select example.

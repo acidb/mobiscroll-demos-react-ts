@@ -11,6 +11,16 @@ The calendar view can be customized with a couple of different parameters:
 - **Show week numbers** - set the `showWeekNumbers` to true and show a week counter starting from the first week of every year
 - **Hide the outer days of a month** - set the `showOuterDays` to false in case you don't want to see days from previous and next months
 
+## Implementation instructions
+
+- Set `select: 'range'` and `controls: ['calendar']` on `Datepicker`; `display: 'inline'` embeds the calendar directly in the page for this demo.
+- `calendarType` switches between `'month'` (default) and `'week'` view.
+- In month view, `pages` sets the number of months shown side by side (e.g. `pages: 1` or `pages: 2`); in week view, `calendarSize` sets the number of weeks shown (e.g. `calendarSize: 1` or `calendarSize: 2`) — only one of the two options applies depending on `calendarType`, the other is passed as `undefined`.
+- `showWeekNumbers: true` adds a week-number column to the calendar grid; it defaults to `false`.
+- `calendarScroll` sets the month/week paging direction to `'horizontal'` (default) or `'vertical'`.
+- `showOuterDays` controls whether dates from the previous/next month appear at the grid edges; it defaults to `true` for horizontal scrolling and `false` for vertical scrolling, and can be set explicitly to override either default.
+- All of these options can be changed at runtime on an existing instance via an option update (e.g. `.setOptions({ calendarType, pages, calendarSize, showWeekNumbers, calendarScroll, showOuterDays })` in JS/jQuery), without recreating the picker.
+
 ## What this demo shows
 
 - This demo shows independently configurable calendar view options for the date range picker.

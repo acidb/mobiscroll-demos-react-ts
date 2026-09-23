@@ -16,6 +16,14 @@ If you need to show different shapes, you can pass a custom CSS class in the `ma
 
 - [Learn how to add labels and color days →](https://demo.mobiscroll.com/react/range/dots-colors-labels#)
 
+## Implementation instructions
+
+- Set `controls: ['calendar']`, `select: 'range'`, and `display: 'inline'` to render an inline range calendar.
+- Pass `marked` as an array of `{ date, color }` entries (one entry per dot/mark; multiple entries can share the same `date` to stack marks on one day).
+- Add `markCssClass` (e.g. `'square-mark'`, `'triangle-mark'`) to a `marked` entry to render a custom shape instead of the default dot; entries without `markCssClass` render as a colored dot.
+- Define the shape classes in CSS, e.g. `.square-mark { border-radius: 0; }` and `.triangle-mark { transform: rotate(45deg); border-radius: 0; width: 8px; height: 8px; ... }`, keyed off the class passed in `markCssClass`.
+- To restyle the default dot shape globally instead of per-mark, override `.mbsc-calendar-marks .mbsc-calendar-mark` in CSS.
+
 ## What this demo shows
 
 - This demo shows an inline date range picker calendar month view with custom-shaped marked dots.

@@ -13,6 +13,15 @@ The look and feel of the select can be deeply customized. There are four levels 
 
 You can also see how every example looks by changing the theme from the header.
 
+## Implementation instructions
+
+- `theme` selects the base visual theme by name: `'ios'`, `'material'`, or `'windows'`. It can be changed at runtime via `.setOptions({ theme: '<name>' })` on the select instance.
+- `themeVariant` selects `'light'`, `'dark'`, or `'auto'` (follows system/OS dark-mode setting); combined with `theme`, e.g. `theme: 'ios'` + `themeVariant: 'dark'`. Also settable at runtime through `.setOptions({ themeVariant })`.
+- A custom (Theme Builder-generated) theme is applied by passing its generated theme name as the `theme` value instead of a base name, e.g. `'material-indigo'`, `'windows-yellow'`, `'ios-gray'` — in that mode `themeVariant` is not set alongside it, since the custom theme name already encodes light/dark.
+- `display: 'inline'` renders the option list directly on the page (no separate trigger input), used here so the theme changes are visible immediately without opening a popup.
+- Per framework: JS/jQuery pass `theme`/`themeVariant` inside `.select({ ... })` at init and update them later via `.setOptions({ theme, themeVariant })`; React sets `theme`/`themeVariant` as props on `<Select>`; Angular binds `theme`/`themeVariant` as plain (non-bracketed) string attributes on `<mbsc-select>` since they're static per render; Vue sets `theme`/`themeVariant` as plain string attributes on `<MbscSelect>`.
+- Beyond the `theme`/`themeVariant` options, deeper customization (brand colors, spacing) is done outside the component API — through the Theme Builder tool or Sass variable overrides — and isn't controlled through select instance options.
+
 ## What this demo shows
 
 - An inline, single-value select is displayed alongside theme controls for previewing different appearances in the same layout.

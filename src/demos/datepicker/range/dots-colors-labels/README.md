@@ -14,6 +14,16 @@ The passed date-times can also contain timezone data which requires a `timezoneP
 
 Use the `onPageLoading` lifecycle event to load the data runtime. You can [learn about lifecycle events](https://demo.mobiscroll.com/react/range/event-hooks#) and places where to drop logic to customize the experience.
 
+## Implementation instructions
+
+- Set `select: 'range'` (or `range: 'select'` in older syntax) on the `Datepicker` with `controls: ['calendar']` and `display: 'inline'`.
+- Use the `colors` option for cell backgrounds and highlights: pass an array of `{ date, background }` entries for a rectangular cell background, `{ date, highlight }` for a circular highlight, or both keys on the same entry to combine them. A single entry can also combine `background`/`highlight` with a `recurring` rule instead of a fixed `date` (e.g. `{ recurring: { repeat: 'yearly', month, day }, background: '#f57777' }`).
+- Use the `marked` option for colored dots: an array of `{ date, color }` (or `{ recurring: {...}, color }`) entries; multiple entries sharing the same `date` render multiple dots on that day.
+- Use the `labels` option for text labels below a date: an array of `{ date, text, color }` or `{ date, text, textColor }` entries (or `{ recurring: {...}, title, color }`), where `color` sets the label background and `textColor` sets a text-only color.
+- `marked` and `labels` are mutually exclusive — set one or the other (set the unused one to `null`/`undefined`), since both render in the same slot below the date number; `colors` can be combined with either.
+- All three options accept exact dates, `{ start, end }` ranges, or `recurring` rule objects (e.g. `{ repeat: 'yearly', month, day }`) for the `date`/range key.
+- Changes are applied at runtime via `.setOptions({ colors: [...] })`, `.setOptions({ marked: [...] })`, or `.setOptions({ labels: [...] })` on the calendar instance; passing `null` clears that option.
+
 ## What this demo shows
 
 - This inline examples demonstrate different ways how to hilight or mark dates on the date range picker. 

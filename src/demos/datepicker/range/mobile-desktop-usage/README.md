@@ -17,6 +17,14 @@ When linked to an input, the component will be shown on focus or when someone cl
 
 - [Check out the responsive demo →](https://demo.mobiscroll.com/react/datetime/responsive#)
 
+## Implementation instructions
+
+- Use `select: 'range'` with `showRangeLabels: true` and `touchUi: true`/`false` to switch the range picker between touch and pointer rendering.
+- Any standard input can trigger the picker by default (`display` unset defaults to opening on focus/click); a Mobiscroll-styled input works the same way by adding the `mbsc-input` directive/component to the input element — no extra picker option is needed.
+- Set `showOnClick: false` and `showOnFocus: false` to stop the picker opening from the input itself, then trigger it imperatively from a separate button: JS/jQuery call `.open()` on the stored instance; React tracks open state with `isOpen`/`onClose` props; Angular exposes the picker via a template reference (`#picker="mobiscroll"`) and calls `pickerInst.open()` from a `ViewChild`; Vue tracks `isOpen` in a ref and toggles it, binding `@close` to reset it.
+- `display: 'inline'` embeds the range picker directly in the page markup with no trigger input at all.
+- In React, `inputComponent="input"` plus `inputProps={{ placeholder: ... }}` render a plain native `<input>` instead of the default Mobiscroll input; other frameworks configure the native/Mobiscroll input directly in markup.
+
 ## What this demo shows
 
 - Shows four date range picker examples for selecting a start and end date from a monthly calendar.

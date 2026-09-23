@@ -9,7 +9,7 @@ Hide the all-day events section of the scheduler by setting the `allDay` propert
 ## Implementation instructions
 
 - Use `view: { scheduler: { type: 'week', allDay: false } }` — setting `allDay: false` hides the all-day events row entirely.
-- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. For the imperative API, call `inst.setEvents(events)` in the callback.
+- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. React/Angular/Vue: assign the fetched array to the state/property bound to the `data` prop. JS/jQuery (imperative API): call `inst.setEvents(events)` in the callback.
 
 ## What this demo shows
 

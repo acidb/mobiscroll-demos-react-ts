@@ -14,6 +14,13 @@ Dynamically switch between date only and date-time entry based on an "all-day" s
 
 - [Check out the event calendar →](https://demo.mobiscroll.com/react/eventcalendar/#)
 
+## Implementation instructions
+
+- Set `select: 'range'` with `controls: ['datetime']` (or `['date']` for all-day) on a single `Datepicker` instance to collect a start and end date/time pair.
+- Bind the picker to two separate fields via `startInput`/`endInput` instead of a single value input: React/Vue pass input element refs, Angular passes template reference variables through `[startInput]`/`[endInput]`, and JS/jQuery pass CSS selector strings (e.g. `'#start'`, `'#end'`).
+- Toggling an "all-day" control switches `controls` between `['date']` and `['datetime']` at runtime: JS/jQuery call `.setOptions({ controls: [control] })` on the picker instance; React recomputes the `controls` prop from state; Angular/Vue update the bound `controls` array reactively.
+- The picker only manages the date/time range itself — title, location, busy/free, and notes are ordinary form fields with no picker-option equivalent.
+
 ## What this demo shows
 
 - Shows a mobile form for creating and editing calendar events with a date range picker.

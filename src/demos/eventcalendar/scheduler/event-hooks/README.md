@@ -17,7 +17,7 @@ While users interact with the UI events like `onEventClick`, `onInit`, `onSelect
 ## Implementation instructions
 
 - Use `view: { scheduler: { type: 'day' } }`.
-- Define 3 resources (Ryan, Kate, John) with `id`, `name`, and `color`. Load events from `https://trial.mobiscroll.com/resource-events/` via JSONP: React/Vue call `getJson(url, callback, 'jsonp')`; JS calls `mobiscroll.getJson(url, callback, 'jsonp')`; jQuery calls `$.getJSON(url + '&callback=?', callback)`; Angular uses `HttpClient.jsonp()`. Imperative API (JS/jQuery): call `inst.setEvents(events)` in the callback.
+- Define 3 resources (Ryan, Kate, John) with `id`, `name`, and `color`. Load events from `https://trial.mobiscroll.com/resource-events/` via JSONP: React/Vue call `getJson(url, callback, 'jsonp')`; JS calls `mobiscroll.getJson(url, callback, 'jsonp')`; jQuery calls `$.getJSON(url + '&callback=?', callback)`; Angular uses `HttpClient.jsonp()`. React/Angular/Vue: in the callback, assign the fetched array to the state/property bound to the `data` prop. Imperative API (JS/jQuery): call `inst.setEvents(events)` in the callback.
 - Add an `invalid` entry blocking `12:00–13:00` recurring weekly on `MO,TU,WE,TH,FR` (titled "Lunch break") — all frameworks use the same pattern.
 - Enable `dragToCreate: true`, `dragToMove: true`, `dragToResize: true`, and `externalDrop: true`.
 - **External draggables** — elements outside the calendar can be made draggable into it via `dragData: { title, color }`. React/Vue: use `Draggable` / `MbscDraggable` component with `dragData` and `element` (ref) props. Angular: use the `mbsc-draggable` directive with `[dragData]`. JS/jQuery: use the `mbsc-draggable` attribute with `data-drag-data` as a JSON string.

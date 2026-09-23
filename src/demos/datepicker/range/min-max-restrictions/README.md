@@ -16,6 +16,15 @@ Values can be passed as [JS date objects, ISO date strings or Moment.js objects]
 
 - [Discover how to disable specific values →](https://demo.mobiscroll.com/react/range/disabled-invalid-values#)
 
+## Implementation instructions
+
+- Set `select: 'range'` with `showRangeLabels: true`, plus `min`/`max` to disable dates/times outside the given bounds.
+- `min`/`max` accept a JS `Date` object, an ISO date string, or a Moment.js object; omitting either (passing `undefined`) removes that bound and restores infinite navigation on that side.
+- `controls: ['calendar']` restricts by date only; `controls: ['calendar', 'time']` restricts by date and time together, so `min`/`max` should then include a time-of-day component.
+- A dynamically calculated bound (e.g. "18 years in the past") is computed once from `new Date()` and passed as the `min`/`max` value like any other date — recompute and re-apply it if the bound needs to stay current.
+- Changes are applied at runtime by calling `.setOptions({ min, max })` on the range instance (JS/jQuery); in React the `min`/`max` props are passed as plain string/`Date` values, in Angular via `[min]`/`[max]` bindings, and in Vue via `:min`/`:max` bindings — all re-render with the new bounds without recreating the picker.
+- To disable additional individual dates/times inside the `min`–`max` window (e.g. holidays, sold-out days), combine this with the `invalid`/`valid` options described in the disabled-invalid-values demo.
+
 ## What this demo shows
 
 - Shows a segmented control switcher between a date picker, which is selected by default, and a date-time picker. Both modes support minimum and maximum selectable values.

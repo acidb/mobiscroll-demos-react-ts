@@ -27,7 +27,7 @@ Customizing the interaction, event workflows, whether the events are read-only i
   - **Update** (`onEventUpdate`): `Confirm` dialog ("Are you sure you want to update this event?" / "This action will affect your Outlook Calendar event." / "Update") → `outlookCalendarSync.updateEvent(event.outlookCalendarId, event)`. On cancel or failure, restore `args.oldEvent`.
   - **Delete** (`onEventDelete`): return `false`, `Confirm` dialog ("Delete") → `outlookCalendarSync.deleteEvent(event.outlookCalendarId, event)`, filter the event out on success.
 - **Layout**: a persistent sidebar panel alongside the calendar. When not logged in: "Sync my outlook calendars" sign-in button. When logged in: editing note, "Enable editing" Switch, per-calendar Switches (label: `cal.name`), "Log out" button.
-- **Custom header**: `CalendarNav` (left), spinner (12 blade divs), then `CalendarPrev`, `CalendarToday`, `CalendarNext` (right).
+- **Custom header** (`renderHeader`, Angular: `headerTemplate`, Vue: `#header` slot): `CalendarNav` (left), spinner (12 blade divs), then `CalendarPrev`, `CalendarToday`, `CalendarNext` (right).
 
 ## What this demo shows
 

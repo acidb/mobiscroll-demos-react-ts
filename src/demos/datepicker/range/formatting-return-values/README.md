@@ -14,6 +14,15 @@ Besides customizing the date and time formats you can reorder the time picker wh
 
 - [Check out how the return format changes based on locale →](https://demo.mobiscroll.com/react/range/localization#)
 
+## Implementation instructions
+
+- Set `select: 'range'` on the `Datepicker` so it returns a start/end pair instead of a single value; when no `dateFormat`/`timeFormat` is set, the format is inherited from the active localization settings.
+- Use `controls: ['calendar']` with `dateFormat` for date-only ranges: `'DD.MM.YYYY'` (numeric with separators), `'D MMMM YYYY'` (full month name), `'DDD DD MMM, YYYY'` (weekday + abbreviated month), `'YYYY-MM-DD'` (ATOM), or `'DDD, DD MMM YYYY'` (COOKIE).
+- Use `controls: ['time']` with `timeFormat` for time-only ranges: `'hh:mm A'` (12-hour), `'HH:mm'` (24-hour), or `'HH:mm:ss'` (24-hour with seconds).
+- Use `controls: ['calendar', 'time']` with both a `dateFormat` and `timeFormat` for combined date-and-time ranges, e.g. `timeFormat: 'HH:mm:ss'` alone, or `dateFormat: 'DDD D MMM, YYYY'` with `timeFormat: 'H:mm'`.
+- Reorder or reformat the time picker wheels independently of the display format with `timeWheels`, e.g. `dateWheels: '|DDD D MMM, YYYY|'` to control how a single combined wheel renders.
+- Set the initial range programmatically with `.setVal([startDate, endDate], true)` on the picker instance (the second argument suppresses the change event on init).
+
 ## What this demo shows
 
 - Fourteen input-based date, month, time, and date-time range pickers demonstrate different ways to format selected values.

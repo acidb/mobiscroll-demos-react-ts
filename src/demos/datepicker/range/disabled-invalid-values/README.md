@@ -23,6 +23,14 @@ The passed date-times can also contain timezone data which requires a `timezoneP
 
 - **Using date-times across different timezones?** [Learn more about timezone support →](https://demo.mobiscroll.com/react/range/setting-the-picker-timezone#)
 
+## Implementation instructions
+
+- Set `select: 'range'` with `controls: ['calendar']` and `display: 'inline'`.
+- Pass the `invalid` array (or `valid` array — only one is active at a time; set the other to `undefined` to clear it) with entries in any of these shapes: exact date strings (`'2021-03-02'`), a date range (`{ start, end }`), or a recurring rule (`{ recurring: { repeat: 'weekly' | 'yearly' | 'monthly', weekDays, day, month } }`) — e.g. `{ recurring: { repeat: 'weekly', weekDays: 'SA,SU' } }` for weekends, `{ recurring: { repeat: 'yearly', day: 24, month: 12 } }` for a fixed yearly date, or `{ recurring: { repeat: 'monthly', day: -1 } }` for the last day of every month.
+- Set `inRangeInvalid: true` so only the range's start/end need to avoid invalid dates while dates in between can be invalid; set `inRangeInvalid: false` and `rangeEndInvalid: true` instead to allow the range end specifically to land on an invalid date (e.g. an accommodation checkout date) while the start still cannot.
+- Update the active rule set at runtime with `invalidDate.setOptions({ invalid: [...], valid: undefined })` (or the reverse to switch to `valid`), and `invalidDate.setOptions({ inRangeInvalid: checked })` / `{ rangeEndInvalid: checked }` to toggle those flags. React/Angular/Vue: update the bound `invalid`/`valid`/`inRangeInvalid`/`rangeEndInvalid` props/state instead of calling `setOptions`.
+- Angular binds these as `[invalid]`/`[valid]`/`[inRangeInvalid]`/`[rangeEndInvalid]`; Vue binds them as `:invalid`/`:valid`/`:inRangeInvalid`/`:rangeEndInvalid`; React passes them as props (`invalid`, `valid`, `inRangeInvalid`, `rangeEndInvalid`); JS/jQuery pass them in the options object at init and update via `setOptions`.
+
 ## What this demo shows
 
 - Configures invalid or valid dates in a date range picker to control which dates are available for selection.

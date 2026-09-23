@@ -13,6 +13,17 @@ The look and feel of the popover can be deeply customized. There are four levels
 
 You can also see how every example looks by changing the theme from the header.
 
+## Implementation instructions
+
+- `theme` accepts `'ios'`, `'material'`, `'windows'`, or `'auto'`; `'auto'` picks the base theme automatically based on the detected platform.
+- `themeVariant` accepts `'light'`, `'dark'`, or `'auto'`; `'auto'` follows the active system theme.
+- `display: 'anchored'` anchors the popup to a trigger element instead of centering it; `anchor` supplies the DOM element it positions against.
+- `buttons: ['ok', 'cancel']` renders Ok/Cancel action buttons in the popup's footer.
+- `showOverlay: false` removes the dimmed backdrop behind the popup so surrounding content stays visible while it's open.
+- Opening is imperative in JS/jQuery and Angular, declarative in React/Vue: JS/jQuery call `.mobiscroll('getInst')` once to get the popup instance, set `anchor` on the trigger button, then call `.open()` on click; Angular keeps a `@ViewChild` reference (`popup: MbscPopup`) with `[anchor]` bound in the template and calls `popup.open()` from the click handler; React and Vue instead bind the popup's `isOpen`/`:isOpen` prop to state the click handler sets to `true` (together with an `anchor`/`:anchor` state update from the clicked element), and reset that state through an `onClose`/`@close` callback.
+- Changing the base theme or variant at runtime is imperative in JS/jQuery — call `.setOptions({ theme })` or `.setOptions({ themeVariant })` on the popup instance (and on any other themed component instances) — since `theme`/`themeVariant` are otherwise fixed props/options set once at initialization in React, Angular, and Vue.
+- `theme` and `themeVariant` are top-level options on the `Popup`/`MbscPopup` component (prop in React/Vue, `[options]` field in Angular, `.popup({...})` config in JS/jQuery) — they are not scoped to a single instance and are commonly set once globally via `setOptions()` from the framework package instead.
+
 ## What this demo shows
 
 - This demo shows a popup which can be opened and closed with buttons.

@@ -13,6 +13,14 @@ The look and feel of the date picker can be deeply customized. There are four le
 
 You can also see how every example looks by changing the theme from the header.
 
+## Implementation instructions
+
+- Set `theme` to `'ios'`, `'material'`, or `'windows'` to pick the base theme on the range `Datepicker` (`select: 'range'`, `display: 'inline'`, `controls: ['calendar']`).
+- Set `themeVariant` to `'light'` or `'dark'` to pick the variant of the chosen base theme, or `'auto'` to follow the system's light/dark setting.
+- A custom theme is a base theme name suffixed with a color, e.g. `'ios-gray'`, `'material-indigo'`, `'windows-yellow'` — built with the [theme builder](https://mobiscroll.com/themebuilder) or Sass overrides — and is passed to the same `theme` option in place of the base name; `themeVariant` is not combined with a custom theme name.
+- React passes `theme`/`themeVariant` as props; Angular and Vue bind them the same way as plain attributes (`theme="ios"`, `themeVariant="light"`); JS/jQuery set `theme`/`themeVariant` directly in the options object.
+- Both options can be changed at runtime via `.setOptions({ theme: newTheme })` / `.setOptions({ themeVariant: newVariant })` (JS/jQuery) or by updating the bound prop/state in React/Angular/Vue, and the calendar re-renders with the new look.
+
 ## What this demo shows
 
 - An inline month-view date range picker calendar is shown alongside theme controls so you can preview different calendar looks in the same layout.

@@ -18,7 +18,7 @@ While users interact with the UI events like `onEventClick`, `onInit`, `onSelect
 
 - Use `timeline: { type: 'day', resourceReorder: true }` — a single-day view with drag-to-reorder resources enabled.
 - Define 6 resources with `id`, `name`, and `color`.
-- Load events from `https://trial.mobiscroll.com/timeline-events/` via JSONP using `getJson(url, callback, 'jsonp')`. Call `inst.setEvents(events)` for the imperative API.
+- Load events from `https://trial.mobiscroll.com/timeline-events/` via JSONP using `getJson(url, callback, 'jsonp')`. React/Angular/Vue: assign the fetched array to the state/property bound to the `data` prop. Call `inst.setEvents(events)` for the imperative API.
 - Add an `invalid` entry blocking 12:00–13:00 recurring on weekdays (`weekDays: 'MO,TU,WE,TH,FR'`).
 - Enable all interactions: `dragToCreate: true`, `dragToMove: true`, `dragToResize: true`, `externalDrop: true`, `externalResourceDrop: true`.
 - **External draggables** — elements outside the calendar can be registered as Mobiscroll draggables:

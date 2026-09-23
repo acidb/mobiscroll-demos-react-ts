@@ -8,6 +8,19 @@ By default the select takes the `item.text` and `item.value` of the data array i
 
 With the help of the renderItem option you can write a function that returns the custom item markup. Any `data` field can be used for the template. You'll also want to make sure that the `itemHeight` is set accordingly.
 
+## Implementation instructions
+
+- By default the select renders each `data` item using only its `text`/`value` fields; any additional field on a `data` item (here `year`, `artist`, `img`) is ignored unless a custom item template is supplied.
+- `data` items in this demo carry `text`, `value`, plus custom `year`, `artist`, and `img` fields — all of which the custom template reads off `item.data`.
+- Custom templating is the mechanism, and its name and shape differ per framework:
+  - **React**: a `renderItem` prop takes a function `(item: MbscSelectItemData) => JSX.Element`; the function reads `item.data.text`/`.year`/`.artist`/`.img` and returns markup built from those fields (e.g. an `<img>` sourced from `'https://img.mobiscroll.com/demos/' + data.img + '.png'`).
+  - **Angular**: an `[itemTemplate]="itemTemp"` input points at a named `<ng-template #itemTemp let-item>`, with `item.data.*` interpolated directly in the template (`{{item.data.text}}`, `[src]="'...' + item.data.img + '.png'"`).
+  - **Vue**: the `#item` named slot on `<MbscSelect>` receives `item` as the slot prop, with `item.data.*` used inside `{{ }}` interpolations and `:src` bindings.
+  - **JS/jQuery**: a `renderItem` function option (inside `.select({ ... })`) takes `(item)` and returns an HTML string built via concatenation of `item.data.*` fields.
+- `itemHeight` (here `64`) must be set to the actual pixel height the custom row renders at — this component does not auto-measure custom template content, so a mismatch causes clipped or overlapping rows during scrolling.
+- The album artwork itself is not a select feature — it's a plain `<img>` inside the custom template, sourced from a fixed `https://img.mobiscroll.com/demos/<img>.png` naming convention.
+- `display="anchored"` opens the picker as a dropdown anchored to the input; `inputStyle`/`labelStyle`/`placeholder` are cosmetic input-decoration options independent of templating.
+
 ## What this demo shows
 
 - Shows a single-value select with custom item templating.

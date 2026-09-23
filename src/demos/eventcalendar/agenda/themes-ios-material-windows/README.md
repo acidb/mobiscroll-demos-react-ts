@@ -16,7 +16,7 @@ You can also see how every example looks by changing the theme from the header.
 ## Implementation instructions
 
 - Use `view: { agenda: { type: 'month' } }`. Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. Angular: use `HttpClient.jsonp()`. For the imperative API, call `inst.setEvents(events)` in the callback.
-- `theme` accepts `auto`, `ios`, `material`, `windows`. `themeVariant` accepts `auto`, `light`, `dark`. Both can be changed at runtime via `inst.setOptions({ theme })` / `inst.setOptions({ themeVariant })`.
+- `theme` accepts `auto`, `ios`, `material`, `windows`. `themeVariant` accepts `auto`, `light`, `dark`. React/Angular/Vue: change either at runtime by updating the bound `theme`/`themeVariant` prop value. JS/jQuery: call `inst.setOptions({ theme })` / `inst.setOptions({ themeVariant })`.
 
 ## What this demo shows
 

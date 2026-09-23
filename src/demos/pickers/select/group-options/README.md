@@ -8,6 +8,14 @@ Enable group headers through the `group` property of the options or the `optgrou
 
 Grouping works for both single and multiple select pickers.
 
+## Implementation instructions
+
+- Group headers come from a `group` field on each data item: `{ text: 'Atlanta', value: 'atl', group: 'US' }`. Items are grouped by that field's value and a non-selectable header row showing the group name is inserted above each cluster of matching items.
+- Markup-based JS/jQuery selects (native `<select>`) get the same grouping from `<optgroup label="US">...</optgroup>` wrapping the relevant `<option>` elements — the `group` field on `data` items is the equivalent for React/Angular/Vue and for JS/jQuery when using the `data` option instead of markup.
+- `showGroupWheel: true` adds a second, separate wheel to the left of the item list showing only the group names; selecting a group in that wheel scrolls/filters the item wheel to that group's options, while group headers remain in the item list itself.
+- `selectMultiple: true` switches the picker to multi-select: selected items are marked with a checkmark in the list and rendered as removable chips inside the bound input, each with a close icon; grouping (headers and, if enabled, the group wheel) works the same way as in single-select mode.
+- Per-framework binding for the grouped `data` array is the same as in data-sources: React `data={myData}` prop, Angular `[data]="myData"`, Vue `:data="myData"`, JS/jQuery `data: [...]` inside `.select({...})`; `showGroupWheel` and `selectMultiple` follow the same per-framework option/prop/binding convention (plain option in JS/jQuery, prop in React, `[showGroupWheel]`/`[selectMultiple]` in Angular, `:showGroupWheel`/`:selectMultiple` in Vue).
+
 ## What this demo shows
 
 - Three select examples demonstrate different ways to group options.

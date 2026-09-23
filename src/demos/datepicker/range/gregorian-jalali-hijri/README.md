@@ -16,6 +16,15 @@ The date picker supports multiple calendar systems. You can control it with the 
 
 - [Explore this example →](https://demo.mobiscroll.com/react/range/localization#)
 
+## Implementation instructions
+
+- Use `controls: ['calendar']`, `select: 'range'`, `display: 'inline'`, and `showRangeLabels: true` for the base range calendar.
+- Set `calendarSystem` to switch the calendar rendering: `gregorianCalendar` (default, no Farsi/Arabic pack needed), `jalaliCalendar` (Persian calendar, requires the Farsi language pack), or `hijriCalendar` (requires the Arabic language pack).
+- Pair each `calendarSystem` with the matching `locale`: `locale.fa` for Jalali, `locale.ar` for Hijri, `locale.en` (or omitted) for Gregorian — the calendar system and locale are set together, not independently.
+- Import paths differ per framework: JS/jQuery reference them off the global namespace (`mobiscroll.jalaliCalendar`, `mobiscroll.locale.fa`); React/Angular/Vue import `jalaliCalendar`/`hijriCalendar`/`gregorianCalendar` and `localeFa`/`localeAr`/`localeEn` as named exports from `@mobiscroll/<framework>` and pass them as `calendarSystem`/`locale` values (React: `calendarSystem={jalaliCalendar}`; Angular: `[calendarSystem]="jalaliCalendar"`; Vue: `:calendarSystem="jalaliCalendar"`).
+- Both `calendarSystem` and `locale` can be swapped at runtime via `.setOptions({ calendarSystem, locale })` on the picker instance without recreating the component.
+- The selected start/end dates are set with `.setVal([startDate, endDate], true)`; the stored value is unaffected by which calendar system is used to display it.
+
 ## What this demo shows
 
 - Shows a date range picker example for selecting a start and end date from a monthly calendar.

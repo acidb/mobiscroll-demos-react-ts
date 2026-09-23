@@ -10,6 +10,16 @@ The range start/end labels can also be hidden in some cases if needed. Use the `
 
 Furthermore, you have the option to toggle the range highlight with the `rangeHighlight` option, if needed.
 
+## Implementation instructions
+
+- Set `select: 'range'` with `controls: ['calendar']` or `controls: ['date']` to switch between the calendar and scroller/dropdown range views; both support the same range-labeling and highlight options.
+- Set `showRangeLabels: true`/`false` to show or hide the start/end labels above the picker.
+- Override the default "Start"/"End" microcopy with `rangeStartLabel`/`rangeEndLabel` (e.g. `'Outbound'`/`'Return'` for flights, `'Check in'`/`'Check out'` for accommodation).
+- Add helper text below each label with `rangeStartHelp`/`rangeEndHelp`.
+- Set `rangeHighlight: true`/`false` to toggle highlighting the full selected range versus only the start/end dates; `rangeHighlight` only applies to `controls: ['calendar']` — it has no effect on the scroller/dropdown (`controls: ['date']`) view.
+- Clear a custom label/helper by passing `undefined` for that option (e.g. `.setOptions({ rangeStartLabel: undefined })`), which reverts to the localized default.
+- Apply option changes at runtime via `.setOptions({ ... })` on the picker instance (JS/jQuery) or by updating the bound reactive props (React/Angular/Vue).
+
 ## What this demo shows
 
 - A configuration panel for customizing the range picker inputs and selection display.

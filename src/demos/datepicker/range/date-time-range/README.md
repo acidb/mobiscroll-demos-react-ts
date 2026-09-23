@@ -12,6 +12,15 @@ Set up the range picker for date & time pair selection. Regardless if you are in
 - `time` - will render a time picker for range selection ([explore time ranges](https://demo.mobiscroll.com/react/range/time-range#))
 - `timegrid` - will render a time grid for range selection ([explore time range selection](https://demo.mobiscroll.com/react/range/time-range#))
 
+## Implementation instructions
+
+- Set `select: 'range'` on the `Datepicker` for every configuration below — it is what turns single-value selection into start/end range selection.
+- Use `controls: ['calendar', 'time']` for a calendar paired with a scroller-style time picker, or `controls: ['calendar', 'timegrid']` to pair the calendar with a 30-minute time grid instead of scroller wheels.
+- Use `controls: ['datetime']` alone for the compact combined date-and-time scroller/dropdown layout (both inline and input-anchored).
+- Set `display: 'inline'` to render the picker directly on the page, or omit `display` (default `'anchored'`) to open it from an input.
+- For a single input driving the whole range, initialize the picker directly on that input element/ref.
+- For two separate start/end inputs, initialize the picker once and pass `startInput`/`endInput` pointing at the two input elements/refs — React/Vue/Angular pass element refs (`startInput={start}` / `:startInput="startInput"` / `[startInput]="start"`), JS/jQuery pass selector strings (`startInput: '#start'`, `endInput: '#end'`).
+
 ## What this demo shows
 
 - Five inline examples of date-and-time range selection, each using a different control configuration.

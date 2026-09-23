@@ -13,6 +13,15 @@ Forms can be themed and customized. There are four levels of customization:
 
 You can also see how the other demos look by changing the theme in the floating action bar on the right side (not this example, the themes are hardcoded here).
 
+## Implementation instructions
+
+- `theme` selects the base theme applied to every component instance: `'ios'`, `'material'`, or `'windows'`.
+- `themeVariant` selects the light/dark variant: `'light'` or `'dark'`; setting it to `'auto'` follows the OS/browser color-scheme preference instead of a fixed value.
+- A custom theme is applied by passing a custom theme name to `theme` (e.g. `'material-indigo'`, `'ios-gray'`, `'windows-yellow'`) — these names come from the Theme Builder export or a custom Sass build, not a separate option.
+- `theme`/`themeVariant` are global settings: JS/jQuery applies them via `mobiscroll.setOptions({ theme, themeVariant })` before initializing components, or per-instance via `.mobiscroll('setOptions', { theme, themeVariant })` on an existing instance; React/Angular/Vue apply them via each framework's global `setOptions({ theme, themeVariant })` call (same import used for locale) since `theme`/`themeVariant` are not per-component props in the framework wrappers.
+- Changing the theme at runtime re-applies `setOptions({ theme: newTheme })` (and `{ themeVariant: newVariant }`) to every already-rendered instance — the demo does this to every visible input, select, switch, checkbox, radio group, stepper, button, and segmented control on toggle.
+- Deeper customization beyond the four base themes and light/dark variants is done externally, through the Theme Builder (colors) or custom Sass/CSS overrides — neither is a runtime option.
+
 ## What this demo shows
 
 - This demo shows different examples for theming options for the form components.

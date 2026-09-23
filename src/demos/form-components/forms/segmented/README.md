@@ -14,6 +14,16 @@ Break the monotony of event add/edit forms by mixing it in with other inline fie
 
 - [Check out how the segmented can be used in an event form →](https://demo.mobiscroll.com/react/eventcalendar/create-read-update-delete-CRUD#)
 
+## Implementation instructions
+
+- Segments are grouped with `SegmentedGroup`/`mbsc-segmented-group`; JS/jQuery has no explicit group wrapper and instead relies on a shared `name` attribute across sibling `input[mbsc-segmented]` elements.
+- `select="multiple"` on the group (React/Vue prop, Angular attribute) switches it from single-select (radio behavior) to multi-select (checkbox behavior); JS/jQuery achieves the same by giving each segment `type="checkbox"` instead of `type="radio"`.
+- Individual segments carry a `value` in React/Angular/Vue to identify the selection; JS/jQuery segments have no `value` attribute and are read by their checked state directly.
+- Initial selection is set per segment: React `defaultChecked={true}`, Angular `[checked]="true"`, Vue `:defaultChecked="true"`, JS/jQuery the plain `checked` attribute. Multiple segments can be checked at once only when the group is in `select="multiple"` mode.
+- `icon` (`data-icon` in JS/jQuery) renders an icon inside a segment, either alongside label text or, when the segment has no text content, as an icon-only segment.
+- `disabled` set on the group (React/Vue prop, Angular `disabled="true"` attribute, JS/jQuery a `disabled` attribute on every input in the group) disables all of its segments at once; the demo does not show disabling a single segment within an otherwise enabled group.
+- The same `Segmented`/`SegmentedGroup` option set applies whether the control is used standalone, as tabs, or mixed inline with other form fields — usage context does not change the available options.
+
 ## What this demo shows
 
 - This demo shows segmented controls configured for single and multiple selection from predefined options.

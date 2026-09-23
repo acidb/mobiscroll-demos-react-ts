@@ -14,6 +14,16 @@ Use the global options for setting the theme, localization options and everythin
 
 - [Learn how to create full width, single column forms →](https://demo.mobiscroll.com/react/forms/mobile#)
 
+## Implementation instructions
+
+- The multi-column layout uses Mobiscroll's grid CSS classes on plain wrapper `<div>`s, not a component option: `.mbsc-grid.mbsc-grid-fixed` containing `.mbsc-row` elements with `.mbsc-col-{breakpoint}-{size}` columns (size out of 12).
+- Column spans stack per breakpoint, e.g. `mbsc-col-md-6 mbsc-col-12` is full width below `md` and half width from `md` up; `mbsc-col-md-4 mbsc-col-6` is half width by default and a third at `md`.
+- `mbsc-row.mbsc-justify-content-center` combined with a bounded column width on the row's own wrapper (e.g. `mbsc-col-md-10 mbsc-col-xl-8`) centers and caps the grid's overall width on large screens instead of letting it stretch edge to edge.
+- The single-column variant is the same grid classes with no multi-column split — each field's wrapper stays at its default full-row width, producing one field per row.
+- `inputStyle="box"` and `labelStyle="floating"` (JS/jQuery: `data-input-style="box"` / `data-label-style="floating"`) are applied per field for the boxed-input-with-floating-label style used in the multi-column example; the single-column example omits them for the plain underline style.
+- `passwordToggle` (JS/jQuery: `data-password-toggle="true"`) adds a show/hide control to a password-type `Input`/`mbsc-input`.
+- A `Dropdown`/`mbsc-dropdown`/`MbscSelect`-family select field is populated with plain `<option>` children for the state/choice list.
+
 ## What this demo shows
 
 - Shows a single-column and multi-column grid layouts for forms on medium and large screens.

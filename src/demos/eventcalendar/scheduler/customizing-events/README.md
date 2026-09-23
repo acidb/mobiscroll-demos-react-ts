@@ -23,7 +23,7 @@ The buffers can be customized through the `renderBufferBefore` and `renderBuffer
 
 ## Implementation instructions
 
-- Use a `responsive` config: `xsmall: { view: { scheduler: { type: 'day' } } }`, `medium: { view: { scheduler: { type: 'week' } } }`. Load events from a JSONP endpoint on mount. React/Vue: call `getJson(url, callback, 'jsonp')`; JS: call `mobiscroll.getJson(url, callback, 'jsonp')`; jQuery: call `$.getJSON(url + '&callback=?', callback)`; Angular: `HttpClient.jsonp()`. Imperative API (JS/jQuery): call `inst.setEvents(events)` in the callback.
+- Use a `responsive` config: `xsmall: { view: { scheduler: { type: 'day' } } }`, `medium: { view: { scheduler: { type: 'week' } } }`. Load events from a JSONP endpoint on mount. React/Vue: call `getJson(url, callback, 'jsonp')`; JS: call `mobiscroll.getJson(url, callback, 'jsonp')`; jQuery: call `$.getJSON(url + '&callback=?', callback)`; Angular: `HttpClient.jsonp()`. React/Angular/Vue: in the callback, assign the fetched array to the state/property bound to the `data` prop. Imperative API (JS/jQuery): call `inst.setEvents(events)` in the callback.
 - Events carry two custom properties: `category` (integer 1–5, maps to a name and color via a local lookup) and `participants` (array of integer IDs, each mapping to a person's avatar image URL). Some events also have `bufferBefore` (travel time in minutes).
 - Pass a custom event renderer to `renderSchedulerEvent` (Vue: `#schedulerEvent` slot; Angular: `[schedulerEventTemplate]`). The renderer receives a `data` object — branch on `data.allDay`:
   - **All-day**: render a single colored div with `data.title`.

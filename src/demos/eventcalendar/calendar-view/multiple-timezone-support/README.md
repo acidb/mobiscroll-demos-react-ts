@@ -14,7 +14,7 @@ Set the timezone of the incoming data through the `dataTimezone` - eg. `'utc'`, 
 - Set `dataTimezone: 'utc'` so the calendar treats all event dates as UTC. Bind `displayTimezone` to a state variable initialized to `'utc'`.
 - Set `view: { calendar: { labels: true } }` to display a month grid with inline event labels.
 - Enable `dragToCreate`, `dragToMove`, and `dragToResize` for interactive event management.
-- Use `renderHeader` (Angular: `headerTemplate`, Vue: `header`) to render a custom header: `CalendarNav` on the left; `CalendarPrev`, `CalendarToday`, `CalendarNext`, and a Mobiscroll `Select` component on the right. The `Select` lists 9 IANA timezone options (e.g. `'America/Los_Angeles'`, `'UTC'`, `'Europe/Berlin'`). On change, update the `displayTimezone` — the calendar re-renders all event labels in the newly selected timezone.
+- Use `renderHeader` (Angular: `headerTemplate`, Vue: `#header` slot) to render a custom header: `CalendarNav` on the left; `CalendarPrev`, `CalendarToday`, `CalendarNext`, and a Mobiscroll `Select` component on the right. The `Select` lists 9 IANA timezone options (e.g. `'America/Los_Angeles'`, `'UTC'`, `'Europe/Berlin'`). On change, update the `displayTimezone` — the calendar re-renders all event labels in the newly selected timezone.
 
 ## What this demo shows
 

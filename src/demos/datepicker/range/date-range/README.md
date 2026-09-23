@@ -12,6 +12,14 @@ Set up the range picker for date pair selection. Regardless if you are intereste
 - `time` - will render a time picker for range selection ([explore time ranges](https://demo.mobiscroll.com/react/range/time-range#))
 - `timegrid` - will render a time grid for range selection ([explore time ranges](https://demo.mobiscroll.com/react/range/time-range#))
 
+## Implementation instructions
+
+- Set `select: 'range'` with `controls: ['calendar']` for a calendar-grid range picker, or `controls: ['date']` for a date scroller/dropdown range picker.
+- On the calendar variant, set `calendarType: 'month'` with `pages: 2` to show two months side by side; `display: 'inline'` embeds it directly on the page, while omitting `display` (or using `'anchored'`) opens it below an input.
+- Use `select: 'preset-range'` instead of `select: 'range'` to constrain selection to a fixed-length window rather than free start/end picking; `firstSelectDay` sets which day of the range is clickable to anchor the selection, and `selectSize` sets the fixed number of days in the range.
+- To drive the picker from two separate fields instead of one, pass `startInput`/`endInput`: React/Vue pass input element refs, Angular passes template reference variables via `[startInput]`/`[endInput]`, and JS/jQuery pass CSS selector strings (e.g. `'#start'`, `'#end'`).
+- `touchUi` controls whether the scroller/dropdown variants render as a scroller (touch) or dropdown (pointer); it has no effect on the calendar-grid variant.
+
 ## What this demo shows
 
 - Shows five range picker examples for selecting start and end dates.

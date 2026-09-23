@@ -15,6 +15,16 @@ to predefined ranges that people are usually interested in.
 
 - [Check out the range examples we have for you →](https://demo.mobiscroll.com/react/range/#)
 
+## Implementation instructions
+
+- `Popup` is opened by clicking the filter `Input` (`isOpen`/`:isOpen` bound to state set `true` on click in React/Vue; `popup.open()` via a `@ViewChild`/template-ref instance in Angular; `.setOptions`/`.open()` on the instance in JS/jQuery) and closed via `onClose`/`@close`.
+- `responsive` provides breakpoint-specific popup configs: an `xsmall` entry (`display: 'bottom'`, `touchUi: true`, a custom `'Apply'` button object plus `'cancel'`) for small screens, and a `custom` entry (`breakpoint: 559`, `buttons: []`, `display: 'anchored'`, `anchor` set to the filter input, `anchorAlign: 'start'`, `touchUi: false`, `scrollLock: false`, `showArrow: false`, `maxWidth: 920`) for larger screens — so the same popup renders as a bottom sheet with its own Apply/Cancel buttons on mobile and as an anchored, arrow-less panel with page-level Apply/Cancel buttons rendered outside the popup on desktop.
+- The `Select` (`Date range`) uses `data` entries with `value`/`text` pairs (`custom`, `today`, `yesterday`, `last-week`, `last-month`, `last-7-days`, `last-30-days`); its own `responsive` option switches its `touchUi` between breakpoints independently of the popup's.
+- Choosing anything other than `'custom'` in `onChange`/`@change` computes a `{ start, end }` pair (e.g. `today` → today/today, `last-7-days` → 6 days ago/today) and disables the Start/End `Input`s (`disabled`/`[disabled]`/`:disabled`); choosing `'custom'` re-enables them.
+- The nested `Datepicker` uses `select: 'range'`, `display: 'inline'`, `showRangeLabels: false`, `pages: 'auto'`, `returnFormat: 'iso8601'`, `showOnClick: false`, and `showOnFocus: false` — it renders inline inside the popup rather than opening its own popup, always returns ISO 8601 date strings/pairs, and doesn't open on clicking or focusing its bound inputs. It's wired to the Start/End `Input`s via `startInput`/`endInput` (`[startInput]`/`[endInput]` in Angular, `:startInput`/`:endInput` in Vue, refs in React, element IDs in JS/jQuery).
+- Picking a date in the calendar's `onChange`/`@change` sets `selected` back to `'custom'` and re-enables the Start/End inputs, overriding whatever preset was active.
+- `Apply` reformats the selected `{ start, end }` pair through `formatDate()` (using `options.locale.dateFormat`, defaulting to `'DD/MM/YYYY'`) into the filter input's display value and closes the popup; `Cancel` closes the popup without changing the input value.
+
 ## What this demo shows
 
 - Shows a clickable input which opens a custom range picker with preset options.

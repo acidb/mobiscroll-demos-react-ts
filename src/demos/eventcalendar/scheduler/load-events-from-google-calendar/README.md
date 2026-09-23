@@ -27,7 +27,7 @@ to connect to and load events from Google Calendar and it is not available in th
 - Call `googleCalendarSync.init({ apiKey, onInit: loadEvents })` on mount. `onInit` fires when the integration is ready.
 - **`loadEvents`**: calls `googleCalendarSync.getEvents(CALENDAR_ID, firstDay.current, lastDay.current)` and replaces the events array on success.
 - **`onPageLoading`**: sets date refs and calls `loadEvents()`. For `'month'` view use `args.viewStart`/`args.viewEnd` directly. For all other views, pre-load ±7 days: `firstDay = start − 7 days`, `lastDay = end + 7 days`.
-- **Custom header**: `CalendarNav` (left), spinner (12 blade divs, visible while loading), `SegmentedGroup` (Month/Week/Day/Agenda), then `CalendarPrev`, `CalendarToday`, `CalendarNext` (right).
+- **Custom header** (`renderHeader`, Angular: `headerTemplate`, Vue: `#header` slot): `CalendarNav` (left), spinner (12 blade divs, visible while loading), `SegmentedGroup` (Month/Week/Day/Agenda), then `CalendarPrev`, `CalendarToday`, `CalendarNext` (right).
 
 ## What this demo shows
 

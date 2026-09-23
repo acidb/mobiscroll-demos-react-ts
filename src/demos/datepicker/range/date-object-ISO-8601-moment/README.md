@@ -12,6 +12,14 @@ The range works with different date types:
 
 When passing dates to the component - eg. [invalids](https://demo.mobiscroll.com/react/range/disabled-invalid-values#), [min/max](https://demo.mobiscroll.com/react/datetime/min-max-restrictions#) - you can do it in either format and the picker will automatically know what to do with it. If you want to specify how the picker should return values, you can do it in the `returnFormat` option.
 
+## Implementation instructions
+
+- Set `controls: ['calendar']`, `select: 'range'`, and `display: 'inline'` for the inline range calendar.
+- Incoming values (e.g. for `value`/`setVal`, `invalid`/`valid`, `min`/`max`) accept a JS `Date` object (`new Date(2020, 10, 15)`), an ISO 8601 date string (`'2020-05-20'`), or a Moment.js object (`moment([2020, 2, 6])`) — for a range, pass a two-element array/tuple of `[start, end]` in any of these formats.
+- Set `returnFormat` to `'jsdate'`, `'iso8601'`, or `'moment'` to control the type the picker returns/emits on selection, independent of the format used to set the value.
+- Framework-specific value wiring differs: React uses a controlled `value` prop plus `onChange`; Angular uses `[(ngModel)]`; Vue uses `v-model`; JS/jQuery set/read values imperatively via `setVal(value)`/`getVal()` (jQuery: `.mobiscroll('setVal', value)`/`.mobiscroll('getVal')`) on the picker instance.
+- Moment.js objects require Moment.js to be loaded separately; do not pass a date string directly to `new Date()` — construct it with explicit year/month/day arguments instead.
+
 ## What this demo shows
 
 - An inline date picker for selecting a date range from a calendar.

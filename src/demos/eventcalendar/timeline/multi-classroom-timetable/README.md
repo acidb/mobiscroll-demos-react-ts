@@ -23,8 +23,8 @@ properties of the timeline to set such a view up.
 - Set `resolutionHorizontal: 'hour'` so each column on the time axis represents one hour.
 - Set `resolutionVertical: 'day'` to make the vertical axis repeat all resources under each day of the week, creating a timetable layout where rows represent classroom-per-day combinations rather than resources alone.
 - Define resources as a flat list of classrooms. Each classroom row appears once under every day in the vertical axis.
-- Use `renderTimelineDay` (Angular: `timelineDayTemplate`, Vue: `timelineDay`) to render a custom day label with the full day name and the formatted date.
-- Use `renderTimelineEventContent` (Angular: `timelineEventContentTemplate`, Vue: `timelineEventContent`) to render a custom event body showing the class title, professor name, and student year level from custom event properties.
+- Use `renderTimelineDay` (Angular: `timelineDayTemplate`, Vue: `#timelineDay` slot) to render a custom day label with the full day name and the formatted date.
+- Use `renderTimelineEventContent` (Angular: `timelineEventContentTemplate`, Vue: `#timelineEventContent` slot) to render a custom event body showing the class title, professor name, and student year level from custom event properties.
 - Use `extendDefaultEvent` to pre-populate newly created events with a default title, professor, year level, and color.
 
 ## What this demo shows

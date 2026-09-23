@@ -10,6 +10,14 @@ But sometimes that is not enough. Luckily you can use the `cellCssClass` propert
 
 You can use the `cellCssClass` in combination with custom cell `background` to highlight a range of days and show the ends as check-in and check-out days.
 
+## Implementation instructions
+
+- Use `controls: ['calendar']`, `select: 'range'`, `display: 'inline'`, and `pages: 2` to show a two-month inline range calendar.
+- Use the `colors` option's `cellCssClass` property on single-date entries (e.g. `{ date, cellCssClass: 'check-in' }`, `{ date, cellCssClass: 'check-out' }`) to attach a custom CSS class to specific day cells for fully custom styling beyond `background`/`highlight`.
+- Use a `{ start, end, background }` entry in the same `colors` array to fill a date range with a solid background color, independent of the `cellCssClass` entries marking its endpoints.
+- Write the actual visual treatment in CSS targeting the custom class combined with Mobiscroll's direction classes, e.g. `.mbsc-datepicker .mbsc-ltr.check-in` / `.mbsc-rtl.check-in` and `.check-out`, using `linear-gradient` backgrounds to render a diagonal half-day split (and a separate `.mbsc-windows.check-in`/`.check-out` override since the Windows theme needs a transparent border instead).
+- `date`, `start`, and `end` accept `'YYYY-MM-DD'` strings (or JS Date objects); `cellCssClass` and `background` can be combined with `recurring` rules the same way as fixed dates.
+
 ## What this demo shows
 
 - An inline date range picker calendar with two months view and custom day cell styling.

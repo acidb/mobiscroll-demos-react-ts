@@ -19,7 +19,7 @@ While users interact with the UI events like `onEventClick`, `onInit`, `onSelect
 - Use `view: { calendar: { labels: true } }`. Enable `dragToCreate: true`, `dragToMove: true`, `dragToResize: true`, and `externalDrop: true`.
 - Add an `invalid` entry blocking weekends: `{ recurring: { repeat: 'weekly', weekDays: 'SA,SU' } }`.
 - **External draggables** — elements outside the calendar can be made draggable into it via `dragData: { title, color }`. React/Vue: use the `Draggable` component with `dragData` and `element` (ref) props. Angular: use the `mbsc-draggable` directive with `[dragData]`. JS/jQuery: use the `mbsc-draggable` attribute with `data-drag-data` as a JSON string.
-- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. Angular: use `HttpClient.jsonp()` instead. JS/jQuery: call `inst.setEvents(events)` in the callback.
+- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. Angular: use `HttpClient.jsonp()` instead for the HTTP call. React/Angular/Vue: assign the fetched array to the state/property bound to the `data` prop. JS/jQuery: call `inst.setEvents(events)` in the callback.
 - **All lifecycle hooks** — register every available hook as an empty handler, grouped by concern:
   - **Cell**: `onCellClick`, `onCellDoubleClick`, `onCellRightClick`, `onCellHoverIn`, `onCellHoverOut`
   - **Event interaction**: `onEventClick`, `onEventDoubleClick`, `onEventRightClick`, `onEventHoverIn`, `onEventHoverOut`, `onLabelClick`

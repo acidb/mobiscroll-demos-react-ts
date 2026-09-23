@@ -12,6 +12,17 @@ In this example the data is loaded from a remote JSON in the following format: `
 
 For the image & text rendering use a [custom item template](https://demo.mobiscroll.com/react/select/item-templating#).
 
+## Implementation instructions
+
+- `data` takes an array of `{ value, text, group? }` objects; this demo fetches it at runtime from a remote JSON endpoint and maps each raw record to `{ text: country.text, value: country.value }` before passing it in.
+- `filter: true` (Angular `[filter]="true"`) enables the built-in client-side search box in the picker header, which filters the `data` array by `text` as the user types; no `onFilter` handler is wired up in this demo since filtering stays local.
+- `display="anchored"` opens the picker as a dropdown anchored below the input instead of a modal/bottom-sheet.
+- The flag image per option is rendered through a custom item template, not a `data` field: the template builds each flag's URL from `item.data.value` (the ISO country code) against a fixed `https://img.mobiscroll.com/demos/flags/<value>.png` pattern, and renders `item.display` (the resolved label) next to it.
+- Custom item markup differs per framework: React passes a `renderItem` function prop returning JSX for `(item: MbscSelectItemData)`; JS/jQuery pass a `renderItem` function option returning an HTML string; Angular uses `[itemTemplate]="itemTemp"` pointing at a named `<ng-template #itemTemp let-item>` with `item.data`/`item.display` available in scope; Vue uses the `#item` named slot on `<MbscSelect>` with `item.data`/`item.display` exposed as slot props.
+- `itemHeight` must be set to match the custom template's rendered row height (`40` here) so the virtualized/scrollable list measures rows correctly.
+- `inputStyle`/`labelStyle` (`"outline"`/`"stacked"` or similar) and `placeholder` are cosmetic input-decoration options, not select-specific behavior.
+- For production use, the flags and country list should be hosted in the consuming app rather than loaded from the demo's `img.mobiscroll.com`/`trial.mobiscroll.com` endpoints.
+
 ## What this demo shows
 
 - A searchable country dropdown built with the select component.

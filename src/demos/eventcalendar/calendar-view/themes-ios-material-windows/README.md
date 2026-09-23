@@ -16,7 +16,7 @@ You can also see how every example looks by changing the theme from the header.
 ## Implementation instructions
 
 - Use `view: { calendar: { labels: true } }`. Pass `theme` and `themeVariant` as props to the Eventcalendar. Both default to `'auto'` — `theme: 'auto'` lets Mobiscroll pick based on the platform, `themeVariant: 'auto'` follows the OS light/dark preference.
-- `theme` accepts `auto`, `ios`, `material`, `windows`. `themeVariant` accepts `auto`, `light`, `dark`. Both can be changed at runtime via `inst.setOptions({ theme: value })` / `inst.setOptions({ themeVariant: value })`.
+- `theme` accepts `auto`, `ios`, `material`, `windows`. `themeVariant` accepts `auto`, `light`, `dark`. React/Angular/Vue: change either at runtime by updating the bound `theme`/`themeVariant` prop value. JS/jQuery: call `inst.setOptions({ theme: value })` / `inst.setOptions({ themeVariant: value })`.
 - Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. Angular: use `HttpClient.jsonp()` instead. JS/jQuery: call `inst.setEvents(events)` in the callback.
 
 ## What this demo shows

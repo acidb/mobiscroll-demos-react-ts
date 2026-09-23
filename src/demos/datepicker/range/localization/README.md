@@ -14,6 +14,14 @@ You can see how each example shows up by clicking on the small flag icon or chec
 
 - See what options the localization impacts →
 
+## Implementation instructions
+
+- Use `controls: ['calendar']`, `select: 'range'`, and `display: 'inline'` for an embedded date range picker.
+- Set the `locale` option to a locale object (e.g. `mobiscroll.locale.de`) to switch date/time formatting, button copy, and RTL support for the whole picker.
+- Locale objects are exposed per framework: JS/jQuery reference `mobiscroll.locale[code]` directly on the options object; Angular imports named exports (e.g. `localeDe`) from `@mobiscroll/angular` and binds with `[locale]="localeDe"`; React passes the same imported object as the `locale` prop; Vue binds it with `:locale="locale"`.
+- Changing the active locale at runtime is done by calling `.setOptions({ locale: mobiscroll.locale[code] })` on the picker instance (JS/jQuery) or by reassigning the bound `locale` value in the framework wrappers — the component re-renders with the new formatting and copy without recreating the instance.
+- No other option needs to change per locale — `min`/`max`, `minRange`/`maxRange`, and any invalid/valid rules continue to apply under the new locale's date format.
+
 ## What this demo shows
 
 - Shows a date range picker example for selecting a start and end date from a monthly calendar.

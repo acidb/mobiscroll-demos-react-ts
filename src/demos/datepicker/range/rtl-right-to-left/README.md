@@ -12,6 +12,13 @@ RTL support is built in and can be explicitly controlled through the `rtl` optio
 
 - [Check out this example →](https://demo.mobiscroll.com/react/range/localization#)
 
+## Implementation instructions
+
+- Set `rtl: true`/`false` on the range `Datepicker` (`select: 'range'`, `display: 'inline'`, `controls: ['calendar']`) to explicitly force right-to-left or left-to-right rendering.
+- When `rtl` is not set, it is inherited from the `locale` option instead — pick an RTL locale (e.g. Arabic, Hebrew) to get RTL layout without setting `rtl` directly.
+- React passes it as a prop (`<Datepicker rtl={true} />`); Angular binds it with `[rtl]="true"`; Vue binds it with `:rtl="true"`; JS/jQuery pass `rtl: true` in the options object.
+- `rtl` can be changed at runtime on an existing instance via `.setOptions({ rtl: checked })` (JS/jQuery) or by updating the bound prop/state in React/Angular/Vue — the calendar's header arrows, weekday order, and grid direction flip accordingly.
+
 ## What this demo shows
 
 - Shows a date range picker example for selecting a start and end date from a monthly calendar.

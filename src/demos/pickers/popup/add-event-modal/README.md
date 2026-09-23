@@ -17,6 +17,16 @@ Use  [Mobiscroll form elements](https://demo.mobiscroll.com/react/forms/#) or an
 
 - [Check out these examples →](https://demo.mobiscroll.com/react/eventcalendar/#)
 
+## Implementation instructions
+
+- `Popup` renders arbitrary content as children; the demo places `mbsc-form-group` blocks containing an `Input` (Title), an `Input`/`Textarea` (Description), a `Switch` (All-day), two more `Input`s (Starts/Ends) used as `startInput`/`endInput` for the date picker, and a `SegmentedGroup` with two segments (Show as busy/free).
+- `width: 400`, `contentPadding: false`, `headerText: 'Add new event'`, `display: 'center'`, and `showOverlay: false` configure a fixed-width, centered popup with a header title, no default inner padding (so the form controls its own spacing), and no dimmed backdrop.
+- `buttons` combines a plain `'cancel'` string entry with a custom button object — `{ text: 'Add', keyCode: 'enter', handler, cssClass: 'mbsc-popup-button-primary' }` — so pressing Enter or clicking the button runs `handler` (builds the new event from form state, appends it to the events array/data source, closes the popup, and shows a toast) without a separate `set`/`ok` default action.
+- The nested `Datepicker` uses `select: 'range'`, `display: 'anchored'`, `touchUi: true`, and `showRangeLabels: false`; its `controls` toggles between `['calendar']` (all-day) and `['calendar', 'time']` (timed) based on the `Switch`'s checked state — in React/Vue this is a derived value recomputed on render/`v-model`; in Angular/JS it's reassigned via `[controls]` binding or `.setOptions({ controls })` in the `Switch`'s change handler.
+- The date picker is wired to the two `Input`s via `startInput`/`endInput` (`[startInput]`/`[endInput]` in Angular, `:startInput`/`:endInput` in Vue, refs passed as props in React, element IDs as strings in JS/jQuery) so typing or picking updates those fields instead of rendering its own text field.
+- Opening the popup is imperative in JS/jQuery and Angular, declarative in React/Vue: JS/jQuery call `.mobiscroll('getInst')` on the popup element, then on the trigger button's click handler reset all the field instances' values/checked state and call `.open()`; Angular keeps a `@ViewChild` reference (`popup: MbscPopup`), resets the component's bound fields, and calls `popup.open()`; React and Vue instead bind the popup's `isOpen`/`:isOpen` prop to state that the trigger button's click handler resets and sets to `true`, and reset that state through an `onClose`/`@close` callback (or the custom Add button's `handler`).
+- The `Eventcalendar`'s `data`/event array is updated by spreading in the new event object built inside the Add button's `handler`; `selectedDate` is then set to the new event's `start` so the calendar navigates to it (JS/jQuery instead call `calendar.addEvent(newEvent)` and `calendar.navigateToEvent(newEvent)` on the `Eventcalendar` instance).
+
 ## What this demo shows
 
 - Shows a full month calendar which displays events with a custom `Add new event` button above it.

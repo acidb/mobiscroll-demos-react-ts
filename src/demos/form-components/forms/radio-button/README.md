@@ -6,6 +6,15 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 
 Set up radio-button lists for mutually exclusive value selection. Different color presets are available.
 
+## Implementation instructions
+
+- Radios are grouped with `RadioGroup`/`mbsc-radio-group` (JS/jQuery: a `div` carrying the `mbsc-radio-group` attribute); an individual option is `Radio`/`mbsc-radio`/`input[mbsc-radio][type="radio"]`.
+- Mutual exclusivity within a group comes from a shared `name`: set on the group in React/Vue (`RadioGroup name="group"`), or on each input in JS/jQuery and Angular.
+- `label` sets an option's primary text; `description` (`data-description` in JS/jQuery) adds secondary explanatory text beneath the label.
+- Selection state is bound differently per framework: Angular and Vue bind the selected value on the group itself (`[(ngModel)]="group"` in Angular, `v-model="radio"` in Vue) with each option supplying its own `value`; React marks the initially selected option with `defaultChecked={true}`; JS/jQuery marks it with the plain `checked` attribute on that option's input.
+- `disabled` makes a single option non-selectable: React `disabled={true}`, Vue `:disabled="true"`, Angular `[disabled]="true"`, JS/jQuery the bare `disabled` attribute.
+- `color` (`data-color` in JS/jQuery) sets a preset color per option: `primary`, `secondary`, `success`, `danger`, `warning`, `info`.
+
 ## What this demo shows
 
 - This demo shows different examples for radio buttons.

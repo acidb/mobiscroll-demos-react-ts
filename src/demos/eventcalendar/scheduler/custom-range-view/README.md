@@ -14,7 +14,7 @@ The calendar header can be easily customized and a two-way synchronization needs
 - Render a custom header containing: a `Datepicker` in `select: 'range'` mode anchored to a button, a button displaying the formatted current date range, and `CalendarPrev`, `CalendarToday`, `CalendarNext` navigation controls.
 - Configure the `Datepicker` with `display: 'anchored'`, `showOverlay: false`, `touchUi: true`, and `buttons: []` (no footer buttons). Anchor it to the date-range button element so it opens positioned directly below it.
 - **Two-way sync**: On `onPageLoading` (React/Angular) or `onPageLoaded` (Vue/JS/jQuery), update the button text and datepicker range value to reflect the current calendar page. On datepicker `onClose`, calculate the number of days in the selected range, set `view.scheduler.size` to that count, and navigate the calendar to the range start date.
-- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. For the imperative API, call `inst.setEvents(events)` in the callback.
+- Load events from `https://trial.mobiscroll.com/events/?vers=5` via JSONP using `getJson(url, callback, 'jsonp')`. React/Angular/Vue: assign the fetched array to the state/property bound to the `data` prop. JS/jQuery (imperative API): call `inst.setEvents(events)` in the callback.
 
 ## What this demo shows
 

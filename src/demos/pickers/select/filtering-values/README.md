@@ -6,6 +6,16 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 
 Enable filtering by setting the filter option to `true`. Filtering happens on the client side by default, however remote filtering can be implemented using the onFilter event.
 
+## Implementation instructions
+
+- `filter: true` turns on the search box in the picker header for both `Select` instances shown in this demo.
+- **Local filtering** (left picker): `data` is a static in-memory array of `{ text, value }` objects; with only `filter: true` set and no filter handler, the component filters that array client-side by matching `text` against the typed query — no extra wiring is needed.
+- **Remote filtering** (right picker): an `onFilter` handler intercepts the built-in filtering and returns `false` to suppress it, then issues its own request — `getJson('https://trial.mobiscroll.com/airports/' + encodeURIComponent(filterText), callback, 'jsonp')` in JS/React/Vue, or `HttpClient.jsonp(...)` in Angular — and repopulates the bound `data` array/ref from the response (`{ text: item.name, value: item.code }` per record) once results arrive.
+- `onFilter`'s handler receives an event object exposing `filterText` (the current search-box value); returning `false` from the handler is what stops the component from also running its own client-side match against `data`.
+- The remote example also calls the same fetch-and-populate function once on mount/init with an empty `filterText` so the picker has an initial option list before the user types anything.
+- Event wiring differs per framework: React passes `onFilter` as a prop callback on `<Select>`; JS/jQuery pass `onFilter` as a function option inside `.select({ ... })`; Vue binds it as `@filter` on `<MbscSelect>`; Angular cannot bind `(onFilter)` as a template output — it must be set inside an `options` object (e.g. `remoteOptions: MbscSelectOptions = { onFilter: (ev) => {...; return false;} }`) passed via the `[options]="remoteOptions"` input.
+- `display="center"` (local example) vs `display="anchored"` (remote example) are independent of filtering — they only control whether the picker opens as a centered modal or an anchored dropdown.
+
 ## What this demo shows
 
 - Two select examples displayed side by side demonstrate filtering with local and remote data.

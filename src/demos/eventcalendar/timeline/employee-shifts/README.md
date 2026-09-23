@@ -17,7 +17,7 @@ Customize the dialog header with a custom header renderer function using the `re
 - Use the timeline view in summary mode with `eventDisplay: 'fill'` to render shift events within resource rows and named slot buckets. Set `startDay: 1` and `endDay: 5` to show only work days.
 - Define the Morning and Afternoon shift buckets with the `slots` option. Each slot object needs an `id` and a `name`, and each event references its slot via the `slot` field.
 - Give each employee a `color` property on the resource object. Mobiscroll automatically applies the resource color to its events, so no extra event-level styling is needed.
-- Use `renderResource` (Angular: `resourceTemplate`, Vue: `resource`) to display a custom resource row with the employee's avatar image, name, and job title.
+- Use `renderResource` (Angular: `resourceTemplate`, Vue: `#resource` slot) to display a custom resource row with the employee's avatar image, name, and job title.
 - Enable `clickToCreate` so users can create a new shift by clicking an empty cell. Set `dragToMove: true` so existing shifts can be repositioned by dragging, and set `dragToCreate: false` and `dragToResize: false` to prevent accidental event creation by drag and to keep shift boundaries tied to the slot definition.
 - Use `extendDefaultEvent` to set the correct start and end times on every newly created event based on which slot it lands in — for example, Morning maps to 07:00–13:00 and Afternoon to 12:00–18:00.
 - Set `eventOverlap: false` to block placing a second shift for the same employee in the same slot on the same day.

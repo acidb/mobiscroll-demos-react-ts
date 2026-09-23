@@ -6,6 +6,18 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 
 For a great booking experience a good date picker is essential. The best implementations are contextual and take the intent *(what people want to do)* and context *(where and how are they doing it)* into account. Learn how to use and customize the range picker and see how you can add your flavor that matches with the overall experience of your application.
 
+## Implementation instructions
+
+- Set `select: 'range'` and `controls: ['calendar']` on `Datepicker`; `min`/`max` bound the selectable window (e.g. `min: <today>`, `max: <today + 6 months>`) to prevent picking past dates.
+- `pages: 2` shows two months side by side across all five examples.
+- `showRangeLabels: true` together with `rangeStartLabel`/`rangeEndLabel` (e.g. `'Outbound'`/`'Return'`) renames the built-in Start/End range labels shown above the calendar.
+- Single-input mode needs no extra wiring beyond `select: 'range'`; two-input mode binds `startInput`/`endInput` to separate Outbound/Return inputs — string selectors in JS/jQuery (`startInput: '#start', endInput: '#end'`), refs in React/Vue, template reference variables in Angular.
+- Unavailable flight dates are disabled via `invalid`, which accepts both single dates and recurring rules (e.g. `{ recurring: { repeat: 'weekly', weekDays: 'TU,TH' } }` alongside an exact `Date`).
+- `inRangeInvalid: true` allows a selected range to pass through invalid dates in the middle while still keeping the range's start/end endpoints on valid days; when `inRangeInvalid` is `false` (or omitted), no invalid date may fall anywhere inside the selected range — useful when a booking must be fully contiguous (e.g. hotel stays).
+- Toggling one-way vs. round-trip is done by changing the `select` option at runtime between `'range'` and `'date'` (e.g. via `.setOptions({ select: 'date' })` in JS/jQuery, or updating a bound `select` prop/binding in React/Vue/Angular) based on a radio control's value; the paired Return input can be disabled in step with it (e.g. `.setOptions({ disabled: true })` on that input's instance).
+- The footer buttons can be customized through the `buttons` option, including a custom action button object (`{ text, disabled, handler }`); an `onTempChange` handler (React: `onTempChange`; Angular: `(onTempChange)`; Vue: `@temp-change`; JS/jQuery: `onTempChange`) fires while the user is still choosing dates and can re-evaluate the custom button's `disabled` state via `inst.getTempVal()` (returns the in-progress `[start, end]` selection) and rebuild the `buttons` array through `setOptions`.
+- The custom button's handler reads the in-progress start date with `getTempVal()`, commits it as a one-way selection via `setVal([start, null])`, and closes the picker with `close()`.
+
 ## What this demo shows
 
 - Shows five flight booking examples for selecting a date range with differently customized range pickers.

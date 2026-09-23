@@ -17,6 +17,14 @@ Use the responsive option to configure the picker and change the options based o
 
 It is a good idea to change the `display` or `controls` option to tailor the UX. This way you can have a **single month calendar on mobile** and a **two month view on bigger screens**.
 
+## Implementation instructions
+
+- Set `controls: ['calendar']`, `select: 'range'`, and `showRangeLabels: true` on the `Datepicker`, then pass a `responsive` object keyed by breakpoint.
+- Predefined breakpoint keys are `xsmall` (min-width 0), `small` (576px), `medium` (768px), `large` (992px), and `xlarge` (1200px); a `custom` key requires its own `breakpoint` (a pixel number).
+- Each breakpoint entry is a partial options object — typically overriding `display` (`'center'`/`'anchored'`/`'bottom'`), `pages` (month count), and `touchUi` — so the picker can show one month with `touchUi: true` on small screens and two months with `touchUi: false` on larger ones.
+- React passes `responsive` as a prop (`<Datepicker responsive={{...}} />`); Vue binds it with `:responsive="myResp"`; Angular binds it with `[responsive]="myResp"`; JS/jQuery pass `responsive` directly in the options object.
+- Breakpoint overrides can be combined with a `context` option (a container selector) so the responsive behavior is scoped to a specific element instead of the viewport.
+
 ## What this demo shows
 
 - Shows a date range picker example for selecting a date range across touch and desktop layouts.

@@ -18,7 +18,7 @@ You can see how each example shows up by clicking on the small flag icon or chec
 
 - Use `timeline: { type: 'day' }` — a single-day timeline view.
 - Define 6 resources with `id`, `name`, and `color`.
-- Load events from `https://trial.mobiscroll.com/timeline-events/` via JSONP using `getJson(url, callback, 'jsonp')`. Call `inst.setEvents(events)` for the imperative API.
+- Load events from `https://trial.mobiscroll.com/timeline-events/` via JSONP using `getJson(url, callback, 'jsonp')`. React/Angular/Vue: assign the fetched array to the state/property bound to the `data` prop. Call `inst.setEvents(events)` for the imperative API.
 - **Locale switcher** — render a single `Dropdown` (Mobiscroll's `Dropdown` component) above the calendar. Populate it with ~35 language options (Arabic, Bulgarian, Catala, Cestina, Dansk, Deutsch, Greek, English, English-UK, Espanol, Farsi, Suomi, Français, Hebrew, Hindi, Croatian, Magyar, Italiano, Japanese, Korean, Lietuvių, Nederlands, Norsk, Polski, Português Brasileiro, Português Europeu, Română, Russian UA, Russian, Slovencina, Serbian, Svenska, Thai, Türkçe, Ukrainian, Vietnamese, Chinese). Default to `'en'`.
 - Pass `locale={locale[localeStr]}` to the `Eventcalendar`, where `locale` is the map object imported from Mobiscroll and `localeStr` is the currently selected language code. Changing the dropdown immediately re-renders the calendar in the new language including date formats, button labels, and RTL layout.
 - For the imperative API, attach a `change` listener to the select element and call `calendar.setOptions({ locale: mobiscroll.locale[value] })` on each change.

@@ -16,6 +16,15 @@ It also gives you full control over the content where you can use any Mobiscroll
 
 - [Check out this example →](https://demo.mobiscroll.com/react/scheduler/custom-event-tooltip#)
 
+## Implementation instructions
+
+- `Eventcalendar`'s `onEventHoverIn`/`(onEventHoverIn)`/`@event-hover-in` fires when the pointer enters an event; its handler reads `args.event` for the title/start/end and `args.domEvent.target` for the hovered element, formats the times with `formatDate('hh:mm A', ...)`, and opens the tooltip popup anchored to that element (`anchor`/`[anchor]`/`:anchor` set to the target, then `isOpen`/`:isOpen` set `true` in React/Vue or `popup.open()` called in Angular/JS after clearing any pending close timer).
+- `onEventHoverOut`/`(onEventHoverOut)`/`@event-hover-out` doesn't close the popup immediately — it starts a `setTimeout` (200ms) that hides it (`isOpen = false` / `popup.close()`), giving the pointer time to move from the event onto the tooltip itself without it flickering closed.
+- The tooltip content wraps its own `mouseenter`/`mouseleave` handlers (`onMouseEnter`/`onMouseLeave` in React, `@mouseenter`/`@mouseleave` in Vue, `(mouseenter)`/`(mouseleave)` in Angular): entering the tooltip clears the pending close timeout so it stays open; leaving it restarts the same 200ms close timer, so the two hover targets (event + tooltip) act as one continuous hover region.
+- `Popup` options for the tooltip: `display: 'anchored'`, `touchUi: false` (keeps it in anchored/popover mode even in touch environments, since it's not meant to become a mobile action sheet), `showOverlay: false` (no dimmed backdrop, since it's a lightweight tooltip, not a modal), and `width: 250`.
+- `Popup` has no `buttons` option set — it's dismiss-only via hover-out, with no footer actions.
+- `Eventcalendar`'s `view` is `{ calendar: { type: 'month' } }`, rendering the month grid that the tooltip is anchored against.
+
 ## What this demo shows
 
 - A desktop-style monthly event calendar view with event labels rendered inside day cells.

@@ -9,6 +9,17 @@ Build in responsiveness into your @framework form using the grid layout. Define 
 - The column widths will adapt to the screen size based on the predefined **.mbsc-col-{breakpoint}-{size}** classes.
 - The examples are using the **.mbsc-col-md-6**, **.mbsc-col-lg-6** and **.mbsc-col-lg-3** classes.
 
+## Implementation instructions
+
+- The layout uses Mobiscroll's grid CSS classes, not a component option: a `.mbsc-grid`/`.mbsc-form-grid` wrapper contains one or more `.mbsc-row` elements, each holding column `<div>`s.
+- Column width per breakpoint is set with `.mbsc-col-{breakpoint}-{size}` classes (size out of 12), stacked per element: e.g. `mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3` renders full width below the `md` breakpoint, half width at `md`, and quarter width at `lg` and above.
+- A field with no breakpoint-specific class keeps its base `mbsc-col-12` width (full row) at every viewport size until a narrower class overrides it, e.g. `mbsc-col-12 mbsc-col-lg-6` stays full width until `lg`.
+- The same markup/component tree is reused across breakpoints — only the grid classes change; there is no separate mobile vs. desktop form definition.
+- `inputStyle="box"` and `labelStyle="floating"` are applied to each `Input`/`mbsc-input` field for the boxed-input-with-floating-label appearance used throughout the grid (JS/jQuery: `data-input-style="box"` / `data-label-style="floating"` attributes).
+- `passwordToggle` (JS/jQuery: `data-password-toggle="true"`) adds a show/hide toggle to a `type="password"` input.
+- Framework markup differences: JS/jQuery wraps plain `<input mbsc-input>` elements in `<label>`s inside `<div class="mbsc-col-...">` wrappers; React uses `<Input .../>` inside `<div className="mbsc-col-...">`; Angular uses `<mbsc-input ...></mbsc-input>` inside `<div class="mbsc-col-...">`, with boolean options like `[passwordToggle]="true"` bound; Vue uses `<MbscInput .../>` inside `<div class="mbsc-col-...">`, with boolean options like `:passwordToggle="true"`.
+- A `Button`/`<button mbsc-button>` with `color="success"` (JS/jQuery: `data-color="success"`) submits the form; it sits in its own row/column span like any other grid item.
+
 ## What this demo shows
 
 - Shows a sesponsive form grid which adapts the form layout to different viewport widths.

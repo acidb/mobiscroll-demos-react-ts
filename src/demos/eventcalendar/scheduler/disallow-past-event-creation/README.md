@@ -40,8 +40,8 @@ Moving the past occurrences need to be handled in the
 - Load events via JSONP. After loading, convert `event.start` and `event.end` to `Date` objects (`new Date(event.start)`), then set `event.editable = event.start && today < event.start` — only future events are editable; past events get `editable: false`. For the imperative API, call `inst.setEvents(events)`.
 - **`onEventCreateFailed`** — show a toast ("Can't create event in the past") only when `args.originEvent` is absent (guards against false positives from recurring events).
 - **`onEventUpdateFailed`** — show a toast ("Can't move event in the past") only when `args.oldEventOccurrence` is absent.
-- **`onEventCreate`** — handle the recurring event edge case: if `args.originEvent?.start` is before `today`, show a toast ("Can't move past event") and `return false`. For the imperative API, also call `inst.updateEvent(args.originEvent)` to restore the event before returning false.
-- **`onEventUpdate`** — if `args.oldEvent.start < today` or `args.oldEventOccurrence?.start < today`, `return false`. For the imperative API, also call `inst.updateEvent(args.oldEvent)` to restore the event.
+- **`onEventCreate`** — handle the recurring event edge case: if `args.originEvent?.start` is before `today`, show a toast ("Can't move past event") and `return false`. In React/Angular/Vue, `return false` alone is sufficient to restore the event — the bound array was never mutated. For the imperative API (JS/jQuery), the events array isn't bound to state, so also call `inst.updateEvent(args.originEvent)` to restore the event before returning false.
+- **`onEventUpdate`** — if `args.oldEvent.start < today` or `args.oldEventOccurrence?.start < today`, `return false`. In React/Angular/Vue, `return false` alone is sufficient to restore the event — the bound array was never mutated. For the imperative API (JS/jQuery), the events array isn't bound to state, so also call `inst.updateEvent(args.oldEvent)` to restore the event.
 
 ## What this demo shows
 

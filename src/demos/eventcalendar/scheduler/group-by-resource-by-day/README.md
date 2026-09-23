@@ -12,7 +12,7 @@ Combined with the day and week-view you can help people quickly find what they a
 
 - Use `view: { scheduler: { type: 'week', allDay: false, startDay: 1, endDay: 5, startTime: '08:00', endTime: '17:00' } }` — Mon–Fri, 8am–5pm, no all-day row.
 - Define 3 resources, each with `id`, `name`, and `color`: Ryan, Kate, John.
-- Load events via `getJson` from a JSONP endpoint on mount; for the imperative API, call `inst.setEvents(events)`.
+- Load events via `getJson` from a JSONP endpoint on mount. React/Angular/Vue: assign the fetched array to the state/property bound to the `data` prop. JS/jQuery (imperative API): call `inst.setEvents(events)`.
 - No explicit `groupBy` is set — the default scheduler layout renders resources as separate columns within each day.
 
 ## What this demo shows

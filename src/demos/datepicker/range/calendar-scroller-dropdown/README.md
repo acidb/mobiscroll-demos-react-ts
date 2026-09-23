@@ -13,6 +13,14 @@ The picker supports multiple controls:
 
 Use the controls option (expecting an array) to configure the picker.
 
+## Implementation instructions
+
+- Set `select: 'range'` on every variant; `controls` determines which UI renders: `['calendar']` (month grid), `['date']` (date scroller/dropdown), `['datetime']` (compact one-wheel date+time scroller/dropdown), `['calendar', 'time']` (calendar plus a time scroller/dropdown), `['time']` (time scroller/dropdown only).
+- `touchUi` (boolean) controls whether the `date`, `datetime`, and `time` control types render as a scroller (touch) or a dropdown (pointer); it has no effect on the `calendar` control.
+- Set `showRangeLabels: true` to show the range start/end labels above the picker for any control combination.
+- The time format for `['time']` and `['datetime']` controls is taken from the active `locale` option and can be overridden by passing a custom `locale`.
+- The same `Datepicker` component/options accept any `controls` combination — no separate component is needed per view.
+
 ## What this demo shows
 
 - Shows five range picker examples for selecting a start and end date, time or date and time.

@@ -54,8 +54,8 @@ You can also use the :::framework{only="vue"} `resource-drag-leave` ::: :::frame
 - In `onResourceCreate`, remove the dropped installer from `availableInstallers` by ID, and show a `Toast` announcing that the person was added to `args.parent.name`.
 - In `onResourceDelete`, show a `Toast` announcing the removal from `args.parent.name`.
 - In `onResourceOrderUpdate`, show a `Toast` when `args.parent` and `args.oldParent` both exist (indicating a cross-team move). Remove the placeholder child from the destination team and, if the source team is now empty, push a new placeholder child onto its `children` array.
-- Use `renderResourceHeader` (Angular: `resourceHeaderTemplate`, Vue: `resourceHeader`) to render a "Set up teams" label alongside an "Add team" `Button`.
-- Use `renderResource` (Angular: `resourceTemplate`, Vue: `resource`) to handle three cases: parent/group nodes render just the team name; placeholder nodes render a styled placeholder label; leaf nodes render a colored avatar (first letter of the name), the installer's name, and their job title.
+- Use `renderResourceHeader` (Angular: `resourceHeaderTemplate`, Vue: `#resourceHeader` slot) to render a "Set up teams" label alongside an "Add team" `Button`.
+- Use `renderResource` (Angular: `resourceTemplate`, Vue: `#resource` slot) to handle three cases: parent/group nodes render just the team name; placeholder nodes render a styled placeholder label; leaf nodes render a colored avatar (first letter of the name), the installer's name, and their job title.
 - In the Add team handler, append a new group to the installers array with a placeholder child, then call `navigateToEvent` on the calendar instance ref with the new resource ID to scroll the timeline to the newly added team.
 
 ## What this demo shows

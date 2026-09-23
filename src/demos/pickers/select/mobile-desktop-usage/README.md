@@ -17,6 +17,17 @@ When linked to an input, the component will be shown on focus or when someone cl
 
 - [Check out the responsive demo →](https://demo.mobiscroll.com/react/select/responsive#)
 
+## Implementation instructions
+
+- `touchUi` (boolean) is the option that switches all four examples between touch-optimized mobile layout (`true`) and pointer-optimized desktop layout (`false`); it does not change which display mode is used, only how the picker is rendered/positioned within it.
+- `data` is an array of `{ text, value }` objects (e.g. `{ text: 'Atlanta', value: 'atl' }`); JS/jQuery and Angular instead source the same options from a native `<select>`'s `<option value="...">Text</option>` children (Angular can alternatively use `<mbsc-select-option value="...">`).
+- The first example binds the picker to a plain input: React/Vue pass `inputComponent="input"` on `<Select>`/`<MbscSelect>` so the component renders its own bound `<input>`; Angular passes `[inputElement]="myinput"` pointing at a template-referenced `<input #myinput>`; JS/jQuery pass `inputElement: document.getElementById('my-input')`. Focusing or clicking that input opens the picker by default.
+- The second example disables the default open triggers with `showOnClick={false}` / `:showOnClick="false"` / `[showOnClick]="false"` / `showOnClick: false` and `showOnFocus` (same pattern) so the picker only opens from a separate `Show picker` button.
+- Opening on the button click is declarative in React/Vue: a boolean state (`openPicker`/`isPickerOpen`) drives the `isOpen`/`:isOpen` prop, the button's click handler sets it `true`, and the `onClose`/`@close` handler resets it to `false`. It is imperative in Angular and JS/jQuery: Angular keeps a `@ViewChild('picker', { static: false })` reference to the select and calls `pickerInst.open()`; JS/jQuery call `.mobiscroll('getInst')` (jQuery) or capture the return value of `mobiscroll.select(...)` (JS) once to get the instance, then call `.open()` from the button's click handler.
+- The third example binds the picker to a Mobiscroll-styled input instead of a plain one: the trigger input carries the `mbsc-input` attribute/directive (JS/jQuery/Angular) so it renders with Mobiscroll's label/box styling; React/Vue use the same `data`/`touchUi` props without `inputComponent`, since `<Select>`/`<MbscSelect>` renders a Mobiscroll input by default.
+- The fourth example sets `display="inline"` (React/Vue prop, Angular attribute) or `display: 'inline'` (JS/jQuery option) to embed the option list directly on the page with no input and no modal.
+- `.setVal(value, fireChange)` (JS/jQuery instance method) programmatically preselects a value on the picker instance after creation, e.g. `buttonSelect.setVal('atl', true)` on the button-triggered example; the second argument controls whether the picker's `onChange` handling fires for that programmatic update.
+
 ## What this demo shows
 
 - Shows four single-value select examples in touch and desktop layouts.
