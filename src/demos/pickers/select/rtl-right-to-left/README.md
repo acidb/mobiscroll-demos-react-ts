@@ -15,7 +15,7 @@ RTL support is built in and can be explicitly controlled through the `rtl` optio
 ## Implementation instructions
 
 - `rtl` is a boolean option on the `Select` instance; `true` mirrors the picker layout (text direction, checkmark side, popup alignment) for right-to-left locales. When left unset, direction is inherited from the active `locale`.
-- The demo toggles the switch by calling `.setOptions({ rtl: checked })` on the select instance obtained via `.mobiscroll('getInst')` — `rtl` can be flipped at runtime without recreating the component.
+- The demo toggles the switch by calling `.setOptions({ rtl: checked })` on the select instance — JS captures it directly from the return value of `mobiscroll.select(...)`, jQuery instead obtains it via `.mobiscroll('getInst')` — `rtl` can be flipped at runtime without recreating the component.
 - `inputElement` points the select at a separate `<input>` used as the trigger/display field, decoupled from the `<select>` element that supplies the option list; the popup opens on focus/click of that input and closes on outside click.
 - The underlying `<select>` element's `<option value="...">Label</option>` pairs are consumed directly as the option list — no separate `data` array is required when a native `<select>` is used as the source element.
 - Per framework: JS/jQuery pass `rtl: true` inside `.select({ ... })` / `mobiscroll.select(el, { ... })` at init and change it later via `.setOptions({ rtl })`; React sets `rtl={true}` as a prop on `<Select>`; Angular binds `[rtl]="true"` on `<mbsc-select>`; Vue binds `:rtl="true"` on `<MbscSelect>`.

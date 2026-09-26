@@ -25,7 +25,7 @@ While Mobiscroll doesn't provide built-in validation, it provides styling for er
 - File upload is an `Input` with `type="file"` (no separate file-upload component).
 - Numeric entry is an `Input` with `type="number"`, rendering the browser's native increment/decrement controls.
 - Native date entry is an `Input` with `type="date"`, rendering the browser's own date control.
-- The calendar-picker date field and the scroller date field are both a `Datepicker` bound to a text input: `controls: ['calendar']` opens a month-view calendar, `controls: ['date']` opens scroller wheels instead. In JS/jQuery this is `$(el).mobiscroll().datepicker({ controls: [...] })`; the demo also sets `display: 'anchored', touchUi: false` so the picker opens as a desktop-anchored popup rather than a full-screen touch picker.
+- The calendar-picker date field and the scroller date field are both a `Datepicker` bound to a text input: `controls: ['calendar']` opens a month-view calendar, `controls: ['date']` opens scroller wheels instead. In JS this is `mobiscroll.datepicker(el, { controls: [...] })`; in jQuery it's `$(el).mobiscroll().datepicker({ controls: [...] })`; the demo also sets `display: 'anchored', touchUi: false` so the picker opens as a desktop-anchored popup rather than a full-screen touch picker.
 - Native select uses `<select mbsc-dropdown>`/`Dropdown` with `<option>` children; it supports the same `label`, `startIcon`/`endIcon`, `disabled`, and `error`/`errorMessage` options as `Input`. Angular additionally binds the selected value with `[(ngModel)]` on the `mbsc-dropdown`.
 
 ## What this demo shows
