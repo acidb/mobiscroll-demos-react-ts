@@ -15,11 +15,11 @@ Use presets with pre-defined colors on top of the theme colors. Every theme ship
 - Light
 - Dark
 
-- **Customize the colors or use your own colors:** {{docs: path="theming/sass-variables" text="Learn how to change the Sass variables for the presets →"}}
+- **Customize the colors or use your own colors:** [Learn how to change the Sass variables for the presets →](https://docs.mobiscroll.com/react/theming/sass-variables)
 
 ## Related demos
 
-- {{docs: path="theming/sass-variables" text="Learn how to change the Sass variables for the presets →"}}
+- [Learn how to change the Sass variables for the presets →](https://docs.mobiscroll.com/react/theming/sass-variables)
 
 ## Implementation instructions
 
