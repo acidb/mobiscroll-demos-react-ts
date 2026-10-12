@@ -42,14 +42,21 @@
 .mds-cell-template-back.mbsc-button {
   width: 100%;
   height: 32px;
-  font-size: 14px;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0 6px;
+  padding: 0 12px;
   display: none;
 }
 
+.mds-cell-template-back .mbsc-button-txt {
+  font-size: 14px;
+  line-height: 32px;
+}
+
 .mds-cell-template-back .mbsc-icon {
+  width: 18px;
+  height: 18px;
   line-height: 18px;
+  font-size: 14px;
 }
 
 /* Cell template */
