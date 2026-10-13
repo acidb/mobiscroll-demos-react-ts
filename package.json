@@ -18,7 +18,7 @@
     "moment-timezone": "^0.5.43",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-router-dom": "^6.18.0",
+    "react-router-dom": "^7.18.4",
     "sortablejs": "^1.15.6"
   },
   "devDependencies": {
