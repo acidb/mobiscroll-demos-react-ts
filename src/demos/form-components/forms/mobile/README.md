@@ -21,7 +21,7 @@ Use the [global options](https://docs.mobiscroll.com/react/core-concepts/global-
 - Related fields are grouped into separate `mbsc-form-group` blocks, each with an `mbsc-form-group-title` (a plain `<div>`) labeling the section — e.g. "User Data" and "Phone Number" as two adjacent groups.
 - `label` sets each field's title text (JS/jQuery: `data-label` attribute); `placeholder` sets the empty-state hint text shown inside the input.
 - A checkbox is added with a `Checkbox`/`mbsc-checkbox`-family component; `label`/`description` (JS/jQuery: `data-label`/`data-description`) attach the acknowledgment title and explanatory text next to it, the same pattern used for other form fields.
-- This is the same `Input`/grid-free layout used across the "desktop" demo's single-column variant — the "desktop" demo (`{{demo: section="forms" slug="desktop"}}`) adds the `.mbsc-col-*` grid classes on top of the same field set to span multiple columns on wider screens.
+- This is the same `Input`/grid-free layout used across the "desktop" demo's single-column variant — the "desktop" demo ([desktop demo](https://demo.mobiscroll.com/react/forms/desktop#)) adds the `.mbsc-col-*` grid classes on top of the same field set to span multiple columns on wider screens.
 
 ## What this demo shows
 

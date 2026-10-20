@@ -6,7 +6,7 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 
 Multiple event selection can be turned on with the `selectMultipleEvents` option. Selecting multiple events can be done through user interaction with `CTRL`/`SHIFT`/`CMD` + click or programmatically eg. click of a button or 'select all' checkbox.
 
-Bulk operations like delete, update can be applied the selected events. Things like deleting with the `backspace` or `delete` buttons work out of the box but custom actions can be also applied. The selection can be easily retrieved and updated with the `getSelectedEvents` and `setSelectedEvents` method.
+Bulk operations like delete, update can be applied the selected events. Things like deleting with the `backspace` or `delete` buttons work out of the box but custom actions can be also applied. The selection can be easily retrieved and updated with the `selectedEvents` option and the `onSelectedEventsChange` event.
 
 Custom actions can be performed with external buttons or with context menu activated on right-click.
 

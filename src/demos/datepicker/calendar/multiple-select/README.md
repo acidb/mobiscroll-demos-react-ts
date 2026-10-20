@@ -6,7 +6,7 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 
 To enable multiple selection set the `selectMultiple` option to `true`.
 
-The `selectMin` and `selectMax` options control how many values have to be and can be selected. Setting both works as a fixed selection count, which means the control can only be submitted if that count is met.
+The `selectMax` option limits how many values can be selected.
 
 To customize the header you can pass a `headerText` or turn `selectCounter` on to display a localized text with the number of dates selected.
 

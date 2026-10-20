@@ -24,10 +24,8 @@ The event data structure for the scheduler is straightforward with a couple of b
 - `overlap` - Specifies whether overlap is allowed on the event. If set to `false` has precedence over `eventOverlap` property in `resources` and the `eventOverlap` option of the calendar.
 - `editable` - Denotes if the event is editable. If set `false`, the event cannot be dragged, resized or deleted even if globally enabled
 - `cssClass` - A custom css class for the event. Useful for quick styling adjustments of the event container.
-- `bufferBefore` - Defines a buffer time in minutes that will be rendered before the start of the event. This buffer area can help you visualise delays or added minutes for tasks.
-For example travel time for meetings/appointments, check in before a flight.
-- `bufferAfter` - Defines a buffer time in minutes that will be rendered after the end of the event. This buffer area can help you visualise delays or added minutes for tasks.
-For example travel time after meetings/appointments, check out after flights, inspection, cleaning after certain tasks.
+- `bufferBefore` - Defines a buffer time in minutes that will be rendered before the start of the event. This buffer area can help you visualise delays or added minutes for tasks. For example travel time for meetings/appointments, check in before a flight.
+- `bufferAfter` - Defines a buffer time in minutes that will be rendered after the end of the event. This buffer area can help you visualise delays or added minutes for tasks. For example travel time after meetings/appointments, check out after flights, inspection, cleaning after certain tasks.
 - `order` - Specifies the order of the event in the event array. Has precedence over the default ordering rules.
 
 ## Implementation instructions

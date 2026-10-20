@@ -8,9 +8,7 @@ The event calendar works with local times by default, but ships with support for
 
 There are two angles regarding timezones:
 
-- `dataTimezone` - the calendar expects this format and returns this format. It is `'local'` by default if the date-times don't contain any timezone information.
-It can be set globally on the calendar using the `dataTimezone` option, or
-specifically for the event using the `timezone` property of the [event data](https://demo.mobiscroll.com/react/eventcalendar/event-data-structure#).
+- `dataTimezone` - the calendar expects this format and returns this format. It is `'local'` by default if the date-times don't contain any timezone information. It can be set globally on the calendar using the `dataTimezone` option, or specifically for the event using the `timezone` property of the [event data](https://demo.mobiscroll.com/react/eventcalendar/event-data-structure#).
 - `displayTimezone` - the calendar displays the events in this timezone. The date-times will be converted from the `dataTimezone` and displayed accordingly. It is `'local'` by default
 
 - **Enable switching the timezone in the UI?** [Learn how to dynamically change timezones &#8594;](https://demo.mobiscroll.com/react/eventcalendar/multiple-timezone-support#)

@@ -4,7 +4,7 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 
 ## Demo description
 
-This example demonstrates how can the Scheduler navigated externally. Here we have a two-pane layout with a Datepicker on the left and a Scheduler on the right. Changing date on the Datepicker will trigger the date change on the Scheduler.
+This example demonstrates how the Scheduler can be navigated externally. Here we have a two-pane layout with a Datepicker on the left and a Scheduler on the right. Changing date on the Datepicker will trigger the date change on the Scheduler.
 
 The Datepicker updates the `selectedDate` option of the Scheduler in its `onChange` event, while the Scheduler updates the datepicker value from its `onSelectedDateChange` event.
 

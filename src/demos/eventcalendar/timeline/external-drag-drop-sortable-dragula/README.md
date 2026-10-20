@@ -69,7 +69,7 @@ Dropping events or resources from the Eventcalendar to [SortableJS](https://sort
 [Dragula](https://bevacqua.github.io/dragula/) lists is also possible with the `sortableJsDraggable` and `dragulaDraggable` plugins. 
 To enable this behavior you will need to set the following under the `options` configuration:
 
-- Allow the list to receive external drops by setting `exteralDrop` to `true`
+- Allow the list to receive external drops by setting `externalDrop` to `true`
 - Use the `onExternalDrop` callback to update the content of the third-party list. The function arguments return the `afterElement` - the list element before which the clone is dropped, `container` - the list container, `dragData` - the dragged event data,  `position` - the index where the clone is dropped on the list.
 
 For details, and option lists see the [Third-party dragging support](https://docs.mobiscroll.com/react/eventcalendar/drag-and-drop#third-party-dragging-support) section in the documentation

@@ -4,8 +4,7 @@ To see this example live, check it out on our [demo page](https://demo.mobiscrol
 
 ## Demo description
 
-Use the popup to render any content or form in a modal box that can be programmatically shown or hidden.
-For that the `open` and `close` methods can be used.
+Use the popup to render any content or form in a modal box that can be programmatically shown or hidden. For that the `isOpen` option can be used.
 
 To check whether the popup is opened or not, use the `isVisible` method.
 

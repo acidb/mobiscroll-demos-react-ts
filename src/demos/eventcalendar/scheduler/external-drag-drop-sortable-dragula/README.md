@@ -50,9 +50,8 @@ Additionally events can be unscheduled by dragging them out from the scheduler a
 onto an external drop container. To activate this, you will need to:
 
 - Enable the scheduler to allow dragging events out by setting `externalDrag` to `true`.
-- Initialize the
 
-`dropcontainer`.
+- Initialize the `dropcontainer`.
 
 Use the `dropcontainer` component and its `onItemDrop` event to handle dropped events.
 
@@ -74,7 +73,7 @@ Dropping events from the Eventcalendar to [SortableJS](https://sortablejs.github
 [Dragula](https://bevacqua.github.io/dragula/) lists is also possible with the `sortableJsDraggable`
 and `dragulaDraggable` plugins. To enable this behavior you will need to set the following under the `options` configuration:
 
-- Allow the list to receive external drops by setting `exteralDrop` to `true`
+- Allow the list to receive external drops by setting `externalDrop` to `true`
 - Use the `onExternalDrop` callback to update the content of the third-party list. The function arguments return the `afterElement` - the list element before which the clone is dropped,
 
 `container` - the list container, `dragData` - the dragged event data, `position` - the index where the clone is dropped on the list.
