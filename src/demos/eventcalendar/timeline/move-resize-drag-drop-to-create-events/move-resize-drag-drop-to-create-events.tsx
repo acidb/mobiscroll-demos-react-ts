@@ -117,6 +117,7 @@ const App: FC = () => {
       view={myView}
       data={myData}
       resources={myResources}
+      selectMultipleEvents={true}
       dragToCreate={true}
       dragToMove={true}
       dragToResize={true}

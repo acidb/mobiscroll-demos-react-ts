@@ -43,7 +43,7 @@ const App: FC = () => {
     [],
   );
 
-  return <Eventcalendar data={myData} view={myView} dragToCreate={true} dragToMove={true} dragToResize={true} dragTimeStep={15} />;
+  return <Eventcalendar data={myData} view={myView} selectMultipleEvents={true} dragToCreate={true} dragToMove={true} dragToResize={true} dragTimeStep={15} />;
 };
 
 export default App;

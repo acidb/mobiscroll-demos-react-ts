@@ -19,6 +19,9 @@ You have granular control over features through the
 `dragToResize` and
 `eventDelete` options, which are `false` by default.
 
+Multi-event drag & drop is also available. When the
+`selectMultipleEvents` option is set to `true`, multiple selected events can be moved or resized together, with no additional configuration.
+
 Events can be marked as fixed by setting their `editable` property to false. This turns delete, drag & drop move and resize off for the event. The `mbsc-event-readonly` CSS class will be added to the events. This means if you would like to add opacity, override the mouse cursor or apply any other CSS override, you can add it to this class.
 
 ## Implementation instructions
@@ -26,6 +29,7 @@ Events can be marked as fixed by setting their `editable` property to false. Thi
 - Set `view: { calendar: { labels: true } }` for a month grid with inline event labels.
 - Enable interaction features: set `dragToCreate: true`, `dragToMove: true`, and `dragToResize: true`. Use `dragTimeStep: 15` to snap drag-created and resized events to 15-minute boundaries. `clickToCreate` and `eventDelete` are additional options for click-based event creation and keyboard deletion; all five interaction options are `false` by default.
 - Set an event's `editable` property to `false` to mark it as fixed — this disables move, resize, and delete for that specific event regardless of which global interaction options are enabled.
+- Multi-event drag & drop: when `selectMultipleEvents` is set to `true`, selected events can be moved and resized together. No extra option is needed; it works automatically with `dragToMove` and `dragToResize`.
 - Mobiscroll automatically adds the `mbsc-event-readonly` CSS class to fixed events; use it to apply visual overrides such as reduced opacity or a different cursor.
 
 ## What this demo shows

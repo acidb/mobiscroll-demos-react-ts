@@ -18,6 +18,9 @@ You have granular control over features through the `clickToCreate`,
 
 Use the `dragTimeStep` option (defaults to 15 minutes) to set the snap resolution of all drag actions.
 
+Multi-event drag & drop is also available. When the
+`selectMultipleEvents` option is set to `true`, multiple selected events can be moved or resized together, with no additional configuration.
+
 Events can be marked as fixed by setting their `editable` property to false. This turns delete, drag & drop move and resize off for the event. The `mbsc-event-readonly` CSS class will be added to the events. This means if you would like to add opacity, override the mouse cursor or apply any other CSS override, you can add it to this class.
 
 ## Implementation instructions
@@ -31,6 +34,7 @@ Events can be marked as fixed by setting their `editable` property to false. Thi
   - **"Move me around"** events (green `#339966`) — demonstrating both move and resize
 - Enable interactions via: `clickToCreate: true`, `dragToCreate: true`, `dragToMove: true`, `dragToResize: true`, `eventDelete: true`.
 - Set `dragTimeStep: 15` to snap all drag actions to 15-minute increments.
+- Multi-event drag & drop: when `selectMultipleEvents` is set to `true`, selected events can be moved and resized together. No extra option is needed; it works automatically with `dragToMove` and `dragToResize`.
 - Mark fixed events with `editable: false` on the event object — this disables delete, drag-to-move, and drag-to-resize for those events only. Mobiscroll automatically adds the `mbsc-event-readonly` CSS class to them; use this class to apply custom CSS overrides (opacity, cursor, etc.).
 
 ## What this demo shows
