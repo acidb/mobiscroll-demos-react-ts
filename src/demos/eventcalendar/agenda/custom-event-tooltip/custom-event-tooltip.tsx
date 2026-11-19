@@ -576,7 +576,7 @@ function App() {
         width={350}
         onClose={handleTooltipClose}
       >
-        <div className="mds-tooltip" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <div className="mds-tooltip" onMouseOver={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <div className="mds-tooltip-header" style={{ backgroundColor: tooltipColor }}>
             <span>{appointmentInfo}</span>
             <span className="mbsc-pull-right">{appointmentTime}</span>

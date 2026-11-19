@@ -131,7 +131,7 @@ function App() {
     <Page>
       <Eventcalendar data={myEvents} view={myView} onEventHoverIn={handleEventHoverIn} onEventHoverOut={handleEventHoverOut} />
       <Popup display="anchored" anchor={myAnchor} touchUi={false} isOpen={isPopupOpen} width={250} showOverlay={false}>
-        <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <div onMouseOver={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <div className="mds-tooltip-event-title-cont">
             <span>{eventTitle}</span>
           </div>

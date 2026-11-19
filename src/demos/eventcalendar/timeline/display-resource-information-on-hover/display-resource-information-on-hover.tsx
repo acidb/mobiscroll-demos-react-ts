@@ -414,7 +414,7 @@ const App: FC = () => {
         onPosition={handleTooltipPosition}
         onClose={handleTooltipClose}
       >
-        <div onMouseEnter={handlePopupMouseEnter} onMouseLeave={handlePopupMouseLeave}>
+        <div onMouseOver={handlePopupMouseEnter} onMouseLeave={handlePopupMouseLeave}>
           <div className="mbsc-flex mbsc-align-items-center mds-resource-info-header">
             <img className="mds-resource-info-avatar" src={resourceAvatar} alt="Avatar" />
             <div className="mds-resource-info-name mbsc-flex-1-0">{resourceName}</div>
